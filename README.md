@@ -5,5 +5,5 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| --------: | ----------------- | ---------------------
-1 | 2017-08-29 | Class 1 Slides | Welcome to class.
+1 | 2017-08-29 | [pdf of Slides](https://github.com/THOMASELOVE/431slides/blob/master/class_01/431_2017_class-01-slides.pdf) | Welcome to class.
 
