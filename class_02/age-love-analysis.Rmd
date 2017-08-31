@@ -1,0 +1,108 @@
+---
+title: "Class 2 Age Guess Analysis"
+author: "Thomas E. Love"
+date: "August 31, 2017"
+output: 
+    html_document:
+        code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+```
+
+```{r load-packages}
+library(magrittr); library(tidyverse)
+```
+
+```{r load-dataset}
+age_love_2017 <- read_csv("age-love-2017.csv")
+```
+
+```{r look-at-data}
+age_love_2017
+```
+
+Our data set has `r nrow(age_love_2017)` rows, and `r ncol(age_love_2017)` columns.
+
+# Build a Picture of the First Guesses
+
+```{r first-histogram}
+ggplot(data = age_love_2017, aes(x = age1)) +
+    geom_histogram()
+```
+
+## A nicer picture
+
+```{r second-histogram}
+ggplot(data = age_love_2017, aes(x = age1)) +
+    geom_histogram(bins = 12, fill = "royalblue", col = "green") +
+    labs(x = "First Guess of Dr. Love's Age on 2017-08-29",
+         y = "# of students",
+         title = "2017 First Guesses of Dr. Love's Age",
+         subtitle = "His true age was 50.5")
+```
+
+# A Numerical Summary
+
+```{r numerical-summary}
+summary(age_love_2017)
+```
+
+# Better First or Second Guess?
+
+```{r calculate-errors}
+age_love_2017 <- age_love_2017 %>%
+    mutate(error1 = abs(age1 - 50.5),
+           error2 = abs(age2 - 50.5))
+
+summary(age_love_2017)
+```
+
+# Compare the Guesses
+
+```{r guess-1-vs-2}
+ggplot(data = age_love_2017, aes(x = error1, y = error2)) +
+    geom_point()
+```
+
+## Add a Prediction Model?
+
+```{r guess1-vs-guess2-with-loess-smooth}
+ggplot(data = age_love_2017, aes(x = age1, y = age2)) +
+    geom_point(size = 3) + 
+    geom_smooth(method = "loess")
+```
+
+# Plot the (matched) differences
+
+```{r histogram-of-differences}
+ggplot(age_love_2017, aes(x = age1 - age2)) +
+    geom_histogram(binwidth = 2, 
+                   col = "green",
+                   fill = "royalblue")
+```
+
+# Numerical Summary of the Difference in Ages
+
+```{r comparing-guess1-to-guess2}
+age_love_2017 %$%
+    summary(age1 - age2)
+```
+
+# How many people thought I looked younger in guess 2?
+
+```{r count-of-younger-guesses}
+age_love_2017 %>%
+    count(age1-age2 < 0)
+```
+
+I think this is good news! Maybe ...
+
+# The Much-Dreaded t test
+
+```{r t-test-comparing-guess1-to-guess2}
+age_love_2017 %$%
+    t.test(age1 - age2)
+```
+
