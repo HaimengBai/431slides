@@ -13,7 +13,7 @@ Key materials for Class 3 include
 
 1. On Thursday, our class meets in **Room E401**. This is the only time this semester that we are in a different room.
 2. Remember that the **Teaching Assistants** hold Office Hours (started today) to help you with your R problems. The schedule is posted on the front page of the web site at https://github.com/THOMASELOVE/431
-3. If you are trying to get help from **431-help at case dot edu**, that's great, but if you are trying to get help about an R problem send us (a) **your complete R Markdown file**, and (b) **a screen shot or cut-and-paste listing of the error message you're seeing**, please.
+3. If you are trying to get help from **431-help at case dot edu**, that's great, but if you are trying to get help about an R problem send us (a) **your complete R Markdown file**, and (b) **a screen shot or copy-and-paste listing of the error message you're seeing**, please.
 
 **Announcements at the End of Class**:
 
