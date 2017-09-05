@@ -1,4 +1,4 @@
-Class 3: 2017-09-05
+**Class 3: 2017-09-05**
 
 Today, we will discuss how to describe data numerically and graphically via R, R Studio and R Markdown, in an effort to help you get started with your first assignment. We'll also touch on some data related to kidney cancer. You'll hear more about the Project Portfolio assignment on Thursday.
 
