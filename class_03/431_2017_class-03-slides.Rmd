@@ -21,8 +21,8 @@ library(magrittr); library(tidyverse)
 
 1. Project will be discussed on Thursday 2017-09-07
 2. Describing data numerically and graphically via R Markdown
-    + in the chick weight study 
-    + in the orange tree growth study
+    + Brief description of the Getting Started with R examples 
+    + Live demonstration using the Day 1 survey data
 3. Assignment 1 - what should you expect?
 4. (maybe) Kidney Cancer death rates
 
