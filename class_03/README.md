@@ -12,9 +12,8 @@ Key materials for Class 3 include
 **Announcements at the Start of Class**:
 
 1. On Thursday, our class meets in **Room E401**. This is the only time this semester that we are in a different room.
-2. Remember that the **Teaching Assistants** hold Office Hours (started today) to help you with your R problems. 
-  - The schedule is posted on the front page of the web site at https://github.com/THOMASELOVE/431
-3. If you are trying to get help from 431-help at case dot edu, that's great, but if you are trying to get help about an R problem send us **your complete R Markdown file, and a screen shot of the error message you're seeing**, please.
+2. Remember that the **Teaching Assistants** hold Office Hours (started today) to help you with your R problems. The schedule is posted on the front page of the web site at https://github.com/THOMASELOVE/431
+3. If you are trying to get help from **431-help at case dot edu**, that's great, but if you are trying to get help about an R problem send us (a) **your complete R Markdown file**, and (b) **a screen shot or cut-and-paste listing of the error message you're seeing**, please.
 
 **Announcements at the End of Class**:
 
@@ -23,7 +22,3 @@ Your assignment is to **bring a sheet of paper containing at least one (written 
 2. We will begin discussing the NHANES data example in class on Thursday. It's discussed in Sections 1-6 (well, really 3-6) of the [Course Notes](https://thomaselove.github.io/431notes/) which you might want to review in advance.
 3. Remember that you need to read the Introduction and Chapter 1 (about 50 pages) of Nate Silver's *The Signal and the Noise* by Class 5 (one week from today - 2017-09-12).
 4. Remember that [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) is due 2017-09-15 (next Friday) at noon.
-
-
-
-
