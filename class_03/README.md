@@ -1,4 +1,4 @@
-Class 3 is held on Tuesday 2017-09-05
+Class 3: 2017-09-05
 
 Today, we will discuss how to describe data numerically and graphically via R, R Studio and R Markdown, in an effort to help you get started with your first assignment. We'll also touch on some data related to kidney cancer. You'll hear more about the Project Portfolio assignment on Thursday.
 
@@ -14,6 +14,7 @@ Key materials for Class 3 include
 1. On Thursday, our class meets in **Room E401**. This is the only time this semester that we are in a different room.
 2. Remember that the **Teaching Assistants** hold Office Hours (started today) to help you with your R problems. The schedule is posted on the front page of the web site at https://github.com/THOMASELOVE/431
 3. If you are trying to get help from **431-help at case dot edu**, that's great, but if you are trying to get help about an R problem send us (a) **your complete R Markdown file**, and (b) **a screen shot or copy-and-paste listing of the error message you're seeing**, please.
+4. One student suggested that the free Introduction to R course on Datacamp was helpful to him. So I thought I'd [pass along the link](https://www.datacamp.com/courses/free-introduction-to-r).
 
 **Announcements at the End of Class**:
 
