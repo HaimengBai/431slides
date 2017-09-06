@@ -1,6 +1,6 @@
 **Class 4: 2017-09-07**
 
-Today's Slides are available in both PDF and R Markdown formats.
+Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_04/431_2017_class-04-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_04/431_2017_class-04-slides.Rmd) formats.
 
 ## Announcements before class:
 
