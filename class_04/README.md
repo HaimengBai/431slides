@@ -8,3 +8,16 @@ https://pages.rstudio.net/September13_Registration.html. Otherwise, you can wait
 
 2. **Notes** There is a student in our class who requires a copy of the in-class notes taken by another student in the class. If you believe you take accurate and legible notes, please see Dr. Love at the end of the class, or email him directly for more information. Thank you.
 
+3. **The Project** I'll have more on the Project for you on 2017-09-19. after Assignment 1.
+
+4. Most of our discussion centers on the Visualization material in the [Course Notes](https://thomaselove.github.io/431notes/), Section 3.
+
+5. The Slides for Class 4 are here as a PDF, and are also available in R Markdown format here.
+
+Announcements after class:
+
+1. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6.
+
+2. Read Nate Silver's *The Signal and the Noise* Introduction and Chapter 1 by 2017-09-12
+
+3. [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) remains due at noon on 2017-09-15.
