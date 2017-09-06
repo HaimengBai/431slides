@@ -1,5 +1,9 @@
 **Class 4: 2017-09-07**
 
+## REMEMBER THAT CLASS TODAY WILL BE HELD IN ROBBINS ROOM E401, one flight up from our usual E321-323.
+
+## Today's Slides
+
 Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_04/431_2017_class-04-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_04/431_2017_class-04-slides.Rmd) formats.
 
 ## Announcements before class:
