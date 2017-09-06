@@ -20,6 +20,6 @@ Key materials for Class 3 include
 
 1. Thursday, we’ll be discussing some highlights from Jeff Leek’s The Elements of Data Analytic Style, chapters 5, 9, 10 and 13.
 Your assignment is to **bring a sheet of paper containing at least one (written down) question and/or comment** about something in the text that is meaningful to you. No need to put your name on the paper. You will be sharing this information with a colleague.
-2. We will begin discussing the NHANES data example in class on Thursday. It's discussed in Sections 1-6 (well, really 3-6) of the [Course Notes](https://thomaselove.github.io/431notes/) which you might want to review in advance.
+2. We will begin discussing the NHANES data example in class on Thursday. It's discussed in Sections 1-6 (well, really 3-6) of the [Course Notes](https://thomaselove.github.io/431notes/) which you might want to review in advance. In Class Thursday, we'll discuss **Section 3**.
 3. Remember that you need to read the Introduction and Chapter 1 (about 50 pages) of Nate Silver's *The Signal and the Noise* by Class 5 (one week from today - 2017-09-12).
 4. Remember that [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) is due 2017-09-15 (next Friday) at noon.
