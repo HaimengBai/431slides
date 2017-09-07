@@ -24,6 +24,8 @@ https://pages.rstudio.net/September13_Registration.html. Otherwise, you can wait
 
 7. I also can't recommend [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1531) and [XKCD](https://xkcd.com/1179/) enough.
 
+8. As you roll along, remember that learning R is a process. Heed the [wisdom of Dan Quintana](https://twitter.com/dsquintana/status/904728820904845312), and especially that of [Steve Klabnik as tweeted by Glitch](https://twitter.com/glitch/status/869932324238094336).
+
 ## Announcements after class:
 
 8. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6.
