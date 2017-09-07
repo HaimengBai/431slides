@@ -14,18 +14,20 @@ https://pages.rstudio.net/September13_Registration.html. Otherwise, you can wait
 
 2. **Notes** There is a student in our class who requires a copy of the in-class notes taken by another student in the class. If you believe you take accurate and legible notes, please see Dr. Love at the end of the class, or email him directly for more information. Thank you.
 
-3. **The Project** I'll have more on the Project for you on 2017-09-19. after Assignment 1.
+3. **Audio Recordings** A student in the class (C.W. Gallagher) has been kind enough to send me audio recordings of Classes 2 and 3. If you would find this helpful, I've posted downloadable versions to the [Class 2](https://github.com/THOMASELOVE/431slides/tree/master/class_02) and [Class 3](https://github.com/THOMASELOVE/431slides/tree/master/class_03) slides pages, respectively. We'll keep this up as we can. Thank you, C.W.! 
 
-4. Most of our discussion centers on the Visualization material in the [Course Notes](https://thomaselove.github.io/431notes/), Section 3.
+4. **The Project** I'll have more on the Project for you on 2017-09-19. after Assignment 1.
 
-5. I make reference in today's class to the great work of Jenny Bryan at https://speakerdeck.com/jennybc/how-to-name-files. Take a look!
+5. Most of our discussion centers on the Visualization material in the [Course Notes](https://thomaselove.github.io/431notes/), Section 3.
 
-6. I also can't recommend [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1531) and [XKCD](https://xkcd.com/1179/) enough.
+6. I make reference in today's class to the great work of Jenny Bryan at https://speakerdeck.com/jennybc/how-to-name-files. Take a look!
+
+7. I also can't recommend [PhD Comics](http://phdcomics.com/comics/archive.php?comicid=1531) and [XKCD](https://xkcd.com/1179/) enough.
 
 ## Announcements after class:
 
-7. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6.
+8. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6.
 
-8. Read Nate Silver's *The Signal and the Noise* Introduction and Chapter 1 by 2017-09-12
+9. Read Nate Silver's *The Signal and the Noise* Introduction and Chapter 1 by 2017-09-12
 
-9. [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) remains due at noon on 2017-09-15. Submit your R Markdown file and either the Word or HTML file it generates to https://canvas.case.edu/, please.
+10. [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) remains due at noon on 2017-09-15. Submit your R Markdown file and either the Word or HTML file it generates to https://canvas.case.edu/, please.
