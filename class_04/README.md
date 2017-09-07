@@ -28,7 +28,7 @@ https://pages.rstudio.net/September13_Registration.html. Otherwise, you can wait
 
 ## Announcements after class:
 
-8. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6.
+8. On Tuesday, we'll do more with the NHANES example in the [Course Notes](https://thomaselove.github.io/431notes/), sections 4-6. There's a small error in section 4.2 that I will fix soon - referring to ...[the data] "consists" instead of "consist". I'll fix this before the weekend. If you find things like this, I **really** want you to email me about them. +1 to Jack McDonnell for this one.
 
 9. Read Nate Silver's *The Signal and the Noise* Introduction and Chapter 1 by 2017-09-12
 
