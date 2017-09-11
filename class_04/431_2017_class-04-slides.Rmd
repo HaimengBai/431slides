@@ -181,7 +181,8 @@ ggplot(data = nh_dat2,
 Yep, and let's change the theme of the graph to remove the gray background, too.
 
 ```{r nh_data_heightbyageandgender3-figcode, eval = FALSE}
-ggplot(data = nh_dat2, aes(x = Age, y = Height, color = Gender)) +
+ggplot(data = nh_dat2, aes(x = Age, y = Height, 
+                           color = Gender)) +
     geom_point() + 
     geom_smooth(method = "loess") +
     labs(title = "Height-Age Relationship in NHANES sample", 
