@@ -40,4 +40,6 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 - I would also be working my way through [R For Data Science](http://r4ds.had.co.nz/). All of the **Explore** and **Wrangle** material is likely to be helpful in Part A of the course.
 - You may also want to look at Chapters 1 and 3 (in particular) of [OpenIntro Statistics](https://www.openintro.org/stat/textbook.php) as part of your work in Part A.
 
-10. Remember [the words of Roger Peng as tweeted by Brian Caffo](https://twitter.com/bcaffo/status/859864563218620420) and Hadley Wickham (quoting Piet Hien) on the [Road to Wisdom](https://twitter.com/hadleywickham/status/878267930651140097)
+10. Remember [the words of Roger Peng as tweeted by Brian Caffo](https://twitter.com/bcaffo/status/859864563218620420) and Hadley Wickham (quoting Piet Hien) on the [Road to Wisdom](https://twitter.com/hadleywickham/status/878267930651140097).
+
+11. One last thing - there's a curated pre-print list for a special issue of The American Statistician available at [this link] (https://peerj.com/collections/50-practicaldatascistats/?utm_content=buffere21d2&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer). Some terrific stuff here, under the general heading of Practical Data Science for Statistics.
