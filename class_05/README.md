@@ -1,4 +1,4 @@
-**Class 5: 2017-09-127**
+**Class 5: 2017-09-12**
 
 ## Today's Slides
 
