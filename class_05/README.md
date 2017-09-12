@@ -8,7 +8,7 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 
 1. **Notes** There is a student in our class who requires a copy of the in-class notes taken by another student in the class. If you believe you take accurate and legible notes, please see Dr. Love at the end of the class, or email him directly for more information. **Compensation is available**. Thank you.
 
-2. After today's class, there is a three-question form to complete. See note 7 below.
+2. If you are interested in [joining the American Statistical Association](https://www.amstat.org/ASA/JoinRenew/JoinMemberType.aspx?membertype=IREG&utm_source=informz&utm_medium=email&utm_campaign=asa&_zs=XgXOe1&_zl=hsKA4) as a student member, the cost (through September) is only $18. It's $25 after that. The ASA is a terrific organization, and I strongly encourage you to join. I forwarded an email about this to you last night.
 
 3. Most of our discussion today centers on Material from the [Course Notes](https://thomaselove.github.io/431notes/), Sections 4-5, 7-8. We will also discuss the assigned readings in Jeff Leek's *Elements of Data Analytic Style*, and in Nate Silver's *The Signal and the Noise*.
 
