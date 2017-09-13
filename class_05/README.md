@@ -43,3 +43,5 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 10. Remember [the words of Roger Peng as tweeted by Brian Caffo](https://twitter.com/bcaffo/status/859864563218620420) and Hadley Wickham (quoting Piet Hien) on the [Road to Wisdom](https://twitter.com/hadleywickham/status/878267930651140097).
 
 11. One last thing - there's a curated pre-print list for a special issue of The American Statistician available at [this PeerJ link](https://peerj.com/collections/50-practicaldatascistats/?utm_content=buffere21d2&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer). Some terrific stuff here, under the general heading of Practical Data Science for Statistics. I hope to delve into some of these later this year.
+
+12. The Class 5 audio recording is now available in two parts [first part](https://github.com/THOMASELOVE/431slides/blob/master/class_05/2017-09-12_class-05_audio1.m4a)  [second part](https://github.com/THOMASELOVE/431slides/blob/master/class_05/2017-09-12_class-05_audio2.m4a)
