@@ -8,9 +8,11 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 
 1. Today we focus on Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially Chapter 8.
 
-2. [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) remains due at noon on 2017-09-15. Submit your R Markdown file and either the Word or HTML file it generates to https://canvas.case.edu/, please. Remember that incomplete work is bad, but not submitting the assignment in a timely fashion is a much, much worse thing to do. Get it in. 
+2. [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) remains due at noon on 2017-09-15. Submit your R Markdown file and either the Word or HTML file it generates to https://canvas.case.edu/, please. 
 
-We will post the **answer sketch** for Assignment 1 online over the weekend, as soon as we believe that everyone has turned in the Assignment.
+- Remember that incomplete work is bad, but not submitting the assignment on time is MUCH worse. Get it in by noon. 
+- I'll address some of the most frequently seen questions people have sent about this assignment in class today. 
+- We will post the **answer sketch** for Assignment 1 online over the weekend, as soon as we believe that everyone has turned in the Assignment.
 
 3. [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-2.md) has been reposted to add a few clarifying hints. It is due at noon on 2017-09-22.
 
