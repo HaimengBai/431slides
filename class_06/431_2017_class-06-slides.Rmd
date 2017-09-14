@@ -1,7 +1,7 @@
 ---
-title: "431 Class 05"
+title: "431 Class 06"
 author: "Thomas E. Love"
-date: "2017-09-12"
+date: "2017-09-14"
 output:
   beamer_presentation:
     theme: "Madrid"
@@ -24,7 +24,30 @@ Source: https://www.baseball-reference.com/teams/CLE/2017.shtml
 
 ## Comments on the Chapter 5 Form
 
-To come.
+```{r form_0-fig, echo = FALSE, out.width = '90%', fig.align = "center"}
+knitr::include_graphics("images/form_q0.PNG")
+```
+
+## Chapter 5 Form, Question 1
+
+```{r form_1-fig, echo = FALSE, out.width = '90%', fig.align = "center"}
+knitr::include_graphics("images/form_q1.PNG")
+```
+
+## Chapter 5 Form, Question 2
+
+```{r form_2-fig, echo = FALSE, out.width = '90%', fig.align = "center"}
+knitr::include_graphics("images/form_q2.PNG")
+```
+
+## Question 3
+
+See the Google Doc at 
+
+https://goo.gl/MbqRy2
+
+for details.
+
 
 ## Kidney Cancer Death Rates
 
@@ -49,6 +72,26 @@ Your map shows U.S. counties.
 ## Another Map
 
 ![](images/kidney-lowest.png)
+
+## Assignment 1 Common Issues
+
+1. In lines 2 and 3, you haven't edited the generic names to replace YOURNAME with, you know, your actual name.
+2. You have chunk labels that repeat. They cannot. Every chunk must have a unique name.
+3. Don't be afraid to hit the enter key. 
+
+```
+# Question 4 My answer is produces yelling.
+```
+
+vs.
+
+```
+# Question 4
+
+My answer is ...
+```
+
+4. The variables are described in the help file for each data set. To see those files, type ?faithful and ?MASS::geyser in the R Console. Check the descriptions there carefully.
 
 ## Preliminaries for Today
 
