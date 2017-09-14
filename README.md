@@ -10,3 +10,4 @@ Class | Date | Slides | Comments
 3 | 2017-09-05 | [README Class 3](https://github.com/THOMASELOVE/431slides/blob/master/class_03/README.md) | Analyzing the Day 1 Survey
 4 | 2017-09-07 | [README Class 4](https://github.com/THOMASELOVE/431slides/blob/master/class_04/README.md) | Leek: Chapters 5, 9-10, 13. NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Section 3
 5 | 2017-09-12 | [README Class 5](https://github.com/THOMASELOVE/431slides/blob/master/class_05/README.md) | NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Sections 4-5, 7-8. Silver Intro and Chapter 1
+6 | 2017-09-14 | [README Class 6](https://github.com/THOMASELOVE/431slides/blob/master/class_06/README.md) | NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Sections 7-8, mostly. 
