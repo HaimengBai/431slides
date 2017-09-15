@@ -12,7 +12,7 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 
 - Remember that incomplete work is bad, but not submitting the assignment on time is MUCH worse. Get it in by noon. 
 - I'll address some of the most frequently seen questions people have sent about this assignment in class today. 
-- We will post the **answer sketch** for Assignment 1 online over the weekend, as soon as we believe that everyone has turned in the Assignment.
+- A password-protected [PDF of the answer sketch for Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-sketch1-pw-2017.pdf) is now available. If you visit the link, download the PDF file (the file isn't actually invalid as Github suggests - it's merely password protected) to your computer. Then open it using the password mentioned in class. The R Markdown file used to generate the answer sketch will appear as soon as we confirm that all students have completed the Assignment.
 
 3. [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-2.md) has been reposted to add a few clarifying hints. It is due at noon on 2017-09-22.
 
