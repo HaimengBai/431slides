@@ -124,7 +124,7 @@ nh_adults <- sample_n(nh_temp, size = 500)
 ## So far ,,,
 
 1. In exploring data, good visualizations beat good numerical summaries, essentially every time.
-2. The false sense of security one gets by placing a number on a description of a data set, rather than a picture, is in fact usually false. Exploratory data analysis is not about appealing to a higher authority for the "correct" answer,
+2. The false sense of security one gets by placing a number on a description of a data set, rather than a picture, is in fact usually false. Exploratory data analysis is not about appealing to a higher authority for the "correct" answer.
 3. Thinking about the distribution of a quantitative variable requires effort to understand the center, spread, and shape. Shape includes assessments of symmetry, outliers and number of modes, at the least.
 
 ## Measuring/Assessing the Shape of a Distribution
@@ -262,7 +262,13 @@ qqline(nh_adults$SBP, col = "red")
 
 ## Interpreting the Normal Q-Q plot (Notes section 8.6)
 
-The purpose of a Normal Q-Q plot is to help point out distinctions from a Normal distribution. A Normal distribution is symmetric and has certain expectations regarding its tails. The Normal Q-Q plot can help us identify data as - well approximated by a Normal distribution, or not because of - skew (including distinguishing between right skew and left skew) - behavior in the tails (which could be heavy-tailed [more outliers than expected] or light-tailed.) Normal Q-Q plots work well with unimodal data, not so well with multiple modes.
+The purpose of a Normal Q-Q plot is to help point out distinctions from a Normal distribution. A Normal distribution is symmetric and has certain expectations regarding its tails. The Normal Q-Q plot can help us identify data as 
+
+- well approximated by a Normal distribution, or not because of 
+    - skew (including distinguishing between right skew and left skew) 
+    - behavior in the tails (which could be heavy-tailed [more outliers than expected] or light-tailed.) 
+    
+Normal Q-Q plots work well with unimodal data, not so well with multiple modes.
 
 ## What to look for in a Normal Q-Q plot
 
