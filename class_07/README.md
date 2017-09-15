@@ -8,7 +8,7 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 
 1. Today's Agenda includes... 
     + Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially in Chapters 8-11.
-    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its answer sketch.
+    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/431-sketch1-pw-2017.pdf).
     + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html).
     + An introduction to the Course Project.
 
