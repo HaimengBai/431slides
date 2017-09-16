@@ -1,0 +1,552 @@
+---
+title: "431 Class 07"
+author: "Thomas E. Love"
+date: "2017-09-19"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## This Week
+
+1. Project Instructions
+2. Assignment 1 debrief (Assignment 2 due 2017-09-22)
+3. Course Notes 
+    + Identifying and quantifying outliers (Ch 7)
+    + Using transformations to "normalize" data (Ch 9)
+    + Summaries withing subgroups (Ch 10)
+    + Associations, Using Linear Models (Ch 11)
+
+## Project Instructions
+
+Materials to come.
+
+## Comments on Assignments 1 and 2
+
+1. Answer Sketch (pdf) for Assignment 1 posted on Friday afternoon at https://github.com/thomaselove/431homework. Password protected, rather than "invalid" as Github suggests when you try to display it.
+2. R Markdown for Answer Sketch also available. 
+3. Grading rubric for Assignment 1 is also coming.
+4. No, I did not expect you to write a 15 page response.
+5. No, I am not giving you a new template for HW 2.
+6. We hope to have grades out on Thursday. Look for my email containing your homework code.
+
+## Preliminaries for Today
+
+```{r load_packages_and_data, message=FALSE}
+library(NHANES); library(magrittr); library(viridis)
+library(gridExtra); library(tidyverse)
+
+source("Love-boost.R")
+
+nh_temp <- NHANES %>%
+    filter(SurveyYr == "2011_12") %>%
+    filter(Age >= 21 & Age < 65) %>%
+    mutate(Sex = Gender, Race = Race3, 
+           SBP = BPSysAve, DBP = BPDiaAve) %>%
+    select(ID, Sex, Age, Race, Education, 
+           BMI, SBP, DBP, Pulse, PhysActive, 
+           Smoke100, SleepTrouble, HealthGen)
+```
+
+## Random Sample of 500 to get `nh_adults`
+
+```{r take_random_sample}
+set.seed(431002) 
+# use set.seed to ensure that 
+# we all get the same random sample 
+
+nh_adults <- sample_n(nh_temp, size = 500)
+```
+
+## What Summaries to Report (from Section 7.17)
+
+It is usually helpful to focus on the shape, center and spread of a distribution. Bock, Velleman and DeVeaux provide some useful advice:
+
+- If the data are skewed, report the median and IQR (or the three middle quantiles). You may want to include the mean and standard deviation, but you should point out why the mean and median differ. The fact that the mean and median do not agree is a sign that the distribution may be skewed. A histogram will help you make that point.
+- If the data are symmetric, report the mean and standard deviation, and possibly the median and IQR as well.
+- If there are clear outliers and you are reporting the mean and standard deviation, report them with the outliers present and with the outliers removed. The differences may be revealing. The median and IQR are not likely to be seriously affected by outliers.
+
+## Do the Pulse data appear skewed? Outlier-prone?
+
+```{r, out.width = '70%', fig.align = "center", echo = FALSE}
+ggplot(filter(nh_adults, !is.na(Pulse)), 
+       aes(x = Pulse)) +
+    geom_histogram(bins = 12, 
+                   fill = "cornflowerblue", 
+                   col = "blue4")
+```
+
+For Pulse, $skew1$ = `r filter(nh_adults, !is.na(Pulse)) %$% round(skew1(Pulse),2)`, and kurtosis = `r round(psych::kurtosi(nh_adults$Pulse),1)`
+
+## Pulse Rates + Normal Model 
+
+```{r pulse_hist_with_Normal_curve, echo=FALSE}
+nh_adults %>% filter(!is.na(Pulse)) %>%
+ggplot(., aes(x = Pulse)) +
+    geom_histogram(aes(y = ..density..), bins=15, 
+                   fill = "cornflowerblue", 
+                   color = "blue4") +
+    stat_function(fun = dnorm, 
+         args = list(
+            mean = mean(nh_adults$Pulse, na.rm=TRUE), 
+            sd = sd(nh_adults$Pulse, na.rm=TRUE)), 
+         lwd = 1.5, col = "firebrick") +
+    labs(title = "nh_adults Pulse Rates & Normal Curve",
+         x = "Pulse Rate", 
+         y = "Probability Density Function")
+```
+
+## Pulse Rates + Normal Model (Code)
+
+```{r pulse_hist_with_Normal_curve_code, eval=FALSE}
+nh_adults %>% filter(!is.na(Pulse)) %>%
+ggplot(., aes(x = Pulse)) +
+    geom_histogram(aes(y = ..density..), bins=15, 
+                   fill = "cornflowerblue", 
+                   color = "blue4") +
+    stat_function(fun = dnorm, 
+         args = list(
+            mean = mean(nh_adults$Pulse, na.rm=TRUE), 
+            sd = sd(nh_adults$Pulse, na.rm=TRUE)), 
+         lwd = 1.5, col = "firebrick") +
+    labs(title = "nh_adults Pulse Rates & Normal Curve",
+         x = "Pulse Rate", 
+         y = "Probability Density Function")
+```
+
+## Normal Q-Q plot for Pulse 
+
+```{r, out.width = '70%', fig.align = "center"}
+qqnorm(nh_adults$Pulse, main = "Normal Q-Q for Pulse")
+qqline(nh_adults$Pulse, col = "red")
+```
+
+
+## Identifying outliers (with a boxplot)
+
+```{r}
+boxplot(nh_adults$Pulse, horizontal = TRUE)
+```
+
+## How the Boxplot identifies Outlier Candidates
+
+Calculate the upper and lower (inner) fences. Points outside that range are candidate outliers. If `IQR` = 75^th^ percentile - 25^th^ percentile, then
+
+- Upper fence = 75^th^ percentile + 1.5 `IQR`
+- Lower fence = 25^th^ percentile - 1.5 `IQR`
+
+Let us consider the SBP data again. There, we have 
+
+```{r, echo=FALSE}
+summary(nh_adults$SBP)
+```
+
+## Identifying outliers (with ggplot and a boxplot)
+
+Here is the code (adapted from Course Notes 7.10.1)
+
+```{r, eval = FALSE}
+nh_adults %>%
+  filter(!is.na(SBP)) %>%
+  ggplot(., aes(x = 1, y = SBP)) + 
+  geom_boxplot(fill = "yellow") +
+  geom_point(col = "blue", size = 0.4) +
+  coord_flip() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "Boxplot of SBP for nh_adults",
+       subtitle = "with raw data shown in blue",
+       x = "", y = "Systolic BP (mm Hg)")
+```
+
+## The Resulting Boxplot
+
+```{r, echo = FALSE}
+nh_adults %>%
+  filter(!is.na(SBP)) %>%
+  ggplot(., aes(x = 1, y = SBP)) + 
+  geom_boxplot(fill = "yellow") +
+  geom_jitter(col = "blue", width = 0.2, size = 1) +
+  coord_flip() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "Boxplot of SBP for nh_adults",
+       subtitle = "with raw data shown in blue",
+       x = "", y = "Systolic BP (mm Hg)")
+```
+
+## Identifying outliers (with Z scores) (Section 8.2)
+
+The maximum systolic blood pressure in the data is `r max(nh_adults$SBP)`.
+
+```{r}
+nh_adults %>%
+  filter(!is.na(SBP)) %$%
+  mosaic::favstats(SBP)
+```
+
+But how unusual is that value? One way to gauge how extreme this is (or how much of an outlier it is) uses that observation's **Z score**, the number of standard deviations away from the mean that the observation falls.
+
+## Z score for SBP = 202
+
+Z score = $$\frac{value - mean}{sd}$$.
+
+For the SBP data, the mean = 118.6 and the standard deviation is 15.3, so we have Z score for 202 = $$\frac{202 - 118.6}{15.3} = {83.4}{15.3} = 5.45$$.
+
+- A negative Z score indicates a point below the mean
+- A positive Z score indicates a point above the mean
+- The Empirical Rule suggests that for a variable that followed a Normal distribution, about 95% of observations would have a Z score in (-2, 2) and about 99.7% would have a Z score in (-3, 3).
+
+## How unusual is a value as extreme as Z = 5.45?
+
+If the data really followed a Normal distribution, we could calculate the probability of obtaining as extreme a Z score as 5.45.
+
+A Standard Normal distribution, with mean 0 and standard deviation 1, is what we want, and we want to find the probability that a random draw from such a distribution would be 5.45 or higher, *in absolute value*. So we calculate the probability of 5.45 or more, and add it to the probability of -5.45 or less, to get an answer to the question of how likely is it to see an outlier this far away from the mean.
+
+```{r}
+pnorm(q = 5.45, mean = 0, sd = 1, lower.tail = FALSE)
+pnorm(q = -5.45, mean = 0, sd = 1, lower.tail = TRUE)
+```
+
+## But the Normal distribution is symmetric
+
+```{r}
+2*pnorm(q = 5.45, mean = 0, sd = 1, lower.tail = FALSE)
+```
+
+The probability that a single draw from a Normal distribution with mean 0 and standard deviation 1 will produce a value as extreme as 5.45 is  0.00000005
+
+The probability that a single draw from a Normal distribution with mean 118.6 and standard deviation 15.3 will produce a value as extreme as 202 is also 0.00000005, since the Normal distribution is completely characterized by its mean and standard deviation.
+
+So, is 202 an outlier here? Do the SBP data look like they come from a Normal distribution?
+
+## Fences and Z Scores
+
+Note the relationship between the fences (Tukey's approach to identifying points which fall within the whiskers of a boxplot, as compared to candidate outliers) and the Z scores.
+
+```{r, echo = FALSE}
+nh_adults %>%
+  filter(!is.na(SBP)) %$%
+  mosaic::favstats(SBP)
+```
+
+For the SBP data, the IQR is `r quantile(nh_adults$SBP, 0.75, na.rm=TRUE)` - `r quantile(nh_adults$SBP, 0.25, na.rm=TRUE)` = `r quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE)`, so 
+
+- the upper inner fence is at `r quantile(nh_adults$SBP, 0.75, na.rm=TRUE)` + 1.5*(`r quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE)`), or `r quantile(nh_adults$SBP, 0.75, na.rm=TRUE) + 1.5*(quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE))`, and
+- the lower inner fence is at `r quantile(nh_adults$SBP, 0.25, na.rm=TRUE)` - 1.5*(`r quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE)`), or `r quantile(nh_adults$SBP, 0.25, na.rm=TRUE) - 1.5*(quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE))`.
+- Since the mean is `r round(mean(nh_adults$SBP, na.rm=TRUE),1)` and the standard deviation is `r round(sd(nh_adults$SBP, na.rm=TRUE),1)`, 
+    + the Z score for the upper inner fence is `r round(((quantile(nh_adults$SBP, 0.75, na.rm=TRUE) + 1.5*(quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE))) - round(mean(nh_adults$SBP, na.rm=TRUE),1))/round(sd(nh_adults$SBP, na.rm=TRUE),1),2)`, and 
+    + the Z score for the lower inner fence is `r round(((quantile(nh_adults$SBP, 0.25, na.rm=TRUE) - 1.5*(quantile(nh_adults$SBP, 0.75, na.rm=TRUE) - quantile(nh_adults$SBP, 0.25, na.rm=TRUE))) - round(mean(nh_adults$SBP, na.rm=TRUE),1))/round(sd(nh_adults$SBP, na.rm=TRUE),1),2)`
+- It is neither unusual nor inevitable for the inner fences to fall at Z scores near -2.0 and +2.0.
+
+## Summing Up: Does a Normal Model fit well?
+
+If a Normal model fits our data well, then we should see the following graphical indications:
+
+1. A histogram that is symmetric and bell-shaped.
+2. A boxplot where the box is symmetric around the median, as are the whiskers, without a serious outlier problem.
+3. A normal Q-Q plot that essentially falls on a straight line.
+
+As for numerical summaries, we'd like to see
+
+4. The mean and median within 0.2 standard deviation of each other.
+5. No real evidence of too many outlier candidates (more than 5% starts to get us concerned about a Normal model)
+6. No real evidence of individual outliers outside the reasonable range for the size of our data (we might expect about 3 observations in 1000 to fall more than 3 standard deviations away from the mean.)
+
+Should our data not be well-modeled by the Normal, what can we do?
+
+## The Ladder of Power Transformations (Section 9)
+
+The key notion in re-expression of a single variable to obtain a more normal distribution or re-expression of an outcome in a simple regression model is that of a **ladder of power transformations**, which can apply to any unimodal data. 
+
+Power | Transformation
+:-----: | :----------:
+3 | x^3^
+2 | x^2^
+1 | x (unchanged)
+0.5 | x^0.5^ = $\sqrt{x}$
+0 | ln x
+-0.5 | x^-0.5^ = 1/$\sqrt{x}$
+-1 | x^-1^ = 1/x
+-2 | x^-2^ = 1/x^2^
+
+## Using the Ladder
+
+- The ladder is most useful for strictly positive, ratio variables.
+- Sometimes, if 0 is a value in the data set, we will add 1 to each value before applying a transformation like the logarithm.
+- Interpretability is often an important criterion, although back-transformation at the end of an analysis is usually a sensible strategy.
+
+Power | -2 | -1 | -0.5 | 0 | 0.5 | 1 | 2 | 3
+----- | --: | --: | --: | --: | --: | --: | --: | --:
+Transformation | 1/x^2^ | 1/x | 1/$\sqrt{x}$ | ln x | $\sqrt{x}$ | x | x^2^ | x^3^
+
+## The `nyfs1` data (see Chapter 7 of our Notes)
+
+The `nyfs1.csv` data come from the 2012 National Youth Fitness Survey.
+
+```{r first_nyfs1_steps}
+## first, we'll import the data into the nyfs1 data frame
+nyfs1 <- read.csv("nyfs1.csv") %>% tbl_df()
+
+dim(nyfs1)
+```
+
+## Structure of our Tibble
+
+```{r structure_nyfs1}
+str(nyfs1)
+```
+
+## Normal Q-Q Plot of Waist Circumferences
+
+```{r build qq plot for waist.circ, echo=FALSE}
+ggplot(nyfs1, aes(sample = waist.circ)) +
+  geom_qq(size = 3, shape = 1) + 
+  theme(text = element_text(size = 14)) +
+  labs(title = "Normal Q-Q for Waist Circumference")
+```
+
+## The Waist Circumference Data
+
+```{r waist circumference histogram frequency polygon boxplot and Normal QQ, echo=FALSE}
+p1 <- ggplot(nyfs1, aes(x = waist.circ)) + geom_histogram(bins=40, fill = "red", col="white") + labs(title = "Histogram")
+p2 <- ggplot(nyfs1, aes(x = waist.circ)) + geom_freqpoly(bins=20, col = "red", size = 1.25) + labs(title = "Frequency Polygon")
+p3 <- ggplot(nyfs1, aes(x = 1, y = waist.circ)) + geom_boxplot(fill = "red") + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) + labs(title = "Boxplot")
+p4 <- ggplot(nyfs1, aes(sample = waist.circ)) + geom_qq(size = 2, col = "red") + labs(title = "Normal Q-Q plot")
+grid.arrange(p1, p2, p3, p4, nrow=2, 
+            top="NYFS1 Waist Circumference Distribution")
+```
+
+## Waist Circumference Histograms: Ladder
+
+```{r waist circumference entire ladder of histograms, message=FALSE, echo=FALSE}
+palette(viridis(10))
+
+p1 <- ggplot(nyfs1, aes(x = waist.circ^3)) + geom_histogram(bins=40, fill = 1)
+p2 <- ggplot(nyfs1, aes(x = waist.circ^2)) + geom_histogram(bins=40, fill = 2)
+p3 <- ggplot(nyfs1, aes(x = waist.circ)) + geom_histogram(bins=40, fill = "red", col="white")
+p4 <- ggplot(nyfs1, aes(x = sqrt(waist.circ))) + geom_histogram(bins=40, fill = 3)
+p5 <- ggplot(nyfs1, aes(x = log(waist.circ))) + geom_histogram(bins=40, fill = 4)
+p6 <- ggplot(nyfs1, aes(x = 1/sqrt(waist.circ))) + geom_histogram(bins=40, fill = 5)
+p7 <- ggplot(nyfs1, aes(x = 1/waist.circ)) + geom_histogram(bins=40, fill = 6)
+p8 <- ggplot(nyfs1, aes(x = 1/(waist.circ^2))) + geom_histogram(bins=40, fill = 7)
+p9 <- ggplot(nyfs1, aes(x = 1/(waist.circ^3))) + geom_histogram(bins=40, fill = 8)
+
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, nrow=3, 
+            top="Ladder of Power Transformations")
+```
+
+## skew~1~ and Power Transformations
+
+Let's add in the skew~1~ values we observe for each of the available transformations of the waist circumference data.
+
+For waist circumference,
+
+Power | Transformation | skew~1~  
+:-----: | :----------: | -------: 
+3 | x^3^ | `r round(skew1(nyfs1$waist.circ^3),2)` 
+2 | x^2^ | `r round(skew1(nyfs1$waist.circ^2),2)`
+1 | x |  `r round(skew1(nyfs1$waist.circ),2)` 
+0.5 | $\sqrt{x}$ | `r round(skew1(sqrt(nyfs1$waist.circ)),2)` 
+0 | ln x | `r round(skew1(log(nyfs1$waist.circ)),2)` 
+-0.5 | 1/$\sqrt{x}$ | `r round(skew1(1/(sqrt(nyfs1$waist.circ))),2)` 
+-1 | 1/x | `r round(skew1(1/(nyfs1$waist.circ)),2)` 
+-2 | 1/x^2^ | `r round(skew1(1/(nyfs1$waist.circ^2)),2)` 
+-3 | 1/x^3^ | `r round(skew1(1/(nyfs1$waist.circ^3)),2)` 
+
+## But we should be looking at Frequency Polygons...
+
+```{r waist circumference entire ladder of frequency polygons, message=FALSE, echo=FALSE}
+palette(viridis(10))
+
+p1 <- ggplot(nyfs1, aes(x = waist.circ^3)) + geom_freqpoly(bins=20, col = 1)
+p2 <- ggplot(nyfs1, aes(x = waist.circ^2)) + geom_freqpoly(bins=20, col = 2)
+p3 <- ggplot(nyfs1, aes(x = waist.circ)) + geom_freqpoly(bins=20, col = "red", size = 2)
+p4 <- ggplot(nyfs1, aes(x = sqrt(waist.circ))) + geom_freqpoly(bins=20, col = 3)
+p5 <- ggplot(nyfs1, aes(x = log(waist.circ))) + geom_freqpoly(bins=20, col = 4)
+p6 <- ggplot(nyfs1, aes(x = 1/sqrt(waist.circ))) + geom_freqpoly(bins=20, col = 5)
+p7 <- ggplot(nyfs1, aes(x = 1/waist.circ)) + geom_freqpoly(bins=20, col = 6)
+p8 <- ggplot(nyfs1, aes(x = 1/(waist.circ^2))) + geom_freqpoly(bins=20, col = 7)
+p9 <- ggplot(nyfs1, aes(x = 1/(waist.circ^3))) + geom_freqpoly(bins=20, col = 8)
+
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, nrow=3, 
+            top="Ladder of Power Transformations")
+```
+
+## Waist Circumference Boxplots: Ladder
+
+```{r waist circumference entire ladder of boxplots, message=FALSE, echo=FALSE}
+palette(viridis(10))
+
+p1 <- ggplot(nyfs1, aes(x = 1, y = waist.circ^3)) + geom_boxplot(fill = 1) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p2 <- ggplot(nyfs1, aes(x = 1, y = waist.circ^2)) + geom_boxplot(fill = 2) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p3 <- ggplot(nyfs1, aes(x = 1, y = waist.circ)) + geom_boxplot(fill = "red") + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p4 <- ggplot(nyfs1, aes(x = 1, y = sqrt(waist.circ))) + geom_boxplot(fill = 3) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p5 <- ggplot(nyfs1, aes(x = 1, y = log(waist.circ))) + geom_boxplot(fill = 4) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p6 <- ggplot(nyfs1, aes(x = 1, y = 1/sqrt(waist.circ))) + geom_boxplot(fill = 5) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p7 <- ggplot(nyfs1, aes(x = 1, y = 1/waist.circ)) + geom_boxplot(fill = 6) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p8 <- ggplot(nyfs1, aes(x = 1, y = 1/(waist.circ^2))) + geom_boxplot(fill = 7) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+p9 <- ggplot(nyfs1, aes(x = 1, y = 1/(waist.circ^3))) + geom_boxplot(fill = 8) + coord_flip() + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), axis.title.y = element_blank()) 
+
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, nrow=3, 
+            top="Ladder of Power Transformations")
+```
+
+## Waist Circumference Normal Q-Q: Ladder
+
+```{r waist circumference entire ladder of normal qq, message=FALSE, echo=FALSE}
+palette(viridis(10))
+
+p1 <- ggplot(nyfs1, aes(sample = waist.circ^3)) + geom_qq(size = 2, col = 1) + labs(x = "waist.circ^3")
+p2 <- ggplot(nyfs1, aes(sample = waist.circ^2)) + geom_qq(size = 2, col = 2) + labs(x = "waist.circ^2")
+p3 <- ggplot(nyfs1, aes(sample = waist.circ)) + geom_qq(size = 2, col = "red") + labs(x = "waist.circ1")
+p4 <- ggplot(nyfs1, aes(sample = sqrt(waist.circ))) + geom_qq(size = 2, col = 3) + labs(x = "sqrt(waist.circ)")
+p5 <- ggplot(nyfs1, aes(sample = log(waist.circ))) + geom_qq(size = 2, col = 4) + labs(x = "log(waist.circ)") 
+p6 <- ggplot(nyfs1, aes(sample = 1/sqrt(waist.circ))) + geom_qq(size = 2, col = 5) + labs(x = "1/sqrt(waist.circ)") 
+p7 <- ggplot(nyfs1, aes(sample = 1/waist.circ)) + geom_qq(size = 2, col = 6) + labs(x = "1/waist.circ") 
+p8 <- ggplot(nyfs1, aes(sample = 1/(waist.circ^2))) + geom_qq(size = 2, col = 7) + labs(x = "1/(waist.circ^2)") 
+p9 <- ggplot(nyfs1, aes(sample = 1/(waist.circ^3))) + geom_qq(size = 2, col = 8) + labs(x = "1/(waist.circ^3)") 
+
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, nrow=3, 
+            top="Ladder of Power Transformations")
+```
+
+## Can we test to see if our data follow a Normal model?
+
+Yes, but don't. Graphical approaches are far better.
+
+### What would such a test look like?
+
+```{r shapiro wilk test for waist circ}
+shapiro.test(nyfs1$waist.circ)
+```
+The very small $p$ value indicates that the test finds strong indications **against** adopting a Normal model.
+
+## Why not test?
+
+Because the sample size is so large, and the test is so poor at detecting non-normality compared to our eyes, that it finds problems we don't care about, and ignores problems we do care about. For waist circumference...
+
+Power | Transformation | Shapiro-Wilk *p* value
+:-----: | :----------: | -------------------:
+3 | x^3^ | `< 2.2 e-16`
+2 | x^2^ | `< 2.2 e-16`
+1 | x | `< 2.2 e-16`
+0.5 | $\sqrt{x}$ | `< 2.2 e-16`
+0 | ln x | `1.5 e-14`
+-0.5 | 1/$\sqrt{x}$ | `< 2.2 e-16`
+-1 | 1/x | `1.8 e-09`
+-2 | 1/x^2^ | `1.4 e-12`
+-3 | 1/x^3^ | `< 2.2 e-16`
+
+**DON'T DO THIS** - instead, graph everything!
+
+## From XKCD
+
+![](http://imgs.xkcd.com/comics/decline.png)
+
+## Some Additional Numerical Summaries
+
+```{r describe psych of waist circumference}
+psych::describe(nyfs1$waist.circ)
+```
+
+## The Trimmed Mean
+
+The **trimmed mean** is specified by indicating the proportion of observations to be trimmed from each end of the outcome distribution before the mean is calculated. So here's how we get the mean of the middle 80% of the data.
+
+```{r numerical summary 4a}
+mean(nyfs1$waist.circ, trim=.1) 
+```
+
+## The Standard Error of the Sample Mean
+
+The **standard error** of the sample mean is the standard deviation divided by the square root of the sample size.
+
+```{r numerical summary 4b}
+sd(nyfs1$waist.circ)/sqrt(length(nyfs1$waist.circ))
+```
+
+## The Median Absolute Deviation
+
+An alternative to the IQR that is fancier, and a bit more robust, is the **median absolute deviation**, which, in large sample sizes, for data that follow a Normal distribution, will be (in expectation) equal to the standard deviation.
+
+```{r numerical summary 4c}
+mad(nyfs1$waist.circ)
+sd(nyfs1$waist.circ)
+```
+
+## Summarizing within Groups using `by` (section 10)
+
+```{r waistxbmicat3}
+by(nyfs1$waist.circ, nyfs1$bmi.cat, summary)
+```
+
+## Summarizing within Groups using `group_by`
+
+```{r using dplyr to summarize data within groups}
+tempdat <- nyfs1 %>%
+  group_by(bmi.cat) %>%
+  summarize(mean = round(mean(waist.circ),2), 
+            Q50 = median(waist.circ), 
+            sd = round(sd(waist.circ),2),  
+            skew1 = round(skew1(waist.circ),2))
+knitr::kable(tempdat)
+```
+
+
+## Comparing Histograms with Facetted Plots
+
+```{r gg-histgroups-a, echo=FALSE}
+ggplot(nyfs1, aes(x=waist.circ, fill = sex)) +
+  geom_histogram(binwidth = 2, color = "black") + 
+  facet_wrap(~ sex) +
+  guides(fill = FALSE) +
+  theme_bw() +
+  labs(title = "Waist Circumference by Sex")
+```
+
+## Density Plots, Overlapping
+
+```{r gg-density-b, echo=FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=waist.circ, fill=sex)) +
+  geom_density(alpha=0.5) + 
+  theme_bw() +
+  labs(title = "Waist Circumference by Sex")
+```
+
+## Density Plots, Facetted
+
+```{r gg-density-a, echo=FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=waist.circ, fill = bmi.cat)) +
+  geom_density() + 
+  facet_wrap(~ bmi.cat) + 
+  scale_fill_viridis(discrete=TRUE, option="plasma") + 
+  guides(fill = FALSE) +
+  theme_bw() +
+  labs(title = "Waist Circumference by BMI Category")
+```
+
+## Comparison Boxplots with Notches
+
+```{r gg-boxplot-1, echo = FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=bmi.cat, y=waist.circ, fill = bmi.cat)) + 
+  geom_boxplot(notch=TRUE) +
+  scale_fill_viridis(discrete=TRUE, option="plasma") +
+  theme(text = element_text(size = 18)) +
+  theme_bw() +
+  guides(fill = FALSE) +
+  labs(title = "Waist Circumference by BMI category", 
+         x = "BMI Percentile category", y = "Waist Circumference (cm)")
+```
+
+## Link to today's Google Form
+
+To come.
