@@ -28,7 +28,11 @@ options(width = 55)
 
 ## Project Instructions
 
-Materials to come.
+All materials and information related to the project will be maintained at 
+
+https://github.com/THOMASELOVE/431project 
+
+Regular updates will appear there throughout the semester.
 
 ## Comments on Assignments 1 and 2
 
