@@ -12,7 +12,7 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
     + Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially in Chapters 8-11.
     + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md).
     + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
-    + An introduction to the Course Project. All materials and information related to the project will be maintained at https://github.com/THOMASELOVE/431project and regular updates will appear there throughout the semester.
+    + **Course Project**: A Brief Introduction. All materials and information related to the project will be maintained at https://github.com/THOMASELOVE/431project. Regular updates will appear there throughout the semester.
     + Some discussion of the data from the Midwest Survey, described above.
 
 3. There is a different [Class 7 Google Form to complete](https://goo.gl/forms/UWWSx5vzJQf2X35D3) after class and **before 11 AM** on Thursday 2017-09-21. This is part of your class participation grade. The little Midwest Survey is a separate issue.
