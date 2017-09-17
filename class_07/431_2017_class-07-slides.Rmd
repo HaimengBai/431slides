@@ -24,6 +24,7 @@ options(width = 55)
     + Using transformations to "normalize" data (Ch 9)
     + Summaries withing subgroups (Ch 10)
     + Associations, Using Linear Models (Ch 11)
+4. Which states are in the midwest? (fill out survey)
 
 ## Project Instructions
 
@@ -31,12 +32,12 @@ Materials to come.
 
 ## Comments on Assignments 1 and 2
 
-1. Answer Sketch (pdf) for Assignment 1 posted on Friday afternoon at https://github.com/thomaselove/431homework. Password protected, rather than "invalid" as Github suggests when you try to display it.
-2. R Markdown for Answer Sketch also available. 
-3. Grading rubric for Assignment 1 is also coming.
-4. No, I did not expect you to write a 15 page response.
-5. No, I am not giving you a new template for HW 2.
-6. We hope to have grades out on Thursday. Look for my email containing your homework code.
+Answer Sketch for Assignment 1 posted on Friday afternoon. [Visit this link for details](https://github.com/THOMASELOVE/431homework/tree/master/HW1). The PDF is password protected, rather than "invalid" as Github suggests when you try to display it.
+
+1. R Markdown for Answer Sketch is also available. 
+2. Grading rubric for Assignment 1 is coming Thursday.
+3. No, I did not expect you to write a 15 page response.
+4. No, I do not plan to provide a new template for Assignment 2, but I strongly suggest you look over Claudia's slide deck, as linked in the Class 7 README.
 
 ## Preliminaries for Today
 
@@ -452,6 +453,25 @@ Power | Transformation | Shapiro-Wilk *p* value
 
 ![](http://imgs.xkcd.com/comics/decline.png)
 
+## Which states are in the Midwest?
+
+```{r midwest-fig1, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/midwest_1.PNG")
+```
+
+## Which states are in the Midwest?
+
+```{r midwest-fig2, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/midwest_2.PNG")
+```
+
+## Which states are in the Midwest?
+
+```{r midwest-fig3, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/midwest_3.PNG")
+```
+
+
 ## Some Additional Numerical Summaries
 
 ```{r describe psych of waist circumference}
@@ -549,4 +569,9 @@ ggplot(nyfs1, aes(x=bmi.cat, y=waist.circ, fill = bmi.cat)) +
 
 ## Link to today's Google Form
 
-To come.
+You'll find the link at today's README (Class 7).
+
+Please submit the form by 11 AM Thursday.
+
+
+
