@@ -4,17 +4,14 @@
 
 Today's Slides will be available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.Rmd) formats.
 
-We'll also look at [a live webcam of Old Faithful](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
-
-I mentioned last time that FiveThirtyEight did a nice article on "[Which States Are in the Midwest](https://fivethirtyeight.com/datalab/what-states-are-in-the-midwest/)?" More on this today.
-
 ## Announcements before class:
 
 1. Today's Agenda includes... 
     + Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially in Chapters 8-11.
     + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/431-sketch1-pw-2017.pdf).
-    + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html).
+    + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
     + An introduction to the Course Project.
+    + I mentioned last time that FiveThirtyEight did a nice article on "[Which States Are in the Midwest](https://fivethirtyeight.com/datalab/what-states-are-in-the-midwest/)?" More on this to come.
 
 2. There will be a Google Form to fill out after today's class. Please complete this by Noon on Thursday 2017-09-21.
 
@@ -34,7 +31,7 @@ I mentioned last time that FiveThirtyEight did a nice article on "[Which States 
 - By the end of the month, work your way through Part A of the [Course Notes](https://thomaselove.github.io/431notes/). We'll cover Chapters 9-11 extensively in class, and 12-13 (which show detailed examples) more lightly.
 - I also suggest working your way through [R For Data Science](http://r4ds.had.co.nz/). All of the **Explore** and **Wrangle** material is likely to be helpful in Part A of the course.
 
-## Announcements before class:
+## Announcements after class:
 
 9. Please complete the Google Form after Class 7 at 
 
