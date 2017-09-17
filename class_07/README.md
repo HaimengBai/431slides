@@ -13,7 +13,7 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
     + An introduction to the Course Project.
     + I mentioned last time that FiveThirtyEight did a nice article on "[Which States Are in the Midwest](https://fivethirtyeight.com/datalab/what-states-are-in-the-midwest/)?" More on this to come.
 
-2. There will be a Google Form to fill out after today's class. Please complete this by Noon on Thursday 2017-09-21.
+2. There is a [Class 7 Google Form to complete](https://goo.gl/forms/UWWSx5vzJQf2X35D3) before 11 AM on Thursday 2017-09-21. This is part of your class participation grade.
 
 3. Remember that [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-2.md) is due at noon this Friday, 2017-09-22.
 
@@ -33,6 +33,6 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 
 ## Announcements after class:
 
-9. Please complete the Google Form after Class 7 at 
+9. Please complete the [Google Form after Class 7](https://goo.gl/forms/UWWSx5vzJQf2X35D3). Remember that you'll need to log into Google via CWRU to complete the form. Thank you.
 
 More to come.
