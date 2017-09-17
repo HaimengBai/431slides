@@ -8,7 +8,7 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 
 1. Today's Agenda includes... 
     + Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially in Chapters 8-11.
-    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/431-sketch1-pw-2017.pdf).
+    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md).
     + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
     + An introduction to the Course Project.
     + I mentioned last time that FiveThirtyEight did a nice article on "[Which States Are in the Midwest](https://fivethirtyeight.com/datalab/what-states-are-in-the-midwest/)?" More on this to come.
