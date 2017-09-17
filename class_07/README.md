@@ -9,7 +9,7 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 1. I mentioned last time that FiveThirtyEight did a nice article on "[Which States Are in the Midwest](https://fivethirtyeight.com/datalab/what-states-are-in-the-midwest/)?" To that end, I sent you an email (on Sunday) that asked you to fill out a brief survey called "The Midwest Survey" for 431 Class 7. You should be able to fill out and submit the form in your email, but if not, you can [visit the form and fill it out here](https://goo.gl/forms/pKthnDsY6i3edZY32). Thanks!
 
 2. Today's Agenda includes... 
-    + Material from the [Course Notes](https://thomaselove.github.io/431notes/) especially in Chapters 8-11.
+    + Material from the [Course Notes](https://thomaselove.github.io/431notes/) in Chapters 8-11, especially 9 and 10.
     + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md).
     + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
     + **Course Project**: A Brief Introduction. All materials and information related to the project will be maintained at https://github.com/THOMASELOVE/431project. Regular updates will appear there throughout the semester.
