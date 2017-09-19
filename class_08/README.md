@@ -19,7 +19,7 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
     + Dr. Love made a slight correction to the template for homework assignments on Tuesday at 4 PM. Get the updated [YOURNAME-hw_template.Rmd file](https://github.com/THOMASELOVE/431homework).
 - Ten [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) groups will be formed in class on Tuesday 2017-09-26.
     + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
-- Assignment 3 is due next Friday 2017-09-29.
+- [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due next Friday 2017-09-29.
 
 4. Readings for the rest of September:
 
