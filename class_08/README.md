@@ -6,8 +6,9 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 
 ## Announcements before class:
 
-1. Today's Agenda continues our discussion of material from Chapters 8-11 of the [Course Notes](https://thomaselove.github.io/431notes/).
-    + Material from the [Course Notes](https://thomaselove.github.io/431notes/) in Chapters 8-11, especially 9 and 10.
+1. We will continue our discussion of material from the [Course Notes](https://thomaselove.github.io/431notes/), especially...
+    + Summarizing Data within Subgroups (Chapter 10)
+    + Associations and Using Linear Models (Chapter 11)
 
 2. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
 
