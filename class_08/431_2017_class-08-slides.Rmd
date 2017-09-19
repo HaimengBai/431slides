@@ -1,0 +1,274 @@
+---
+title: "431 Class 08"
+author: "Thomas E. Love"
+date: "2017-09-21"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## This Week
+
+1. Comments on the Google Form & Assignment 1
+
+2. Summaries withing subgroups (Notes: Ch 10)
+
+3. Associations, Using Linear Models (Notes: Ch 11)
+
+## Comments on The Google Form (re: Assignment 1)
+
+```{r form71-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/form7_1.jpg")
+```
+
+## Comments on The Google Form (final item)
+
+```{r form72-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/form7_2.jpg")
+```
+
+More to come.
+
+## R Setup
+
+```{r get_data, message = FALSE}
+library(viridis); library(gridExtra); library(ggridges)
+library(knitr); library(pander)
+library(tidyverse)
+
+source("Love-boost.R")
+
+nyfs1 <- read.csv("nyfs1.csv") %>% tbl_df
+names(nyfs1)
+```
+
+## Transforming the Waist Circumference Data
+
+```{r waist_circ_histograms_code, eval=FALSE}
+p1 <- ggplot(nyfs1, 
+             aes(x = waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "coral", col = "white")
+
+p2 <- ggplot(nyfs1, 
+             aes(x = 1/waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "seagreen", col = "white")
+
+gridExtra::grid.arrange(p1, p2)
+```
+
+## The Resulting Plot Array
+
+```{r waist_circ_histograms, echo=FALSE}
+p1 <- ggplot(nyfs1, 
+             aes(x = waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "coral", col = "white")
+
+p2 <- ggplot(nyfs1, 
+             aes(x = 1/waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "seagreen", col = "white")
+
+gridExtra::grid.arrange(p1, p2)
+```
+
+## Why Transform?
+
+When we have unimodal but skewed data, we will often **transform** the data using a log, inverse, square root, square, etc. in order to obtain a new distribution which is closer to the Normal.
+
+1. Sometimes we do this to facilitate comparisons.
+    + Example: t-test to compare mean waist circumference among male children to female children
+    + t-test requires that the distribution of the outcome in each sex be approximately Normal
+
+## Does a Transformation Help with Comparison?
+
+```{r waist_by_sex_boxplots_code, eval = FALSE}
+p1 <- ggplot(nyfs1, aes(x = sex, y = waist.circ,
+                  fill = sex)) +
+  geom_boxplot() + 
+  coord_flip() +
+  guides(fill = FALSE) +
+  labs(title = "Waist Circumference by Sex")
+
+p2 <- ggplot(nyfs1, aes(x = sex, y = 1/waist.circ,
+                  fill = sex)) +
+  geom_boxplot() + 
+  coord_flip() +
+  guides(fill = FALSE) + 
+  labs(title = "Inverse of Waist Circumference by Sex")
+
+gridExtra::grid.arrange(p1, p2)
+```
+
+## Boxplots of Waist Circumference by Sex
+
+```{r waist_by_sex_boxplots, echo = FALSE}
+p1 <- ggplot(nyfs1, aes(x = sex, y = waist.circ,
+                  fill = sex)) +
+  geom_boxplot() + 
+  coord_flip() +
+  guides(fill = FALSE) +
+  labs(title = "Waist Circumference by Sex")
+
+p2 <- ggplot(nyfs1, aes(x = sex, y = 1/waist.circ,
+                  fill = sex)) +
+  geom_boxplot() + 
+  coord_flip() +
+  guides(fill = FALSE) + 
+  labs(title = "Inverse of Waist Circumference by Sex")
+
+gridExtra::grid.arrange(p1, p2)
+```
+    
+## Why Transform?
+
+When we have unimodal but skewed data, we will often **transform** the data using a log, inverse, square root, square, etc. in order to obtain a new distribution which is closer to the Normal.
+
+2. Sometimes we do this to facilitate model-building.
+    + What is the association of waist circumference with triceps skinfold?
+    + Transformations that "normalize" the distributions of skewed variables also can "linearize" an apparent association.
+
+## Is Waist Circumference related to Triceps Skinfold?
+
+```{r waist_circ_vs_triceps_code, eval=FALSE}
+ggplot(nyfs1, aes(x = waist.circ, y = triceps.skinfold)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "Waist Circumference",
+       y = "Triceps Skinfold",
+       title = "Kids in the NYFS1 Survey")
+```
+
+## Is Waist Circumference related to Triceps Skinfold?
+
+```{r waist_circ_vs_triceps, echo=FALSE}
+ggplot(nyfs1, aes(x = waist.circ, y = triceps.skinfold)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "Waist Circumference",
+       y = "Triceps Skinfold",
+       title = "Kids in the NYFS1 Survey")
+```
+
+## After Inverse Transformations (no real help here)
+
+```{r inv_waist_circ_vs_inv_triceps, echo=FALSE}
+ggplot(nyfs1, aes(x = 1/waist.circ, y = 1/triceps.skinfold)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "1/Waist Circumference",
+       y = "1/Triceps Skinfold",
+       title = "Kids in the NYFS1 Survey")
+```
+
+## BMI categories
+
+```{r bmicat}
+nyfs1 %>%
+  count(bmi.cat)
+```
+
+## Use `group_by` and `summarize` together
+
+```{r waist_circ_by_bmi_cat_no_cleanup}
+nyfs1 %>%
+  group_by(bmi.cat) %>%
+  summarize(mean = round(mean(waist.circ),1),
+            median = median(waist.circ),
+            sd = round(sd(waist.circ),1),
+            skew1 = round(skew1(waist.circ),2))
+```
+
+## Using `knitr::kable` to present the table
+
+```{r waist_circ_by_bmi_cat_kable}
+nyfs1 %>%
+  group_by(bmi.cat) %>%
+  summarize(mean = round(mean(waist.circ),1),
+            median = median(waist.circ),
+            sd = round(sd(waist.circ),1),
+            skew1 = round(skew1(waist.circ),2)) %>%
+  knitr::kable()
+```
+
+## Using `pander::pander` to present the table
+
+```{r waist_circ_by_bmi_cat_pander}
+nyfs1 %>%
+  group_by(bmi.cat) %>%
+  summarize(mean = round(mean(waist.circ),1),
+            median = median(waist.circ),
+            sd = round(sd(waist.circ),1),
+            skew1 = round(skew1(waist.circ),2)) %>%
+  pander::pander()
+```
+
+## Comparison Boxplots with Notches
+
+```{r gg-boxplot-1, echo = FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=bmi.cat, y=waist.circ, fill = bmi.cat)) + 
+  geom_boxplot(notch=TRUE) +
+  scale_fill_viridis(discrete=TRUE, option="plasma") +
+  theme(text = element_text(size = 18)) +
+  theme_bw() +
+  guides(fill = FALSE) +
+  labs(title = "Waist Circumference by BMI category", 
+         x = "BMI Percentile category", y = "Waist Circumference (cm)")
+```
+
+## Comparing Distributions with Faceted Histograms
+
+```{r gg-histgroups-a, echo=FALSE}
+ggplot(nyfs1, aes(x=waist.circ, fill = bmi.cat)) +
+  geom_histogram(binwidth = 2, color = "black") + 
+  facet_wrap(~ bmi.cat) +
+  guides(fill = FALSE) +
+  labs(title = "Waist Circumference by BMI category")
+```
+
+## Density Plots, Faceted
+
+```{r gg-density-a, echo=FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=waist.circ, fill = bmi.cat)) +
+  geom_density() + 
+  facet_wrap(~ bmi.cat) + 
+  scale_fill_viridis(discrete=TRUE, option="plasma") + 
+  guides(fill = FALSE) +
+  theme_bw() +
+  labs(title = "Waist Circumference Density Plots by BMI Category")
+```
+
+## Density Plots, Overlapping
+
+```{r gg-density-b, echo=FALSE, fig.align = "center"}
+ggplot(nyfs1, aes(x=waist.circ, fill=bmi.cat)) +
+  geom_density(alpha=0.5) + 
+  theme_bw() +
+  labs(title = "Waist Circumference by BMI Category")
+```
+
+## Ridgeline Plots (formerly Joy Plots)
+
+```{r gg-ridgeline, echo=FALSE, fig.align = "center", message = FALSE}
+ggplot(nyfs1, aes(x=waist.circ, y = bmi.cat, 
+                  fill = bmi.cat)) +
+  geom_density_ridges(alpha = 0.5, scale = 1) + 
+  guides(fill = FALSE) +
+  theme_ridges() +
+  labs(title = "Waist Circumference by BMI Category")
+```
+
+
