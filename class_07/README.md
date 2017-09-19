@@ -10,7 +10,7 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 
 2. Today's Agenda includes... 
     + Material from the [Course Notes](https://thomaselove.github.io/431notes/) in Chapters 8-11, especially 9 and 10.
-    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md). You should have received your HW-ID code from me in an email. Hang onto it - you'll need it all semester long. We intend to post HW grades Thursday.
+    + [Assignment 1](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-1.md) and its password-protected [answer sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md). You should have received your HW-ID code from me in an email. Hang onto it - you'll need it all semester long. [Grades on the assignment](https://github.com/THOMASELOVE/431homework/tree/master/HW1) and the [grading rubric](https://github.com/THOMASELOVE/431homework/tree/master/HW1) went up this morning.
     + We'll also visit the [Old Faithful Geyser's Live Webcam](https://www.nps.gov/features/yell/webcam/oldFaithfulStreaming.html). 11 AM Mountain time is 1 PM Eastern time.
     + **Course Project**: A Brief Introduction. All materials and information related to the project will be maintained at https://github.com/THOMASELOVE/431project. Regular updates will appear there throughout the semester.
     + Some discussion of the data from the Midwest Survey, described above.
