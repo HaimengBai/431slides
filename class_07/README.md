@@ -2,7 +2,7 @@
 
 ## Today's Slides
 
-Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.Rmd) formats. An audio recording is now available, too.
+Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_07/431_2017_class-07-slides.Rmd) formats. An [audio recording](https://github.com/THOMASELOVE/431slides/blob/master/class_07/2017-09-17_Class07audio.m4a) is also available.
 
 ## Announcements before class:
 
