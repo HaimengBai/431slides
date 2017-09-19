@@ -89,7 +89,7 @@ knitr::include_graphics("images/form5.png")
 
 ## Current Status vs. HW 1 Result
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message = FALSE}
 library(tidyverse)
 hw1_f5 <- read.csv("eval_f5.csv") %>% tbl_df()
 ggplot(data = hw1_f5, 
@@ -104,7 +104,7 @@ ggplot(data = hw1_f5,
 
 Code for prior slide.
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, message = FALSE}
 library(tidyverse)
 hw1_f5 <- read.csv("eval_f5.csv") %>% tbl_df()
 ggplot(data = hw1_f5, 
@@ -326,7 +326,7 @@ But how unusual is that value? One way to gauge how extreme this is (or how much
 
 Z score = $$\frac{value - mean}{sd}$$.
 
-For the SBP data, the mean = 118.6 and the standard deviation is 15.3, so we have Z score for 202 = $$\frac{202 - 118.6}{15.3} = {83.4}{15.3} = 5.45$$.
+For the SBP data, the mean = 118.6 and the standard deviation is 15.3, so we have Z score for 202 = $$\frac{202 - 118.6}{15.3} = \frac{83.4}{15.3} = 5.45$$.
 
 - A negative Z score indicates a point below the mean
 - A positive Z score indicates a point above the mean
