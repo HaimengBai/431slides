@@ -22,9 +22,14 @@ options(width = 55)
 3. Course Notes 
     + Identifying and quantifying outliers (Ch 7)
     + Using transformations to "normalize" data (Ch 9)
-    + Summaries withing subgroups (Ch 10)
-    + Associations, Using Linear Models (Ch 11)
-4. Which states are in the midwest? (fill out survey)
+4. Which states are in the midwest? (survey results)
+
+## R! Me hearties.
+
+```{r pirate-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/pirate.jpg")
+```
+
 
 ## Project Instructions
 
@@ -36,12 +41,129 @@ Regular updates will appear there throughout the semester.
 
 ## Comments on Assignments 1 and 2
 
-Answer Sketch for Assignment 1 posted on Friday afternoon. [Visit this link for details](https://github.com/THOMASELOVE/431homework/tree/master/HW1). The PDF is password protected, rather than "invalid" as Github suggests when you try to display it.
+Answer Sketch for Assignment 1 posted on Friday afternoon. The PDF is password protected, rather than "invalid" as Github suggests when you try to display it.
+
+See https://github.com/THOMASELOVE/431homework/tree/master/HW1. 
 
 1. R Markdown for Answer Sketch is also available. 
-2. Grading rubric for Assignment 1 is coming Thursday.
-3. No, I did not expect you to write a 15 page response.
-4. No, I do not plan to provide a new template for Assignment 2, but I strongly suggest you look over Claudia's slide deck, as linked in the Class 7 README.
+2. Grading rubric and Grades for Assignment 1 went up this morning.
+3. Answer sketches are always longer than we expect your answers to be.
+4. I strongly suggest you look over Claudia's slide deck, as linked in the Class 7 README.
+
+## Our Favorite Homework Assignments
+
+Also posted to https://github.com/THOMASELOVE/431homework
+
+1. Submit HTML and R Markdown, without zipping the files together.
+2. Use complete sentences, and proper English grammar, syntax and spelling.
+3. Avoid printing things we don't need to see (like data frames) to judge your work.
+4. Place empty lines before and after each code chunk.
+5. Name every chunk, with no characters other than letters, numbers and underscores. No repetition!
+6. Use headings to indicate the question being solved. Then leave a blank line before continuing with text.
+7. Avoid repeating Dr. Love's questions verbatim.
+8. Use the approach laid out on the next slides (and in the YOURNAME-hw_template.Rmd file on the 431 Homework page)
+
+## YOURNAME-hw_template.Rmd YAML
+
+```{r idealhw1-fig, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/ideal_1.png")
+```
+
+## YOURNAME-hw_template.Rmd Setup
+
+```{r idealhw2-fig, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/ideal_2.png")
+```
+
+## YOURNAME-hw_template.Rmd Main
+
+```{r idealhw3-fig, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/ideal_3.png")
+```
+
+## from Class 5 Google Form
+
+```{r form5-fig, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/form5.png")
+```
+
+## Current Status vs. HW 1 Result
+
+```{r, echo=FALSE}
+library(tidyverse)
+hw1_f5 <- read.csv("eval_f5.csv") %>% tbl_df()
+ggplot(data = hw1_f5, 
+       aes(x = status_class5, y = score, 
+           col = status_class5)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2) +
+  guides(color = FALSE)
+```
+
+## Current Status vs. HW 1 Result
+
+Code for prior slide.
+
+```{r, eval=FALSE}
+library(tidyverse)
+hw1_f5 <- read.csv("eval_f5.csv") %>% tbl_df()
+ggplot(data = hw1_f5, 
+       aes(x = status_class5, y = score, 
+           col = status_class5)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2) +
+  guides(color = FALSE)
+```
+
+## Confidence Level vs. HW 1 Result (Shape)
+
+```{r, echo = FALSE}
+ggplot(data = hw1_f5, 
+       aes(x = factor(confidence), y = score,
+           col = factor(confidence),
+           shape = status_class5)) +
+  geom_jitter(size = rel(3), width = 0.1) +
+  guides(col = FALSE)
+```
+
+## Confidence Level vs. HW 1 Result (Shape)
+
+Code for prior slide.
+
+```{r, eval = FALSE}
+ggplot(data = hw1_f5, 
+       aes(x = factor(confidence), y = score,
+           col = factor(confidence),
+           shape = status_class5)) +
+  geom_jitter(size = rel(3), width = 0.1) +
+  guides(col = FALSE)
+```
+
+## Confidence Level vs. HW 1 Result (Facets)
+
+```{r, echo=FALSE}
+ggplot(data = hw1_f5, 
+       aes(x = factor(confidence), y = score,
+           col = factor(confidence))) +
+  geom_jitter(size = 2, width = 0.2) +
+  guides(col = FALSE, shape = FALSE) + 
+  facet_wrap(~ status_class5) + 
+  theme_bw()
+```
+
+## Confidence Level vs. HW 1 Result (Facets)
+
+Code for prior slide.
+
+```{r, eval=FALSE}
+ggplot(data = hw1_f5, 
+       aes(x = factor(confidence), y = score,
+           col = factor(confidence))) +
+  geom_jitter(size = 2, width = 0.2) +
+  guides(col = FALSE, shape = FALSE) + 
+  facet_wrap(~ status_class5) + 
+  theme_bw()
+```
 
 ## Preliminaries for Today
 
@@ -463,10 +585,35 @@ Power | Transformation | Shapiro-Wilk *p* value
 knitr::include_graphics("images/midwest_1.PNG")
 ```
 
-## Which states are in the Midwest?
+## Did we have strong opinions?
+
+```{r midwest-our50, out.width = '100%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/our50.PNG")
+```
+
+## Which states got the most votes in our poll?
 
 ```{r midwest-fig2, out.width = '100%', fig.align = "center", echo = FALSE}
 knitr::include_graphics("images/midwest_2.PNG")
+```
+
+## Our 50 responses
+
+For each of the 25 states listed below, please indicate whether or not you consider it to be part of the Midwest.
+
+```
+44 Iowa       
+43 Indiana    42 Illinois, Michigan  
+40 Wisconsin  39 Minnesota, Missouri
+38 Ohio       33 Kansas  
+
+27 Nebraska   25 North Dakota
+23 South Dakota, Oklahoma
+22 Kentucky   20 Arkansas
+
+18 Wyoming       16 Idaho, Tennessee   15 Colorado
+14 Montana       12 West Virginia      11 Pennsylvania
+5 North Carolina  4 Texas               1 California
 ```
 
 ## Which states are in the Midwest?
@@ -475,105 +622,10 @@ knitr::include_graphics("images/midwest_2.PNG")
 knitr::include_graphics("images/midwest_3.PNG")
 ```
 
-
-## Some Additional Numerical Summaries
-
-```{r describe psych of waist circumference}
-psych::describe(nyfs1$waist.circ)
-```
-
-## The Trimmed Mean
-
-The **trimmed mean** is specified by indicating the proportion of observations to be trimmed from each end of the outcome distribution before the mean is calculated. So here's how we get the mean of the middle 80% of the data.
-
-```{r numerical summary 4a}
-mean(nyfs1$waist.circ, trim=.1) 
-```
-
-## The Standard Error of the Sample Mean
-
-The **standard error** of the sample mean is the standard deviation divided by the square root of the sample size.
-
-```{r numerical summary 4b}
-sd(nyfs1$waist.circ)/sqrt(length(nyfs1$waist.circ))
-```
-
-## The Median Absolute Deviation
-
-An alternative to the IQR that is fancier, and a bit more robust, is the **median absolute deviation**, which, in large sample sizes, for data that follow a Normal distribution, will be (in expectation) equal to the standard deviation.
-
-```{r numerical summary 4c}
-mad(nyfs1$waist.circ)
-sd(nyfs1$waist.circ)
-```
-
-## Summarizing within Groups using `by` (section 10)
-
-```{r waistxbmicat3}
-by(nyfs1$waist.circ, nyfs1$bmi.cat, summary)
-```
-
-## Summarizing within Groups using `group_by`
-
-```{r using dplyr to summarize data within groups}
-tempdat <- nyfs1 %>%
-  group_by(bmi.cat) %>%
-  summarize(mean = round(mean(waist.circ),2), 
-            Q50 = median(waist.circ), 
-            sd = round(sd(waist.circ),2),  
-            skew1 = round(skew1(waist.circ),2))
-knitr::kable(tempdat)
-```
-
-
-## Comparing Histograms with Facetted Plots
-
-```{r gg-histgroups-a, echo=FALSE}
-ggplot(nyfs1, aes(x=waist.circ, fill = sex)) +
-  geom_histogram(binwidth = 2, color = "black") + 
-  facet_wrap(~ sex) +
-  guides(fill = FALSE) +
-  theme_bw() +
-  labs(title = "Waist Circumference by Sex")
-```
-
-## Density Plots, Overlapping
-
-```{r gg-density-b, echo=FALSE, fig.align = "center"}
-ggplot(nyfs1, aes(x=waist.circ, fill=sex)) +
-  geom_density(alpha=0.5) + 
-  theme_bw() +
-  labs(title = "Waist Circumference by Sex")
-```
-
-## Density Plots, Facetted
-
-```{r gg-density-a, echo=FALSE, fig.align = "center"}
-ggplot(nyfs1, aes(x=waist.circ, fill = bmi.cat)) +
-  geom_density() + 
-  facet_wrap(~ bmi.cat) + 
-  scale_fill_viridis(discrete=TRUE, option="plasma") + 
-  guides(fill = FALSE) +
-  theme_bw() +
-  labs(title = "Waist Circumference by BMI Category")
-```
-
-## Comparison Boxplots with Notches
-
-```{r gg-boxplot-1, echo = FALSE, fig.align = "center"}
-ggplot(nyfs1, aes(x=bmi.cat, y=waist.circ, fill = bmi.cat)) + 
-  geom_boxplot(notch=TRUE) +
-  scale_fill_viridis(discrete=TRUE, option="plasma") +
-  theme(text = element_text(size = 18)) +
-  theme_bw() +
-  guides(fill = FALSE) +
-  labs(title = "Waist Circumference by BMI category", 
-         x = "BMI Percentile category", y = "Waist Circumference (cm)")
-```
-
 ## Link to today's Google Form
 
-You'll find the link at today's README (Class 7).
+You'll find the link at today's README (Class 7). 
+This is different than the Midwest Survey that I emailed to you.
 
 Please submit the form by 11 AM Thursday.
 
