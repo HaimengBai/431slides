@@ -36,3 +36,5 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 ## Announcements after class:
 
 10. After class, please complete the [Google Form after Class 7](https://goo.gl/forms/UWWSx5vzJQf2X35D3) by **11 AM Thursday**. Remember that you'll need to log into Google via CWRU to complete the form. Thank you.
+
+11. If you have complaints about your grade on a homework assignment, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) first. As you'll see there, we request that you not *dispute* any grading until December.
