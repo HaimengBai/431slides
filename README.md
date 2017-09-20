@@ -12,3 +12,4 @@ Class | Date | Slides | Comments
 5 | 2017-09-12 | [README 5](https://github.com/THOMASELOVE/431slides/blob/master/class_05/README.md) | NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Sections 4-5, 7-8. Silver Intro and Chapter 1
 6 | 2017-09-14 | [README 6](https://github.com/THOMASELOVE/431slides/blob/master/class_06/README.md) | NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Sections 7-8, mostly. 
 7 | 2017-09-19 | [README 7](https://github.com/THOMASELOVE/431slides/blob/master/class_07/README.md) | Assignment 1 [Sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md), [Course Project](https://github.com/THOMASELOVE/431project), [Notes](https://thomaselove.github.io/431notes/) Sections 9-10, mostly. 
+8 | 2017-09-21 | [README 8](https://github.com/THOMASELOVE/431slides/blob/master/class_08/README.md) | Transformations, Subgroups, Linear Associations
