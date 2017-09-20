@@ -15,13 +15,15 @@ knitr::opts_chunk$set(comment=NA)
 options(width = 55)
 ```
 
-## This Week
+## Today's Agenda
 
 1. Comments on the Google Form & Assignment 1
-
-2. Summaries withing subgroups (Notes: Ch 10)
-
-3. Associations, Using Linear Models (Notes: Ch 11)
+2. More on Transformations (Notes: Ch 9, 11)
+3. Summaries within subgroups (Notes: Ch 10)
+4. Associations, Using Linear Models (Notes: Ch 11)
+    - A study of von Hippel-Lindau disease
+    - Associations, Correlation and Scatterplots
+    - Fitting a Linear Model
 
 ## Comments on The Google Form (re: Assignment 1)
 
@@ -31,11 +33,11 @@ knitr::include_graphics("images/form7_1.jpg")
 
 ## Comments on The Google Form (final item)
 
+What did you folks want to be able to predict?
+
 ```{r form72-fig, out.width = '90%', fig.align = "center", echo = FALSE}
 knitr::include_graphics("images/form7_2.jpg")
 ```
-
-More to come.
 
 ## R Setup
 
@@ -48,38 +50,6 @@ source("Love-boost.R")
 
 nyfs1 <- read.csv("nyfs1.csv") %>% tbl_df
 names(nyfs1)
-```
-
-## Transforming the Waist Circumference Data
-
-```{r waist_circ_histograms_code, eval=FALSE}
-p1 <- ggplot(nyfs1, 
-             aes(x = waist.circ)) +
-  geom_histogram(bins = 18, 
-                 fill = "coral", col = "white")
-
-p2 <- ggplot(nyfs1, 
-             aes(x = 1/waist.circ)) +
-  geom_histogram(bins = 18, 
-                 fill = "seagreen", col = "white")
-
-gridExtra::grid.arrange(p1, p2)
-```
-
-## The Resulting Plot Array
-
-```{r waist_circ_histograms, echo=FALSE}
-p1 <- ggplot(nyfs1, 
-             aes(x = waist.circ)) +
-  geom_histogram(bins = 18, 
-                 fill = "coral", col = "white")
-
-p2 <- ggplot(nyfs1, 
-             aes(x = 1/waist.circ)) +
-  geom_histogram(bins = 18, 
-                 fill = "seagreen", col = "white")
-
-gridExtra::grid.arrange(p1, p2)
 ```
 
 ## Why Transform?
@@ -137,6 +107,182 @@ When we have unimodal but skewed data, we will often **transform** the data usin
 2. Sometimes we do this to facilitate model-building.
     + What is the association of waist circumference with triceps skinfold?
     + Transformations that "normalize" the distributions of skewed variables also can "linearize" an apparent association.
+
+## A Quick Interlude: Ohio's population, 1850-1970
+
+Source: http://population.us/oh/
+
+```{r ohio_ex1}
+ohio1 <- data_frame(
+  year = seq(from = 1850, to = 1970, by = 10),
+  pop_oh = c(1980329, 2339511, 2665260, 
+             3198062, 3672329, 4157545, 
+             4767121, 5759394, 6646697, 
+             6907612, 7946627, 9706397, 10652017))
+```
+
+## Was Ohio's population growth linear? (1850-1970)
+
+```{r ohio_ex2code, eval=FALSE}
+ggplot(ohio1, aes(x = year, y = pop_oh/1000000)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  labs(title = "Ohio Population, 1850-1970",
+       y = "Ohio's Population (in Millions)")
+```
+
+## Was Ohio's population growth linear? (1850-1970)
+
+```{r ohio_ex2, echo=FALSE}
+ggplot(ohio1, aes(x = year, y = pop_oh/1000000)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  labs(title = "Ohio Population, 1850-1970",
+       y = "Ohio's Population (in Millions)")
+```
+
+## Was Ohio's log(population) linear in time? 
+
+```{r ohio_ex3, echo = FALSE}
+ggplot(ohio1, aes(x = year, y = log10(pop_oh))) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  labs(y = "Log10(Population of Ohio)",
+       x = "Year",
+       title = "Ohio's Population, 1850 - 1970")
+```
+
+## Comparing the Linear to the Log Scale
+
+```{r, echo = FALSE}
+p1 <- ggplot(ohio1, aes(x = year, y = pop_oh/1000000)) +
+  geom_point() +
+  scale_y_continuous(breaks = 2:10) +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  labs(title = "Ohio Population, 1850-1970",
+       subtitle = "Linear Scale",
+       y = "Ohio's Population (in Millions)")
+
+p2 <- ggplot(ohio1, aes(x = year, y = pop_oh/1000000)) +
+  geom_point() +
+  scale_y_log10(breaks = 2:10) +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  labs(title = "Ohio Population, 1850-1970",
+       subtitle = "Plotted on Log Scale",
+       y = "Ohio's Population (in Millions)")
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+## Ohio's population grew at a rate of 2% per decade
+
+- If population grows **exponentially** over time, then log(population) will be **linear** in time.
+
+What happened starting in 1970 in Ohio?
+
+## What about 1980-2010?
+
+```{r ohio2, echo = FALSE}
+ohio2 <- data_frame(
+  year = seq(from = 1850, to = 2010, by = 10),
+  pop_oh = c(1980329, 2339511, 2665260, 
+             3198062, 3672329, 4157545, 
+             4767121, 5759394, 6646697, 
+             6907612, 7946627, 9706397, 
+             10652017, 10797630, 10847115,
+             11353140, 11536504),
+  post = c(rep(1,13), rep(2, 4)))
+
+ggplot(ohio2, aes(x = year, y = log10(pop_oh))) +
+  geom_point(col = ohio2$post, size = 3) +
+  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, col = "red") +
+  geom_vline(xintercept = c(1850, 1970), 
+             linetype = "dashed") +
+  labs(y = "Log10(Population of Ohio)", 
+       x = "Year",
+       title = "Ohio's Population, 1850 - 2010")
+```
+
+## 1850-2010 Ohio Population on Logarithmic Scale
+
+```{r ohio2_data_plot, echo = FALSE}
+ggplot(ohio2, aes(x = year, y = pop_oh/1000000)) +
+  geom_point(col = ohio2$post, size = 3) +
+  scale_y_log10(breaks = 2:12) +
+  geom_smooth(method = "loess", se = FALSE) +
+  annotate("text", x = 1990, y = 7, col = "red", 
+           label = "Migration West and South\nas Rust Belt industries vanish\n1970-2010.") +
+  labs(title = "Ohio Population, 1850-2010",
+       subtitle = "Plotted on Log Scale",
+       y = "Ohio's Population (in Millions)")
+```
+
+## Code for Previous Slide
+
+```{r ohio2_data_plot_code, eval = FALSE}
+ggplot(ohio2, aes(x = year, y = pop_oh/1000000)) +
+  geom_point(col = ohio2$post, size = 3) +
+  scale_y_log10(breaks = 2:12) +
+  geom_smooth(method = "loess", se = FALSE) +
+  annotate("text", x = 1990, y = 7, col = "red", 
+           label = "Migration West and South\nas Rust Belt industries vanish\n1970-2010.") +
+  labs(title = "Ohio Population, 1850-2010",
+       subtitle = "Plotted on Log Scale",
+       y = "Ohio's Population (in Millions)")
+```
+
+## How do we learn how to build plots like that?
+
+```{r practice1-fig, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/practice_combo.png")
+```
+
+## And there's more than a little of this, too...
+
+```{r practice2-fig, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/practice_combo2.png")
+```
+
+
+## Transforming the Waist Circumference Data
+
+```{r waist_circ_histograms_code, eval=FALSE}
+p1 <- ggplot(nyfs1, 
+             aes(x = waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "coral", col = "white")
+
+p2 <- ggplot(nyfs1, 
+             aes(x = 1/waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "seagreen", col = "white")
+
+gridExtra::grid.arrange(p1, p2)
+```
+
+## The Resulting Plot Array
+
+```{r waist_circ_histograms, echo=FALSE}
+p1 <- ggplot(nyfs1, 
+             aes(x = waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "coral", col = "white")
+
+p2 <- ggplot(nyfs1, 
+             aes(x = 1/waist.circ)) +
+  geom_histogram(bins = 18, 
+                 fill = "seagreen", col = "white")
+
+gridExtra::grid.arrange(p1, p2)
+```
+
+
 
 ## Is Waist Circumference related to Triceps Skinfold?
 
@@ -271,4 +417,299 @@ ggplot(nyfs1, aes(x=waist.circ, y = bmi.cat,
   labs(title = "Waist Circumference by BMI Category")
 ```
 
+##
+
+```{r batman-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/batman-usedata.png")
+```
+
+## A study of von Hippel-Lindau disease
+
+Eisenhofer et al.\footnote{Reference: Eisenhofer GJ et al. (1999) "Plasma normetanephrine and metanephrine for detecting pheochromocytoma in von Hippel-Lindau disease and multiple endocrine neoplasia type 2" NEJM 340(24): 1872-9. My Source: http://biostat.mc.vanderbilt.edu/dupontwd/wddtext/index.html} (1999) investigated the use of plasma normetanephrine and metanephrine for detecting pheochromocytoma in 35 subjects. 9 of the patients were diagnosed with multiple endocrine neoplasia type 2 and the rest with von Hippel-Lindau disease. 
+
+Our first goal is to understand the association between plasma norepinephrine and tumor volume across all of the subjects. 
+
+Then, we'll be interested in addressing the impact of diagnosis on this association.
+
+I've stored the data in the `vonHippel-Lindau.csv` file on the data site.
+
+## Looking over the data
+
+```{r get data into a tibble}
+VHL <- read.csv("vonHippel-Lindau.csv") %>% tbl_df
+VHL
+```
+
+## Basic Numerical Summaries
+
+```{r numerical summaries of VHL data, echo=FALSE}
+summary(VHL)[,2:4]
+```
+
+### Codebook
+
+- `disease` = 1 for patients with multiple endocrine neoplasia type 2
+- `disease` = 0 for patients with von Hippel-Lindau disease
+- `p.ne` = plasma norepinephrine (pg/ml)
+- `tumorvol` = tumor volumne (ml)
+
+## Creating a Factor to represent disease information
+
+Label the disease data (0s and 1s) appropriately, in a new *factor*
+
+```{r build factor for disease info}
+VHL$diagnosis <- factor(VHL$disease, 
+                        labels = c("von H-L", "neoplasia"))
+table(VHL$diagnosis, VHL$disease)
+```
+
+## Plotting an Association across all 37 subjects
+
+```{r scatter 1, echo=FALSE}
+ggplot(VHL, aes(x = tumorvol, y = p.ne)) +
+  geom_point(size = 3, shape = 1) +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of p.ne with tumor volume",
+       x = "Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Adding a Linear Model
+
+```{r scatter 2, echo=FALSE}
+ggplot(VHL, aes(x = tumorvol, y = p.ne)) +
+  geom_point(size = 3) +
+  geom_smooth(method="lm", col = "red") +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of p.ne with tumor volume",
+       x = "Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## The Linear Model
+
+```{r scatter 6}
+model1 <- lm(p.ne ~ tumorvol, data = VHL)
+model1
+```
+
+>- What does this model predict? Using what predictor?
+>- Predict `p.ne` for a subject with tumor volume = 100 ml.
+
+## Using the model to make predictions...
+
+1. A 95% **prediction interval** for a single subject with volume 100 ml.
+
+```{r predict using model1 and PI}
+predict(model1, newdata = data_frame(tumorvol = 100), 
+        interval = "prediction", level = 0.95)
+```
+
+- Can we make a prediction for all subjects in the population with a particular tumor volume, not just an individual?
+
+## Using the model to make predictions...
+
+2. 95% **confidence interval** for the average of the population of all subjects with volume 100 ml, as well as for the population of subjects with volume 50 ml.
+
+```{r predict using model1 and CI}
+newvals <- data_frame(tumorvol = c(100, 50))
+
+predict(model1, newdata = newvals, 
+        interval = "confidence", level = 0.95)
+```
+
+## Summary of our Linear Model
+
+```{r summary of model 1, echo=FALSE}
+summary(model1)
+```
+
+##
+
+![](images/model1summary.png)
+
+## Key Elements of the Summary
+
+![](images/model1a.png)
+
+- The outcome variable in this model is `p.ne`, and the predictor variable is `tumorvol`.
+- The straight line model for these data fitted by least squares is p.ne = `r signif(coef(lm(p.ne ~ tumorvol, data = VHL))[1],3)` + `r signif(coef(lm(p.ne ~ tumorvol, data = VHL))[2],3)` `tumorvol`.
+
+## Key Elements of the Summary
+
+![](images/model1b.png)
+
+- The slope of `tumorvol` is positive, which indicates that as `tumorvol` increases, we expect that `p.ne` will also increase. 
+- Specifically, we expect that for every additional ml of `tumorvol`, the `p.ne` is increased by `r signif(coef(lm(p.ne ~ tumorvol, data = VHL))[2],3)` pg/ml.
+
+## Key Elements of the Summary
+
+![](images/model1c.png)
+
+- The multiple R-squared (squared correlation coefficient) is `r signif(summary(lm(p.ne ~ tumorvol, data = VHL))$r.squared,3)`, which implies that `r 100*signif(summary(lm(p.ne ~ tumorvol, data = VHL))$r.squared,3)`% of the variation in `p.ne` is explained using this linear model with `tumorvol`. 
+- It also implies that the Pearson correlation between `p.ne` and `tumorvol` is the square root of `r signif(summary(lm(p.ne ~ tumorvol, data = VHL))$r.squared,3)`, or `r round(cor(VHL$p.ne, VHL$tumorvol),3)`.
+
+```{r Pearson correlation}
+cor(VHL$p.ne, VHL$tumorvol)
+```
+
+## Correlation Coefficients
+
+Two key types of correlation coefficient to describe the association. 
+
+- The one most often used is called the *Pearson* correlation coefficient, symbolized r or sometimes rho ($\rho$).
+- Another is the Spearman rank correlation coefficient, also symbolized by $\rho$.
+
+```{r correlations}
+cor(VHL$p.ne, VHL$tumorvol)
+cor(VHL$p.ne, VHL$tumorvol, method = "spearman")
+```
+
+## Meaning of Pearson Correlation
+
+The Pearson correlation coefficient assesses how well the relationship between X and Y can be described using a linear function. 
+
+- The Pearson correlation is dimension-free. 
+- It falls between -1 and +1, with the extremes corresponding to situations where all the points in a scatterplot fall exactly on a straight line with negative and positive slopes, respectively. 
+- A Pearson correlation of zero corresponds to the situation where there is no linear association.
+- Unlike the estimated slope in a regression line, the sample correlation coefficient is symmetric in x and y, so it does not depend on labeling one of them (y) the response variable, and one of them (x) the predictor.
+
+\[
+r_{XY} = \frac{1}{n-1} \Sigma_{i=1}^n (\frac{x_i - \bar{x}}{s_x}) (\frac{y_i - \bar{y}}{s_y}) 
+\]
+
+## The Spearman Rank Correlation
+
+The Spearman rank correlation coefficient assesses how well the association between X and Y can be described using a **monotone function** even if that relationship is not linear. 
+
+- A monotone function preserves order - that is, Y must either be strictly increasing as X increases, or strictly decreasing as X increases.
+- A Spearman correlation of 1.0 indicates simply that as X increases, Y always increases.
+- Like the Pearson correlation, the Spearman correlation is dimension-free, and falls between -1 and +1.
+- A positive Spearman correlation corresponds to an increasing (but not necessarily linear) association between X and Y, while a negative Spearman correlation corresponds to a decreasing (but again not necessarily linear) association.
+
+## Monotone Association (Source: Wikipedia)
+
+![pic1](images/spearmanpic1.png)
+
+## Spearman correlation reacts less to outliers
+
+![pic4](images/spearmanpic4.png)
+
+## Our Key Scatterplot again
+
+```{r scatter 2 with correlations, echo=FALSE}
+ggplot(VHL, aes(x = tumorvol, y = p.ne)) +
+  geom_point(size = 3) +
+  geom_smooth(method="lm", se=FALSE, col = "red") +
+  theme(text = element_text(size = 14)) +
+  annotate("text", x = 550, y = 2700, col = "red", size = 5,
+           label = paste("Pearson r = ", signif(cor(VHL$tumorvol, VHL$p.ne),2))) +
+  annotate("text", x = 550, y = 2500, col = "blue", size = 5,
+           label = paste("Spearman r = ", signif(cor(VHL$tumorvol, VHL$p.ne, method="spearman"),2))) +
+  labs(title = "Association of p.ne with tumor volume",
+       x = "Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Smoothing using loess, instead
+
+```{r scatter 3, echo=FALSE}
+ggplot(VHL, aes(x = tumorvol, y = p.ne)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "loess", col = "navy") +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of p.ne with tumor volume",
+       x = "Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Using the Log transform to spread out the Volumes
+
+```{r scatter 4, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "loess", col = "navy") +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of p.ne with log(tumor volume)",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Does a Log-Log model seem like a good choice?
+
+```{r scatter of log-log, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = log(p.ne))) +
+  geom_point(size = 3) +
+  geom_smooth(method = "loess", col = "navy") +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of ln(P. ne.) with log(tumorvol)",
+       x = "Log of Tumor Volume (ml)", y = "Log of Plasma Norepinephrine (pg/ml)")
+```
+
+## Linear Model for p.ne using log(tumor volume)
+
+```{r scatter 4 with lm, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", col = "red") +
+  theme(text = element_text(size = 14)) +
+  labs(title = "Association of p.ne with log(tumorvol)",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Compare the patients by diagnosis
+
+```{r scatter 5 unfacetted, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne, col = diagnosis)) +
+  geom_point(size = 3) +
+  stat_smooth(method=lm, se=FALSE) +
+  theme(text = element_text(size = 14)) +
+  labs(title = "p.ne vs. log(tumorvol), by diagnosis",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Facetted Scatterplots by diagnosis
+
+```{r scatter 5 facetted, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne, col = diagnosis)) +
+  geom_point(size = 3) +
+  stat_smooth(method=lm) +
+  facet_wrap(~ diagnosis) +
+  guides(color = FALSE) +
+  theme(text = element_text(size = 14)) +
+  labs(title = "p.ne vs. log(tumorvol), by diagnosis",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Model accounting for different slopes and intercepts
+
+```{r model2}
+model2 <- lm(p.ne ~ log(tumorvol) * diagnosis, data = VHL)
+model2
+```
+
+## Model 2 results
+
+`p.ne` = 417 + 220 log(`tumorvol`) - 893 (`diagnosis = neoplasia`) + 125 (`diagnosis = neoplasia`)*log(`tumorvol`)
+
+where the indicator variable (`diagnosis = neoplasia`) = 1 for neoplasia subjects, and 0 for other subjects...
+
+- Model for `p.ne` in von H-L patients: 
+    + 417 + 220 log(`tumorvol`)
+- Model for `p.ne` in neoplasia patients: 
+    + (417 - 893) + (220 + 125) log(`tumorvol`) 
+    + -476 + 345 log(`tumorvol`)
+    
+## Model 2 Predictions
+
+What is the predicted `p.ne` for a single new subject with `tumorvol` = 55 ml (so log(tumorvol) = `r round(log(55),2)`) in each diagnosis category?
+
+```{r model 2 predictions}
+predict(model2, newdata = data_frame(tumorvol = 55, 
+        diagnosis = "neoplasia"), interval = "prediction")
+```
+
+```{r model 2 prediction 2}
+predict(model2, newdata = data_frame(tumorvol = 55, 
+        diagnosis = "von H-L"), interval = "prediction")
+```
+
+## Don't forget to get Assignment 2 in!
+
+Canvas, by noon Friday.
 
