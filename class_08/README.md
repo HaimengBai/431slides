@@ -17,7 +17,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. R Studio **does** in fact have a **spell-check** for your R Markdown files. Just hit **F7**.
 
-4. The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) and [Software Installation Instructions](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md) have changed to use `ggridges` instead of `ggjoy`. You should enter R Studio and install the `ggridges` package if you haven't already done so, by clicking on the Packages tab in the lower right window and selecting Install Packages, and then typing in ggridges in the popup box. 
+4. The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) and [Software Installation Instructions](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md) have changed to use `ggridges` instead of `ggjoy`. You should enter R Studio and install the `ggridges` package if you haven't already done so, by clicking on the Packages tab in the lower right window and selecting Install Packages, and then typing in `ggridges` in the popup box. Though joy plots are a delightful name, this change [is a good idea](http://serialmentor.com/blog/2017/9/15/goodbye-joyplots). 
 
 5. This weekend might be a good time to **update** your packages in R Studio, as well. Go to the Packages tab and click Update. You might wait to do this until **after** you submit Assignment 2.
 
