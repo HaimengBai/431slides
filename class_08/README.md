@@ -13,9 +13,11 @@ When the audio recording for today's class becomes available, we'll post it abov
     + Summarizing Data within Subgroups (Chapter 10)
     + Associations and Using Linear Models (Chapter 11) as demonstrated using a study of von Hippel-Lindau disease. [Von Hippel-Lindau syndrome](http://www.cancer.net/cancer-types/von-hippel-lindau-syndrome) (VHL) is a hereditary condition associated with tumors arising in multiple organs.
 
-2. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
+2. TA Office Hours tomorrow (Friday 2017-09-23) will be held from **2-3 PM** instead of the usual 4:30 - 5:30 PM.
 
-3. Reminders
+3. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
+
+4. Reminders
 
 - [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-2.md) is due this Friday 2017-09-22. 
     + Remember our advice on [What We'd Ideally See in a Homework Assignment Submission](https://github.com/THOMASELOVE/431homework)
@@ -24,7 +26,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
 - [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due next Friday 2017-09-29.
 
-4. Readings for the rest of September:
+5. Readings for the rest of September:
 
 - Read Nate Silver's *The Signal and the Noise* Chapters 2 (Political Predictions) and 3 (Baseball predictions) by **2017-09-26**.
 - By the end of the month, work your way through Part A of the [Course Notes](https://thomaselove.github.io/431notes/). We'll cover Chapters 9-11 extensively in class, and 12-13 (which show detailed examples) more lightly.
@@ -32,7 +34,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-5. Dr. Love's Plans for Class 9 (2017-09-26)
+6. Dr. Love's Plans for Class 9 (2017-09-26)
 
 - Continue the discussion of Associations and Linear Models begun today.
 - Discuss Nate Silver's *The Signal and the Noise* Chapters 2 (Political Predictions) and 3 (Baseball predictions).
