@@ -31,6 +31,10 @@ options(width = 55)
 knitr::include_graphics("images/form7_1.jpg")
 ```
 
+## Is there a spell-check in R Studio?
+
+Sure. Just hit F7, or the abc key with a check mark.
+
 ## Comments on The Google Form (final item)
 
 What did you folks want to be able to predict?
