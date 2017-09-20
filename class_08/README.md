@@ -17,9 +17,13 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. R Studio **does** in fact have a **spell-check** for your R Markdown files. Just hit **F7**.
 
-4. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
+4. The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) and [Software Installation Instructions](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md) have changed to use `ggridges` instead of `ggjoy`. You should enter R Studio and install the `ggridges` package if you haven't already done so, by clicking on the Packages tab in the lower right window and selecting Install Packages, and then typing in ggridges in the popup box. 
 
-5. Reminders
+5. This weekend might be a good time to **update** your packages in R Studio, as well. Go to the Packages tab and click Update. You might wait to do this until **after** you submit Assignment 2.
+
+6. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
+
+7. Reminders
 
 - [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-2.md) is due this Friday 2017-09-22. 
     + Remember our advice on [What We'd Ideally See in a Homework Assignment Submission](https://github.com/THOMASELOVE/431homework)
@@ -28,7 +32,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
 - [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due next Friday 2017-09-29.
 
-6. Readings for the rest of September:
+8. Readings for the rest of September:
 
 - Read Nate Silver's *The Signal and the Noise* Chapters 2 (Political Predictions) and 3 (Baseball predictions) by **2017-09-26**.
 - By the end of the month, work your way through Part A of the [Course Notes](https://thomaselove.github.io/431notes/). We'll cover Chapters 9-11 extensively in class, and 12-13 (which show detailed examples) more lightly.
@@ -36,7 +40,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-7. Dr. Love's Plans for Class 9 (2017-09-26)
+9. Dr. Love's Plans for Class 9 (2017-09-26)
 
 - Continue the discussion of Associations and Linear Models begun today.
 - Discuss Nate Silver's *The Signal and the Noise* Chapters 2 (Political Predictions) and 3 (Baseball predictions).
