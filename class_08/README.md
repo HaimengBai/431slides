@@ -7,8 +7,9 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 ## Announcements before class:
 
 1. We will continue our discussion of material from the [Course Notes](https://thomaselove.github.io/431notes/), especially...
+    + Using Transformations to "Normalize" and to "Linearize" (Chapters 9, 11)
     + Summarizing Data within Subgroups (Chapter 10)
-    + Associations and Using Linear Models (Chapter 11)
+    + Associations and Using Linear Models (Chapter 11) as demonstrated using a study of von Hippel-Lindau disease. [Von Hippel-Lindau syndrome](http://www.cancer.net/cancer-types/von-hippel-lindau-syndrome) (VHL) is a hereditary condition associated with tumors arising in multiple organs.
 
 2. If you have concerns about your grade on any Assignment in this class, please review [Section 13.1 of the Course Syllabus](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) and the course policies described there.
 
@@ -28,4 +29,11 @@ Today's Slides will be available for download in both [PDF](https://github.com/T
 - I also suggest working your way through [R For Data Science](http://r4ds.had.co.nz/). All of the **Explore** and **Wrangle** material is likely to be helpful in Part A of the course.
 
 ## Announcements after class:
+
+5. Dr. Love's Plans for Class 9 (2017-09-26)
+
+- Continue the discussion of Associations and Linear Models begun today.
+- Discuss Nate Silver's *The Signal and the Noise* Chapters 2 (Political Predictions) and 3 (Baseball predictions).
+- Make some progress on Project Task B, including arranging ten Project Task B groups, and give you a few minutes to socialize.
+- Assignment 2 Answer Sketch conversation.
 
