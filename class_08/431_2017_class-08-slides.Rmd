@@ -31,9 +31,46 @@ options(width = 55)
 knitr::include_graphics("images/form7_1.jpg")
 ```
 
+## Always, always, always use R Projects.
+
+1. Pull down the data file(s) you need, and the template or R Markdown file you're using into a fresh, clean directory on your computer.
+2. Open R and immediately use File ... New Project ... In existing directory and navigate to the directory where your data and code starting point are.
+3. Look in the Files tab on the lower right - do you now see your R Markdown and .csv files? Double click on the R Markdown to use it.
+4. If so, then you can simply use ...
+
+```
+LBW <- read.csv("LBWunicef.csv") %>% tbl_df
+```
+
+to put the data in the LBWunicef.csv file into the LBW tibble in R.
+
+This should eliminate the "cannot open file" error, or the "Error in file(file, "rt") : cannot open the connection" problem in most cases.
+
+## Loading Packages
+
+You have already **installed** a whole bunch of packages in R.
+
+You probably need to **load** only a few in your code. If you're using `Hmisc::describe()`, for example, rather than just `describe()`, then you don't need `library(Hmisc)` earlier. The last one you load should always be the tidyverse, and your chunk should tell the computer to leave off messages.
+
+```{r chunkname-fig, out.width = '50%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/chunkname.png")
+```
+
 ## Is there a spell-check in R Studio?
 
 Sure. Just hit F7, or the abc key with a check mark.
+
+## Data Analysis
+
+```{r, echo = FALSE, message = FALSE}
+library(tidyverse)
+form7 <- read.csv("class7form.csv") %>% tbl_df
+ggplot(form7, aes(x = factor(hw1_difficulty), 
+                  y = hw1_time, fill = factor(hw1_difficulty))) +
+  geom_boxplot() + 
+  guides(fill = FALSE) +
+  labs(y = "Time to do HW 1 (minutes)", x = "Difficulty (1 = Extremely difficult, 7 = Extremely easy)")
+```
 
 ## Comments on The Google Form (final item)
 
