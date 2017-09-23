@@ -13,3 +13,4 @@ Class | Date | Slides | Comments
 6 | 2017-09-14 | [README 6](https://github.com/THOMASELOVE/431slides/blob/master/class_06/README.md) | NHANES data: [Course Notes](https://thomaselove.github.io/431notes/) Sections 7-8, mostly. 
 7 | 2017-09-19 | [README 7](https://github.com/THOMASELOVE/431slides/blob/master/class_07/README.md) | Assignment 1 [Sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md), [Course Project](https://github.com/THOMASELOVE/431project), [Notes](https://thomaselove.github.io/431notes/) Sections 9-10, mostly. 
 8 | 2017-09-21 | [README 8](https://github.com/THOMASELOVE/431slides/blob/master/class_08/README.md) | Transformations, Subgroups, Linear Associations
+9 | 2017-09-26 | [README 9](https://github.com/THOMASELOVE/431slides/blob/master/class_09/README.md) | Correlation, Linear Models,  Regression Output, form Task B Groups
