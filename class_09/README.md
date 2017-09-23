@@ -8,12 +8,13 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
-1. The main material from the [Course Notes](https://thomaselove.github.io/431notes/) today refers to Associations and Using Linear Models (Chapter 11) as demonstrated using a study of von Hippel-Lindau disease. [Von Hippel-Lindau syndrome](http://www.cancer.net/cancer-types/von-hippel-lindau-syndrome) (VHL) is a hereditary condition associated with tumors arising in multiple organs.
+1. The main material from the [Course Notes](https://thomaselove.github.io/431notes/) today refers to Associations and Using Linear Models (Chapter 11) as demonstrated using a study of von Hippel-Lindau disease. [Von Hippel-Lindau syndrome](http://www.cancer.net/cancer-types/von-hippel-lindau-syndrome) (VHL) is a hereditary condition associated with tumors arising in multiple organs. Today's agenda also includes
+  + discussion of Chapters 2 and 3 of The Signal and the Noise
+  + some discussion of the second Assignment that was due last week
+  + some time to form ten [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) groups
+    + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
 
-2. Agenda for today also includes discussion of Chapters 2 and 3 of The Signal and the Noise, some discussion of the second Assignment that was due last week, and some time to form ten [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) groups.
-  + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
-
-3. The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) used to use the `gg_qq` plot approach that is part of Love-boost.R. But that doesn't work so well, so I've removed the references to `gg_qq` and replaced them with regular `ggplot` approaches using the `geom_qq` geom.
+2. The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) used to use the `gg_qq` plot approach that is part of Love-boost.R. But that doesn't work so well, so this weekend I removed the references to `gg_qq` and replaced them with regular `ggplot` approaches using the `geom_qq` geom. The affected sections are 8.5.1 and 8.6.1.
 
 3. Upcoming Readings/Assignments/Deadlines:
 
