@@ -12,8 +12,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 2. For Class 11 (2017-10-03), please:
 
-- Read Ehrenberg's The Problem of Numeracy.
-- Read Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12 by **2017-10-03**.
+- Read Ehrenberg's [The Problem of Numeracy](https://github.com/THOMASELOVE/431slides/blob/master/class_10/Ehrenberg_1981_pw_The_Problem_of_Numeracy.pdf). The file is password-protected, but not actually invalid as GitHub suggests.
+- Read Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12.
 - You should be finished reading Part A of the [Course Notes](https://thomaselove.github.io/431notes/) by now.
 - You should also be finishing up the **Explore** and **Wrangle** material in [R For Data Science](http://r4ds.had.co.nz/).
 
