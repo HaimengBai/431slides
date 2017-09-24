@@ -1,0 +1,483 @@
+---
+title: "431 Class 10"
+author: "Thomas E. Love"
+date: "2017-09-28"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+- The Western Collaborative Group Study
+    + Building Tables Effectively
+    + Dealing with Missingness
+    + Scatterplot and Correlation Matrices
+
+## Today's R Setup
+
+```{r packages, message = FALSE}
+library(Epi); library(viridis)
+library(GGally); library(mice)
+library(tidyverse)
+
+source("Love-boost.R")
+```
+
+## The Western Collaborative Group Study
+
+Original description: 3524 men aged 39-59 and employed in the San Francisco Bay or Los Angeles areas were enrolled in 1960 and 1961. In addition to determinations of behavior pattern, the initial examination included medical and parental history, socioeconomic factors, exercise, diet, smoking, alcohol consumption, diet, serum lipid and lipoprotein studies, blood coagulation studies, and cardiovascular examination. 
+
+- http://www.epi.umn.edu/cvdepi/study-synopsis/western-collaborative-group-study/
+
+The WCGS data describe 3,154 subjects and 22 variables. For now, let's examine a few interesting variables, and a sample of 500 of the observations.
+
+```{r sample 500 observations and select the variables of interest}
+wcgs.full <- read.csv("wcgs.csv")
+wcgs.full <- tbl_df(wcgs.full)
+```
+
+## Select the variables of interest, and sample 500 subjects
+
+```{r select the variables of interest and sample 500 subjects}
+set.seed(43101)
+wcgs1 <- 
+  wcgs.full %>%
+  select(id, age, chol, arcus, dibpat, bmi, 
+         wghtcat, smoke, ncigs, chd69) %>%
+  sample_n(500, replace = FALSE)
+```
+
+## Resulting tibble
+
+```{r see the wcgs1 tibble, echo=FALSE}
+wcgs1
+```
+
+## Codebook
+
+Name    | Stored As  | Type         | Details (units, levels, etc.)
+-------:|:----------:|:------------:|------------------------------------
+`id`      | integer    | (nominal)  | ID #, nominal and uninteresting
+`age`     | integer    | quantitative | age, in years - no decimal places
+`chol`    | integer    | quantitative | total cholesterol, mg/dL
+`arcus`   | integer | (nominal) | arcus senilis present (1) or absent (0)
+`dibpat`  | factor (2) | (binary)  | behavioral pattern: A or B
+`bmi`     | number     | quantitative | body-mass index
+`wghtcat` | factor (4) | (ordinal) | wt: < 140, 140-170, 170-200, > 200
+`smoke`   | factor (2) | (binary)  | cigarette smoker: Yes or No
+`ncigs`   | integer | quantitative | number of cigarettes smoked per day
+`chd69`   | factor (2) | (binary) | CHD event: Yes or No
+
+
+## Summary of this sample (without `id`)
+
+![](images/summary1.png)
+
+```{r summary of wcgs1}
+summary(wcgs1)[,-1]
+```
+
+## A Key Research Question
+
+Were the men with Type A behavioral patterns more likely to suffer a CHD event?
+
+```{r table of dibpat by chd69}
+table(wcgs1$dibpat, wcgs1$chd69)
+```
+
+What's not so great about this table?
+
+## Re-specify the factor to re-order of the levels
+
+```{r relevel the chd69 factor into new variable chdevent}
+wcgs1$chdevent <- 
+  factor(wcgs1$chd69, levels = c("Yes", "No"))
+tab1 <- table(wcgs1$dibpat, wcgs1$chdevent)
+tab1
+```
+
+and this is **standard epidemiological format**.
+
+## Aha! A Two-by-Two Table!
+
+```{r two by two table analysis from Epi library}
+twoby2(tab1) ## twoby2 is part of the Epi package
+```
+
+## A 4 by 2 table
+
+```{r four by two attempt 1}
+table(wcgs1$wghtcat, wcgs1$chdevent)
+```
+
+Why is this a poor table?
+
+## An Improved 4 x 2 table
+
+```{r four by two attempt 2}
+wcgs1$wghtcat <- factor(wcgs1$wghtcat, 
+       levels = c("< 140", "140-170", "170-200", "> 200"))
+tab2 <- table(wcgs1$wghtcat, wcgs1$chdevent)
+knitr::kable(tab2)
+```
+
+## A Three-Way Table (Not Flattened)
+
+```{r make three way table}
+table(wcgs1$dibpat, wcgs1$wghtcat, wcgs1$chdevent)
+```
+
+## A Three-Way Table (Flattened)
+
+```{r make three way flattened table}
+ftable(wcgs1$dibpat, wcgs1$wghtcat, wcgs1$chdevent)
+```
+
+## How can we describe the distribution of BMI?
+
+```{r distribution of BMI, echo=FALSE}
+p1 <- ggplot(wcgs1, aes(x = bmi)) +
+  geom_histogram(binwidth = 1, fill = "navy", col = "yellow") +
+  theme(text = element_text(size = 18)) +
+  labs(x = "Body-Mass Index", y = "# of Subjects")
+
+p2 <- ggplot(wcgs1, aes(sample = bmi)) +
+  geom_qq(col = "navy", size = 2) + 
+  theme(text = element_text(size = 18)) +
+  labs(y = "sample BMI values")
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+## Summary of BMI data
+
+```{r favstats for BMI data}
+mosaic::favstats(wcgs1$bmi)
+psych::describe(wcgs1$bmi)
+```
+
+## Comparing BMI by Behavior Pattern
+
+```{r distribution of BMI by behavior pattern, echo=FALSE}
+ggplot(wcgs1, aes(x = dibpat, y = bmi, fill = dibpat)) +
+  geom_boxplot(notch = TRUE, outlier.size = 2) +
+  guides(fill = FALSE) +
+  theme(text = element_text(size = 18)) +
+  scale_fill_viridis(discrete=TRUE, option = "plasma") +
+  coord_flip() + 
+  labs(x = "Behavior Pattern", y = "Body-Mass Index")
+```
+
+## Numerical BMI summaries, by behavior pattern
+
+```{r favstats for BMI data by dibpat}
+by(wcgs1$bmi, wcgs1$dibpat, mosaic::favstats)
+```
+
+## How about Total Cholesterol, instead?
+
+```{r distribution of cholesterol, echo=FALSE}
+p1 <- ggplot(wcgs1, aes(x = chol)) +
+  geom_histogram(bins = 20, fill = "salmon", col = "white") +
+  theme(text = element_text(size = 18)) +
+  labs(x = "Total Cholesterol", y = "# of Subjects")
+
+p2 <- ggplot(wcgs1, aes(sample = chol)) +
+  geom_qq(col = "salmon", size = 2) + 
+  theme(text = element_text(size = 18)) +
+  labs(y = "sample Cholesterol values")
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+## Why did we get error warnings?
+
+```{r favstats for cholesterol data}
+mosaic::favstats(wcgs1$chol)
+psych::describe(wcgs1$chol)
+```
+
+## What should we do about missing values?
+
+1. `ggplot2` doesn't include missing values in the plot, but it does warn that they've been removed. 
+    + We could suppress that warning by setting `na.rm = TRUE` in the call to a geom like `geom_histogram` or `geom_qq`.
+
+## Plot with `na.rm = TRUE`
+
+```{r distribution of cholesterol attempt 2, echo=FALSE}
+p1 <- ggplot(wcgs1, aes(x = chol)) +
+  geom_histogram(bins = 20, fill = "salmon", col = "white", na.rm=TRUE) +
+  theme(text = element_text(size = 18)) +
+  labs(x = "Total Cholesterol", y = "# of Subjects")
+
+p2 <- ggplot(wcgs1, aes(sample = chol)) +
+  geom_qq(col = "salmon", size = 2, na.rm=TRUE) + 
+  theme(text = element_text(size = 18)) +
+  labs(y = "sample Cholesterol values")
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+## Classification of Missing Data
+
+There are three classifications we will think about in 431. Subtleties abound, but these three will suffice for most practical work.
+
+- MCAR: Missing *Completely at Random*. This is the desirable scenario for us. MCAR means that there is no relationship between the probability of a data point being missing, and any values in the data set, either missing or observed. 
+    + The missing data are just a random subset of the data. 
+    + This is one kind of "ignorable" missingness.
+
+
+## Classification of Missing Data
+
+- MAR: Missing *at Random*, which is definitely an unfortunate name. Less desirable, but there is still some hope. MAR means that the probability of a data point being missing has nothing to do with the missing value that would have been observed, but does have something to do with the values of some other variable that you did observe. 
+    + The idea is that if we can control for this other variable in our analysis, then we can treat this missingness as just a random subset of the data after that adjustment, which will eventually be pretty straightforward. 
+    + This is another kind of "ignorable" missingness.
+
+## Classification of Missing Data
+
+- MNAR: Missing *not at Random* is a more serious issue. Now, additional thought and some special methods may well be required. Here, there is a relationship between the probability that a value is missing and what the actual (missing) value is. 
+    + This is what we mean by "non-ignorable" missingness.
+    + Multiple Imputation methods (and Maximum Likelihood approaches) assume the data are at least MAR, so that's the important distinction to make, generally.
+
+- Some of these explanations come from [`this link`](http://www.theanalysisfactor.com/missing-data-mechanism/)
+
+## What should we do about missing values?
+
+2. At times you will want to try to understand what makes observations with missing values different from observations with meaningful recorded values, especially if we're thinking that the missing mechanism is MCAR or MAR.
+    + We might, for instance, compare the BMI values or perhaps the smoking status for those with and without missing cholesterol values, using the `is.na()` function to make a new variable to indicate those subjects without a cholesterol level.
+
+- Some of this material is drawn from [`R for Data Science`](http://r4ds.had.co.nz/exploratory-data-analysis.html#missing-values-2)
+
+## Do those missing cholesterol look unusual in terms of BMI?
+
+First, we'll build a new (logical) variable (TRUE/FALSE) to indicate a missing cholesterol level, and then we'll plot the BMI distributions for each level of the new variable.
+
+```{r build new variable to indicate missingness in cholesterol code only, eval=FALSE}
+wcgs1 %>%
+  mutate(
+    nochol = is.na(chol)
+  ) %>%
+  ggplot(aes(x = bmi)) +
+  geom_freqpoly(aes(col = nochol), bins = 30) + 
+  theme(text = element_text(size = 18))
+```
+
+## Do the BMIs of people without chol look different?
+
+```{r build new variable to indicate missingness in cholesterol, echo=FALSE}
+wcgs1 %>%
+  mutate(
+    nochol = is.na(chol)
+  ) %>%
+  ggplot(aes(x = bmi)) +
+  geom_freqpoly(aes(col = nochol), bins = 30) +
+  theme(text = element_text(size = 18))
+```
+
+## Are the people without a cholesterol value unusual in terms of their smoking status?
+
+```{r table comparing smoking by presence or absence of chol data}
+temp1 <- table(is.na(wcgs1$chol), wcgs1$smoke)
+knitr::kable(temp1)
+```
+
+## What should we do about missing values?
+
+3. How many missing values are there?
+    + If the missing values are more than, say, 5% of a variable, we're going to need some strong, almost heroic assumptions in order to feel confident about using such a variable in building a model or making an inference.
+    + If the amount of missing data is very small relative to the size of the data as a whole, then leaving out a few samples and just running models or comparisons ignoring those observations may not be too damaging.
+    + Depending on the situation, you may want to look for other fixes besides just dropping these cases and wiping out potentially useful data.
+
+- Some of this material comes from [`this R-bloggers post`](https://www.r-bloggers.com/imputing-missing-data-with-r-mice-package/)
+
+## What should we do about missing values?
+
+Could we **impute** missing values?
+
+- One approach is *simple* imputation, where a single value is created to "fill in" the missing observation. This is pretty easy to do, but very rarely a good idea.
+    + Rarely, substituting the mean is a reasonable thing to do, as it reduces variance in your estimate of the distribution, among other problems.
+    + Sometimes, but still pretty rarely, substituting in a random value observed in the rest of the data set is a reasonable thing to do.
+    + Better, although still problematic, imputation approaches use other variables in the data set to predict the missing value, and contain a random component. Using other variables preserves the relationships among variables in the imputations. The random component is important so that all missing values of a single variable are not all exactly equal. One example would be to use a regression equation to predict missing values, then add a random error term.
+
+- See http://www.theanalysisfactor.com/multiple-imputation-in-a-nutshell/
+
+## What's so bad about simple imputation?
+
+Although there are several simple imputation approaches that solve many of the problems inherent in mean imputation, one problem remains. Because the imputed value is an estimate - a predicted value - there is uncertainty about its true value. Every statistic has uncertainty, measured by its standard error. Statistics computed using imputed data have even more uncertainty than its standard error measures. Your statistical package cannot distinguish between an imputed value and a real value.
+
+Since the standard errors of statistics based on imputed values, such as sample means or regression coefficients, are too small, corresponding reported p-values are also too small. P-values that are reported as smaller than they, in reality, are, lead to Type I errors.
+
+- It turns out that *multiple* imputation is a much better approach.
+
+- Various types of "hot deck" procedures can help, too. See the `HotDeckImputation` package in R, or [`this link`](https://cran.r-project.org/web/packages/HotDeckImputation/HotDeckImputation.pdf)
+
+## So what is multiple imputation?
+
+Multiple imputation has solved this problem by incorporating the uncertainty inherent in imputation. It has four steps:
+
+1. Create *m* sets of imputations for the missing values using an imputation process with a random component.
+2. The result is *m* full data sets. Each data set will have slightly different values for the imputed data because of the random component.
+3. Analyze each completed data set. Each set of parameter estimates will differ slightly because the data differs slightly.
+4. Combine results, calculating the variation in parameter estimates.
+
+## Multiple Imputation is amazing
+
+Remarkably, *m*, the number of sufficient imputations, can be only 5 to 10 imputations, although it depends on the percentage of data that are missing. The result is unbiased parameter estimates and a full sample size, when done well.
+
+Doing multiple imputation well, however, is not always quick or easy. First, it requires that the missing data be ignorable. Second, it requires a very good imputation model. Creating a good imputation model requires knowing your data very well and having variables that will predict missing values.
+
+Source: http://www.theanalysisfactor.com/multiple-imputation-in-a-nutshell/
+
+## What will we do in 431?
+
+- Often, we'll be willing to simply exclude the data with missing values from our graphs or other analyses.
+- Sometimes, we'll be willing to assume (heroically) that the data are missing at random and we'll use a simple imputation approach, via the `mice` package.
+- Later in the term (and definitely in 432) we'll move on up to multiple imputation, using `mice` sometimes and `Hmisc` at other times.
+
+## Using `mice` to build imputations for `chol`
+
+```{r look at missingness patterns}
+mice::md.pattern(wcgs1) 
+```
+
+## Build 5 actual imputations using the "predictive mean matching" (pmm) approach
+
+```{r build_imputations_with_pmm}
+wcgs.temp <- mice(wcgs1,m=5,maxit=50,meth='pmm',seed=431)
+```
+
+## View imputation results, summarized
+
+![](images/impsumm1.png)
+
+## Inspect the imputed values, if you like
+
+```{r see the imputations}
+wcgs.temp$imp$chol
+wcgs.temp$imp$arcus
+```
+
+## Simple Imputation: Complete data with, let's say, the fourth of the five imputations we built
+
+```{r complete data for simple imputation with imputation 4}
+completedwcgs1 <- mice::complete(wcgs.temp,4)
+```
+
+### `favstats` with and without imputation
+
+```{r compare favstats with and without imputation}
+mosaic::favstats(wcgs1$chol)
+mosaic::favstats(completedwcgs1$chol)
+```
+
+## Build a Linear Model without imputation
+
+![](images/modelfit0.png)
+
+## Multiple imputation and pooling
+
+Suppose that the next step in our analysis is to fit a linear model to the data. You may ask what imputed data set to choose. The `mice` package makes it again very easy to fit a a model to each of the imputed data sets and then pool the results together
+
+
+![](images/modelfit1.png)
+
+
+### Details of linear model after pooling
+
+`modelFit1` contains the results of the fitting performed over the imputed data sets, while the `pool`() function pools them all together. 
+
+- `fmi` = fraction of missing information
+- `lambda` = proportion of total variance attributable to the missing data
+
+- Note that if we were looking at a strict alpha of 0.05, we'd have a significant `dibpat2` main effect now, when we didn't before.
+
+## Multivariable Descriptions: A Scatterplot Matrix
+
+```{r scattermat-a, fig.height=5}
+pairs (~ chol + age + bmi + ncigs, 
+       data=wcgs1, main="Simple Scatterplot Matrix")
+```
+
+## Correlation Matrix (after imputation)
+
+```{r complete data}
+completedwcgs1 <- mice::complete(wcgs.temp,1)
+round(cor(completedwcgs1[c("chol", "age", "bmi")]),3)
+```
+
+
+## Using GGally for a Correlation Matrix
+
+```{r ggally correlation matrix, fig.height = 3.5}
+tempdat <- completedwcgs1 %>%
+  select(chol, age, bmi, ncigs)
+
+ggcorr(tempdat, name = "Pearson r", label = TRUE)
+```
+
+
+## My Favorite Scatterplot Matrix
+
+My favorite way to augment this plot adds loess smooths to the upper panel, and correlations in the lower panel, with histograms down the diagonal. To do this, we first create two functions (these modifications come from [Chang's R Graphics Cookbook](https://sites.google.com/a/case.edu/love-431/home/texts-not-written-by-dr-love)), called `panel.hist` and `panel.cor`.
+
+These functions are in the Love-boost.R script.
+
+## Augmented Scatterplot Matrix
+
+```{r scattermat-b res, fig.height=6, echo=FALSE}
+pairs (~ chol + age + bmi + ncigs, data=completedwcgs1,
+       main="Augmented Scatterplot Matrix", 
+       upper.panel = panel.smooth,
+       diag.panel = panel.hist,
+       lower.panel = panel.cor)
+```
+
+## Code for Augmented Scatterplot Matrix
+
+```{r scattermat-b code, fig.height=6, eval=FALSE}
+pairs (~ chol + age + bmi + ncigs, data=completedwcgs1,
+       main="Augmented Scatterplot Matrix", 
+       upper.panel = panel.smooth,
+       diag.panel = panel.hist,
+       lower.panel = panel.cor)
+```
+
+## Using GGally for a Scatterplot Matrix (Code)
+
+```{r ggally scatterplot matrix code, eval=FALSE}
+tempdat <- completedwcgs1 %>%
+  select(chol, age, bmi, ncigs)
+
+ggpairs(tempdat, title = "Scatterplot Matrix via ggpairs")
+```
+
+## Using GGally for a Scatterplot Matrix (Result)
+
+```{r ggally scatterplot matrix, echo=FALSE}
+tempdat <- completedwcgs1 %>%
+  select(chol, age, bmi, ncigs)
+
+ggpairs(tempdat, title = "Scatterplot Matrix via ggpairs")
+```
+
+## For Tuesday: Working with Tables
+
+For Class 11, I'd like you to read a 1981 paper by A.S.C. Ehrenberg that you'll find linked on the Class 10 README.
+
+The paper is called *The Problem of Numeracy* and it provides some very helpful tips for working with tables, in particular.
+
+There are three key tips related to the development of tables, in practice, as described by Ehrenberg, and also by Howard Wainer\footnote{Visual Revelations (1997), Chapter 10.} who concisely states them as:
+
+1. Order the rows and columns in a way that makes sense.
+2. Round - a lot!
+3. ALL is different and important.
+
