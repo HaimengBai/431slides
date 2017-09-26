@@ -27,12 +27,20 @@ options(width = 55)
 
 ## Assignment 2 feedback
 
-https://github.com/THOMASELOVE/431homework/tree/master/HW2 has the (password-protected pdf) answer sketch, and will also house
+https://github.com/THOMASELOVE/431homework/tree/master/HW2 has the (password-protected pdf and non-protected Rmd) answer sketch, the grades, and the grading rubric
 
-- the grades
-- the grading rubric
+- I'm no longer suggesting people use `gg_qq`, and I've removed it from the Course Notes and answer sketch.
 
-I'm no longer suggesting people use `gg_qq`, and I've removed it from the Course Notes.
+## Four Interesting Essays
+
+Tell us about an example in your own field/work/experience where a "surplus" of information made (or makes) it easier for people dealing with a complex system to cherry-pick information that supports their prior positions. What were the implications of your example in terms of lessons that can be learned? 
+
+Visit https://goo.gl/5q6Nrw to read excerpts from four of the more interesting responses.
+
+1. On Screening, Hepatitis C and Liver Cancer
+2. On Web MD, and "a little knowledge is a dangerous thing"
+3. Is self-control like a muscle? The problem of underpowered studies
+4. On the polarizing impact of the free flow of "information"
 
 ## The Signal and The Noise
 
