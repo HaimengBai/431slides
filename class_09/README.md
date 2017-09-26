@@ -29,3 +29,4 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
+4. Be sure that your Task B group has its information submitted via this [Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on Wednesday, 2017-09-27**. Thanks.
