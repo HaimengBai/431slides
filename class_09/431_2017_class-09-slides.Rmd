@@ -88,7 +88,7 @@ VHL <- read.csv("vonHippel-Lindau.csv") %>% tbl_df
 ## Von Hippel - Lindau study Codebook
 
 - `p.ne` = plasma norepinephrine (pg/ml)
-- `tumorvol` = tumor volumne (ml)
+- `tumorvol` = tumor volume (ml)
 - `disease` = 1 for patients with multiple endocrine neoplasia type 2
 - `disease` = 0 for patients with von Hippel-Lindau disease
 
