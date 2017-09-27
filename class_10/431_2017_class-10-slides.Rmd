@@ -17,20 +17,141 @@ options(width = 55)
 
 ## Today's Agenda
 
+- Forming Project Task B Groups
 - The Western Collaborative Group Study
+    + Dealing with Factors
     + Building Tables Effectively
     + Dealing with Missingness
     + Scatterplot and Correlation Matrices
+
+## 15 Questions Dr. Love plans to include in the Survey
+
+```{r 15_in-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/15_in.png")
+```
+
+## Project Task B groups
+
+We need ten such groups, each with about 5 people involved.
+
+Google Form is available at https://goo.gl/forms/WaQOdCEAW0wxdjJh2 and needs to be done by 5 PM today.
+
+Task B meetings in class will be held next Tuesday, and also on 2017-10-12.
+
+Details on Task B specified at https://github.com/thomaselove/431project
+
+## The Form's Questions...
+
+```{r taskB-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/taskB.png")
+```
+
+
 
 ## Today's R Setup
 
 ```{r packages, message = FALSE}
 library(Epi); library(viridis)
 library(GGally); library(mice)
-library(tidyverse)
+library(forcats); library(tidyverse)
 
 source("Love-boost.R")
 ```
+
+## Cleaning up Loose Ends in the VHL Study
+
+```{r load_VHL_data}
+VHL <- read.csv("vonHippel-Lindau.csv") %>% tbl_df
+```
+
+### Von Hippel - Lindau study Codebook
+
+- `p.ne` = plasma norepinephrine (pg/ml)
+- `tumorvol` = tumor volume (ml)
+- `disease` = 1 for patients with multiple endocrine neoplasia type 2
+- `disease` = 0 for patients with von Hippel-Lindau disease
+
+We want to add a new variable (factor) called `diagnosis`, which takes the values `von H-L` or `neoplasia`.
+
+## Creating a Factor to represent disease diagnosis
+
+We want to add a new variable, specifically a factor, called `diagnosis`, which will take the values `von H-L` or `neoplasia`.
+
+- Recall `disease` is a numeric 1/0 variable (0 = von H-L, 1 = neoplasia)
+- Use `fct_recode` from the `forcats` package...
+
+```{r create_diagnosis}
+VHL <- VHL %>%
+  mutate(diagnosis = fct_recode(factor(disease), 
+                                "neoplasia" = "1",
+                                "von H-L" = "0")
+  )
+```
+
+## Now, what does VHL look like?
+
+```{r view_new_VHL}
+VHL
+```
+
+
+## Compare the patients by diagnosis
+
+```{r scatter_5_no_facets, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne, col = diagnosis)) +
+  geom_point(size = 3) +
+  stat_smooth(method=lm, se=FALSE) +
+  theme(text = element_text(size = 14)) +
+  labs(title = "p.ne vs. log(tumorvol), by diagnosis",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Facetted Scatterplots by diagnosis
+
+```{r scatter_5_with_facets, echo=FALSE}
+ggplot(VHL, aes(x = log(tumorvol), y = p.ne, col = diagnosis)) +
+  geom_point(size = 3) +
+  stat_smooth(method=lm) +
+  facet_wrap(~ diagnosis) +
+  guides(color = FALSE) +
+  theme(text = element_text(size = 14)) +
+  labs(title = "p.ne vs. log(tumorvol), by diagnosis",
+       x = "Natural logarithm of Tumor Volume (ml)", y = "Plasma Norepinephrine (pg/ml)")
+```
+
+## Model accounting for different slopes and intercepts
+
+```{r model2}
+model2 <- lm(p.ne ~ log(tumorvol) * diagnosis, data = VHL)
+model2
+```
+
+## Model 2 results
+
+`p.ne` = 417 + 220 log(`tumorvol`) - 893 (`diagnosis = neoplasia`) + 125 (`diagnosis = neoplasia`)*log(`tumorvol`)
+
+where the indicator variable (`diagnosis = neoplasia`) = 1 for neoplasia subjects, and 0 for other subjects...
+
+- Model for `p.ne` in von H-L patients: 
+    + 417 + 220 log(`tumorvol`)
+- Model for `p.ne` in neoplasia patients: 
+    + (417 - 893) + (220 + 125) log(`tumorvol`) 
+    + -476 + 345 log(`tumorvol`)
+    
+## Model 2 Predictions
+
+What is the predicted `p.ne` for a single new subject with `tumorvol` = 55 ml (so log(tumorvol) = `r round(log(55),2)`) in each diagnosis category?
+
+```{r model2predictionsneoplasia}
+predict(model2, newdata = data_frame(tumorvol = 55, 
+        diagnosis = "neoplasia"), interval = "prediction")
+```
+
+```{r model2predictionVHL}
+predict(model2, newdata = data_frame(tumorvol = 55, 
+        diagnosis = "von H-L"), interval = "prediction")
+```
+
 
 ## The Western Collaborative Group Study
 
