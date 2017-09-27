@@ -8,9 +8,9 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
-1. Today's agenda is focused on working with factors, building tables, dealing with missingness, and building scatterplot and correlation matrices, all using the data from the Western Collaborative Group Study, from Section 13 of the [Course Notes](https://thomaselove.github.io/431notes/index.html). 
+1. Today's agenda is focused on working with factors (using some of the VHL data) then on building tables, dealing with missingness, and building scatterplot and correlation matrices, all using the data from the Western Collaborative Group Study, from Section 13 of the [Course Notes](https://thomaselove.github.io/431notes/index.html). 
 
-We'll build the Task B groups as our first activity, though. Your Task B group will submit its information via this [Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by *5 PM* on **Thursday, 2017-09-28**. 2 groups of 4 have already done so. If you are a group of less than 5 people, I may assign you a fifth member, so go for 5.
+We'll build the **Task B groups for the project** as our first activity, though. Your Task B group will submit its information via this [Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by *5 PM* on **Thursday, 2017-09-28**. 2 groups of 4 have already done so. If you are a group of less than 5 people, I may assign you a fifth member, so go for 5.
 
 2. [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due at noon on Friday **2017-09-29**. 
 
