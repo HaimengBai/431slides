@@ -11,8 +11,6 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. The main material from the [Course Notes](https://thomaselove.github.io/431notes/) today refers to Associations and Using Linear Models (Chapter 11) as demonstrated using a study of von Hippel-Lindau disease. [Von Hippel-Lindau syndrome](http://www.cancer.net/cancer-types/von-hippel-lindau-syndrome) (VHL) is a hereditary condition associated with tumors arising in multiple organs. Today's agenda also includes
   + discussion of Chapters 2 and 3 of The Signal and the Noise
   + some discussion of [Assignment 2](https://github.com/THOMASELOVE/431homework/blob/master/HW2/README.md)
-  + some time to form ten [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) groups
-    + One member of each group will specify membership and the group name to Dr. Love by filling out [this Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on 2017-09-27**.
 
 2. **gg_qq is no more.** The [Course Notes](https://thomaselove.github.io/431notes/index.html) (in several places) used to use the `gg_qq` plot approach that is part of Love-boost.R. But that doesn't work so well (in particular, it has trouble with missing data, doesn't allow you to adjust the title easily, and cannot be incorporated easily into multiple plot arrays.) So, this weekend I removed the references to `gg_qq` and replaced them with regular `ggplot` approaches using the `geom_qq` geom, and with base graphics approaches using `qqnorm` and `qqline`. The affected sections are 8.5 and 8.6. I have also updated the answer sketch for Assignment 2 to replace `gg_qq` with other ggplot-based approaches.
 
@@ -29,4 +27,9 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-4. Be sure that your Task B group has its information submitted via this [Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by **noon on Wednesday, 2017-09-27**. Thanks.
+4. Change of plans. We'll build the Task B groups as our first activity on Thursday (Class 10). Your Task B group will submit its information via this [Google Form](https://goo.gl/forms/WaQOdCEAW0wxdjJh2) by *5 PM* on **Thursday, 2017-09-28**. Thanks.
+
+5. Audio files are now posted for Class 9.
+
+6. Don't forget that [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due Friday 2017-09-29.
+
