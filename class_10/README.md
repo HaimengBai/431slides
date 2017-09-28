@@ -20,7 +20,9 @@ Some common issues:
 - When fitting a loess smooth, in Question 7, for instance, in the aes part of your ggplot call, you don't need to specify group = Species, if you've already got color = Species. If you do, the loess won't work well, although the lm will.
 - Sometimes R will throw an error saying that a particular package is missing. This is usually because some package that the tidyverse (or some other package you're trying to load) uses has been updated. Updating your packages can help, especially after closing R Studio and restarting, or try just reinstalling the missing package, by visiting Packages in the bottom right window, and selecting Install packages, then specifying the name of the missing piece.
 
-3. For Class 11 (2017-10-03), please:
+3. Today, we'll take a peek at some of the functions in the [broom package](https://cran.r-project.org/web/packages/broom/vignettes/broom.html), which I've just added to the list of [packages you should install](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md).
+
+4. For Class 11 (2017-10-03), please:
 
 - Read Ehrenberg's [The Problem of Numeracy](https://github.com/THOMASELOVE/431slides/blob/master/class_10/Ehrenberg_1981_pw_The_Problem_of_Numeracy.pdf). The file is password-protected, but not actually invalid as GitHub suggests.
 - Read Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12.
@@ -28,7 +30,7 @@ Some common issues:
 - You should be finished reading Part A of the [Course Notes](https://thomaselove.github.io/431notes/) by now.
 - You should also be finishing up the **Explore** and **Wrangle** material in [R For Data Science](http://r4ds.had.co.nz/).
 
-4. Upcoming Readings/Assignments/Deadlines:
+5. Upcoming Readings/Assignments/Deadlines:
 
 - [Quiz 1](https://thomaselove.github.io/431syllabus/quizzes.html) will come to you on 2017-10-05 and is due at noon on **2017-10-09**.
 - Read Nate Silver's *The Signal and the Noise* Chapters 4 and 5 (Weather and Earthquake Predictions) [as well as Jeff Leek's Chapter 6] by **2017-10-10**, and Silver's Chapters 7 and 8 (Disease Outbreaks and Bayes' Theorem) by **2017-10-17**.
@@ -38,3 +40,4 @@ Some common issues:
 
 ## Announcements after class:
 
+6. Don't forget about Assignment 3 due tomorrow. See the comments in #2 above.
