@@ -15,9 +15,10 @@ We'll build the **Task B groups for the project** as our first activity, though.
 2. [Assignment 3](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-3.md) is due at noon on Friday **2017-09-29**. 
 
 Some common issues:
-- Sometimes R will tell you that a particular package is missing. This is usually because some package that the tidyverse (or some other package you're trying to load) uses has been updated. Updating your packages can help, especially after closing R Studio and restarting, or try just reinstalling the missing package, by visiting Packages in the bottom right window, and selecting Install packages, then specifying the name of the missing piece. 
+- If one of us answers your question, great. But if you have to write back to clarify, it helps if you can override your email's wish to reply just to the individual email of the person who answered your question and instead send your follow-up back to 431-help.
+- If you're looking for a model for Question 5, consider a close look at Section 11.4.3 of [the Notes](https://thomaselove.github.io/431notes/index.html).
 - When fitting a loess smooth, in Question 7, for instance, in the aes part of your ggplot call, you don't need to specify group = Species, if you've already got color = Species. If you do, the loess won't work well, although the lm will.
-- If you're looking for a model for Question 5, consider a close look at Section 11.4.3 of [the Notes]((https://thomaselove.github.io/431notes/index.html).
+- Sometimes R will throw an error saying that a particular package is missing. This is usually because some package that the tidyverse (or some other package you're trying to load) uses has been updated. Updating your packages can help, especially after closing R Studio and restarting, or try just reinstalling the missing package, by visiting Packages in the bottom right window, and selecting Install packages, then specifying the name of the missing piece.
 
 3. For Class 11 (2017-10-03), please:
 
