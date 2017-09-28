@@ -51,7 +51,7 @@ knitr::include_graphics("images/taskB.png")
 ## Today's R Setup
 
 ```{r packages, message = FALSE}
-library(Epi); library(viridis)
+library(Epi); library(viridis); library(broom)
 library(GGally); library(mice)
 library(forcats); library(tidyverse)
 
@@ -152,6 +152,25 @@ predict(model2, newdata = data_frame(tumorvol = 55,
         diagnosis = "von H-L"), interval = "prediction")
 ```
 
+## The `broom` package
+
+```{r, message = FALSE}
+tidy(model2)
+```
+
+## The `broom` package
+
+```{r, warning = FALSE}
+newdat <- augment(model2)
+
+head(newdat, 2)
+```
+
+## The `broom` package
+
+```{r, message = FALSE}
+glance(model2)
+```
 
 ## The Western Collaborative Group Study
 
