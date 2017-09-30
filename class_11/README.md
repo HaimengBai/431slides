@@ -10,7 +10,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 1. Today's agenda
 
-- Discussion of Assignment 3
+- Discussion of [Assignment 3](https://github.com/THOMASELOVE/431homework/tree/master/HW3)
 - Discussion of Ehrenberg's [The Problem of Numeracy](https://github.com/THOMASELOVE/431slides/blob/master/class_10/Ehrenberg_1981_pw_The_Problem_of_Numeracy.pdf). 
 - Discussion of Cross-Tabulations and of Scatterplot and Correlation Matrices
 - Brief discussion of Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12.
