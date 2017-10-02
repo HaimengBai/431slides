@@ -1,0 +1,401 @@
+---
+title: "431 Class 11"
+author: "Thomas E. Love"
+date: "2017-10-03"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+1. Forming Scatterplot and Correlation Matrices
+2. Building Tables Well: Ehrenberg paper
+3. Project Task B
+4. Highlights from Leek Chapters 1-4, 12
+
+Please sit near the rest of your Task B Group today.
+
+## Today's R Setup
+
+```{r packages, message = FALSE}
+library(GGally); library(tidyverse)
+
+source("Love-boost.R")
+```
+
+## A new sample of 500 observations without NA
+
+```{r sample 500 observations and select the variables of interest}
+wcgs.full <- read.csv("wcgs.csv") %>% tbl_df()
+
+set.seed(43102)
+wcgs2 <- wcgs.full %>%
+  filter(complete.cases(age, chol, bmi, 
+                        ncigs, arcus, dibpat)) %>%
+  select(id, age, chol, bmi, 
+         ncigs, arcus, dibpat) %>%
+  sample_n(500, replace = FALSE)
+```
+
+## Codebook for `wcgs2`
+
+Name    | Stored As  | Type         | Details (units, levels, etc.)
+-------:|:----------:|:------------:|------------------------------------
+`id`      | integer    | (nominal)  | ID #, nominal and uninteresting
+`age`     | integer    | quantitative | age, in years - no decimal places
+`chol`    | integer    | quantitative | total cholesterol, mg/dL
+`arcus`   | integer | (nominal) | arcus senilis present (1) or absent (0)
+`dibpat`  | factor (2) | (binary)  | behavioral pattern: A or B
+`bmi`     | number     | quantitative | body-mass index
+`ncigs`   | integer | quantitative | number of cigarettes smoked per day
+
+## Multivariable Descriptions: A Scatterplot Matrix
+
+```{r scattermat-a, fig.height=5}
+pairs (~ chol + age + bmi + ncigs, 
+       data=wcgs2, main="Simple Scatterplot Matrix for wcgs2")
+```
+
+## Correlation Matrix for Numeric Variables
+
+```{r complete data}
+wcgs2 %>%
+  select(chol, age, bmi, ncigs) %>%
+  cor() %>%
+  knitr::kable()
+```
+
+
+## Using GGally for a Correlation Matrix
+
+```{r ggally correlation matrix, fig.height = 3.5}
+ggcorr(wcgs2, name = "Pearson r", label = TRUE)
+```
+
+
+## My Favorite Scatterplot Matrix
+
+My favorite way to augment this plot adds smooths to the upper panel, and correlations in the lower panel, with histograms down the diagonal. To do this, we first create two functions (these modifications come from [Chang's R Graphics Cookbook](https://sites.google.com/a/case.edu/love-431/home/texts-not-written-by-dr-love)), called `panel.hist` and `panel.cor`.
+
+These functions are in the Love-boost.R script.
+
+## Augmented Scatterplot Matrix
+
+```{r scattermat-b res, fig.height=6, echo=FALSE}
+pairs (~ chol + age + bmi + ncigs, data=wcgs2,
+       main="Augmented Scatterplot Matrix", 
+       upper.panel = panel.smooth,
+       diag.panel = panel.hist,
+       lower.panel = panel.cor)
+```
+
+## Code for Augmented Scatterplot Matrix
+
+```{r scattermat-b code, fig.height=6, eval=FALSE}
+pairs (~ chol + age + bmi + ncigs, data=wcgs2,
+       main="Augmented Scatterplot Matrix", 
+       upper.panel = panel.smooth,
+       diag.panel = panel.hist,
+       lower.panel = panel.cor)
+```
+
+## Using GGally for a Scatterplot Matrix (Code)
+
+```{r ggally scatterplot matrix code, eval=FALSE, message = FALSE}
+tempdat <- wcgs2 %>%
+  select(chol, age, bmi, ncigs, dibpat, arcus)
+
+ggpairs(tempdat, title = "Scatterplot Matrix via ggpairs")
+```
+
+## Using GGally for a Scatterplot Matrix (Result)
+
+```{r ggally scatterplot matrix, echo=FALSE, message = FALSE}
+tempdat <- wcgs2 %>%
+  select(chol, age, bmi, ncigs, dibpat, arcus)
+
+ggpairs(tempdat, title = "Scatterplot Matrix via ggpairs")
+```
+
+## What Makes a Good Graph? (Tufte, lightly edited)
+
+1. During the discovery stage of your work use any style or type of graph you wish. Design becomes important as soon as you want to convey information. At that point you have to create graphs that communicate ideas to others.
+
+2. Graphs communicate most easily when they have a specific message -- for instance, "coffee production up!" They lose impact and are less successful when their point is vague -- for example, "The number of students in public high schools, 1993-2003."
+
+3. Graphs are powerful when you use the title to reinforce your specific message -- "The number of students in public high schools has fallen by a third in ten years." Such transparent messages will be understood and remembered by readers. If you don't tell readers what the graph is saying, some will never know.
+
+4. After years of hard thinking, I concluded that graphs are like jokes: if you have to explain them they have failed.
+
+## This doesn't apply to axis labels
+
+```{r convincing, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/convincing.png")
+```
+
+
+## Building Tables Well
+
+> Getting information from a table is like extracting sunlight from a cucumber.
+
+> Farquhar AB and Farquhar H
+
+## Building Tables Well
+
+There are three key tips related to the development of tables, in practice, as described by Ehrenberg, and also by Howard Wainer\footnote{Visual Revelations (1997), Chapter 10.} who concisely states them as:
+
+1. Order the rows and columns in a way that makes sense.
+2. Round - a lot!
+3. ALL is different and important.
+
+## Now HERE's a Contingency Table
+
+```{r tableA, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA.PNG")
+```
+
+## Four Questions
+
+1. What is the general level (per 100,000 population) of accidental death in the countries chosen?
+2. How do the countries differ with respect to their rates of accidental death?
+3. What are the principal causes of accidental death? Which are the most frequent? The least frequent?
+4. Are there any unusual interactions between country and cause of accidental death?
+
+See the Supplementary Table on the Class 11 page.
+
+## Wainer H (1997) *Visual Revelations*, Chapter 10
+
+```{r tableA2, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA-ver2.PNG")
+```
+
+## Ehrenberg's Main Ideas?
+
+## Wainer's Three Rules for Table Construction
+
+1. Order the rows and columns in a way that makes sense.
+2. Round, a lot!
+3. ALL is different and important
+
+- Wainer H (1997) *Visual Revelations* Chapter 10.
+
+## Alabama First!
+
+Which is more useful to you?
+
+2013 Percent of Students in grades 9-12 who are obese
+
+State | % Obese | 95% CI | Sample Size
+----- | ------- | ------ | -----------
+Alabama | 17.1 | (14.6 - 19.9) | 1,499
+Alaska |	12.4	| (10.5-14.6)	| 1,167
+Arizona |	10.7 |	(8.3-13.6)	| 1,520
+Arkansas |	17.8	| (15.7-20.1)	| 1,470
+Connecticut |	12.3 |	(10.2-14.7)	| 2,270
+Delaware |	14.2 |	(12.9-15.6) |	2,475
+Florida |	11.6	| (10.5-12.8)	| 5,491
+... | | | 
+Wisconsin |	11.6 | 	(9.7-13.9)	| 2,771
+Wyoming	| 10.7 |	(9.4-12.2)	| 2,910
+
+or ...
+
+## Alabama First!
+
+State | % Obese | 95% CI | Sample Size
+----- | ------- | ------ | -----------
+Kentucky | 18.0 | (15.7 - 20.6) | 1,537
+Arkansas | 17.8 | (15.7 - 20.1) | 1,470
+Alabama | 17.1 | (14.6 - 19.9) | 1,499
+Tennessee | 16.9 | (15.1 - 18.8) | 1,831
+Texas | 15.7 | (13.9 - 17.6) | 3,039
+... | | |
+Massachusetts | 10.2 | (8.5 - 12.1) | 2,547
+Idaho | 9.6 | (8.2 - 11.1) | 1,841
+Montana | 9.4 | (8.4 - 10.5) | 4,679
+New Jersey | 8.7 | (6.8 - 11.2) | 1,644
+Utah | 6.4 | (4.8 - 8.5) | 2,136
+
+It is a rare event when Alabama first is the best choice.
+
+## Archiving Data: Sortable Online Tables
+
+```{r onlinetable, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/onlinetable.PNG")
+```
+
+## Notes on the Data in the previous slides
+
+*Source*: Estimates from the National Youth Risk Behavior Surveillance System (YRBSS). Available at [http://www.cdc.gov/nccdphp/DNPAO/index.html](http://www.cdc.gov/nccdphp/DNPAO/index.html).
+
+To go directly to this table [visit this link](http://nccd.cdc.gov/NPAO_DTM/IndicatorSummary.aspx?category=28&indicator=63)
+
+- Obese is defined as body mass index (BMI)-for-age and sex $\geq$ 95th percentile based on the 2000 CDC growth chart; BMI was calculated from self-reported weight and height (weight [kg]/ height [m^2^]).
+
+## Order rows and columns sensibly
+
+- Alabama First!
+- Size places - put the largest first. We often look most carefully at the top.
+- Order time from the past to the future to help the viewer.
+- If there is a clear predictor-outcome relationship, put the predictors in the rows and the outcomes in the columns.
+
+## Order the rows and columns sensibly.
+
+```{r tableA3, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA-ver3.PNG")
+```
+
+## Round - a lot!
+
+- Humans cannot understand more than two digits very easily.
+
+- We almost never care about accuracy of more than two digits.
+
+- We can almost never justify more than two digits of accuracy statistically.
+
+## Suppose we want to report a correlation coefficient of 0.25
+
+- How many observations do you think you would need to justify such a choice?
+
+- To report 0.25 meaningfully, we should know the second digit isn't 4 or 6, right?
+
+## Reporting a correlation coefficient of 0.25
+
+To report 0.25 meaningfully, we desire to be sure that the second digit isn't 4 or 6.
+
+- That requires a standard error less than 0.005
+
+- The *standard error* of any statistic is proportional to 1 over the square root of the sample size, *n*.
+
+So $\frac{1}{\sqrt{n}}$ ~ 0.005, but that means $\sqrt{n} = \frac{1}{0.005} = 200$.
+
+And if $\sqrt{n} = 200$, then *n* = (200)^2^ = 40,000.
+
+**Do we usually have 40,000 observations?**
+
+## Round, a lot!
+
+```{r tableA4, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA-ver4.PNG")
+```
+
+## ALL is different and important
+
+```{r tableA5, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA-ver5.PNG")
+```
+
+## Cluster when you can, and highlight outliers.
+
+```{r tableA6, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/tableA-ver6.PNG")
+```
+
+## Visualizing Categories
+
+http://flowingdata.com/projects/2016/alcohol-world/
+
+
+Recorded APC is defined as the recorded amount of alcohol consumed per capita (15+ years) over a calendar year in a country, in litres of pure alcohol. The indicator only takes into account the consumption which is recorded from production, import, export, and sales data often via taxation. 
+
+- Numerator: The amount of recorded alcohol consumed per capita (15+ years) during a calendar year, in litres of pure alcohol. 
+- Denominator: Midyear resident population (15+ years) for the same calendar year, UN World Population Prospects, medium variant.
+
+http://apps.who.int/gho/indicatorregistry/App_Main/view_indicator.aspx?iid=462
+
+## Project Task B Groups
+
+1. Club Tukey (Estee, Chaim, Caroline, Hyung Chul, Vinh, Frances)
+2. 4 brains 1 heart (Laura Baldassari, Kedar, Sarah Planchon, Sneha, Xin Xin)
+3. The Foxy Hedgehogs (Sriram, Laura Cremer, Gavin, Adam, Arshna, Connor)
+4. The Outliers (Ruke, Ashlei, Brianna, Grace, Jon, Pavel)
+5. Pearson Project (Albar, Abhishek, C.W., M.K., Sandra)
+6. The Ridiculous Six (Gwen, Sarah Frischmann, Ryan, Nik, Roberto, Elina)
+7. Shakalaka (Todd, Dongze, Dannielle, Ruipeng, Xueyi)
+8. Super 6 (Sophia, Vishali, J.J., Preeti, Andrew Shan, Bilal)
+9. The Two Keys (Imad, Jack, Neel, Kaylee, Andrew Tang, Peter)
+
+## The Four Parts of Project Task B
+
+1. Develop and propose **two** research questions for Study 1.
+2. Develop and propose 4 **quantitative** survey items for Study 1, each explicitly and directly linked to a research question. 
+3. Develop and propose 4 **categorical** (2-5 levels) survey items for Study 1, explicitly and directly linked to a research question. 
+4. Identify (from the published literature, the internet, or it can be one you've made up) an interesting *scale* related to one of your two Study 1 research questions that [a] includes no more than 10 survey items, and [b] is available for public use.
+
+Details, resources at https://github.com/THOMASELOVE/431project/tree/master/TaskB
+
+## 15 Questions Dr. Love plans to include in the Survey
+
+```{r 15_in-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/15_in.png")
+```
+
+## Leek, Chapters 1-2
+
+### Chapter 1 Introduction
+
+### Chapter 2 The Data Analytic Question
+
+See next slide.
+
+Type                       | Strongest Coverage
+--------------------------:| --------
+Descriptive \& Exploratory | Part A
+Inferential                | Part B
+Predictive                 | Part C
+Causal \& Mechanistic      | 432
+
+## Leek, Chapter 2
+
+```{r Leek2, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/Leek-data-analysis-question.png")
+```
+
+## Leek, Chapter 3 (Tidying the Data)
+
+Components of a Processed Data Set
+
+1. The raw data.
+2. A tidy data set.
+3. A code book describing each variable and its values in the tidy data set.
+4. An explicit and exact recipe you used to go from 1 to 2 to 3.
+
+See https://github.com/jtleek/datasharing for a guide for your project.
+
+Tidy Data Video from Hadley Wickham https://vimeo.com/33727555
+
+## Leek, Chapter 4 (Checking the Data)
+
+- Coding variables appropriately
+    + Continuous, Ordinal, Categorical, Missing, Censored
+- Code categorical / ordinal variables so that R will read them as factors.
+- Encode everything using text, not with colors on the spreadsheet.
+- Identify the missing value indicator, and use `NA` whenever you can.
+- Check for coding errors, particularly label switching.
+
+## Leek, Chapter 12 (Reproducibility)
+
+Reproducibility of workflow is what we're aiming for.
+
+- Everything in a script. (R Markdown)
+- Everything stored in a plain text file (future-proof: .csv, .Rmd)
+- Organize your data analysis in subfolders of the project directory
+- Use version control (something I should do more of)
+- Add `sessionInfo()` command to final version of work when you need to preserve the details on software and parameters - see next slide.
+
+## My session info, at home, 2017-10-02
+
+Include this information in your project submissions, but not probably in your other assignments, unless we ask you for it.
+
+```{r session-info, out.width = '80%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/sessioninfo-2017-10-02.png")
+```
