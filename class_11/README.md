@@ -13,7 +13,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     2. Discussion of Ehrenberg's [The Problem of Numeracy](https://github.com/THOMASELOVE/431slides/blob/master/class_10/Ehrenberg_1981_pw_The_Problem_of_Numeracy.pdf). 
     3. Discussion of Cross-Tabulations and of Scatterplot and Correlation Matrices materials from the [Course Notes](https://thomaselove.github.io/431notes/).
     4. Brief discussion of Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12.
-    5. Project Task B Group Meetings
+    5. [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) Group Meetings
     6. [Quiz 1](https://thomaselove.github.io/431syllabus/quizzes.html) Setup. What is fair game on the quiz? 
         [a] everything in Part A of the [Notes](https://thomaselove.github.io/431notes/), 
         [b] everything we've discussed in [classes 1-11](https://github.com/thomaselove/431slides), 
