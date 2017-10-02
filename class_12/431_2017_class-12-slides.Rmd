@@ -1,0 +1,511 @@
+---
+title: "431 Class 12"
+author: "Thomas E. Love"
+date: "2017-10-05"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+1. Some Thoughts on `dplyr` and its verbs
+2. The Printer Case Study
+3. Dealing with Missing Data via Imputation
+4. Setting up the first Quiz
+
+## Setting Up Quiz 1
+
+There are a total of 41 questions, 18 worth 2 points, 18 worth 3 points, 4 worth 2.5 points, and 1 that affirms your work is yours alone.
+
+- Please select or type in your best response for each question. The questions are not arranged in any particular order, and you should answer all of them. 
+- You must complete this quiz by Noon on Monday, 2016-10-09. You will have the opportunity to edit your responses after completing the quiz, but this must be completed by the deadline. 
+- If you wish to complete part of the quiz and then return to it later, please scroll down to the end of the quiz and complete the **affirmation** (Question 41). The affirmation is required, and you will have to complete it in order to exit the quiz and save your progress. You will then be presented with a link to "Edit your progress" which you will want to bookmark, so you can return to it easily.
+
+## Quiz 1: Main item types.
+
+Fake Quiz is at https://goo.gl/forms/hw37w3BrpibPDGQ03
+
+1. Short Answer Questions
+2. Multiple Choice
+3. Checkboxes
+4. Matching
+
+- You are welcome to consult the materials provided on the course website, but you are not allowed to discuss the questions on this quiz with anyone other than Professor Love or the Teaching Assistants, who may be reached at `431-help at case dot edu`.
+
+## Fake Quiz: Question A
+
+```{r fake1-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/fake1.png")
+```
+
+## Fake Quiz: Question B
+
+```{r fake2-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/fake2.png")
+```
+
+## Fake Quiz: Question C
+
+```{r fake3-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/fake3.png")
+```
+
+## Fake Quiz: Affirmation
+
+```{r fake4-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/fake4.png")
+```
+
+## Fake Quiz: Completion
+
+```{r fake5-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/fake5.png")
+```
+
+## Today's R Setup
+
+```{r packages, message = FALSE}
+library(mice); library(tidyverse)
+
+source("Love-boost.R")
+```
+
+## `dplyr` basics: The Key Verbs
+
+Six key functions:
+
+- Pick observations by their values (`filter()`).
+- Reorder the rows (`arrange()`).
+- Pick variables by their names (`select()`).
+- Collapse many values down to a single summary (`summarise()`).
+- Create new variables with functions of existing variables (`mutate()`).
+- Change the scope of another function from operating on the whole data set to operating on it group-by-group (`group_by()`)
+
+> All of this comes from Wickham and Grolemund, R for Data Science, Chapter 5
+
+http://r4ds.had.co.nz/transform.html#introduction-2
+
+## `dplyr` basics: How the verbs work
+
+- The first argument is a data frame (or tibble).
+- The second arguments describe what to do with the data frame. You can refer to columns in the data frame directly without using `$`.
+- The result is a new data frame.
+
+We'll work with the `wcgs` data.
+
+```{r get a tibble of wcgs data}
+wcgs <- read.csv("wcgs.csv") %>% tbl_df
+wcgs
+```
+
+## Filter rows with `filter()`
+
+`filter()` allows you to subset observations based on their values.
+
+```{r filter wcgs to get those with}
+wcgs.sub1 <- wcgs %>%
+  filter(dibpat == "Type A" & age > 49)
+wcgs.sub1
+```
+
+## Comparison and Logical Operators
+
+Comparison Operator | Meaning
+-------------------:| ---------------
+`>` | is greater than
+`>=` | is greater than or equal to
+`<` | is less than
+`<=` | is less than or equal to
+`!=` | is not equal to
+`==` | is equal to
+
+Logical (Boolean) Operator | Meaning
+-------------------:| ---------------
+`&` | and
+`|` | or
+`!` | not
+
+Missing Values (`NA` in R) can make things tricky. They are contagious. Almost any operation involving an unknown value will also be unknown.
+
+## The complete set of Boolean Operators
+
+```{r boolean-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/boolean.png")
+```
+
+Source: http://r4ds.had.co.nz/transform.html#logical-operators
+
+## Arrange rows with `arrange()`
+
+`arrange()`, instead of selecting rows (like `filter()`), changes their order. 
+
+- Use `arrange(height)` to arrange in ascending order of height. Provide a second column name to break ties, if you like. 
+- Missing values are always sorted at the end.
+
+```{r arrange wcgs by height and then weight}
+wcgs %>%
+  arrange(desc(height), desc(weight))
+```
+
+## Select columns with `select()`
+
+`select()` lets you zoom in on the columns you actually want to use based on the names of the variables. [R for Data Science](http://r4ds.had.co.nz/transform.html#select-columns-with-select) lays out some helper functions within select() for use in bigger data sets. 
+
+```{r select columns from wcgs of interest}
+wcgs.sub2 <- wcgs %>%
+  select(id, age, height, weight, dibpat, smoke, behpat)
+wcgs.sub2
+```
+
+## Grouped summaries with `summarize()`
+
+`summarise()` or `summarize()` collapses a data frame to a single row.
+
+```{r summarize mean height and correlation of key vars}
+wcgs.sub2 %>%
+  summarize(mean.ht = mean(height, na.rm=TRUE), 
+            sd.ht = sd(height, na.rm=TRUE)) %>%
+  round(digits = 2)
+```
+
+## Using the pipe (`%>%`) to filter and summarize
+
+```{r summarize correlation of height and weight}
+wcgs.sub2 %>%
+ filter(dibpat == "Type A") %>%
+ summarize(pearson.r = cor(height, weight), 
+  spearman.r = cor(height, weight, method = "spearman")) %>%
+ round(digits = 3) %>%
+ knitr::kable()
+```
+
+## Using `group_by()` with summarize to look group-by-group
+
+```{r summarize correlation within behavior patterns}
+wcgs.sub2 %>%
+  group_by(behpat) %>%
+  summarize(
+    pearson.r = round(cor(height, weight),3) ) %>%
+  knitr::kable()
+```
+
+## Using `group_by()` to look at separated groups
+
+You might have tried this approach instead, but it throws an error...
+
+```{r summarize correlation within behavior patterns but apply rounding incorrectly, eval=FALSE}
+wcgs.sub2 %>%
+  group_by(behpat) %>%
+  summarize(
+    pearson.r = cor(height, weight)) %>%
+  round(digits = 3) %>%
+  knitr::kable()
+```
+
+>- Why doesn't this work?
+>- When R sees the round command, it tries to apply it to every element of the table, including the behavior pattern labels, which aren't numbers. So it throws an error.
+
+## Add new variables with `mutate()`
+
+`mutate()` adds new columns that are functions of existing columns to the end of your data set.
+
+Suppose we want to calculate the weight/height ratio for each subject.
+
+```{r add weight to height ratio to the data as a new column}
+wcgs.sub3 <- wcgs.sub2 %>%
+  mutate(wh.ratio = weight / height)
+wcgs.sub3
+```
+
+## On Coding and dplyr
+
+1. Learn `dplyr`, and use it to do most of your data management within R.
+    + `dplyr` is mostly about these key verbs, and piping, for our purposes
+    + some tasks produce results which be confusing, we're here to help
+2. `dplyr` is most useful in combination with other elements of the `tidyverse`, most prominently `ggplot2`.
+3. `Hmisc` doesn't play nicely with `dplyr`, so don't load the whole Hmisc library, just call individual functions you need with, for example, `Hmisc::describe` or `Hmisc::smean.cl.boot`
+
+## The Printer Case, Setup
+
+```{r printer1-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/printer1.png")
+```
+
+## The Printer Case, Main Table
+
+```{r printer2-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/printer2.png")
+```
+
+## The Printer Case Discussion, Part 1
+
+Fifty days of data:
+
+- Fifth floor employees were given a card to operate their printer.
+- Third floor employees were not.
+
+1. Is this a randomized trial or an observational study?
+2. What is the outcome we are studying?
+3. What are the two treatments/exposures/interventions being compared?
+4. What controls are in place as part of the study's design?
+
+5. **Key Question**: Will the card accounting system effectively lower usage if implemented across the firm?
+
+## The Printer Case Discussion
+
+Go.
+
+## Printer Case: Numerical Summary
+
+```{r printer1}
+printer <- read.csv("printer.csv") %>% tbl_df
+summary(printer)
+```
+
+## Printer Case: Scatterplot (r = 0.11)
+
+```{r printer scatterplot, echo=FALSE}
+ggplot(printer, aes(x = Third, y = Fifth)) +
+  geom_point() +
+  theme(text = element_text(size = 18)) + 
+  labs(x = "Third Floor Pages", y = "Fifth Floor Pages")
+```
+
+## Printer Case: Gather the Columns
+
+First, we'll gather up the data so that we can plot it more easily.
+
+```{r printer2}
+printer2 <- tidyr::gather(printer, Floor, Pages, -Day)
+printer2
+```
+
+## Printer Case: Comparison Boxplot
+
+```{r printer 2 boxplots, echo=FALSE}
+ggplot(printer2, aes(x = Floor, y = Pages, fill = Floor)) +
+  geom_boxplot(notch = TRUE) +
+  coord_flip() +
+  guides(fill = FALSE) +
+  theme(text = element_text(size = 18))
+```
+
+## Printer Case: Third Floor
+
+```{r printer plot for Third Floor, echo=FALSE}
+ggplot(printer, aes(x = Day, y = Third)) +
+  geom_point() +
+  geom_line() +
+  theme(text = element_text(size = 18)) + 
+  labs(title = "Third Floor Pages")
+```
+
+## Printer Case: Fifth Floor
+
+```{r printer plot for Fifth Floor, echo=FALSE}
+ggplot(printer, aes(x = Day, y = Fifth)) +
+  geom_point() +
+  geom_line() +
+  theme(text = element_text(size = 18)) + 
+  labs(title = "Fifth Floor Pages")
+```
+
+## Comparing the Patterns over Time
+
+```{r printer2 scatterplot, echo=FALSE}
+ggplot(printer2, aes(x = Day, y = Pages, col = Floor)) +
+  geom_point() +
+  geom_line() +
+  theme(text = element_text(size = 16)) + 
+  guides(color = FALSE) +
+  facet_wrap(~ Floor) +
+  labs(title = "Monitoring on Fifth Floor Reduced Pages")
+```
+
+
+## Back to WCGS: Select variables, sample 500 subjects
+
+```{r select the variables of interest and sample 500 subjects}
+set.seed(43101)
+wcgs1 <- 
+  wcgs %>%
+  select(id, age, chol, arcus, dibpat, bmi, 
+         wghtcat, smoke, ncigs, chd69) %>%
+  sample_n(500, replace = FALSE)
+```
+
+## Dealing with Missing Data
+
+1. Missing Completely at Random (MCAR)
+  + The missing data are just a random subset of the data. 
+2. Missing at Random (MAR)
+  + MAR means that the probability of a data point being missing has nothing to do with the missing value that would have been observed, but does have something to do with the values of some other variable that you did observe. 
+  + Multiple Imputation assumes the missingness is MCAR or MAR.
+3. Missing not at Random ("non-ignorable" missingness)
+  + Here, there is a relationship between the probability that a value is missing and what the actual (missing) value is.
+
+## What should we do about missing values?
+
+1. `ggplot2` doesn't include missing values in the plot, but it does warn that they've been removed. 
+2. At times you will want to try to understand what makes observations with missing values different from observations with meaningful recorded values, especially if we're thinking that the missing mechanism is MCAR or MAR.
+    + We might, for instance, compare the BMI values or perhaps the smoking status for those with and without missing cholesterol values, using the `is.na()` function to make a new variable to indicate those subjects without a cholesterol level.
+
+## Do NA cholesterol look unusual in terms of BMI?
+
+This code builds a new (logical) variable (TRUE/FALSE) to indicate a missing cholesterol level, and then we'll plot the BMI distributions for each level of the new variable. 
+
+```{r chol_NA_bmi_codeonly, eval=FALSE}
+wcgs1 %>%
+  mutate(
+    nochol = is.na(chol)
+  ) %>%
+  ggplot(aes(x = bmi)) +
+  geom_freqpoly(aes(col = nochol), bins = 30) + 
+  theme(text = element_text(size = 18))
+```
+
+## Do the BMIs of people without chol look different?
+
+```{r chol_NA_bmi, echo=FALSE}
+wcgs1 %>%
+  mutate(
+    nochol = is.na(chol)
+  ) %>%
+  ggplot(aes(x = bmi)) +
+  geom_freqpoly(aes(col = nochol), bins = 30) +
+  theme(text = element_text(size = 18))
+```
+
+## Are the people without a cholesterol value unusual in terms of their smoking status?
+
+```{r smoking_by_chol_NA}
+temp1 <- table(is.na(wcgs1$chol), wcgs1$smoke)
+knitr::kable(temp1)
+```
+
+## What should we do about missing values?
+
+3. How many missing values are there?
+    + If the missing values are more than, say, 5% of a variable, we're going to need some strong, almost heroic assumptions in order to feel confident about using such a variable in building a model or making an inference.
+    + If the amount of missing data is very small relative to the size of the data as a whole, then leaving out a few samples and just running models or comparisons ignoring those observations may not be too damaging.
+    + Depending on the situation, you may want to look for other fixes besides just dropping these cases and wiping out potentially useful data.
+
+- Some of this material comes from [`this R-bloggers post`](https://www.r-bloggers.com/imputing-missing-data-with-r-mice-package/)
+
+## What should we do about missing values?
+
+Could we **impute** missing values?
+
+- One approach is *simple* imputation, where a single value is created to "fill in" the missing observation. This is pretty easy to do, but very rarely a good idea.
+    + Rarely, substituting the mean is a reasonable thing to do, as it reduces variance in your estimate of the distribution, among other problems.
+    + Sometimes, but still pretty rarely, substituting in a random value observed in the rest of the data set is a reasonable thing to do.
+    + Better, although still problematic, imputation approaches use other variables in the data set to predict the missing value, and contain a random component. Using other variables preserves the relationships among variables in the imputations. The random component is important so that all missing values of a single variable are not all exactly equal. One example would be to use a regression equation to predict missing values, then add a random error term.
+
+- See http://www.theanalysisfactor.com/multiple-imputation-in-a-nutshell/
+
+## What's so bad about simple imputation?
+
+Although there are several simple imputation approaches that solve many of the problems inherent in mean imputation, one problem remains. Because the imputed value is an estimate - a predicted value - there is uncertainty about its true value. Every statistic has uncertainty, measured by its standard error. Statistics computed using imputed data have even more uncertainty than its standard error measures. Your statistical package cannot distinguish between an imputed value and a real value.
+
+Since the standard errors of statistics based on imputed values, such as sample means or regression coefficients, are too small, corresponding reported p-values are also too small. P-values that are reported as smaller than they, in reality, are, lead to Type I errors.
+
+- It turns out that *multiple* imputation is a much better approach.
+
+- Various types of "hot deck" procedures can help, too. See the `HotDeckImputation` package in R, or [`this link`](https://cran.r-project.org/web/packages/HotDeckImputation/HotDeckImputation.pdf)
+
+## So what is multiple imputation?
+
+Multiple imputation has solved this problem by incorporating the uncertainty inherent in imputation. It has four steps:
+
+1. Create *m* sets of imputations for the missing values using an imputation process with a random component.
+2. The result is *m* full data sets. Each data set will have slightly different values for the imputed data because of the random component.
+3. Analyze each completed data set. Each set of parameter estimates will differ slightly because the data differs slightly.
+4. Combine results, calculating the variation in parameter estimates.
+
+## Multiple Imputation is amazing
+
+Remarkably, *m*, the number of sufficient imputations, can be only 5 to 10 imputations, although it depends on the percentage of data that are missing. The result is unbiased parameter estimates and a full sample size, when done well.
+
+Doing multiple imputation well, however, is not always quick or easy. First, it requires that the missing data be ignorable. Second, it requires a very good imputation model. Creating a good imputation model requires knowing your data very well and having variables that will predict missing values.
+
+Source: http://www.theanalysisfactor.com/multiple-imputation-in-a-nutshell/
+
+## What will we do in 431?
+
+- Often, we'll be willing to simply exclude the data with missing values from our graphs or other analyses.
+- Sometimes, we'll be willing to assume (heroically) that the data are missing at random and we'll use a simple imputation approach, via the `mice` package.
+- Later in the term (and definitely in 432) we'll move on up to multiple imputation, using `mice` sometimes and `Hmisc` at other times.
+
+## Using `mice` to build imputations for `chol`
+
+```{r look at missingness patterns}
+md.pattern(wcgs1) 
+```
+
+## Build 5 actual imputations using the "predictive mean matching" (pmm) approach
+
+```{r build_imputations_with_pmm}
+wcgs.temp <- mice(wcgs1,m=5,maxit=50,meth='pmm',seed=431)
+```
+
+## View imputation results, summarized
+
+```{r impsumm1-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/impsumm1.png")
+```
+
+## Inspect the imputed values, if you like
+
+```{r see the imputations}
+wcgs.temp$imp$chol
+wcgs.temp$imp$arcus
+```
+
+## Simple Imputation: Complete data with, let's say, the fourth of the five imputations we built
+
+```{r complete data for simple imputation with imputation 4}
+completedwcgs <- mice::complete(wcgs.temp,4)
+```
+
+### `favstats` with and without imputation
+
+```{r compare favstats with and without imputation}
+mosaic::favstats(wcgs1$chol)
+mosaic::favstats(completedwcgs$chol)
+```
+
+## Build a Linear Model without imputation
+
+```{r modelfit0-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/modelfit0.png")
+```
+
+## Multiple imputation and pooling
+
+Suppose that the next step in our analysis is to fit a linear model to the data. You may ask what imputed data set to choose. The `mice` package makes it again very easy to fit a a model to each of the imputed data sets and then pool the results together
+
+```{r modelfit1-fig, out.width = '90%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/modelfit1.png")
+```
+
+### Details of linear model after pooling
+
+`modelFit1` contains the results of the fitting performed over the imputed data sets, while the `pool`() function pools them all together. 
+
+- `fmi` = fraction of missing information
+- `lambda` = proportion of total variance attributable to the missing data
+
+- Note that if we were looking at a strict alpha of 0.05, we'd have a significant `dibpat2` main effect now, when we didn't before.
+
+## Link to the Quiz
+
+will be provided by 3 PM Thursday 2017-10-05.
