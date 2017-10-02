@@ -14,4 +14,5 @@ Class | Date | Slides | Comments
 7 | 2017-09-19 | [README 7](https://github.com/THOMASELOVE/431slides/blob/master/class_07/README.md) | Assignment 1 [Sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW1/README.md), [Course Project](https://github.com/THOMASELOVE/431project), [Notes](https://thomaselove.github.io/431notes/) Sections 9-10, mostly. 
 8 | 2017-09-21 | [README 8](https://github.com/THOMASELOVE/431slides/blob/master/class_08/README.md) | Transformations, Subgroups, Linear Associations
 9 | 2017-09-26 | [README 9](https://github.com/THOMASELOVE/431slides/blob/master/class_09/README.md) | Correlation, Linear Models,  Regression Output, form [Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) Groups
-10 | 2017-09-28 | [README 10](https://github.com/THOMASELOVE/431slides/blob/master/class_10/README.md) | [WCGS](https://thomaselove.github.io/431notes/the-western-collaborative-group-study.html): Tables, Scatterplot & Correlation Matrices, Missing Data
+10 | 2017-09-28 | [README 10](https://github.com/THOMASELOVE/431slides/blob/master/class_10/README.md) | [WCGS](https://thomaselove.github.io/431notes/the-western-collaborative-group-study.html): Factors, Types of Missingness
+11 | 2017-10-03 | [README 11](https://github.com/THOMASELOVE/431slides/blob/master/class_11/README.md) | Tables, Scatterplot & Correlation Matrices
