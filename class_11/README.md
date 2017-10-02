@@ -14,7 +14,11 @@ When the audio recording for today's class becomes available, we'll post it abov
     3. Discussion of Cross-Tabulations and of Scatterplot and Correlation Matrices materials from the [Course Notes](https://thomaselove.github.io/431notes/).
     4. Brief discussion of Jeff Leek's *Elements of Data Analytic Style* Chapters 1-4 and 12.
     5. Project Task B Group Meetings
-    6. Quiz Setup
+    6. [Quiz 1](https://thomaselove.github.io/431syllabus/quizzes.html) Setup. What is fair game on the quiz? 
+        [a] everything in Part A of the [Notes](https://thomaselove.github.io/431notes/), 
+        [b] everything we've discussed in [classes 1-11](https://github.com/thomaselove/431slides), 
+        [c] everything we've encountered in the first three [Assignments](https://github.com/thomaselove/431homework), and 
+        [d] everything we've read and discussed in Silver, in Leek and in Ehrenberg.
 
 2. Upcoming Readings/Assignments/Deadlines:
     - [Quiz 1](https://thomaselove.github.io/431syllabus/quizzes.html) will come to you on 2017-10-05 and is due at noon on **2017-10-09**.
