@@ -8,9 +8,13 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
-To come.
-
-X. Upcoming Readings/Assignments/Deadlines:
+1. Today's Agenda
+    - Some thoughts on **dplyr** and its verbs.
+    - The **Printer Case**
+    - Dealing with Missing Data via Multiple Imputation.
+    - Setup for the First Quiz
+    
+2. Upcoming Readings/Assignments/Deadlines:
     - Read *The Signal and the Noise* Chapters 4-5 (Weather and Earthquake Predictions), and Leek's Chapter 6 by **2017-10-10**.
     - [Project Task A](https://github.com/THOMASELOVE/431project/tree/master/TaskA) is due at noon on **2017-10-13**.
     - Read Silver's Chapters 7 and 8 (Disease Outbreaks and Bayes' Theorem) by **2017-10-17**.
