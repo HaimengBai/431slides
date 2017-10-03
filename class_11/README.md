@@ -9,7 +9,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's agenda:
-    1. Discussion of [Assignment 3](https://github.com/THOMASELOVE/431homework/tree/master/HW3) - all post-deadline materials including Grades [are now available](https://github.com/THOMASELOVE/431homework/blob/master/HW3/README.md).
+    1. Discussion of [Assignment 3](https://github.com/THOMASELOVE/431homework/tree/master/HW3) - all post-deadline materials including Grades [are now available](https://github.com/THOMASELOVE/431homework/blob/master/HW3/README.md) and see #5 below.
     2. Discussion of Scatterplot and Correlation Matrices materials from the [Course Notes](https://thomaselove.github.io/431notes/).
     3. Discussion of Cross-Tabulations and Ehrenberg's [The Problem of Numeracy](https://github.com/THOMASELOVE/431slides/blob/master/class_11/Ehrenberg_1981_pw_The_Problem_of_Numeracy.pdf), in the context of [this Supplementary Table](https://github.com/THOMASELOVE/431slides/blob/master/class_11/431_2017_class-11-supplementary-table.pdf). 
     4. [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) Group Meetings. We suggest you work on Parts 2 and 3 of Task B in class on 2017-10-03, and on Parts 1 and 4 in class on 2017-10-12. You will also (likely) need to find time outside of class for additional group work before the due date. We encourage you to consider using technology to facilitate your group work.
@@ -25,7 +25,13 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 4. New Part B Materials in the [Course Notes](https://thomaselove.github.io/431notes/) have appeared, including three new chapters with more to come. Part A shouldn't change much more, except if you find some more typos. I've changed Part A to use `summarise` rather than `summarize` when using the tidyverse so as to avoid confusion with other packages that use `summarize`.
 
-4. Upcoming Readings/Assignments/Deadlines:
+5. A sample of four of the more interesting essays written in response to Question 1 may be found at https://goo.gl/8RH6rT. These include essays on:
+    - Multiple Sclerosis and Prediction of Clinical Events
+    - Analyzing Bilary Injury in Surgery to Remove the Gall Bladder
+    - Predicting Hurricanes
+    - Predicting Box-Office Success of Movies
+
+6. Upcoming Readings/Assignments/Deadlines:
     - Read *The Signal and the Noise* Chapters 4-5 (Weather and Earthquake Predictions), and Leek's Chapter 6 by **2017-10-10**.
     - [Project Task A](https://github.com/THOMASELOVE/431project/tree/master/TaskA) is due at noon on **2017-10-13**.
     - Read Silver's Chapters 7 and 8 (Disease Outbreaks and Bayes' Theorem) by **2017-10-17**.
