@@ -392,10 +392,22 @@ Reproducibility of workflow is what we're aiming for.
 - Use version control (something I should do more of)
 - Add `sessionInfo()` command to final version of work when you need to preserve the details on software and parameters - see next slide.
 
+## My session info, at home, 2017-10-03
+
+Include this information in your project submissions, but not probably in your other assignments, unless we ask you for it.
+
+```{r session-info-new, out.width = '95%', fig.align = "center", echo = FALSE}
+knitr::include_graphics("images/sessioninfo-2017-10-03.png")
+```
+
+- See next slide. This just changed, a lot! R 3.4.2!
+
 ## My session info, at home, 2017-10-02
 
 Include this information in your project submissions, but not probably in your other assignments, unless we ask you for it.
 
-```{r session-info, out.width = '80%', fig.align = "center", echo = FALSE}
+```{r session-info-yesterday, out.width = '95%', fig.align = "center", echo = FALSE}
 knitr::include_graphics("images/sessioninfo-2017-10-02.png")
 ```
+
+
