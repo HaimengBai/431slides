@@ -23,6 +23,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. Upgrading R to R 3.4.2, which came out on 2017-09-28, is something you should consider doing, perhaps as soon as you've turned in Quiz 1. Follow the [instructions on installing R](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md), and then update your R Packages from within R Studio. If your version of R Studio begins with 1.1, then you are running the preview version and should be fine. If it begins with 1.0, you might want to try upgrading to the preview version as in the [installation materials](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md), but, again, after the Quiz.
 
+4. New Part B Materials in the [Course Notes](https://thomaselove.github.io/431notes/) have appeared, with more to come. Part A shouldn't change much more, except if you find some more typos.
+
 4. Upcoming Readings/Assignments/Deadlines:
     - Read *The Signal and the Noise* Chapters 4-5 (Weather and Earthquake Predictions), and Leek's Chapter 6 by **2017-10-10**.
     - [Project Task A](https://github.com/THOMASELOVE/431project/tree/master/TaskA) is due at noon on **2017-10-13**.
