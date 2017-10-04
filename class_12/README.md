@@ -9,9 +9,9 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
+    - Leek, Chapters 1-4 and 12
     - Some thoughts on **dplyr** and its verbs.
     - The **Printer Case**
-    - Dealing with Missing Data via Multiple Imputation.
     - Setup for the First Quiz
     
 2. Upcoming Readings/Assignments/Deadlines:
