@@ -17,4 +17,4 @@ Class | Date | Slides | Comments
 10 | 2017-09-28 | [README 10](https://github.com/THOMASELOVE/431slides/blob/master/class_10/README.md) | [WCGS](https://thomaselove.github.io/431notes/the-western-collaborative-group-study.html): Factors, Types of Missingness
 11 | 2017-10-03 | [README 11](https://github.com/THOMASELOVE/431slides/blob/master/class_11/README.md) | Tables, Scatterplot & Correlation Matrices, Ehrenberg paper.
 12 | 2017-10-05 | [README 12](https://github.com/THOMASELOVE/431slides/blob/master/class_12/README.md) | Leek 1-4, 12, Using dplyr well, The Printer Case, Quiz 1 distribution
-13 | 2017-10-10 | [README 13](https://github.com/THOMASELOVE/431slides/blob/master/class_13/README.md) | Leek 6, Silver 4-5, Building Confidence Intervals, Quiz 1 discussion
+13 | 2017-10-10 | [README 13](https://github.com/THOMASELOVE/431slides/blob/master/class_13/README.md) | Leek 6, Silver 4-5, [Course Notes](https://thomaselove.github.io/431notes/) Sections 16, 19, Quiz 1 results
