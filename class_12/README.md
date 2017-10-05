@@ -25,4 +25,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-The link to Quiz 1 will be posted right here.
+The link to Quiz 1 is https://goo.gl/vaACbW. Good luck, and please be sure to complete the Quiz by noon on Monday. I will start grading at 1 PM, so you are welcome to a one-hour grace period.
+
+Remember, if you have questions, ask them at 431-help at case dot edu.
+
