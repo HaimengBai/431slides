@@ -14,6 +14,8 @@ When the audio recording for today's class becomes available, we'll post it abov
     - The **Printer Case**
     - Setup for the First Quiz
     
+2. [Course Notes](https://thomaselove.github.io/431notes/): There is new material for Part B, including Sections 22 and 23. We will begin discussing Sections 16 and 19 on Tuesday 2017-10-10.    
+    
 2. Upcoming Readings/Assignments/Deadlines:
     - Read *The Signal and the Noise* Chapters 4-5 (Weather and Earthquake Predictions), and Leek's Chapter 6 by **2017-10-10**.
     - [Project Task A](https://github.com/THOMASELOVE/431project/tree/master/TaskA) is due at noon on **2017-10-13**.
