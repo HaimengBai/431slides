@@ -25,3 +25,4 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
+The link to Quiz 1 will be posted right here.
