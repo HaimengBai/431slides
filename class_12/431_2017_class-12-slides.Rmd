@@ -345,7 +345,7 @@ I must read lots of these + REDOs - make it painless for me.
 
 1. Make one submission, via Canvas, as requested. I'll review it then, and get back to you. I cannot review your materials in advance, or I'd go insane. I process this work in batches.
 2. The only sorts of questions I'm going to answer in advance are highly specific ones about the instructions for the Task. If you want clarification of what I'm looking for, no problem. If you want us to evaluate your work, you'll have to wait.
-3. If your response to Task A is more than three pages long, cut it to three pages. For the proposal summary, I specified a word limit. Obey this in your first submission. One page is more than enough for the proposal in *every* case. Some data descriptions can easily be done in a page, as well, but some can't. Try to keep that to two pages. One is betterm if you answer my questions. 
+3. If your response to Task A is more than three pages long, cut it to three pages. For the proposal summary, I specified a word limit. Obey this in your first submission. One page is more than enough for the proposal in *every* case. Some data descriptions can easily be done in a page, as well, but some can't. Try to keep that to two pages. One is better if you answer my questions. 
 4. Don't make me search for things - label what you're doing using my labels from the instructions.
 
 ## Setting Up Quiz 1
