@@ -17,5 +17,6 @@ When the audio recording for today's class becomes available, we'll post it abov
     - **2017-10-17**: Read Silver's Chapters 7 and 8 (Disease Outbreaks and Bayes' Theorem)
     - **2017-10-20** at noon: [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is due.
     - **2017-10-23** at noon: [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) is due.
+    - Note that [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) (due 2017-11-03) and [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) (due 2017-12-01) are now available.
 
 ## Announcements after class:
