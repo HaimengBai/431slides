@@ -148,7 +148,7 @@ The code presented in the Markdown file builds:
 - a boxplot (with median notch) and 
 - a Normal Q-Q plot (with guiding straight line through the quartiles) 
 
-for the `sbp` results from the `dm192` tibble. It does this while making use of several functions built specifically for this course, and contained in the script `Love-R-functions.R` which is also included in the Markdown document.
+for the `sbp` results from the `dm192` tibble. It does this while making use of several functions built specifically for this course, and contained in the script `Love-boost.R` which is also included in the Markdown document.
 
 ## Graphical Summary of the `dm192` systolic BP data
 
