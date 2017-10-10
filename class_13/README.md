@@ -24,4 +24,4 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-3. I'm fixing the typos in Slide Set 13.
+3. A new version of Slide Set 13 (and 14) is now available, fixing typos identified in class.
