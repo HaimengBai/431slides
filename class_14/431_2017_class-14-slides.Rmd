@@ -47,6 +47,247 @@ dm192 <- read.csv("data/dm192.csv") %>% tbl_df
 head(dm192,5) # show just the first 5 rows
 ```
 
+## The Large Sample Formula for the CI around $\mu$
+
+The two-tailed 100(1-$\alpha$)% confidence interval for a population mean $\mu$ (based on the Normal distribution) is:
+
+- The Lower Bound is $\bar{x} - Z_{\alpha/2}(\sigma / \sqrt{n})$ and the Upper Bound is $\bar{x} + Z_{\alpha/2}(\sigma / \sqrt{n})$
+
+where $Z_{\alpha/2}$ is the value that cuts off the top $\alpha/2$ percent of the standard Normal distribution (the Normal distribution with mean 0 and standard deviation 1). 
+
+## Obtaining the $Z_{\alpha/2}$ value using `qnorm`
+
+We can obtain this cutoff value from R by substituting in the desired proportion for alphaover2 into the `qnorm` function as follows:
+
+`qnorm(alphaover2, lower.tail=FALSE)`
+
+For example, if we are building a 95% confidence interval, we have 100(1-$\alpha$) = 95, so that $\alpha$ is 0.05, or 5%. This means that the cutoff value we need to find is $Z_{0.05/2} = Z_{.025}$, and this turns out to be 1.96.
+
+```{r z_for_95CI}
+qnorm(0.025, lower.tail=FALSE)
+```
+
+## Commonly Used Cutoffs based on the Normal Distribution
+
+- If we're building a two-tailed 95% confidence interval, we'll use $Z_{.025}$ = 1.96
+- For a two-tailed 90% confidence interval, we use $Z_{.05}$ = 1.645
+- For a two-tailed 99% confidence interval, we use $Z_{.005}$ = 2.576
+- For a two-tailed 50% confidence interval, we use $Z_{.25}$ = 0.67
+- For a two-tailed 68% confidence interval, we use $Z_{.16}$ = 0.99
+
+## Lots of CIs use the Normal distribution
+
+- The usual 95% confidence interval for large samples is an estimate $\pm$ 2 standard errors\footnote{The use of 2 standard errors for a confidence interval for a population mean is certainly reasonable whenever n is 60 or more. This is because the t distribution with 59 degrees of freedom has a 0.025 cutoff of 2.0, anyway.}.
+- Also, from the Normal distribution, an estimate $\pm$ 1 standard error is a 68% confidence interval, and an estimate $\pm$ 2/3 of a standard error is a 50% confidence interval. 
+- A 50% interval is particularly easy to interpret because the true value should be inside the interval about as often as it is not. 
+- A 95% interval is thus about three times as wide as a 50% interval. 
+- In general, the larger the confidence required, the wider the interval will need to be.
+
+## Large-Sample CI for Systolic BP Mean, $\mu$
+
+Since we have a fairly large sample (*n* = `r length(dm192$sbp)`), we could consider using a large-sample approach (assuming the sample standard deviation is equal to the population standard deviation, and then using the Normal distribution) to estimate a confidence interval for the mean systolic blood pressure in the population of all adults with diabetes who live in Northeast Ohio. The 95% confidence interval is calculated as $\bar{x} \pm Z_{\alpha/2}(\sigma / \sqrt{n})$, and here we will assume that $s = \sigma$ which may be reasonable with a fairly large sample size. 
+
+- We have $n$ = `r length(dm192$sbp)` observations, and since we want a 95% confidence interval, $\alpha$ = 0.05
+- Our sample mean $\bar{x}$ = `r round(mean(dm192$sbp),2)` and standard deviation $s$ = `r round(sd(dm192$sbp),2)`
+- So the standard error is `r round( sd(dm192$sbp)/ sqrt(length(dm192$sbp)), 2)`
+
+The 95% CI is thus `r round(mean(dm192$sbp),2)` $\pm$ 1.96(`r round( sd(dm192$sbp)/ sqrt(length(dm192$sbp)), 2)`), or (`r round(mean(dm192$sbp),2) - round(1.96*sd(dm192$sbp)/ sqrt(length(dm192$sbp)), 2)`, `r round(mean(dm192$sbp),2) + round(1.96*sd(dm192$sbp)/ sqrt(length(dm192$sbp)), 2)`) using the Normal distribution. 
+
+- Our 95% CI based on the t distribution was (`r round(t.test(dm192$sbp, conf.level = 0.95)$conf[c(1,2)],1)`).
+
+## Assumptions of a t-based Confidence Interval
+
+> "Begin challenging your assumptions. Your assumptions are your windows on the world. Scrub them off every once in awhile or the light won't come in." (Alan Alda)
+
+1. Sample is drawn at random from the population or process.
+2. Samples are drawn independently from each other from a population or process whose distribution is unchanged during the sampling process.
+3. Population or process follows a Normal distribution.
+
+### Can we drop any of these assumptions?
+
+Only if we're willing to consider alternative inference methods.
+
+## What is a Bootstrap and Why Should I Care?
+
+The bootstrap (and in particular, what's known as bootstrap resampling) is a really good idea that you should know a little bit about\footnote{See Good PI Hardin JW Common Errors in Statistics -- a very helpful book.}. 
+
+If we want to know how accurately a sample mean estimates the population mean, we would ideally like to take a very, very large sample, because if we did so, we could conclude with something that would eventually approach mathematical certainty that the sample mean would be very close to the population mean. 
+
+But we can rarely draw enormous samples. So what can we do?  
+
+## Resampling is A Big Idea
+
+If we want our sample mean to accurately estimate the population mean, we would ideally like to take a very, very large sample, so as to get very precise estimates. But we can rarely draw enormous samples. So what can we do?  
+
+Oversimplifying, the idea is that if we sample (with replacement) from our current data, we can draw a new sample of the same size as our original. 
+
+- And if we repeat this many times, we can generate as many samples of, say, 192 systolic blood pressures, as we like. 
+- Then we take these thousands of samples and calculate (for instance) the sample mean for each, and plot a histogram of those means. 
+- If we then cut off the top and bottom 5% of these sample means, we obtain a reasonable 90% confidence interval for the population mean. 
+
+## Bootstrap: Estimating a confidence interval for $\mu$
+
+What the computer does:
+
+1. Resample the data with replacement, until it obtains a new sample that is equal in size to the original data set. 
+2. Calculates the statistic of interest (here, a sample mean.) 
+3. Repeat the steps above many times (the default is 1,000 using our approach) to obtain a set of 1,000 sample means. 
+4. Sort those 1,000 sample means in order, and estimate the 90% confidence interval for the population mean based on the middle 90% of the 1,000 bootstrap samples.
+5. Send us a result, containing the sample mean, and a 90% confidence interval for the population mean
+
+## When is a Bootstrap Confidence Interval for $\mu$ Reasonable?
+
+The interval will be reasonable as long as we are willing to believe that:
+
+- the original sample was a random sample (or at least a completely representative sample) from a population, 
+- and that the samples are independent of each other 
+- and that the samples are identically distributed (even though that distribution may not be Normal.) 
+
+A downside is that you and I will get (somewhat) different answers if we resample from the same data.
+
+## 90% CI for population mean $\mu$ using bootstrap
+
+The command that we use to obtain a CI for $\mu$ using the basic nonparametric bootstrap and without assuming a Normally distributed population, is `smean.cl.boot`, a part of the `Hmisc` package in R.
+
+```{r boot_sbp, message=FALSE}
+set.seed(43101) 
+Hmisc::smean.cl.boot(dm192$sbp, conf = 0.90)
+```
+
+## Comparing Bootstrap and T-Based Confidence Intervals
+
+- The `smean.cl.boot` function (unlike most R functions) deletes missing data automatically, as does the `smean.cl.normal` function, which produces the t-based confidence interval.
+
+```{r boot_sbp_2}
+Hmisc::smean.cl.boot(dm192$sbp, conf = 0.90)
+Hmisc::smean.cl.normal(dm192$sbp, conf = 0.90)
+```
+
+## Rerunning 90% CI for $\mu$ via Bootstrap
+
+```{r boot_sbp_3}
+set.seed(43102); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.9)
+set.seed(43103); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.9)
+set.seed(43104) 
+  Hmisc::smean.cl.boot(dm192$sbp, conf = 0.9, B = 2000)
+```
+
+## Bootstrap: Changing the Confidence Level
+
+```{r boot_sbp_4}
+set.seed(43105); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.90)
+set.seed(43106); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.95)
+set.seed(43107); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.99)
+```
+
+## Bootstrap for a One-Sided Confidence Interval
+
+If you want to estimate a one-sided confidence interval for the population mean using the bootstrap, then the procedure is as follows:
+
+1. Determine $\alpha$, the significance level you want to use in your one-sided confidence interval. Remember that $\alpha$ is 1 minus the confidence level. Let's assume we want a 90% one-sided interval, so $\alpha$ = 0.10.
+2. Double $\alpha$ to determine the significance level we will use in the next step to fit a two-sided confidence interval.
+3. Fit a two-sided confidence interval with confidence level $100(1 - 2\alpha)$. Let the bounds of this interval be (*a*, *b*).
+4. The one-sided (greater than) confidence interval will have *a* as its lower bound.
+5. The one-sided (less than) confidence interval will have *b* as its upper bound.
+
+## One-sided CI for $\mu$ via the Bootstrap
+
+Suppose that we want to find a 90% one-sided upper bound for the population mean systolic blood pressure among Northeast Ohio adults with diabetes, $\mu$, using the bootstrap. 
+
+Since we want a 90% confidence interval, we have $\alpha$ = 0.10. We double that to get $\alpha$ = 0.20, which implies we need to instead fit a two-sided 80% confidence interval.
+
+```{r 80_pct_CI_for_sbp_with_bootstrap}
+set.seed(43108); Hmisc::smean.cl.boot(dm192$sbp, conf = 0.80)
+```
+
+Since the upper bound of this two-sided 80% CI is 135.77, that will also be the upper bound for a 90% one-sided CI.
+
+## Additional Notes on the Bootstrap
+
+Bootstrap resampling confidence intervals do not follow the general confidence interval strategy using a point estimate $\pm$ a margin for error. 
+
+- A bootstrap interval is often asymmetric, and while it will generally have the point estimate (the sample mean) near its center, for highly skewed data, this will not necessarily be the case.
+
+- I usually use either 1,000 (the default) or 10,000 bootstrap replications for building confidence intervals - practically, it makes little difference.
+
+The bootstrap may seem like the solution to all problems in theory, we could use the same approach to find a confidence interval for any other statistic -- it's not perfect, but it is very useful. 
+
+- It does eliminate the need to worry about the Normality assumption in small sample size settings, but it still requires independent and identically distributed samples.
+
+## Bootstrap Resampling: Advantages and Caveats
+
+Bootstrap procedures exist for virtually any statistical comparison - the t-test analog above is just one many possibilities, and bootstrap methods are rapidly gaining on more traditional approaches in the literature thanks mostly to faster computers.
+
+The bootstrap produces clean and robust inferences (such as confidence intervals) in many tricky situations. 
+
+It is still possible that the results can be both:
+
+- **inaccurate** (i.e. they can, include the true value of the unknown population mean less often than the stated confidence probability) and 
+- **imprecise** (i.e., they can include more extraneous values of the unknown population mean than is desirable).
+
+## Bootstrap CI for the Population Median, Step 1
+
+If we are willing to do a small amount of programming work in R, we can obtain bootstrap confidence intervals for other population parameters besides the mean. One statistic of common interest is the median. How do we find a confidence interval for the population median using a bootstrap approach? Use the `boot` package, as follows.
+
+In step 1, we specify a new function to capture the medians from our sample. 
+
+```{r boot_median_step1}
+f.median <- function(y, id) 
+{    median ( y[id])  }
+```
+
+## Bootstrap CI for the Population Median, Step 2
+
+In step 2, we summon the `boot` package and call the `boot.ci` function:
+
+```{r boot_median_step2, message=FALSE}
+set.seed(431787)
+boot.ci(boot (dm192$sbp, f.median, 1000), 
+        conf=0.90, type="basic")
+```
+
+## Bootstrap CI for the Population Median vs. Mean
+
+- Note that the sample **median** of the SBP data is `r median(dm192$sbp)` mm Hg.
+
+- Our 90% confidence interval for the population **median** SBP among NE Ohio adults with diabetes is (`r set.seed(431787); boot.ci(boot (dm192$sbp, f.median, 1000), conf=0.90, type="basic")$basic[4]`, `r set.seed(431787); boot.ci(boot (dm192$sbp, f.median, 1000), conf=0.90, type="basic")$basic[5]`) according to the bootstrap, using the random seed `431787`. 
+
+
+- The sample **mean** of the SBP data is `r round(mean(dm192$sbp),1)` mm Hg.
+
+- The 90% bootstrap CI for the population **mean** SBP, $\mu$, is (`r set.seed(43121); round(Hmisc::smean.cl.boot(dm192$sbp, conf = 0.90)[2],1)`, `r set.seed(43121); round(Hmisc::smean.cl.boot(dm192$sbp, conf = 0.90)[3],1)`) if we use the random seed `43121`.
+
+## The Wilcoxon Signed Rank Procedure for CIs
+
+It turns out to be difficult to estimate an appropriate confidence interval for the median of a population, which might be an appealing thing to do, particularly if the sample data are clearly not Normally distributed, so that a median seems like a better summary of the center of the data. Bootstrap procedures are available to perform the task.
+
+The Wilcoxon signed rank approach can be used as an alternative to t-based procedures to build interval estimates for the population *pseudo-median* when the population cannot be assumed to follow a Normal distribution. 
+
+As it turns out, if you're willing to assume the population is **symmetric** (but not necessarily Normally distributed) then the pseudo-median is actually equal to the population median.
+
+## What is a Pseudo-Median?
+
+The pseudo-median of a particular distribution G is the median of the distribution of (u + v)/2, where both u and v have the same distribution (G). 
+
+- If the distribution G is symmetric, then the pseudomedian is equal to the median. 
+- If the distribution is skewed, then the pseudomedian is not the same as the median. 
+- For any sample, the pseudomedian is defined as the median of all of the midpoints of pairs of observations in the sample. 
+
+## Getting the Wilcoxon Signed Rank-based CI in R
+
+```{r wilcoxon_sbp_1}
+wilcox.test(dm192$sbp, conf.int=TRUE, conf.level=0.95)
+```
+
+## Interpreting the Wilcoxon CI for the Population Median
+
+If we're willing to believe the `sbp` values come from a population with a symmetric distribution, the 95% Confidence Interval for the population median would be (`r round(wilcox.test(dm192$sbp, conf.int=TRUE, conf.level=0.95)$conf.int,1)`)
+
+For a non-symmetric population, this only applies to the *pseudo-median*.
+
+Note that the pseudo-median (133.5) is actually fairly close in this situation to the sample mean (134.2) as well as to the sample median (133), as it usually will be if the population actually follows a symmetric distribution, as the Wilcoxon approach assumes.
+
+
 ## Comparing Population Means via Paired Samples
 
 The `dm192` data has current systolic blood pressure (`sbp`), and systolic blood pressure from last year (`sbp_old`). Suppose we want to describe the mean SBP change in not just our sample, but instead the entire **population** (adults who live in NE Ohio with diabetes) over the past year.
