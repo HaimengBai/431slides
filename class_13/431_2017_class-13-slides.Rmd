@@ -35,7 +35,20 @@ Project Task A is due on Friday 2017-10-13 at noon.
 
 ## Quiz 1
 
-Details to come.
+The Quiz went reasonably well. One person scored 100/100.
+
+n | Mean | SD | Q1 | Median | Q3 | Max
+--: | ----: | ----: | ----: | ----: | ----: | ----: 
+51 | 81.8 | 10.3 | 74 | 82.5 | 89.5 | 100
+
+Range | "Grade" | n
+:-------: | :------: | ----:
+89.5 - 100 | A | 14
+84 - 89 | A-/B+ | 11
+73 - 83 | B | 19
+below 73 | -- | 7
+
+### If you have questions, pose them via email to Dr. Love soon.
 
 ## The Signal and the Noise
 
