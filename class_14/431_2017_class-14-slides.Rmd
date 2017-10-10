@@ -674,7 +674,7 @@ The bootstrap procedure I use in R was adapted from Frank Harrell and colleagues
 
 ## The `bootdif` function
 
-The procedure requires the definition of a function, which I have adapted a bit, called `bootdif`, which is part of the `Love-R-functions.R` script on the web site, and is also part of this Markdown file.
+The procedure requires the definition of a function, which I have adapted a bit, called `bootdif`, which is part of the `Love-boost.R` script on the web site, and is also part of this Markdown file.
 
 As in our previous bootstrap procedures, we are sampling (with replacement) a series of many data sets (default: 2000).
 
