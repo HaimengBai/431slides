@@ -11,7 +11,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
     - Leek, Chapter 6
     - The Signal and The Noise, Chapters 4-5
-    - Discussion of the First Quiz
+    - Discussion of the First Quiz: see the [Answer Sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_13/431-quiz1sketch-2017.pdf). You'll receive your grades in class, in person.
     - Building a Confidence Interval (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 16 and 19)
     
 2. Upcoming Readings/Assignments/Deadlines:
