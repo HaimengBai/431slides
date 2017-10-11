@@ -22,6 +22,6 @@ When the audio recording for today's class becomes available, we'll post it abov
     
 3. The [Quiz 1 answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_13/431-quiz1sketch-2017.pdf) has been updated to reflect that **b** and **f** are now correct for Item 20. The ten people affected have an email from me to that effect.
 
-4. [Course Notes](https://thomaselove.github.io/431notes/) have been updated to fix typos in Sections 19 and 20.
+4. [Course Notes](https://thomaselove.github.io/431notes/) are updated, to deal with a typo identified in class in the one-sample version of the t test in the old version of Section 19.5.7 and a formatting mistake made twice in the old version of Section 22.8.
 
 ## Announcements after class:
