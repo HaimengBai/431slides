@@ -10,7 +10,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 1. Today's Agenda
     - Project Task B group meetings
-    - Hypothesis Testing, Paired and Independent Samples Comparisons of Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 17, 18, 20 and 21)
+    - Finishing up One-Sample Confidence Intervals for the Mean ([Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 16, 19)
+    - Start Hypothesis Testing, Paired and Independent Samples Comparisons of Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 17, 18, 20 and 21)
     
 2. Upcoming Readings/Assignments/Deadlines:
     - **2017-10-13** at noon: [Project Task A](https://github.com/THOMASELOVE/431project/tree/master/TaskA) is due.
@@ -18,5 +19,9 @@ When the audio recording for today's class becomes available, we'll post it abov
     - **2017-10-20** at noon: [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is due.
     - **2017-10-23** at noon: [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) is due.
     - Note that [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) (due 2017-11-03) and [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) (due 2017-12-01) are now available.
+    
+3. The [Quiz 1 answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_13/431-quiz1sketch-2017.pdf) has been updated to reflect that **b** and **f** are now correct for Item 20. The ten people affected have an email from me to that effect.
+
+4. [Course Notes](https://thomaselove.github.io/431notes/) have been updated to fix typos in Sections 19 and 20.
 
 ## Announcements after class:
