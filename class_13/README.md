@@ -25,3 +25,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements after class:
 
 3. A new version of Slide Set 13 (and 14) is now available, fixing typos identified in class.
+
+4. In Quiz 1, Item 20 now includes both **b** and **f** as correct responses. The 10 people affected by this (their scores improved by 2.5 points) have received (or will, shortly) an email from me. See [Answer Sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_13/431-quiz1sketch-2017.pdf) for details.
+
+5. [Course Notes](https://thomaselove.github.io/431notes/) are being updated, to deal with a typo identified in class in the one-sample version of the t test in Section 19 and a formatting mistake in Section 20.
