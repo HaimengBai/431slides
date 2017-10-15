@@ -26,4 +26,4 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-1. The [Schedule for Course Project Presentations](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is now available.
+1. The [Schedule for Course Project Presentations](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is now available. You will begin to see reactions to Project Task A no earlier than Monday, 2017-10-17.
