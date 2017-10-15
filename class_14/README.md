@@ -25,3 +25,5 @@ When the audio recording for today's class becomes available, we'll post it abov
 4. [Course Notes](https://thomaselove.github.io/431notes/) are updated, to deal with a typo identified in class in the one-sample version of the t test in the old version of Section 19.5.7 and a formatting mistake made twice in the old version of Section 22.8.
 
 ## Announcements after class:
+
+1. The [Schedule for Course Project Presentations](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is now available.
