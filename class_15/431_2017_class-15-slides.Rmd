@@ -18,8 +18,9 @@ options(width = 55)
 ## Today's R Setup
 
 ```{r setup, message = FALSE}
-library(boot); library(broom); library(magrittr)
-library(tidyverse)
+devtools::install_github('jtleek/slipper')
+
+library(slipper); library(tidyverse)
 
 dm192 <- read.csv("data/dm192.csv") %>% tbl_df
 
@@ -249,6 +250,20 @@ set.seed(4311); Hmisc::smean.cl.boot(dm_first$diffs)
 So, according to this confidence interval, a reasonable range (with 95% confidence) for $\mu$, the population mean of the unadjusted -- adjusted differences is (-1.67, -0.052). Should we reject or retain $H_0: \mu = 0$?
 
 What does this confidence interval suggest about the *p* value?
+
+## Using `slipper` to run a bootstrap CI
+
+For paired differences, we can bootstrap the mean or any other summary...
+
+```{r}
+# requires library(slipper)
+# to install slipper: devtools::install_github('jtleek/slipper')
+set.seed(4312)
+dm_first %>% slipper(mean(diffs), B = 500) %>%
+  filter(type == "bootstrap") %>%
+  summarize(ci_low = quantile(value, 0.025),
+            ci_high = quantile(value, 0.975))
+```
 
 ## Step 5. Draw a conclusion, based on the *p* value or confidence interval
 
@@ -571,6 +586,28 @@ Note that the two columns must be separated here with a comma rather than a tild
 
 This CI describes the male - female difference (i.e. the negative of the F-M difference used earlier) -- we can tell this by the listed sample mean difference. 
 
+## Can we use `slipper` instead?
+
+For differences in means between independent samples, we can use the `tidy` function in `broom` to obtain the point estimate, and then slipper on that result.
+
+```{r}
+broom::tidy(t.test(dm_second$sbp ~ dm_second$sex))
+```
+
+## Using `slipper` to run a bootstrap CI
+
+For comparing the means of independent samples:
+
+```{r}
+# requires library(slipper)
+set.seed(4313)
+dm_second %>% 
+  slipper((broom::tidy(t.test(sbp ~ sex))$estimate), 
+          B = 500) %>%
+  summarise(bootci_low = quantile(value, 0.025),
+            bootci_high = quantile(value, 0.975))
+```
+
 ## Results for the SBP and Sex Study
 
 Procedure     | 2-sided *p* value for $H_0: \mu_F = \mu_M$ | 95% CI for $\mu_F - \mu_M$
@@ -578,7 +615,8 @@ Procedure     | 2-sided *p* value for $H_0: \mu_F = \mu_M$ | 95% CI for $\mu_F -
 Pooled t test | 0.463 | (-3.2, 7.0)
 Welch t test  | 0.465 | (-3.2, 7.0)
 Rank Sum test | 0.265 | (-2.0, 8.0)
-Bootstrap CI  | *p* > 0.05 | (-2.9, 7.0)
+Bootstrap CI  | *p* > 0.05 | (-2.9, 7.0) via `bootdif`
+Bootstrap CI  | *p* > 0.05 | (-2.7, 7.0) via `slipper`
 
 What conclusions should we draw, at $\alpha$ = 0.05?
 
