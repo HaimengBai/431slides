@@ -15,11 +15,12 @@ When the audio recording for today's class becomes available, we'll post it abov
   - Jeff Leek's [page on slipper](https://github.com/jtleek/slipper) for bootstrapping, which we'll demonstrate today.
   - Some discussion of Power and Sample Size ([Notes](https://thomaselove.github.io/431notes/): Chapter 22)
   - Discussion of [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) and its timing. 
-  - (delayed to 2017-10-24) Silver Chapters 7 and 8.
+  - (delayed to 2017-10-26) Silver Chapters 7 and 8.
     
 2. Upcoming Readings/Assignments/Deadlines:
-    - **2017-10-20** at noon: [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is due.
     - **2017-10-23** at noon: [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) is due.
+    - NOTE CHANGE: **2017-10-27** at noon: [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is due.
     
 ## Announcements after class:
 
+3. [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is postponed one week, and will be due on 2017-10-27 at noon.
