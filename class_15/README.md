@@ -11,7 +11,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
   - The [Schedule for Course Project Presentations](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is now available.
   - Project Task A results - see https://goo.gl/oVUAbx for complete details. In class, we'll focus on the [General Comments](https://github.com/THOMASELOVE/431project/blob/master/TaskA/COMMENTS.md).
-  - Hypothesis Testing, Paired and Independent Samples Comparisons of Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 17, 18, 20 and 21)
+  - Hypothesis Testing, Paired and Independent Samples Comparisons of Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 17, 18, 20, 21)
+  - Some discussion of Power and Sample Size ([Notes](https://thomaselove.github.io/431notes/): Chapter 22)
   - Discussion of [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) and its timing. 
   - (delayed to 2017-10-24) Silver Chapters 7 and 8.
     
