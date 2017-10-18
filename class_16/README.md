@@ -11,7 +11,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
   - Comparing Population Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 16-22)
   - [Finally, A Formula for Decoding Health News](https://fivethirtyeight.com/features/a-formula-for-decoding-health-news/) from FiveThirtyEight and Jeff Leek.
-  - Our opening video comes from [this story at FiveThirtyEight](http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/)
+  - Our opening video comes from [this story at FiveThirtyEight](http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/). My favorite part of  the article comes from its close:
+      - Try to distill the p-value down to an intuitive concept and it loses all its nuances and complexity, said science journalist Regina Nuzzo, a statistics professor at Gallaudet University. "Then people get it wrong, and this is why statisticians are upset and scientists are confused." **You can get it right, or you can make it intuitive, but it’s all but impossible to do both.**
 
 2. On Artifical Data Codes
 
