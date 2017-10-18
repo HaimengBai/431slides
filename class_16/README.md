@@ -11,6 +11,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
   - Comparing Population Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 16-22)
   - [Finally, A Formula for Decoding Health News](https://fivethirtyeight.com/features/a-formula-for-decoding-health-news/) from FiveThirtyEight and Jeff Leek.
+  - Our opening video comes from [this story at FiveThirtyEight](http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/)
 
 2. On Artifical Data Codes
 
@@ -18,7 +19,10 @@ When the audio recording for today's class becomes available, we'll post it abov
 - [Jessica Logan: "This, my friends, is why you NEVER make a variable called “gender” but instead make one called “male” with responses of 1= yes and 0= no."](https://twitter.com/jarlogan/status/920312287595864064)
 - [Jenny Bryan: "Artificial data codes are rarely worth it with modern s/w & h/w. Treated, control, dead, alive, wildtype, mutant … just say it."](https://twitter.com/jennybryan/status/920505719673278465?refsrc=email&s=11)
 
-3. Upcoming Readings/Assignments/Deadlines:
+3. Claudia points out some enjoyable **data art** at http://www.r-graph-gallery.com/portfolio/data-art/
+  - For example, consider this look at [BB-8](http://www.r-graph-gallery.com/144-droid-bb-8-data-art/)
+  
+4. Upcoming Readings/Assignments/Deadlines:
     - **2017-10-23** at noon: [Project Task B](https://github.com/THOMASELOVE/431project/tree/master/TaskB) is due.
     - No class on Tuesday 2017-10-24 (Fall Break.)
     - (delayed to 2017-10-26) Silver Chapters 7 and 8.
@@ -26,7 +30,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     
 ## Announcements after class:
 
-4. On p values
+5. On p values
   - The American Statistical Association's [Statement on p-Values: Context, Process and Purpose](http://amstat.tandfonline.com/doi/pdf/10.1080/00031305.2016.1154108)
     - "Informally, a p-value is the probability under a specified statistical model that a statistical summary of the data (e.g., the sample mean difference between two compared groups) would be equal to or more extreme than its observed value."
     - In February 2014, George Cobb, Professor Emeritus of Mathematics and Statistics at Mount Holyoke College, posed these questions to an ASA discussion forum: 
@@ -36,8 +40,10 @@ When the audio recording for today's class becomes available, we'll post it abov
       - A: Because that’s what they were taught in college or grad school.
     - "Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold."
     - [XKCD](https://xkcd.com/882/) has a particularly important view to share.
+    - Today's video came from "[Not Even Scientists Can Easily Explain P-values](http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/)" by Christie Aschwanden at FiveThirtyEight.
+    - More from FiveThirtyEight on the ASA's P Values statement in this article: "[Statisticians Found One Thing They Can Agree On: It’s Time To Stop Misusing P-Values](http://fivethirtyeight.com/features/statisticians-found-one-thing-they-can-agree-on-its-time-to-stop-misusing-p-values/)", also by Christie Aschwanden.
 
-5. P Values are a HOT topic.
+6. P Values are a HOT topic.
   - Benjamin et al. 2017 [Redefine statistical significance](https://psyarxiv.com/mky9j/) in which the abstract begins: "We propose to change the default P-value threshold for statistical significance for claims of new discoveries from 0.05 to 0.005." 
     - [Article in Science Magazine online](http://www.sciencemag.org/news/2017/07/it-will-be-much-harder-call-new-findings-significant-if-team-gets-its-way) about the Benjamin et al. piece 
     - [Gelman](http://andrewgelman.com/2017/10/02/response-comments-abandon-statistical-significance/) comments: Benjamin et al. recommend replacing 0.05 by 0.005, not because they think a significance-testing-based lexicographic decision rule is a good idea, but, as I understand them, because they think that 0.005 is a stringent enough cutoff that it will essentially break the current system. Assuming there is a move to reduce uncorrected researcher degrees of freedom and forking paths, it will become very difficult for researchers to reach the 0.005 threshold with noisy, useless studies. Thus, the new threshold, if applied well, will suddenly cause the stream of easy papers to dry up.
