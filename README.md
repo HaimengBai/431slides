@@ -5,7 +5,7 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
-16 | 2017-10-19 | [README 16](https://github.com/THOMASELOVE/431slides/blob/master/class_16/README.md) | [Course Notes](https://thomaselove.github.io/431notes/) Sections 16-22, Leek's Formula from 538.
+16 | 2017-10-19 | [README 16](https://github.com/THOMASELOVE/431slides/blob/master/class_16/README.md) | [Course Notes](https://thomaselove.github.io/431notes/) Sections 16-22, Leek's [Formula from 538](https://fivethirtyeight.com/features/a-formula-for-decoding-health-news/).
 15 | 2017-10-17 | [README 15](https://github.com/THOMASELOVE/431slides/blob/master/class_15/README.md) | Project Task A reactions, [Course Notes](https://thomaselove.github.io/431notes/) Sections 17-18, 20-22.
 14 | 2017-10-12 | [README 14](https://github.com/THOMASELOVE/431slides/blob/master/class_14/README.md) | Project Task B meetings, [Course Notes](https://thomaselove.github.io/431notes/) Sections 17-18, 20-21
 13 | 2017-10-10 | [README 13](https://github.com/THOMASELOVE/431slides/blob/master/class_13/README.md) | Leek 6, Silver 4-5, [Course Notes](https://thomaselove.github.io/431notes/) Sections 16, 19, Quiz 1 results
