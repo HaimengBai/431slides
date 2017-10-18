@@ -1,0 +1,893 @@
+---
+title: "431 Class 16"
+author: "Thomas E. Love"
+date: "2017-10-19"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## A Little Teaser on P Values
+
+ASA Statement: "Informally, a p-value is the probability under a specified statistical model that a statistical summary of the data (e.g., the sample mean difference between two compared groups) would be equal to or more extreme than its observed value."
+
+http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/
+
+... Try to distill the p-value down to an intuitive concept and it loses all its nuances and complexity, said science journalist Regina Nuzzo, a statistics professor at Gallaudet University. "Then people get it wrong, and this is why statisticians are upset and scientists are confused." **You can get it right, or you can make it intuitive, but it’s all but impossible to do both.**
+
+## Today's R Setup
+
+```{r setup, message = FALSE}
+# devtools::install_github('jtleek/slipper')
+# use above line if you haven't installed slipper
+
+library(magrittr); library(slipper); library(tidyverse)
+
+dm192 <- read.csv("data/dm192.csv") %>% tbl_df
+angina <- read.csv("data/angina.csv") %>% tbl_df
+implant <- read.csv("data/implant.csv") %>% tbl_df
+
+source("Love-boost.R")
+```
+
+## What if the Samples Aren't Paired?
+
+Using the `dm192` frame, is the average systolic blood pressure larger in **male** or in **female** adults in NE Ohio living with diabetes?
+
+```{r get the subset for male female comparison}
+dm_second <- select(dm192, pt.id, sex, sbp)
+summary(dm_second)
+```
+
+## Our comparison now is between females and males
+
+```{r plot 1 to compare females and males, echo = FALSE}
+ggplot(dm_second, aes(x = sex, y = sbp, fill = sex)) +
+    geom_jitter(aes(color = sex), alpha = 0.75, width = 0.25) +
+    geom_boxplot(notch = TRUE, alpha = 0.5) +
+    coord_flip() +
+    guides(fill = FALSE, color = FALSE) +
+    theme_bw() + 
+    labs(x = "", y = "Systolic Blood Pressure this year",
+         title = "Independent Samples Comparison: SBP by Sex")
+```
+
+## Another Way to Picture Two Independent Samples
+
+```{r histograms faceted for comparing sbp by sex, echo = FALSE}
+ggplot(dm_second, aes(x = sbp, fill = sex)) +
+  geom_histogram(bins = 12, col = "white") +
+  facet_wrap(~ sex) +
+  guides(fill = FALSE) + 
+  labs(title = "Systolic Blood Pressure by Sex in 192 Patients with Diabetes")
+```
+
+## Numerical Summary for Two Independent Samples
+
+```{r favstats comparing indep samples of sbp by sex, warning=FALSE}
+by(dm_second$sbp, dm_second$sex, mosaic::favstats)
+```
+
+## Hypotheses Under Consideration
+
+The hypotheses we are testing are:
+
+- $H_0$: mean in population 1 = mean in population 2 + hypothesized difference $\Delta_0$ vs.
+- $H_A$: mean in population 1 $\neq$ mean in population 2 + hypothesized difference $\Delta_0$, 
+
+where $\Delta_0$ is almost always zero. An equivalent way to write this is:
+
+- $H_0: \mu_1 = \mu_2 + \Delta_0$ vs. 
+- $H_A: \mu_1 \neq \mu_2 + \Delta_0$ 
+
+Yet another equally valid way to write this is: 
+
+- $H_0: \mu_1 - \mu_2 = \Delta_0$ vs. 
+- $H_A: \mu_1 - \mu_2 \neq \Delta_0$,
+
+where, again $\Delta_0$ is almost always zero. 
+
+## Testing Options for Independent Samples
+
+1. Pooled t test or Indicator Variable Regression Model (t test assuming equal population variances)
+2. Welch t test (t test without assuming equal population variances)
+3. Wilcoxon-Mann-Whitney Rank Sum Test (non-parametric test not assuming populations are Normal)
+4. Bootstrap confidence interval for the difference in population means
+
+## Assumptions of the Pooled T test
+
+The standard method for comparing population means based on two independent samples is based on the t distribution, and requires the following assumptions:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+3.	[Normal Population] The two populations are each Normally distributed
+4.	[Equal Variances] The population variances in the two groups being compared are the same, so we can obtain a pooled estimate of their joint variance.
+
+## The Pooled Variances t test in R
+
+Also referred to as the t test assuming equal population variances:
+
+```{r t test 1 for sbp by sex}
+t.test(dm_second$sbp ~ dm_second$sex, var.equal=TRUE)
+```
+
+We can use regression to obtain these results, too.
+
+## Indicator Variable Regression
+
+Regression Equation: sbp = 135.13 - 1.89 (sex = male)
+
+- where (sex = male) = 1 if male, 0 if female
+
+```{r model for sbp by sex}
+modA <- lm(sbp ~ sex, data = dm192)
+modA
+```
+
+## Indicator Variable Regression Summary
+
+![](images/modelA.png)
+
+Male - Female difference point estimate: -1.89, *p* = 0.463
+
+## Confidence Interval via Regression
+
+Our point estimate of the male - female difference is -1.89, with standard error 2.57, and two-sided *p* = 0.463
+
+```{r confint model a}
+confint(modA)
+```
+
+## Tidying a Two-Sample (Pooled) t Test
+
+```{r}
+dm_second %$%
+  tidy(t.test(sbp ~ sex, var.equal = TRUE))
+```
+
+## Assumptions of the Welch t test
+
+The Welch test still requires:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+3.	[Normal Population] The two populations are each Normally distributed
+
+But it doesn't require:
+
+4.	[Equal Variances] The population variances in the two groups being compared are the same.
+
+Welch's t test is the default choice in R.
+
+## Welch t test without assuming equal population variances
+
+```{r t test 2 for sbp by sex}
+t.test(dm_second$sbp ~ dm_second$sex)
+```
+
+## Tidying a Two-Sample (Welch) Test
+
+```{r}
+dm_second %$%
+  tidy(t.test(sbp ~ sex))
+```
+
+## Assumptions of the Wilcoxon-Mann-Whitney Rank Sum Test
+
+The Wilcoxon-Mann-Whitney Rank Sum test still requires:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+
+But it doesn't require:
+
+3.	[Normal Population] The two populations are each Normally distributed
+4.	[Equal Variances] The population variances in the two groups being compared are the same.
+
+It also doesn't really compare population means.
+
+## Wilcoxon-Mann-Whitney Rank Sum Test
+
+The rank sum test is a non-parametric test of whether the two samples were selected from populations having the same distribution.
+
+```{r rank sum test for sbp by sex}
+wilcox.test(dm_second$sbp ~ dm_second$sex, conf.int = TRUE)
+```
+
+## The Continuity Correction
+
+The *p* value for the rank sum test is obtained via a Normal approximation, using the test statistic W. 
+
+- That approximation can be slightly improved through the use of a continuity correction (a small adjustment to account for the fact that we're using a continuous distribution, the Normal, to approximate a discretely valued test statistic, W.) 
+- The continuity correction is particularly important in the case where we have many tied ranks, and is applied by default in R.
+- If you want (for some reason) to not use it, add `correct = FALSE` to your call to the `wilcox.test()` function.
+
+## Rank Sum Test vs. Signed Rank Test
+
+Each tests whether two samples were selected from populations having the same distribution.
+
+1. The Rank Sum test (Wilcoxon - Mann - Whitney) is for **independent samples** comparisons.
+    - Assign numerical ranks to all observations across the two groups. 
+        - 1 = smallest, n = largest. Use midpoint for any ties.
+    - Add up the ranks from sample 1. Call that $R_1$. 
+        - $R_2$ is then known, since the sum of all ranks is $\frac{n(n+1)}{2}$
+    - $U_1 = R_1 - \frac{n_1(n_1 + 1)}{2}$, where $n_1$ is the sample size for sample 1.
+    - $U_1 + U_2$ is always just $n_1 n_2$, so it doesn't matter which sample you treat as sample 1.
+    - The smaller of $U_1$ and $U_2$ is then called U, the test statistic.
+    - Software converts U into a *p* value via a Normal approximation, given $n_1$ and $n_2$.
+
+More details at the Wikipedia entry for [$\textcolor{blue}{\mbox{Mann-Whitney U test}}$](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test). 
+    
+## Rank Sum Test vs. Signed Rank Test
+
+Each tests whether two samples were selected from populations having the same distribution.
+
+2. The Signed Rank test is for **paired samples** comparisons.
+    - Calculate the paired difference for each pair, and drop those with difference = 0.
+    - Let N be the number of pairs, so there are 2N data points.
+    - Rank the pairs in order of smallest (rank = 1) to largest (rank = N) absolute difference.
+    - Calculate W, the sum of the signed ranks by $$ W = \sum_{i=1}^{N} [sgn(x_{2,i} - x_{1,i})] \prod R_i)]$$
+        - The sign function sgn(x) = -1 if x < 0, 0 if x = 0, and +1 if x > 0.
+    - Statistical software will convert W into a *p* value, given $N$.
+
+More details at the Wikipedia entry for [$\textcolor{blue}{\mbox{Wilcoxon signed-rank test}}$](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test). 
+
+
+## Tidying a Wilcoxon Rank Sum Test
+
+```{r}
+dm_second %$%
+  tidy(wilcox.test(sbp ~ sex, conf.int = TRUE))
+```
+
+## The Bootstrap
+
+This bootstrap approach to comparing population means using two independent samples still requires:
+
+1.	[Independence] The samples for the two groups are drawn independently.
+2.	[Random Samples] The samples for each of the groups are drawn at random from the populations of interest.
+
+but does not require either of the other two assumptions:
+
+3.	[Normal Population] The two populations are each Normally distributed
+4.	[Equal Variances] The population variances in the two groups being compared are the same.
+
+The bootstrap procedure I use in R was adapted from Frank Harrell and colleagues. http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/BootstrapMeansSoftware
+
+## The `bootdif` function
+
+The procedure requires the definition of a function, which I have adapted a bit, called `bootdif`, which is part of the `Love-boost.R` script on the web site, and is also part of this Markdown file.
+
+As in our previous bootstrap procedures, we are sampling (with replacement) a series of many data sets (default: 2000).
+
+- Here, we are building bootstrap samples based on the SBP levels in the two independent samples (M vs. F). 
+- For each bootstrap sample, we are calculating a mean difference between the two groups (M vs. F).
+- We then determine the 2.5^th^ and 97.5^th^ percentile of the resulting distribution of mean differences (for a 95% confidence interval).  
+
+## Using the `bootdif` function to compare means based on independent samples
+
+So, to compare systolic BP (our outcome) across the two levels of sex (our grouping factor) for the adult patients with diabetes in NE Ohio, run the following...
+
+```{r run bootdif on SBP by sex, message=FALSE}
+set.seed(4314); bootdif(dm_second$sbp, dm_second$sex)
+```
+
+Note that the two columns must be separated here with a comma rather than a tilde (`~`). 
+
+This CI describes the male - female difference (i.e. the negative of the F-M difference used earlier) -- we can tell this by the listed sample mean difference. 
+
+## Can we use `slipper` instead?
+
+For differences in means between independent samples, we can use the `tidy` function in `broom` to obtain the point estimate, and then slipper on that result.
+
+```{r}
+broom::tidy(t.test(dm_second$sbp ~ dm_second$sex))
+```
+
+## Using `slipper` to run a bootstrap CI
+
+For comparing the means of independent samples:
+
+```{r}
+# requires library(slipper)
+set.seed(4313)
+dm_second %>% 
+  slipper((broom::tidy(t.test(sbp ~ sex))$estimate), 
+          B = 500) %>%
+  summarise(bootci_low = quantile(value, 0.025),
+            bootci_high = quantile(value, 0.975))
+```
+
+## Results for the SBP and Sex Study
+
+Procedure     | *p* for $H_0: \mu_F = \mu_M$ | 95% CI for $\mu_F - \mu_M$
+:-----------: | --------------------: | :------------------------:
+Pooled t test | 0.463 | (-3.2, 7.0)
+Welch t test  | 0.465 | (-3.2, 7.0)
+Rank Sum test | 0.265 | (-2.0, 8.0)
+Bootstrap CI  | *p* > 0.05 | (-2.9, 7.0) via `bootdif`
+Bootstrap CI  | *p* > 0.05 | (-2.7, 7.0) via `slipper`
+
+What conclusions should we draw, at $\alpha$ = 0.05?
+
+## On Reporting *p* Values
+
+When reporting a *p* value and no rounding rules are in place from the lead author/journal/source for publication, follow these conventions...
+
+1. Use an italicized, lower-case *p* to specify the *p* value. Don't use *p* for anything else.
+2. For *p* values above 0.10, round to two decimal places, at most. 
+3. For *p* values near $\alpha$, include only enough decimal places to clarify the reject/retain decision. 
+4. For very small *p* values, always report either *p* < 0.0001 or even just *p* < 0.001, rather than specifying the result in scientific notation, or, worse, as $p = 0$ which is glaringly inappropriate.
+5. Report *p* values above 0.99 as *p* > 0.99, rather than *p* = 1.
+
+## A Few Comments on Significance
+
+- **A significant effect is not necessarily the same thing as an interesting effect.**  For example, results calculated from large samples are nearly always "significant" even when the effects are quite small in magnitude.  Before doing a test, always ask if the effect is large enough to be of any practical interest.  If not, why do the test?
+
+- **A non-significant effect is not necessarily the same thing as no difference.**  A large effect of real practical interest may still produce a non-significant result simply because the sample is too small.
+
+- **There are assumptions behind all statistical inferences.** Checking assumptions is crucial to validating the inference made by any test or confidence interval.
+
+## From XKCD (https://xkcd.com/882/)
+
+![](images/significant1.png)
+
+## From XKCD (https://xkcd.com/882/)
+
+![](images/significant2.png)
+
+## From XKCD (https://xkcd.com/882/)
+
+![](images/significant3.png)
+
+## From XKCD (https://xkcd.com/882/)
+
+![](images/significant4.png)
+
+## From George Cobb - on why *p* values deserve to be re-evaluated
+
+The **idea** of a p-value as one possible summary of evidence
+
+morphed into a
+
+- **rule** for authors:  reject the null hypothesis if p < .05.
+
+## From George Cobb - on why *p* values deserve to be re-evaluated
+
+The **idea** of a p-value as one possible summary of evidence
+
+morphed into a
+
+- **rule** for authors:  reject the null hypothesis if p < .05,
+
+which morphed into a
+
+- **rule** for editors:  reject the submitted article if p > .05.
+
+## From George Cobb - on why *p* values deserve to be re-evaluated
+
+The **idea** of a p-value as one possible summary of evidence
+
+morphed into a
+
+- **rule** for authors:  reject the null hypothesis if p < .05,
+
+which morphed into a
+
+- **rule** for editors:  reject the submitted article if p > .05,
+
+which morphed into a
+
+- **rule** for journals:  reject all articles that report p-values\footnote{http://www.nature.com/news/psychology-journal-bans-p-values-1.17001 describes the banning of null hypothesis significance testing by {\it Basic and Applied Psychology}.} 
+
+## From George Cobb - on why *p* values deserve to be re-evaluated
+
+The **idea** of a p-value as one possible summary of evidence
+
+morphed into a
+
+- **rule** for authors:  reject the null hypothesis if p < .05, which morphed into a
+
+- **rule** for editors:  reject the submitted article if p > .05, which morphed into a
+
+- **rule** for journals:  reject all articles that report p-values. 
+
+Bottom line:  **Reject rules.  Ideas matter.**
+
+*Posted to an American Statistical Association message board Oct 14 2015*
+
+## How Big A Sample Size Do I need?
+
+1. What is the budget?
+
+2. What are you trying to compare?
+
+3. What is the study design?
+
+4. How big an effect size do you expect (hope) to see?
+
+5. What was that budget again?
+
+6. OK, tell me the maximum allowable rates of Type I and Type II error that you want to control for. Or, if you like, tell me the confidence level and power you want to have.
+
+7. And what sort of statistical inference do you want to plan for?
+
+## A Formula for Decoding Health News
+
+**Health Headlines are Advertising**
+
+Think about this headline: "Hospital checklist cut infections, saved lives." 
+
+- Suppose you are a little surprised that a checklist could really save lives. If you think say the odds of this being true are 1 in 4, you would set your initial gut feeling to 1/4. Because this number is less than one, it means initially you're less likely to believe the study.
+
+### Bayes' Rule 
+Final opinion = (initial gut feeling) * (study support for headline)
+
+Source: Jeff Leek, [$\textcolor{blue}{fivethirtyeight.com}$](http://fivethirtyeight.com/features/a-formula-for-decoding-health-news/)
+
+## Assessing Study Support for a Headline
+
+1. Was the study a clinical study in humans?
+2. Was the outcome of the study something directly related to human health like longer life or less disease? Was the outcome something you care about, such as living longer or feeling better?
+3. Was the study a randomized, controlled trial (RCT)?
+4. Was it a large study (at least hundreds of patients)?
+5. Did the treatment have a major impact on the outcome?
+6. Did predictions hold up in at least two separate groups of people?
+
+### Assessing Study Support 
+Support for Headline: Multiply by 2 for every yes, and 1/2 for every no.
+
+## Evaluating A Research Article
+
+Intensive care units (ICUs) at Michigan hospitals implemented a new strategy for reducing infections through training, a daily goals sheet and a program to improve the culture of safety in the ICUs. The doctors measured the rate of infection before and after implementing this safety program. 
+
+1. Was the study a clinical study in humans?
+    - The study was done in humans in ICUs (+)
+2. Was the outcome of the study something directly related to human health like longer life or less disease? Was the outcome something you care about, such as living longer or feeling better?
+    - The outcome was the rate of infections after surgery; according to the article, these infections cost U.S. hospitals up to $2.3 billion annually.  (+)
+
+## Evaluating a Research Article
+
+3. Was the study a randomized, controlled trial (RCT)?
+    - The study compared the same hospitals before and after a change in ICU policy. This is an example of a crossover study, which is not as strong as a randomized trial but does account for some of the differences among hospitals because the same ICUs were measured before and after using the checklist. (-)
+4. Was it a large study (at least hundreds of patients)?
+    - The study looked at more than 100 ICUs over 1,981 months. In total, it followed patients for 375,757 catheter-days. (A catheter-day means watching one patient for one day while she is on a catheter.) This is a huge number of days to monitor patients for potential infections. (+)
+5. Did the treatment have a major impact on the outcome?
+    - The study showed a sustained drop of up to 66 percent in infections. (+)
+6. Did predictions hold up in at least two separate groups of people?
+    - The study looked at 103 hospitals in Michigan. (+)
+
+So we have 5 + and 1 - in our evaluation of this study.
+
+## Final Opinion?
+
+- So, a large study showed a major drop in infections, and that is directly medically important. For the sake of the exercise, let's multiply by two every time we see a `yes` answer and by 1/2 every time we see a `no` answer. I would say this study's result is about 16 times more likely (five out of six `yes` answers or 2 x 2 x 2 x 2 x 2 x (1/2) = 16) if checklists really do reduce infections than if they don't. I set study support for headline = 16.
+
+- Multiply to get final opinion on headline = 1/4*16 = 4, also expressed as 4/1. I would say that my updated odds are 4 to 1 that the headline is true.  The strength of the study won over my initially skeptical gut feeling.
+
+### Bayes' Rule 
+Final opinion = (initial gut feeling) * (study support for headline)
+
+Source: Jeff Leek, [$\textcolor{blue}{fivethirtyeight.com}$](http://fivethirtyeight.com/features/a-formula-for-decoding-health-news/)
+
+## Evaluating Health News: For Consumers
+
+1. Watch out for single source stories. They're usually based on a press release, which will have a hidden agenda.
+2. Beware of stories that don't mention cost. It's crucial information. (If the cost of the great, new treatment is out of reach -- it's not that great, is it?)
+3. Headline percentages are misleading. If something "reduces your risk of X by 50%" chances are that number doesn't mean what you think it means.
+4. If it sounds too good to be true, it probably is. If a report presents only or primarily the benefits of a new treatment, it's a bad report. ALL healthcare interventions have trade-offs.
+5. Patient anecdotes are not data. Beware of stories that rely on them. Anecdotes are used to compensate for data that are unavailable or flawed.
+
+Source: [$\textcolor{blue}{NPR}$](http://www.healthnewsreview.org/2015/07/nprs-on-the-media-with-a-skeptics-guide-to-health-newsdiet-fads/)
+
+## Evaluating Health News: For Consumers
+
+6. A "simple screening test" is never simple. The decision to take one is one of the most complex and difficult decisions a health consumer can make.
+7. Watch out for hyperbolic language. "Breakthrough", "first-of-its-kind", and "game-changer" are red flags. When you read "it may become..." substitute "it may not become..."
+8. Newer isn't always better. Often the latest test, treatment or procedure is no better than what already exists, just pricier.
+9. Beware of disease-mongering. Risk factors, symptoms for diseases, or data can be exaggerated in a way that causes needless worry, and expense.
+10. The latest treatment may not exist yet, or ever. "Awaiting FDA approval" or "in pre-clinical trial phase" means it's still a pipe dream.
+11. There is a leap from mice to men. Getting from rodent trials to human use is a very, very long road, that may in fact lead nowhere.
+
+Source: [$\textcolor{blue}{NPR}$](http://www.healthnewsreview.org/2015/07/nprs-on-the-media-with-a-skeptics-guide-to-health-newsdiet-fads/)
+
+## Sample Size & Power: Pooled t Test 
+
+For an independent-samples t test, with a balanced design (so that n~1~ = n~2~), R can estimate any one of the following elements, given the other four, using the `power.t.test` function, for a one-sided or two-sided t test.
+
+- n = the sample size in each of the two groups being compared
+- $\delta$ = delta = the true difference in means between the two groups
+- s = sd = the true standard deviation of the individual values in each group (assumed to be constant – since we assume equal population variances)
+- $\alpha$ = sig.level = the significance level for the comparison (maximum acceptable risk of Type I error)
+- 1 – $\beta$ = power = the power of the t test to detect the effect of size $\delta$
+
+If you want a two-sample power calculation for an unbalanced design, you will need to use a different library and function in R.
+
+## Another Small Example: Studying Satiety
+
+- I want to compare people eating this meal to people eating this meal in terms of impact on satiety. 
+- My satiety measure ranges from 0-100.
+- People either eat meal A or meal B.
+- I can afford to enroll 160 people in the study.
+- I expect that a difference that's important will be about 10 points on the satiety scale.
+- I don't know the standard deviation, but the whole range (0-100) gets used.
+- I want to do a two-sided test.
+- How many should eat meal A and how many meal B to maximize my power to detect such a difference? And how much power will I have if I use a 90% confidence level?
+
+## Satiety Example: Power
+
+- n = the sample size in each of the two groups being compared
+- $\delta$ = delta = the true difference in means between the two groups
+- s = sd = the true standard deviation of the individual values in each group (assumed to be constant – since we assume equal population variances)
+- $\alpha$ = sig.level = the significance level for the comparison (maximum acceptable risk of Type I error)
+- 1 – $\beta$ = power = the power of the t test to detect the effect of size $\delta$
+
+What do I know?
+
+## Satiety Example Calculation
+
+```{r power in satiety example 1}
+power.t.test(n = 80, delta = 10, sd = 25,
+             sig.level = 0.10, alt = "two.sided",
+             type = "two.sample")
+```
+
+## What if 32 people ate both meals, at different times?
+
+Impact on standard deviation? Let's say $\sigma_d = 15$...
+
+```{r power in satiety example 2}
+power.t.test(delta = 10, sd = 15, sig.level = 0.10, 
+        n = 32, alt = "two.sided", type = "paired")
+```
+
+
+## Assessing Normality when Comparing Population Means
+
+Paired Samples - compute paired differences, assess Normality
+
+- Best tool: Histogram + Boxplot + Normal Q-Q plot
+- Purpose: determine whether a t test is appropriate
+- Big Deal? No. 
+    + If obviously non-Normal, avoid t test
+    + If Normal seems like a reasonable approximation, but you're not certain, easy to run both t test and other approach (like bootstrap) - if they give similar answers, then not a problem. If they don't give similar answers, use the approach with fewer assumptions.
+    
+If you're having trouble getting calibrated, try this. Stop looking for a plot to scream "I am normal" and instead focus on making sure you identify plots that scream "I am NOT normal."
+    
+## Assessing Normality when Comparing Population Means
+
+Independent Samples - assess Normality in each of the two samples
+
+- Best tool: Comparison boxplot + Faceted Histograms or Normal Q-Q plots, or Superimposed Density Functions
+- Purpose: determine whether a t test is appropriate
+- Big Deal? No. 
+    + If obviously non-Normal, avoid t test
+    + If Normal seems like a reasonable approximation, but you're not certain, easy to run both t test and other approach (like bootstrap) - if they give similar answers, then not a problem. If they don't give similar answers, use the approach with fewer assumptions.
+
+## Equal Variances Assumed - a big deal?
+
+Is the issue of which t test to use for independent samples (pooled t test or Welch's t test) an important one?
+
+Practically, no.
+
+- If the sample sizes are equal (or close), whether you use a pooled t test or a Welch t test will almost never yield an important difference in confidence intervals or *p* values.
+- If the sample sizes are meaningfully different, then use a Welch test to be safe. If the sample variance in group 1 is between 2/3 and 3/2 the size of the variance in group 2, you'll rarely see a meaningful difference between the two approaches anyway.
+- R defaults to Welch approximation.
+
+## Tool for Selecting a Comparison Procedure
+
+If we want to compare the means of two populations, 
+
+1. Are these paired or independent samples?
+
+2. If paired, then are the paired differences Normally distributed?
+    a. Yes --> Use **paired t** test
+    b. No -- > are the differences reasonably symmetric?
+        1. If symmetric, use **Wilcoxon signed rank** or **bootstrap** via `smean.cl.boot`
+        2. If skewed, use **sign test** or **bootstrap** via `smean.cl.boot`
+
+3. If independent, is each sample Normally distributed?
+    a. No --> use **Wilcoxon-Mann-Whitney rank sum** test or **bootstrap**, via `bootdif`
+    b. Yes --> are sample sizes equal?
+        1. Balanced Design (equal sample sizes) - use **pooled t** test
+        2. Unbalanced Design - use **Welch** test
+
+
+## 2-Sample Study Design, Comparing Means
+
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+4. Are the data a random sample from the population(s) of interest? Or is there at least
+a reasonable argument for generalizing from the sample to the population(s)?
+5. What is the significance level (or, the confidence level) we require here?
+6. Are we doing one-sided or two-sided testing/confidence interval generation?
+7. If we have paired samples, did pairing help reduce nuisance variation?
+8. If we have paired samples, what does the distribution of sample paired differences tell
+us about which inferential procedure to use?
+9. If we have independent samples, what does the distribution of each individual sample
+tell us about which inferential procedure to use?
+
+## The Cochlear Implant Study, 1
+
+The `implant.csv` data are consonant recognition scores for 42 patients wearing second (S) or third (T) generation cochlear implants\footnote{mostly from Woodworth (2004) Biostatistics: A Bayesian Introduction, Table 4.5, from the Iowa Cochlear Implant Project, but with a change to one subject by TEL.}. Third-generation devices incorporate changes and enhancements suggested by experience with second-generation devices.
+
+```{r see implant data}
+knitr::kable(implant[1:4,])
+```
+
+## The Cochlear Implant Study, 2a
+
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+
+
+## The Cochlear Implant Study, 2b
+
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+
+```{r summary of implant, echo = FALSE}
+summary(implant)
+```
+
+## Cochlear Implant Study, 3
+
+4. Are the data a random sample from the population(s) of interest? Or is there at least
+a reasonable argument for generalizing from the sample to the population(s)?
+5. What is the significance level (or, the confidence level) we require here?
+6. Are we doing one-sided or two-sided testing/confidence interval generation?
+
+What is H~0~?
+
+How about H~A~?
+
+## Cochlear Implant Study, 4
+
+H~0~: $\mu_S = \mu_T$ vs. H~A~: $\mu_S \neq \mu_T$
+
+or, in our case...
+
+H~0~: $\mu_T - \mu_S = 0$ vs. H~A~: $\mu_T - \mu_S \neq 0$
+
+
+9. Since we have independent samples, what does the distribution of each individual sample
+tell us about which inferential procedure to use?
+
+## Cochlear Implant EDA: Best Choice of Test?
+
+```{r boxplot of implant data, echo = FALSE, message = FALSE, warning = FALSE}
+ggplot(implant, aes(x = style, y = score, fill = style)) +
+    geom_jitter(aes(color = style), alpha = 0.75, width = 0.25) +
+    geom_boxplot(notch = TRUE, alpha = 0.5) +
+    coord_flip() +
+    guides(fill = FALSE, color = FALSE) +
+    theme_bw() + 
+    labs(x = "", y = "Consonant Recognition Score",
+         title = "Independent Samples Comparison by Implant Type (S = 2nd Gen., T = 3rd Gen.)")
+```
+
+## Decision Tool for Two Independent Samples
+
+H~0~: $\mu_T - \mu_S = 0$ vs. H~A~: $\mu_T - \mu_S \neq 0$
+
+If independent, is each sample Normally distributed?
+
+a. No --> use **Wilcoxon-Mann-Whitney rank sum** test or **bootstrap**, via `bootdif`
+b. Yes --> are sample sizes equal?
+    - Balanced Design (equal sample sizes) - use **pooled t** test
+    - Unbalanced Design - use **Welch** test
+
+Well?
+
+## Implant: Numerical Summary of the Samples
+
+```{r implant numerical summaries, echo = FALSE, warning = FALSE}
+by(implant$score, implant$style, mosaic::favstats)
+```
+
+## Results of all four tests are available in the Markdown file
+
+```{r tests for implant study code, eval = FALSE}
+## pooled t
+t.test(implant$score ~ implant$style, var.equal = TRUE) 
+## Welch's t
+t.test(implant$score ~ implant$style) 
+## rank sum
+wilcox.test(implant$score ~ implant$style, exact = FALSE) 
+## bootstrap
+set.seed(4313); bootdif(implant$score, implant$style) 
+```
+
+```{r tests for implant study results, echo = FALSE, message = FALSE}
+t.test(implant$score ~ implant$style, var.equal = TRUE) ## pooled t
+t.test(implant$score ~ implant$style) ## Welch's t
+wilcox.test(implant$score ~ implant$style, conf.int = TRUE, exact = FALSE) ## rank sum
+set.seed(4313); bootdif(implant$score, implant$style) ## bootstrap
+```
+
+## Cochlear Implant Results
+
+H~0~: $\mu_T - \mu_S = 0$ vs. H~A~: $\mu_T - \mu_S \neq 0$
+
+Test     | *p* value | Point Estimate | 95% CI
+---------: | ------: | :------: | :----------------:
+Pooled t   | .0001 | 26.8 | (14.2, 39.4)
+Welch's t  | .0001 | 26.8 | (14.2, 39.4)
+Rank Sum   | .0005 | 30.0 | (14.0, 43.0)
+Bootstrap  | < 0.05 | 26.8 | (14.9, 38.4)
+
+What's our conclusion?
+
+## Angina Study
+
+63 adult males with coronary artery disease were involved\footnote{Pagano and Gauvreau, 2000, Chapter 11.}.
+
+- On day A, they undergo an exercise test on a treadmill and we record the length of time from the start of the test until the patient experiences angina (pain or spasms in the chest).
+    + They are then exposed to plain air for approximately one hour.
+    + They then repeat the test and the time until the onset of angina is recorded again.
+    + Outcome of interest is the percentage decrease in time to angina between the first and second tests.
+    
+- On day B, same tests and outcome, but during the interval between tests, they are exposed to a mixture of air and carbon monoxide, enough to increase the patient's carboxyhemoglobin level to 4% (lower than the level in smokers, but similar to that typically endured by a person in a poorly ventilated area in heavy traffic)
+
+## The Angina Data (*n* = 63)
+
+```{r angina data}
+angina[1:5,]
+```
+
+`air` = 100((`air.t1` - `air.t2`)/`air.t1`) and `co` = 100((`co.t1` - `co.t2`)/`co.t1`)
+
+## The Angina Study, 2a
+
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+
+## The Angina Study, 2b
+
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+
+```{r summary of angina, echo = FALSE}
+ang2 <- angina %>% select(id, air, co) %>% filter(is.na(co) != 1)
+ang2 [1:6,]
+```
+
+## Paired Samples? [1 sample removed]
+
+```{r plots for paired samples 1, echo = FALSE, warning = FALSE}
+p1 <- ggplot(ang2, aes(x = air, y = co)) + 
+    geom_point() +
+    annotate("text", x = -40, y = 35, col = "purple", size = 5,
+             label = paste("Pearson r = ", round(cor(ang2$co, ang2$air, use = "complete"),2))) +
+    labs(title = "Scatterplot of Air and CO results")
+
+ang2_long <- gather(ang2, key = exposure, value = result, co, air)
+
+p2 <- ggplot(ang2_long, aes(x = exposure, y = result, group = id)) + 
+    geom_point(aes(col = id)) +
+    geom_line(aes(col = id)) + 
+    labs(title = "Matched Samples Plot for Angina Study",
+         y = "% Decrease in Time to Angina", x = "")
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+
+## The Angina Study, 3
+
+4. Are the data a random sample from the population(s) of interest? Or is there at least
+a reasonable argument for generalizing from the sample to the population(s)?
+5. What is the significance level (or, the confidence level) we require here?
+6. Are we doing one-sided or two-sided testing/confidence interval generation?
+
+What is H~0~?
+
+How about H~A~?
+
+## The Angina Study, 4
+
+H~0~: $\mu_d = 0$ vs. H~A~: $\mu_d \neq 0$
+
+where $\mu_d$ = population mean of the CO - air differences.
+
+```{r favstats of paired differences}
+ang2$diffs <- ang2$co - ang2$air
+mosaic::favstats(ang2$diffs)
+```
+
+## The Angina Study, 5
+
+7. If we have paired samples, did pairing help reduce nuisance variation?
+8. If we have paired samples, what does the distribution of paired differences in the sample tell
+us about which inferential procedure to use?
+
+- Recall that r = 0.3 for CO and Air, from our scatterplot earlier.
+
+## The Angina Study: EDA of Paired Differences
+
+```{r histogram boxplot and normal Q-Q plot of sbp diffs, echo = FALSE, message = FALSE}
+p1 <- ggplot(ang2, aes(x = diffs)) +
+    geom_histogram(aes(y = ..density..), bins = fd_bins(ang2$diffs),
+                 fill = "#ED174C", col = "#002B5C") +
+    coord_flip() +
+    stat_function(fun = dnorm,
+                args = list(mean = mean(ang2$diffs), 
+                            sd = sd(ang2$diffs)),
+                lwd = 1.5, col = "#002B5C") +
+    labs(title = "Histogram",
+       x = "CO - Air Difference in % Time to Angina", y = "Density")
+
+p2 <- ggplot(ang2, aes(x = 1, y = diffs)) +
+  geom_boxplot(fill = "#ED174C", notch = TRUE, col = "#002B5C", outlier.color = "#ED174C") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  labs(title = "Boxplot",
+       y = "", x = "")
+
+p3 <- ggplot(ang2, aes(sample = diffs)) +
+  geom_qq(col = "#ED174C", size = 2) +
+  geom_abline(intercept = qq_int(ang2$diffs), 
+              slope = qq_slope(ang2$diffs),
+              col = "#002B5C") +
+  labs(title = "Normal Q-Q",
+       y = "", x = "")
+
+gridExtra::grid.arrange(p1, p2, p3, nrow=1, 
+   top = "CO - Air Difference in % Time to Angina for 62 Males with CAD")
+```
+
+## Decision Tool for Paired Samples
+
+If paired, then are the paired differences Normally distributed?
+
+a. Yes --> Use **paired t** test
+b. No -- > are the differences reasonably symmetric?
+    1. If symmetric, use **Wilcoxon signed rank** or **bootstrap** via `smean.cl.boot`
+    2. If skewed, use **sign test** or **bootstrap** via `smean.cl.boot`
+
+What should we use here?
+
+## Results for 3 Analytic Approaches
+
+```{r tests for angina study code, eval = FALSE}
+## paired t
+t.test(ang2$diffs)
+## rank sum
+wilcox.test(ang2$diffs, conf.int = TRUE) 
+## bootstrap
+set.seed(4314); Hmisc::smean.cl.boot(ang2$diffs) 
+```
+
+```{r tests for angina study, echo = FALSE}
+## paired t
+t.test(ang2$diffs)
+## rank sum
+wilcox.test(ang2$diffs, conf.int = TRUE) 
+## bootstrap
+set.seed(4314); Hmisc::smean.cl.boot(ang2$diffs) 
+```
+
+## Angina Study Results
+
+H~0~: $\mu_d = 0$ vs. H~A~: $\mu_d \neq 0$
+
+Test     | *p* value | Point Estimate | 95% CI
+---------: | ------: | :------: | :----------------:
+Paired t     | .045   | 4.94 | (0.1, 9.8)
+Signed Rank  | .062   | 4.15 | (-0.2, 8.3)
+Bootstrap    | < 0.05 | 4.94 | (0.2, 10.1)
+
+What's our conclusion?
+
