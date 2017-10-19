@@ -8,11 +8,11 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
-1. Project Task A Revisions were due at 9 AM today.
-  - 2 people have still not completed this task. I'll check Canvas again just before class. The other 25 revisions have been reviewed. 
+1. Project Task A Revisions have now been reviewed.
+  - **Imad Bagh** - are you here?
   - To see your review, visit https://goo.gl/suK7VU or read Dr. Love's comments on Canvas.
   - Review the [complete list of approved and not yet approved project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
-  - Everyone without an approved Task A (at the moment 31/44 projects are approved) needs to get another revision in by **Friday 2017-10-20 at 4 PM**.
+  - Everyone without an approved Task A (31/44 projects are approved so far) needs to get another revision in by **Friday 2017-10-20 at 4 PM**.
 
 2. Today's Agenda
   - Comparing Population Means (see [Course Notes](https://thomaselove.github.io/431notes/), especially Chapters 16-22)
