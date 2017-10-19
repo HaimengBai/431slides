@@ -9,12 +9,11 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Project Task A Revisions were due at 9 AM today.
-  - **10** of the 27 projects that needed a revision have been reviewed on Canvas by Dr. Love so far. 
+  - **12** of the 27 projects that needed a revision have been reviewed on Canvas by Dr. Love so far. 
   - To see your review, visit https://goo.gl/suK7VU or read my comments to you on Canvas.
   - The following proposals are now OK/Approved, in addition to the 17 proposals that were approved in the first pass. 
-    - Abhishek Despande, Gwendolyn Donley, Dongze He
-    - Grace Park, Neel Patel, Frances Wang
-    - Xueyi Zhang
+    - Abhishek Despande, Gwendolyn Donley, Dongze He, J.J. Huang
+    - Grace Park, Neel Patel, Frances Wang, Xueyi Zhang
   - Everyone without an approved Task A needs to get another revision in by **Friday 2017-10-20 at 4 PM**.
 
 2. Today's Agenda
