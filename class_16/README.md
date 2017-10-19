@@ -9,7 +9,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Project Task A Revisions were due at 9 AM today.
-  - As of 8:20 AM, there were still 7 people who had not completed this task. All others have been reviewed. 
+  - As of 8:50 AM, there were still 6 people who had not completed this task. All others have been reviewed. 
   - To see your review, visit https://goo.gl/suK7VU or read Dr. Love's comments on Canvas.
   - Review the [complete list of approved and not yet approved project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
   - Everyone without an approved Task A needs to get another revision in by **Friday 2017-10-20 at 4 PM**.
