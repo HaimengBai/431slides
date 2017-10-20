@@ -13,8 +13,10 @@ When the audio recording for today's class becomes available, we'll post it abov
 - Task A: Review the [status of all 44 project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
     - Those of you without an approved proposal (Task A) should be in email contact with me.
 - [Task B materials](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) are due at noon on Monday **2017-10-23**.
-- [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**, but you cannot do that until the class survey is available. We hope to make the Class Survey available by 2017-10-30.
+- [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**, but you cannot do that until the class survey is available. 
+    - We hope to make the Class Survey available by 2017-10-30.
 - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love no later than noon on Monday, **2017-11-13**.
+    - Many of you could do this task now.
 
 2. Upcoming Assignments
 
