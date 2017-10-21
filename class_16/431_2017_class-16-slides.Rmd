@@ -29,7 +29,8 @@ http://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-val
 # devtools::install_github('jtleek/slipper')
 # use above line if you haven't installed slipper
 
-library(magrittr); library(slipper); library(tidyverse)
+library(broom); library(magrittr) 
+library(slipper); library(tidyverse)
 
 dm192 <- read.csv("data/dm192.csv") %>% tbl_df
 angina <- read.csv("data/angina.csv") %>% tbl_df
@@ -289,7 +290,7 @@ This CI describes the male - female difference (i.e. the negative of the F-M dif
 For differences in means between independent samples, we can use the `tidy` function in `broom` to obtain the point estimate, and then slipper on that result.
 
 ```{r}
-broom::tidy(t.test(dm_second$sbp ~ dm_second$sex))
+tidy(t.test(dm_second$sbp ~ dm_second$sex))
 ```
 
 ## Using `slipper` to run a bootstrap CI
@@ -300,7 +301,7 @@ For comparing the means of independent samples:
 # requires library(slipper)
 set.seed(4313)
 dm_second %>% 
-  slipper((broom::tidy(t.test(sbp ~ sex))$estimate), 
+  slipper((tidy(t.test(sbp ~ sex))$estimate), 
           B = 500) %>%
   summarise(bootci_low = quantile(value, 0.025),
             bootci_high = quantile(value, 0.975))
