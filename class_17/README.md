@@ -9,21 +9,24 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
-    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, and we'll hit some of the new sections today.
-    - Power and Sample Size Considerations Comparing 2 Means
+    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, including new Sections 24-35 (completing Part B.)
+    - Power and Sample Size Considerations Comparing 2 Means (see [Course Notes Section 26](https://thomaselove.github.io/431notes/power-and-sample-size-issues-comparing-two-means.html))
         - With `power.t.test` for balanced designs
         - With the `pwr` package for unbalanced designs
     - A little in-class survey
-    - Comparing Two Population Means: Decision Support
+    - Comparing Two Population Means: Decision Support (see [Course Notes Sections 24-25](https://thomaselove.github.io/431notes/comparing-two-means-using-independent-samples.html#a-more-complete-decision-support-tool-comparing-means))
         - The angina example
         - The implant example
-    - Developing the Class Survey based on the Project Task B work
+    - Developing the Class Survey based on the [Project Task B](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) submissions
     - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
     - Task A: Review the [status of all 43 project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
         - Those of you without an approved proposal (Task A) should be in email contact with me.
     - [Task B materials](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) are due at noon on Monday **2017-10-23**.
+        - So far, I've heard from two groups:
+            - 4 brains 1 heart (Laura Baldassari, Kedar Mahajan, Sarah Planchon Pope, Sneha Vakamudi, Xin Xin Yu)
+            - Shakalaka (Todd Fennimore, Dongze He, Dannielle Skander, Ruipeng Wei, Xueyi Zhang)
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-13**.
