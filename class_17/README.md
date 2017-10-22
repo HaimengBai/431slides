@@ -9,6 +9,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
+    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, and we'll hit some of the new sections today.
     - Power and Sample Size Considerations Comparing 2 Means
         - With `power.t.test` for balanced designs
         - With the `pwr` package for unbalanced designs
