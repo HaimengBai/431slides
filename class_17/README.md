@@ -30,13 +30,13 @@ When the audio recording for today's class becomes available, we'll post it abov
             - Shakalaka (Todd Fennimore, Dongze He, Dannielle Skander, Ruipeng Wei, Xueyi Zhang)
             - Club Tukey (Estee Cramer, Chaim Domb, Caroline El Sanadi, Hyung Chul Kim, Vinh Trinh, Frances Wang)
             - The Outliers (Ruke Asagba, Ashlei Beiswinger, Brianna Fuller, Grace Park, Jon Sasse, Pavel Vaisberg)
-        - One group has submitted Task B, but missed part 4, and will, I hope, repair that soon:
+            - The Foxy Hedgehogs (Sriram Boppana, Laura Cremer, Gavin Hanson, Adam Majot, Arshna Qureshi, Connor Swingle)
+        - Two groups submitted Task B on time, but missed part 4, and will, I hope, repair that soon:
             - The Two Keys (Jack McDonnell, Neel Patel, Kaylee Sarna, Andrew Tang, Peter Wilkinson)
-        - The other groups didn't have materials on Canvas the last time I checked, but it's not due yet, of course.
-            - Pearson Project
-            - Super 6
-            - The Foxy Hedgehogs
-            - The Ridiculous Six
+            - Super 6 (Sophia Cao, Vaishali Deo, J.J. Huang, Preeti Pathak, Andrew Shan, Bilal Zonjy)
+        - The other groups didn't have materials on Canvas as of 11 AM, but it's not due until Monday at noon.
+            - Pearson Project (Zainab Albar, Abhishek Deshpande, C.W. Gallagher, M.K. Kazimi, Sandra Silva)
+            - The Ridiculous Six (Gwen Donley, Sarah Frischmann, Ryan Honomichl, Nik Krieger, Roberto Martinez, Elina Misicka)
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-13**.
