@@ -24,9 +24,18 @@ When the audio recording for today's class becomes available, we'll post it abov
     - Task A: Review the [status of all 43 project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
         - Those of you without an approved proposal (Task A) should be in email contact with me.
     - [Task B materials](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) are due at noon on Monday **2017-10-23**.
-        - So far, I've heard from two groups:
+        - So far, I've heard from these groups whose Task B looks OK:
             - 4 brains 1 heart (Laura Baldassari, Kedar Mahajan, Sarah Planchon Pope, Sneha Vakamudi, Xin Xin Yu)
             - Shakalaka (Todd Fennimore, Dongze He, Dannielle Skander, Ruipeng Wei, Xueyi Zhang)
+            - Club Tukey (Estee Cramer, Chaim Domb, Caroline El Sanadi, Hyung Chul Kim, Vinh Trinh, Frances Wang)
+            - The Outliers (Ruke Asagba, Ashlei Beiswinger, Brianna Fuller, Grace Park, Jon Sasse, Pavel Vaisberg)
+        - One group has submitted Task B, but there are problems. No scale, in particular, but also some missing pieces of the rest of the assignment, and that is...
+            - The Two Keys (Jack McDonnell, Neel Patel, Kaylee Sarna, Andrew Tang, Peter Wilkinson)
+        - The other groups didn't have materials on Canvas the last time I checked, but it's not yet late.
+            - Pearson Project
+            - Super 6
+            - The Foxy Hedgehogs
+            - The Ridiculous Six
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-13**.
