@@ -29,9 +29,9 @@ When the audio recording for today's class becomes available, we'll post it abov
             - Shakalaka (Todd Fennimore, Dongze He, Dannielle Skander, Ruipeng Wei, Xueyi Zhang)
             - Club Tukey (Estee Cramer, Chaim Domb, Caroline El Sanadi, Hyung Chul Kim, Vinh Trinh, Frances Wang)
             - The Outliers (Ruke Asagba, Ashlei Beiswinger, Brianna Fuller, Grace Park, Jon Sasse, Pavel Vaisberg)
-        - One group has submitted Task B, but there are problems. No scale, in particular, but also some missing pieces of the rest of the assignment, and that is...
+        - One group has submitted Task B, but missed part 4, and will, I hope, repair that soon:
             - The Two Keys (Jack McDonnell, Neel Patel, Kaylee Sarna, Andrew Tang, Peter Wilkinson)
-        - The other groups didn't have materials on Canvas the last time I checked, but it's not yet late.
+        - The other groups didn't have materials on Canvas the last time I checked, but it's not due yet, of course.
             - Pearson Project
             - Super 6
             - The Foxy Hedgehogs
