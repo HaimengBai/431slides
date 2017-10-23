@@ -9,7 +9,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
-    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, including new Sections 24-36 (which finish Part B) plus some sections of Part C (Sections 37-). Eventually, we'll have 48-50 sections.
+    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, with the addition of (at least) 20 new Sections. This includes Sections 24-36 (which finish Part B) plus some sections of Part C (Sections 37-). Eventually, we'll have 50 sections, I think.
         - We're now recommending that you install the **cowplot** package in R. This is also a good time to update your packages.
     - Power and Sample Size Considerations Comparing 2 Means (see [Course Notes Section 26](https://thomaselove.github.io/431notes/power-and-sample-size-issues-comparing-two-means.html))
         - With `power.t.test` for balanced designs
@@ -25,18 +25,17 @@ When the audio recording for today's class becomes available, we'll post it abov
     - Task A: Review the [status of all 43 project proposals](https://github.com/THOMASELOVE/431project/blob/master/TaskA/APPROVED.md).
         - Those of you without an approved proposal (Task A) should be in email contact with me.
     - [Task B materials](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) are due at noon on Monday **2017-10-23**.
-        - So far, I've heard from these groups whose Task B looks OK:
+        - Task B looks OK for these groups.
             - 4 brains 1 heart (Laura Baldassari, Kedar Mahajan, Sarah Planchon Pope, Sneha Vakamudi, Xin Xin Yu)
             - Shakalaka (Todd Fennimore, Dongze He, Dannielle Skander, Ruipeng Wei, Xueyi Zhang)
             - Club Tukey (Estee Cramer, Chaim Domb, Caroline El Sanadi, Hyung Chul Kim, Vinh Trinh, Frances Wang)
             - The Outliers (Ruke Asagba, Ashlei Beiswinger, Brianna Fuller, Grace Park, Jon Sasse, Pavel Vaisberg)
             - The Foxy Hedgehogs (Sriram Boppana, Laura Cremer, Gavin Hanson, Adam Majot, Arshna Qureshi, Connor Swingle)
+            - The Ridiculous Six (Gwen Donley, Sarah Frischmann, Ryan Honomichl, Nik Krieger, Roberto Martinez, Elina Misicka)
+            - Pearson Project (Zainab Albar, Abhishek Deshpande, C.W. Gallagher, M.K. Kazimi, Sandra Silva)
         - Two groups submitted Task B on time, but missed part 4, and will, I hope, repair that no later than Thursday at 9 AM:
             - The Two Keys (Jack McDonnell, Neel Patel, Kaylee Sarna, Andrew Tang, Peter Wilkinson)
-            - Super 6 (Sophia Cao, Vaishali Deo, J.J. Huang, Preeti Pathak, Andrew Shan, Bilal Zonjy)
-        - The other groups didn't have materials on Canvas as of 11 AM, but it's not due until Monday at noon.
-            - Pearson Project (Zainab Albar, Abhishek Deshpande, C.W. Gallagher, M.K. Kazimi, Sandra Silva)
-            - The Ridiculous Six (Gwen Donley, Sarah Frischmann, Ryan Honomichl, Nik Krieger, Roberto Martinez, Elina Misicka)
+            - Super 6 (Sophia Cao, Vaishali Deo, J.J. Huang, Preeti Pathak, Andrew Shan, Bilal Zonjy)         
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-13**.
