@@ -31,7 +31,7 @@ When the audio recording for today's class becomes available, we'll post it abov
             - Club Tukey (Estee Cramer, Chaim Domb, Caroline El Sanadi, Hyung Chul Kim, Vinh Trinh, Frances Wang)
             - The Outliers (Ruke Asagba, Ashlei Beiswinger, Brianna Fuller, Grace Park, Jon Sasse, Pavel Vaisberg)
             - The Foxy Hedgehogs (Sriram Boppana, Laura Cremer, Gavin Hanson, Adam Majot, Arshna Qureshi, Connor Swingle)
-        - Two groups submitted Task B on time, but missed part 4, and will, I hope, repair that soon:
+        - Two groups submitted Task B on time, but missed part 4, and will, I hope, repair that no later than Thursday at 9 AM:
             - The Two Keys (Jack McDonnell, Neel Patel, Kaylee Sarna, Andrew Tang, Peter Wilkinson)
             - Super 6 (Sophia Cao, Vaishali Deo, J.J. Huang, Preeti Pathak, Andrew Shan, Bilal Zonjy)
         - The other groups didn't have materials on Canvas as of 11 AM, but it's not due until Monday at noon.
