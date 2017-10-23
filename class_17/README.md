@@ -18,7 +18,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     - Comparing Two Population Means: Decision Support (see [Course Notes Sections 24-25](https://thomaselove.github.io/431notes/comparing-two-means-using-independent-samples.html#a-more-complete-decision-support-tool-comparing-means))
         - The angina example
         - The implant example
-    - Developing the Class Survey based on the [Project Task B](https://github.com/THOMASELOVE/431project/blob/master/TaskB/README.md) submissions
+    - [Developing the Class Survey](https://goo.gl/4UZYAH) based on the submissions from the Project Task B Groups.
     - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
