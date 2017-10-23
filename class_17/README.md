@@ -9,7 +9,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
-    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, including new Sections 24-35 (finishing Part B) plus some sections of Part C are also in place.
+    - The [Course Notes](https://thomaselove.github.io/431notes/) are much larger now, including new Sections 24-36 (almost finishing Part B) plus some sections of Part C (Sections 37-) are also in place.
         - We're now recommending that you install the **cowplot** package in R. This is also a good time to update your packages.
     - Power and Sample Size Considerations Comparing 2 Means (see [Course Notes Section 26](https://thomaselove.github.io/431notes/power-and-sample-size-issues-comparing-two-means.html))
         - With `power.t.test` for balanced designs
