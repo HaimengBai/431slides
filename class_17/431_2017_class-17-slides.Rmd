@@ -30,9 +30,6 @@ options(width = 55)
 ## Today's R Setup
 
 ```{r setup, message = FALSE}
-# devtools::install_github('jtleek/slipper')
-# use above line if you haven't installed slipper
-
 library(pwr); library(tidyverse)
 
 angina <- read.csv("data/angina.csv") %>% tbl_df
@@ -478,7 +475,7 @@ What's our conclusion?
 
 ## Building the Class Survey
 
-To be developed.
+Please visit the draft materials (with my comments) at https://goo.gl/VmU7cx
 
 ## The Signal and The Noise: Chapters 7 and 8
 
