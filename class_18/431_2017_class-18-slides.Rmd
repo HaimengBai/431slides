@@ -1,0 +1,536 @@
+---
+title: "431 Class 18"
+author: "Thomas E. Love"
+date: "2017-10-31"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+- *p* Values in the News
+- Comparing More than Two Populations: The Analysis of Variance
+- Pairwise Comparisons of Means after a Significant ANOVA
+    + Multiple Comparisons
+    + Bonferroni and Tukey HSD approaches
+- Comparing Population Proportions
+- Power and Sample Size When Comparing Proportions
+
+## Today's R Setup
+
+```{r setup, message = FALSE}
+library(forcats); library(tidyverse)
+
+source("Love-boost.R")
+dm192 <- read.csv("data/dm192.csv") %>% tbl_df
+```
+
+## The Value of a *p*-Valueless Paper
+
+Jason T. Connor (2004) *American J of Gastroenterology* 99(9): 1638-40.
+
+Abstract: As is common in current biomedical research, about 85% of original contributions in *The American Journal of Gastroenterology* in 2004 have reported *p*-values. However, none are reported in this issue's article by Abraham et al. who, instead, rely exclusively on effect size estimates and associated confidence intervals to summarize their findings. **Authors using confidence intervals communicate much more information in a clear and efficient manner than those using** *p*-**values. This strategy also prevents readers from drawing erroneous conclusions caused by common misunderstandings about** *p*-**values**. I outline how standard, two-sided confidence intervals can be used to measure whether two treatments differ or test whether they are clinically equivalent.
+
+DOI: 10.1111/j.1572-0241.2004.40592.x
+
+## Editorial from JAMA Cardiology 2016-10-12
+
+![](images/jamacardeditorial.png)
+
+## Mark, Lee, Harrell JAMA Cardiol 2016-10-12
+
+![](images/jamacardmark.png)
+
+doi:10.1001/jamacardio.2016.3312
+
+## On Experiments
+
+> ... the null hypothesis is never proved or established, but is possibly disapproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
+
+- R. A. Fisher
+
+> Do not be too timid and squeamish about your actions. All life is an experiment. The more experiments, the better.
+
+- Ralph Waldo Emerson
+
+
+## Why Dividing Data Comparisons into Categories based on Significance Levels is Terrible.
+
+> The common practice of dividing data comparisons into categories based on significance levels is terrible, but it happens all the time.... so it’s worth examining the prevalence of this error.
+
+[Link to Andrew Gelman's blog, 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/)
+
+## Gelman on *p* values, 1
+
+Let me first briefly explain why categorizing based on p-values is such a bad idea. Consider, for example, this division: 
+
+- "really significant" for *p* < .01, 
+- "significant" for *p* < .05, 
+- "marginally significant" for *p* < .1, and 
+- "not at all significant" otherwise. 
+
+Now consider some typical *p*-values in these ranges: say, *p* = .005, *p* = .03, *p* = .08, and *p* = .2. 
+
+Translate these two-sided *p*-values back into z-scores, which we can do in R via `qnorm(c(.005, .03, .08, .2)/2, lower.tail = FALSE)`
+
+## Gelman on *p* values, 2
+
+Description | really sig. | sig. | marginally sig.| not at all sig.
+---------: | ----: | ----: | ----: | ----:
+*p* value | 0.005 | 0.03 | 0.08 | 0.20
+Z score | 2.8 | 2.2 | 1.8 | 1.3
+
+The seemingly yawning gap in p-values comparing the “not at all significant” p-value of .2 to the “really significant” p-value of .005, is only 1.5. 
+
+If you had two independent experiments with z-scores of 2.8 and 1.3 and with equal standard errors and you wanted to compare them, you’d get a difference of 1.5 with a standard error of 1.4, which is completely consistent with noise.
+
+
+## Gelman on *p* values, 3
+
+From a **statistical** point of view, the trouble with using the p-value as a data summary is that the p-value is only interpretable in the context of the null hypothesis of zero effect — and (much of the time), nobody’s interested in the null hypothesis. 
+
+Indeed, once you see comparisons between large, marginal, and small effects, the null hypothesis is irrelevant, as you want to be comparing effect sizes.
+
+From a **psychological** point of view, the trouble with using the p-value as a data summary is that this is a kind of deterministic thinking, an attempt to convert real uncertainty into firm statements that are just not possible (or, as we would say now, just not replicable).
+
+**The key point**: The difference between statistically significant and NOT statistically significant is not, generally, statistically significant.
+
+
+## The `dm192` data: Comparing Insurance Groups on Hemoglobin A1c
+
+```{r dm192 summary}
+dm.ins <- select(dm192, pt.id, insurance, a1c)
+summary(dm.ins)
+```
+
+- For now, we'll collapse the 6 uninsured in with Medicaid patients, and we'll drop the four cases without an A1c value.
+
+## Collapse medicaid and uninsured together
+
+```{r create ins3cat}
+dm.ins <- dm.ins %>%
+    mutate(ins.3cat = fct_recode(insurance,
+            "Commercial" = "commercial",
+            "Medicare" = "medicare",
+            "Medicaid or Uninsured" = "medicaid",
+            "Medicaid or Uninsured" = "uninsured"))
+```
+
+## Drop the subjects with  missing a1c
+
+```{r drop patients with missing A1c}
+dm.ins <- dm.ins %>% 
+    filter(!is.na(a1c))
+summary(dm.ins)
+```
+
+## Summarize A1c by Insurance (3 categories)
+
+```{r ins breakdown of a1c, warning = FALSE}
+by(dm.ins$a1c, dm.ins$ins.3cat, mosaic::favstats)
+```
+
+
+## Analysis of Variance to Compare More Than Two Population Means using Independent Samples
+
+Suppose we want to compare more than two population means, and we have collected three or more independent samples.
+
+This is analysis of a continuous outcome variable on the basis of a single categorical factor –- in fact, it’s often called **one-factor** ANOVA or **one-way** ANOVA to indicate that the outcome is being split up into the groups defined by a single factor. 
+
+- H~0~: population means in each group are the same
+- H~A~: H~0~ isn't true; at least one $\mu$ differs from the others
+
+When there are just two groups, then this boils down to an F test that is equivalent to the Pooled t test.
+
+## One-Way ANOVA for the `dm.ins` Data
+
+If we have a grouping factor with *k* levels, then we are testing:
+
+- H~0~: $\mu_1 = \mu_2 = ... = \mu_k$ vs.
+- H~A~: At least one of the population means $\mu_1, \mu_2, ..., \mu_k$ is different from the others.
+
+Our outcome is the `a1c` value (measured as a percentage), and the factor is the insurance group (3 categories). 
+
+```{r anova table 1}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))
+```
+
+## Elements of the ANOVA Table
+
+The ANOVA table breaks down the variation in the outcome explained by the k levels of the factor of interest, and the variation in the outcome which remains (the Residual, or Error).
+
+```{r anova table 2, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))
+```
+
+- Df = degrees of freedom, Sum Sq = Sum of Squares, 
+- Mean Sq = Mean Square (Sum of Squares / df)
+- F value = F test statistic, Pr(>F) = *p* value
+
+## The Degrees of Freedom
+
+```{r anova table 3, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))[1]
+```
+
+- The **degrees of freedom** attributable to the factor of interest (here, `ins.3cat`) is the number of levels of the factor minus 1. 
+    + Here, we have three insurance category levels, so df(`ins.3cat`) = 2.
+- The total degrees of freedom are the number of observations (across all levels of the factor) minus 1. 
+    + We have 188 patients left in our `dm.ins` study after removing the four with missing A1c, so df(Total) = 187, although the Total row isn't shown here.
+- Residual df = Total df - Factor df = 187 - 2 = 185.
+
+## The Sums of Squares
+
+```{r anova table 4, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))[1:2]
+```
+
+- The **sum of squares** (SS) represents variation explained. 
+- SS(Factor) is the sum across all levels of the factor of the sample size for the level multiplied by the squared difference between the level mean and the overall mean across all levels. SS(`ins.3cat`) = 5.55
+- SS(Total) = sum across all observations of the square of the difference between the individual values and the overall mean.
+    + Here SS(Total) = 5.55 + 939.60 = 945.15
+- Residual SS = Total SS – Factor SS.
+
+## $\eta^2$, the Proportion of Variation Explained by ANOVA
+
+```{r anova table 5, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))[1:2]
+```
+
+- $\eta^2$ ("eta-squared") is equivalent to $R^2$ in a linear model.
+    + $\eta^2$ = SS(Factor) / SS(Total) = the proportion of variation in our outcome (here, hemoglobin A1c) explained by the variation between levels of our factor (here, our three insurance groups)
+    + In our case, $\eta^2$ = 5.55 / (5.55 + 939.60) = 5.55 / 945.15 = 0.0059
+- So, insurance group accounts for about 0.59% of the variation in hemoglobin A1c observed in these data.
+
+## The Mean Square
+
+```{r anova table 6, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))[1:3]
+```
+
+- The Mean Square is the Sum of Squares divided by the degrees of freedom, so MS(Factor) = SS(Factor)/df(Factor). 
+- MS(ins.3cat) = SS(ins.3cat)/df(ins.3cat) = 5.55 / 2 = 2.78.
+- MS(Residuals) = SS(Residuals) / df(Residuals) = 939.60 / 185 = 5.08. 
+    + MS(Residuals) estimates the residual variance, corresponds to $\sigma^2$ in the underlying linear model
+    + MS(Residuals) = 5.0789, so Residual standard error = $\sqrt{5.0789}$ = 2.25 percentage points.
+
+## The F Test Statistic and *p* Value
+
+```{r anova table 7, echo = FALSE}
+anova(lm(a1c ~ ins.3cat, data = dm.ins))
+```
+
+- F value = MS(ins.3cat) / MS(Residuals) = 2.78 / 5.08 = 0.55
+- For an F distribution with 2 and 185 degrees of freedom, this F value yields *p* = 0.58
+
+What is our conclusion regarding our test of our ANOVA hypotheses?
+
+- H~0~: $\mu_{Commercial} = \mu_{Medicaid or Uninsured} = \mu_{Medicare}$ vs. 
+- H~A~: H~0~ is not true
+
+## ANOVA Assumptions
+
+The assumptions behind analysis of variance are the same as those behind a linear model. Of specific interest are:
+
+- The samples obtained from each group are independent.
+- Ideally, the samples from each group are a random sample from the population described by that group.
+- In the population, the variance of the outcome in each group is equal. (This is less of an issue if our study involves a balanced design.)
+- In the population, we have Normal distributions of the outcome in each group.
+
+Happily, the F test is fairly robust to violations of the Normality assumption.
+
+## Can we assume population A1c levels are Normal?
+
+```{r picture for dmins, echo = FALSE}
+ggplot(dm.ins, aes(x = ins.3cat, y = a1c, fill = ins.3cat)) +
+    geom_boxplot() +
+    coord_flip() +
+    guides(fill = FALSE) + 
+    labs(x = "", y = "Hemoglobin A1c", title = "A1c by Insurance Group")
+```
+
+
+## Non-Parametric Alternative: Kruskal-Wallis Test
+
+```{r kruskal for a1c}
+kruskal.test(a1c ~ ins.3cat, data = dm.ins)
+```
+
+Rank Sum test for 
+
+- H~0~: Center of Commercial distribution = Center of Medicaid or Uninsured distribution = Center of Medicare distribution vs. 
+- H~A~: H~0~ not true.
+
+## Another Way to get our ANOVA Results
+
+H~0~: H~0~: $\mu_{Commercial} = \mu_{Medicaid or Uninsured} = \mu_{Medicare}$ vs. H~A~: H~0~ not true.
+
+```{r anova}
+summary(aov(a1c ~ ins.3cat, data = dm.ins))
+```
+
+## Regression on Indicator Variables = Analysis of Variance
+
+Yet another way to obtain an even more complete analog to the pooled t test is to run a linear regression model to predict the outcome (here, a1c) on the basis of the categorical factor, insurance group. We run the following ... 
+
+```{r reg model 1, eval=FALSE}
+summary(lm(a1c ~ ins.3cat, data = dm.ins))
+```
+
+## Linear Model Summary Output
+
+![](images/lmoutput.png)
+
+## Linear Model Results
+
+- **Residual standard error: 2.254** on 185 degrees of freedom
+- **Multiple R-squared:  0.005875**,	Adjusted R-squared: -0.004872 
+- F-statistic: 0.5466 on 2 and 185 DF,  p-value: 0.5798
+
+## Indicator Variable Regression
+
+The linear model uses two **indicator variables**, sometimes called **dummy variables**. 
+
+- Each takes on the value 1 when its condition is met, and 0 otherwise. 
+- With three race categories, we need two indicator variables (we always need one fewer indicator than we have levels of the factor). 
+- Here, we have a baseline category (which is taken to be `Commercial` in this case) and then indicators for `Medicaid or Uninsured` and for `Medicare`.
+
+## K-1 indicators specify K categories
+
+These two indicator variables completely specify the insurance category for any subject, as follows:
+
+Insurance Category | `var1` | `var2`
+----------------------: | :-----------------: | :----------------:
+Commercial            | 0 | 0
+Medicaid or Uninsured | 1 | 0
+Medicare            | 0 | 1 
+
+ 
+- `var1` is `ins.3catMedicaid or Uninsured`
+- `var2` is `ins.3catMedicare`
+
+## The Regression Equation
+
+What is the regression equation here?
+
+```
+Call: lm(formula = a1c ~ ins.3cat, data = dm.ins)
+Coefficients:                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                    8.10000    0.36087  22.446   <2e-16 ***
+ins.3catMedicaid or Uninsured  0.02192    0.44699   0.049    0.961    
+ins.3catMedicare              -0.33553    0.44391  -0.756    0.451    ```
+```
+### Equation specifies the three sample means
+
+- A1c = 8.1 + 0.02 [Medicaid or Uninsured] - 0.34 [Medicare]
+- [group] is 1 if the patient is in that group, and 0 otherwise
+
+## Model predictions = Sample Means
+
+```
+Coefficients:                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                    8.10000    0.36087  22.446   <2e-16 ***
+ins.3catMedicaid or Uninsured  0.02192    0.44699   0.049    0.961    
+ins.3catMedicare              -0.33553    0.44391  -0.756    0.451    ```
+```
+Model Predictions:
+
+- A1c = 8.1 if in the Commercial group
+- A1c = 8.1 + 0.02192 = 8.12 if in the Medicaid or Uninsured group
+- A1c = 8.1 - 0.33553 = 7.76 if in the Medicare group
+
+
+## K-Sample Study Design, Comparing Means
+
+1. What is the outcome under study?
+2. What are the (in this case, K > 2) treatment/exposure groups?
+3. Were the data in fact collected using independent samples?
+4. Are the data random samples from the population(s) of interest? Or is there at least
+a reasonable argument for generalizing from the samples to the population(s)?
+5. What is the significance level (or, the confidence level) we require here?
+6. Are we doing one-sided or two-sided testing?
+7. What does the distribution of each individual sample tell us about which inferential procedure to use?
+8. Are there statistically meaningful differences between population means?
+9. If an overall test is significant, can we identify pairwise comparisons of means that show significant differences using an appropriate procedure that protects against Type I error expansion due to multiple comparisons?
+
+## A New Comparison using `dm192`
+
+Let's look at the `dm192` data again, but now we'll study `dbp` (diastolic blood pressure) as our outcome of interest.
+
+- We'll first use ANOVA make a comparison between the four levels of insurance (Medicare, Commercial, Medicaid, Uninsured).
+- Later, we'll compare the average `dbp` across the four practices (A, B, C and D) included in the `dm192` sample.
+
+## Analysis of Variance for `dbp` by `insurance`
+
+H~0~: $\mu_{Medicare} = \mu_{Commercial} = \mu_{Medicaid} = \mu_{Uninsured}$ vs. H~A~: H~0~ not true.
+
+```{r anova for dbp by insurance}
+summary(aov(dbp ~ insurance, data = dm192))
+```
+
+So which of the pairs of means are significantly different?
+
+## The Problem of Multiple Comparisons
+
+1. Suppose we compare Medicare to Commercial, using a test with $\alpha$ = 0.05
+2. Then we compare Medicare to Medicaid on the same outcome, also using  $\alpha$ = 0.05
+3. Then we compare Medicare to Uninsured, also with $\alpha$ = 0.05
+4. Suppose we compare Commercial to Medicaid with $\alpha$ = 0.05
+5. Then we compare Commercial to Uninsured with $\alpha$ = 0.05
+6. Then we compare Medicaid to Uninsured with $\alpha$ = 0.05
+
+What is our overall $\alpha$ level across these six comparisons?
+
+## The Problem of Multiple Comparisons
+
+What is our overall $\alpha$ level across these six comparisons?
+
+- It could be as bad as 0.05 + 0.05 + 0.05 + 0.05 + 0.05 + 0.05, or 0.30.
+- Rather than our nominal 95% confidence, we have something as low as 70% confidence across this set of simultaneous comparisons.
+- Does it matter if we *pre-plan* the comparisons or not?
+
+## The Bonferroni solution
+
+1. Suppose we compare Medicare to Commercial, using a test with $\alpha$ = 0.05/6
+2. Then we compare Medicare to Medicaid on the same outcome, also using  $\alpha$ = 0.05/6
+
+...and then we do the other four comparisons, also at $\alpha$ = 0.05/6.
+
+Then across these six comparisons, our overall $\alpha$ can be (at worst) 
+
+- 0.05/6 + 0.05/6 + 0.05/6 + 0.05/6 + 0.05/6 + 0.05/6  = 0.05
+- So by changing our nominal confidence level from 95% to 99.167% in each comparison, we wind up with at least 95% confidence across this set of simultaneous comparisons.
+- This is a conservative (worst case) approach.
+
+## Bonferroni approach for Pairwise Comparisons
+
+Goal: Simultaneous *p* values comparing each pair of insurance types:
+
+- Medicare vs Commercial
+- Medicare vs Medicaid
+- Medicare vs Uninsured
+- Commercial vs Medicaid
+- Commercial vs Uninsured
+- Medicaid vs Uninsured
+
+## Bonferroni results for `dbp` by `insurance`
+
+```{r bonf for dbp by insurance}
+pairwise.t.test(dm192$dbp, dm192$insurance, 
+                p.adjust="bonferroni")
+```
+
+## Tukey's Honestly Significant Differences
+
+Most appropriate for **pre-planned** comparisons.
+
+Goal: Simultaneous (less conservative) confidence intervals and *p* values for our six pairwise comparisons:
+
+- Medicare vs Commercial
+- Medicare vs Medicaid
+- Medicare vs Uninsured
+- Commercial vs Medicaid
+- Commercial vs Uninsured
+- Medicaid vs Uninsured
+
+## Tukey HSD Confidence Intervals
+
+```{r hsd for dbp by insurance}
+TukeyHSD(aov(dbp ~ insurance, data = dm192))
+```
+
+## Plot of Tukey HSD results
+
+```{r plot hsd for dbp by insurance, echo = FALSE}
+plot(TukeyHSD(aov(dbp ~ insurance, data = dm192)))
+```
+
+## Need to build smaller names for `insurance` levels
+
+The `forcats` package can help
+
+```{r create ins with smaller names}
+levels(dm192$insurance)
+dm192$ins <- fct_recode(dm192$insurance, 
+                        "C" = "commercial",
+                        "Md" = "medicaid",
+                        "Mr" = "medicare",
+                        "U" = "uninsured")
+levels(dm192$ins)
+```
+
+## Tukey 90% HSD CI
+
+```{r hsd for dbp by ins}
+TukeyHSD(aov(dbp ~ ins, data = dm192), conf.level = 0.9)
+```
+
+## Plot of 90% Tukey HSD Intervals
+
+```{r plot hsd for dbp by ins, echo = FALSE}
+plot(TukeyHSD(aov(dbp ~ ins, data = dm192), conf.level = 0.9))
+```
+
+## Conclusions for `dbp` by `insurance`
+
+The `dbp` levels are statistically significantly higher in some insurance groups than in others. 
+
+In particular, with 90% confidence across all six pairwise comparisons of insurance types, we see a statistically significant difference between Medicare and Medicaid, with Medicare patients showing `dbp` levels that are 7.1 mm Hg lower on average than Medicaid patients (90% simultaneous CI: 2.9 to 11.3 mm Hg.)
+
+## Looking at `dbp` by `practice`
+
+```{r anova for dbp by practice}
+summary(aov(dbp ~ practice, data = dm192))
+```
+
+## Bonferroni *p* values for `dbp` by `practice`
+
+```{r bonf for dbp by practice}
+pairwise.t.test(dm192$dbp, dm192$practice, 
+                p.adjust="bonferroni")
+```
+
+## Tukey HSD CI for `dbp` by `practice`
+
+```{r hsd for dbp by practice}
+TukeyHSD(aov(dbp ~ practice, data = dm192))
+```
+
+## Plot of Tukey HSD Results (`dbp` by `practice`)
+
+```{r plot hsd for dbp by practice, echo = FALSE}
+plot(TukeyHSD(aov(dbp ~ practice, data = dm192)))
+```
+
+## Conclusions for `dbp` by `practice`
+
+The `dbp` levels are statistically significantly higher in some practices than in others. 
+
+In particular, with 95% confidence across all six pairwise comparisons of practices, we see statistically significant differences between A and C and between A and D, as well as between B and C and between B and D, with C and D showing significantly lower `dbp` than either A or B. 
+
+For example, comparing C to A, we see a difference of 7.6 mm Hg (with A higher than C), with 95% CI (via Tukey HSD) of (1.9, 13.3) mm Hg.
+
+
+## The Signal and The Noise: Chapters 7 and 8
+
+Predictions can be 
+
+- **self-fulfilling** (e.g. in election primary races) or 
+- **self-canceling** (e.g. when disease outbreaks are predicted, measures can be taken to prevent them, which can nullify the prediction)
+
+When gauging the **strength** of a prediction, it's important to view the *inside* view in the context of the *outside* view.
+
+- For example, many, if not most medical studies that claim 95% confidence aren't replicable.
+- Should we take then 95% confidence figures at face value?
+
+From Jonah Sinick at [this link](http://lesswrong.com/lw/hxx/some_highlights_from_nate_silvers_the_signal_and/)
+
