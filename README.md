@@ -5,6 +5,8 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
+19 | 2017-11-02 | [README 19](https://github.com/THOMASELOVE/431slides/blob/master/class_19/README.md) | Comparing Rates/Proportions
+18 | 2017-10-31 | [README 18](https://github.com/THOMASELOVE/431slides/blob/master/class_18/README.md) | Analysis of Variance
 17 | 2017-10-26 | [README 17](https://github.com/THOMASELOVE/431slides/blob/master/class_17/README.md) | Setting Up Project Class Survey, Comparing Means, Silver 7-8
 16 | 2017-10-19 | [README 16](https://github.com/THOMASELOVE/431slides/blob/master/class_16/README.md) | [Course Notes](https://thomaselove.github.io/431notes/) Sections 16-22, Leek's [Formula from 538](https://fivethirtyeight.com/features/a-formula-for-decoding-health-news/).
 15 | 2017-10-17 | [README 15](https://github.com/THOMASELOVE/431slides/blob/master/class_15/README.md) | Project Task A reactions, [Course Notes](https://thomaselove.github.io/431notes/) Sections 17-18, 20-22.
