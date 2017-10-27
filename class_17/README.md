@@ -41,3 +41,11 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
+4. The questions from today's in-class survey were as follows.
+- We chose (using a computer) a random number between 0 and 100. Your number is X = 10 (or 65).
+    1. Do you think the percentage of countries which are in Africa, among all those in the United Nations, is higher or lower than X?
+    2. Give your best estimate of the percentage of countries which are in Africa, among all those in the United Nations.
+    3. Provide a point estimate for Dr. Love’s current weight (in pounds.) If you think in kilograms, multiply kg by 2.2 to get pounds.
+    4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
+
+
