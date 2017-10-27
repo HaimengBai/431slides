@@ -24,6 +24,7 @@ When the audio recording for today's class becomes available, we'll post it abov
     - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
+    - The Project Survey draft is [available for your review](https://github.com/THOMASELOVE/431project/blob/master/TaskB/2017-10-27_draft_for_review_81itemsforclassprojectsurvey.pdf). Someone from your Task B group needs to complete [this Google Form](https://docs.google.com/forms/d/1PMVkdEmgIQ1LQWoJL8lOaDAC8gT4PYIIH3Ga3ldZeI4/edit) to share your group's suggested comments or changes before **noon on Monday 2017-10-30**. Thanks.
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
     - **NEW DATE** [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
