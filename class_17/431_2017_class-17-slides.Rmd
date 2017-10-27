@@ -50,7 +50,7 @@ source("Love-boost.R")
 Test Rejects H~0~ | Correct Decision (1 - $\beta$) | Type I Error ($\alpha$)
 Test Retains H~0~ | Type II Error ($\beta$) | Correct Decision (1 - $\alpha$)
 
-Most common approach: pre-specify $\alpha$ = 0.05, and $\beta$ = 0.80
+Most common approach: pre-specify $\alpha$ = 0.05, and $\beta$ = 0.20
 
 ## Using `power.t.test`
 
