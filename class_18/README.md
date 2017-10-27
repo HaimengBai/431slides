@@ -26,14 +26,15 @@ When the audio recording for today's class becomes available, we'll post it abov
 2. The Projects
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
-    - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
+    - **NEW DATE** [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - Many of you could do this task **right now** to get ahead of things a bit. Note that this is a **corrected** date.
 
 3. Upcoming non-project Deliverables
-    - In a change, [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is now due at noon on Thursday **2017-11-09**. This is delayed six days, so it is now the day after Project Task C is due.
+    - **NEW DATE** In a change, [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is now due at noon on Thursday **2017-11-09**. This is delayed six days, so it is now the day after Project Task C is due.
     - Read Silver, through Chapter 11 by 2017-11-02.
     - Quiz 2 will be released on Thursday 2017-11-09 by 5 PM and is due on Monday **2017-11-13** at noon.
-        - To help with your review, a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. Answer Sketch coming soon.
+        - To help with your review, a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. 
+        - **NEW** An [Answer Sketch](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf) is now available, too.
     - Leek, Chapters 7-8 should be read by 2017-11-14.
     - Silver Chapter 12 by 2017-11-28, and finish the book by 2017-12-05.
 
