@@ -41,7 +41,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-4. The questions from today's in-class survey were as follows.
+4. The questions from today's in-class survey were as follows. (We'll discuss the results in Class 18.)
 - We chose (using a computer) a random number between 0 and 100. Your number is X = 10 (or 65).
     1. Do you think the percentage of countries which are in Africa, among all those in the United Nations, is higher or lower than X?
     2. Give your best estimate of the percentage of countries which are in Africa, among all those in the United Nations.
