@@ -9,6 +9,12 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements before class:
 
 1. Today's Agenda
+    - Discussion of the In-Class Survey from Class 17. Again, those questions were:
+        - We chose (using a computer) a random number between 0 and 100. Your number is X = 10 (or 65).
+            1. Do you think the percentage of countries which are in Africa, among all those in the United Nations, is higher or lower than X?
+            2. Give your best estimate of the percentage of countries which are in Africa, among all those in the United Nations. (*There are 193 sovereign states that are members of the UN. The African regional group has 54 member states, so that's 28%*)
+            3. Provide a point estimate for Dr. Love’s current weight (in pounds.) (*On 2017-10-26, Dr. Love actually weighed 350 lbs. or 158.8 kg or 25 stone, dressed but without shoes.*)
+            4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
     - Analysis of Variance for Comparing More than Two Means [Course Notes](https://thomaselove.github.io/431notes/) Section 28, in particular.
     - Some Thoughts on Statistical Significance and *p* values. References for today include:
         - Jason T. Connor (2004) [The Value of a p-valueless paper](https://www.nature.com/ajg/journal/v99/n9/pdf/ajg2004321a.pdf?origin=ppub)
@@ -20,12 +26,15 @@ When the audio recording for today's class becomes available, we'll post it abov
 2. The Projects
     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - We hope to make the Class Survey available by 2017-10-30.
-    - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-13**.
-        - Many of you could do this task **right now** to get ahead of things a bit. **Quiz 2** is also due at that time on that date.
+    - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
+        - Many of you could do this task **right now** to get ahead of things a bit. Note that this is a **corrected** date.
 
 3. Upcoming non-project Deliverables
     - [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is due at noon on Friday **2017-11-03**.
+    - Read Silver, through Chapter 11 by 2017-11-02.
     - Quiz 2 will be released on Thursday 2017-11-09 by 5 PM and is due on Monday **2017-11-13** at noon.
         - To help with your review, a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. Answer Sketch coming soon.
+    - Leek, Chapters 7-8 should be read by 2017-11-14.
+    - Silver Chapter 12 by 2017-11-28, and finish the book by 2017-12-05.
 
 ## Announcements after class:
