@@ -49,3 +49,5 @@ When the audio recording for today's class becomes available, we'll post it abov
     4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
 
 5. The Project Survey draft is [available for your review](https://github.com/THOMASELOVE/431project/blob/master/TaskB/2017-10-27_draft_for_review_81itemsforclassprojectsurvey.pdf). Someone from your Task B group needs to complete [this Google Form](https://docs.google.com/forms/d/1PMVkdEmgIQ1LQWoJL8lOaDAC8gT4PYIIH3Ga3ldZeI4/edit) to share your group's suggested comments or changes before noon on Monday 2017-10-30. Thanks.
+
+6. The [Assignment 4 Answer Sketch](https://github.com/THOMASELOVE/431homework/blob/master/HW4/README.md) is now available in both R Markdown and (password-protected) PDF.
