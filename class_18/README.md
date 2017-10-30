@@ -32,6 +32,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. Upcoming non-project Deliverables
     - **NEW DATE** In a change, [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is now due at noon on Thursday **2017-11-09**. This is delayed six days, so it is now the day after Project Task C is due.
+        - Note that you should be able to do questions 1 and 5-10 after we've finished our ANOVA discussions, but that questions 2-4 will require some discussion in class of comparing rates/proportions, and that'll begin on Thursday, in Class 19.
     - Read Silver, through Chapter 11 by 2017-11-02.
     - Quiz 2 will be released on Thursday 2017-11-09 by 5 PM and is due on Monday **2017-11-13** at noon.
         - To help with your review, a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. 
