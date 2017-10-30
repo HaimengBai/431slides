@@ -35,7 +35,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. Upcoming non-project Deliverables
     - [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) is due at noon on Friday **2017-10-27**.
-    - [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is due at noon on Friday **2017-11-03**.
+    - [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is due at noon on Thursday **2017-11-09**.
     - Quiz 2 will be released on Thursday 2017-11-09 by 5 PM and is due on Monday **2017-11-13** at noon.
         - To help with your review, a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. Answer Sketch coming soon.
 
