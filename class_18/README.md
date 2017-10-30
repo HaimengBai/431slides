@@ -20,7 +20,8 @@ When the audio recording for today's class becomes available, we'll post it abov
         - Jason T. Connor (2004) [The Value of a p-valueless paper](https://www.nature.com/ajg/journal/v99/n9/pdf/ajg2004321a.pdf?origin=ppub)
         - Mark, Lee, and Harrell (2016) [Understanding the Role of P Values and Hypothesis Tests in Clinical Research](https://jamanetwork.com/journals/jamacardiology/article-abstract/2566171)
         - Thomas and Pencina (2016) [Do Not Over (P) Value Your Research Article](https://jamanetwork.com/journals/jamacardiology/fullarticle/2566166)
-        - Gelman, Andrew [blog post 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/)
+        - Gelman, Andrew [blog post 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/) on Marginally Significant Effects
+        - Gelman, Andrew [blog post 2017-10-28](http://andrewgelman.com/2017/10/28/favorite-definition-statistical-significance/) on Defining Statistical Significance
     - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
