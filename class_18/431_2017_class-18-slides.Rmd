@@ -15,15 +15,20 @@ knitr::opts_chunk$set(comment=NA)
 options(width = 55)
 ```
 
+## Gelman on Statistical Significance
+
+"... we use the term statistically significant in the conventional way, to mean that an estimate is **at least two standard errors away** from some "null hypothesis" or prespecified value that would indicate no effect present. An estimate is statistically insignificant if the observed value could reasonably be explained by simple chance variation, much in the way that a sequence of 20 coin tosses might happen to come up 8 heads and 12 tails; we would say that this result is not statistically significantly different from chance. More precisely, the observed proportion of heads is 40 percent but with a standard error of 11 percent - thus, the data are less than two standard errors away from the null hypothesis of 50 percent, and the outcome could clearly have occurred by chance. Standard error is a measure of the variation in an estimate and gets smaller as a sample size gets larger, converging on zero as the sample increases in size."
+
+[Gelman's blog (2017-10-28)](http://andrewgelman.com/2017/10/28/favorite-definition-statistical-significance/)
+
 ## Today's Agenda
 
-- *p* Values in the News
+- Discussion of the Class 17 In-Class Survey
 - Comparing More than Two Populations: The Analysis of Variance
 - Pairwise Comparisons of Means after a Significant ANOVA
     + Multiple Comparisons
     + Bonferroni and Tukey HSD approaches
-- Comparing Population Proportions
-- Power and Sample Size When Comparing Proportions
+- More on *p* Values and Statistical Significance
 
 ## Today's R Setup
 
@@ -32,113 +37,234 @@ library(forcats); library(tidyverse)
 
 source("Love-boost.R")
 dm192 <- read.csv("data/dm192.csv") %>% tbl_df
+class17a <- read.csv("data/class17a.csv") %>% tbl_df
+class17b <- read.csv("data/class17b.csv") %>% tbl_df
 ```
 
-## The Value of a *p*-Valueless Paper
+# In-Class Survey from Class 17
 
-Jason T. Connor (2004) *American J of Gastroenterology* 99(9): 1638-40.
+## In-Class Survey (`class17a` data)
 
-Abstract: As is common in current biomedical research, about 85% of original contributions in *The American Journal of Gastroenterology* in 2004 have reported *p*-values. However, none are reported in this issue's article by Abraham et al. who, instead, rely exclusively on effect size estimates and associated confidence intervals to summarize their findings. **Authors using confidence intervals communicate much more information in a clear and efficient manner than those using** *p*-**values. This strategy also prevents readers from drawing erroneous conclusions caused by common misunderstandings about** *p*-**values**. I outline how standard, two-sided confidence intervals can be used to measure whether two treatments differ or test whether they are clinically equivalent.
+We chose (using a computer) a random number between 0 and 100. 
 
-DOI: 10.1111/j.1572-0241.2004.40592.x
+Your number is X = 10 (or 65).
 
-## Editorial from JAMA Cardiology 2016-10-12
+1. Do you think the percentage of countries which are in Africa, among all those in the United Nations, is higher or lower than X?
+2. Give your best estimate of the percentage of countries which are in Africa, among all those in the United Nations. 
 
-![](images/jamacardeditorial.png)
+### The facts
 
-## Mark, Lee, Harrell JAMA Cardiol 2016-10-12
+- There are 193 sovereign states that are members of the UN. 
+- The African regional group has 54 member states, so that's 28%.
+- UN regions for countries are [this Wikipedia link](https://en.wikipedia.org/wiki/United_Nations_Regional_Groups)
+- The `class17a` data set contains the answers to these questions from 185 students asked the same questions in the same way over the past four years (since 2014).
 
-![](images/jamacardmark.png)
+## A troubling situation
 
-doi:10.1001/jamacardio.2016.3312
-
-## On Experiments
-
-> ... the null hypothesis is never proved or established, but is possibly disapproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
-
-- R. A. Fisher
-
-> Do not be too timid and squeamish about your actions. All life is an experiment. The more experiments, the better.
-
-- Ralph Waldo Emerson
+![](images/problem0.png)
 
 
-## Why Dividing Data Comparisons into Categories based on Significance Levels is Terrible.
 
-> The common practice of dividing data comparisons into categories based on significance levels is terrible, but it happens all the time.... so it’s worth examining the prevalence of this error.
+## `class17a` Africa percentage guess by X = 10 or 65
 
-[Link to Andrew Gelman's blog, 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/)
-
-## Gelman on *p* values, 1
-
-Let me first briefly explain why categorizing based on p-values is such a bad idea. Consider, for example, this division: 
-
-- "really significant" for *p* < .01, 
-- "significant" for *p* < .05, 
-- "marginally significant" for *p* < .1, and 
-- "not at all significant" otherwise. 
-
-Now consider some typical *p*-values in these ranges: say, *p* = .005, *p* = .03, *p* = .08, and *p* = .2. 
-
-Translate these two-sided *p*-values back into z-scores, which we can do in R via `qnorm(c(.005, .03, .08, .2)/2, lower.tail = FALSE)`
-
-## Gelman on *p* values, 2
-
-Description | really sig. | sig. | marginally sig.| not at all sig.
----------: | ----: | ----: | ----: | ----:
-*p* value | 0.005 | 0.03 | 0.08 | 0.20
-Z score | 2.8 | 2.2 | 1.8 | 1.3
-
-The seemingly yawning gap in p-values comparing the “not at all significant” p-value of .2 to the “really significant” p-value of .005, is only 1.5. 
-
-If you had two independent experiments with z-scores of 2.8 and 1.3 and with equal standard errors and you wanted to compare them, you’d get a difference of 1.5 with a standard error of 1.4, which is completely consistent with noise.
-
-
-## Gelman on *p* values, 3
-
-From a **statistical** point of view, the trouble with using the p-value as a data summary is that the p-value is only interpretable in the context of the null hypothesis of zero effect — and (much of the time), nobody’s interested in the null hypothesis. 
-
-Indeed, once you see comparisons between large, marginal, and small effects, the null hypothesis is irrelevant, as you want to be comparing effect sizes.
-
-From a **psychological** point of view, the trouble with using the p-value as a data summary is that this is a kind of deterministic thinking, an attempt to convert real uncertainty into firm statements that are just not possible (or, as we would say now, just not replicable).
-
-**The key point**: The difference between statistically significant and NOT statistically significant is not, generally, statistically significant.
-
-
-## The `dm192` data: Comparing Insurance Groups on Hemoglobin A1c
-
-```{r dm192 summary}
-dm.ins <- select(dm192, pt.id, insurance, a1c)
-summary(dm.ins)
+```{r, echo = FALSE}
+ggplot(filter(class17a, !is.na(africa.pct)), aes(x = africa.pct, fill = x.value)) +
+  geom_histogram(bins = 10, col = "white") +
+  guides(fill = FALSE) +
+  facet_wrap(~ x.value) +
+  theme_bw() +
+  labs(x = "% of UN member states in Africa",
+       title = "% of UN in Africa Guess, by Prompting X value",
+       subtitle = "2014 - 2017 guesses, n = 184 with complete data")
 ```
 
-- For now, we'll collapse the 6 uninsured in with Medicaid patients, and we'll drop the four cases without an A1c value.
+## `class17a` Analysis, Step-by-Step
 
-## Collapse medicaid and uninsured together
+1. What is the outcome under study?
+2. What are the (in this case, two) treatment/exposure groups?
+3. Were the data collected using matched / paired samples or independent samples?
+4. Are the data a random sample from the population(s) of interest? Or is there at least
+a reasonable argument for generalizing from the sample to the population(s)?
+5. What is the significance level (or, the confidence level) we require here?
+6. Are we doing one-sided or two-sided testing/confidence interval generation?
+7. If we have paired samples, did pairing help reduce nuisance variation?
+8. If we have paired samples, what does the distribution of sample paired differences tell
+us about which inferential procedure to use?
+9. If we have independent samples, what does the distribution of each individual sample
+tell us about which inferential procedure to use?
 
-```{r create ins3cat}
-dm.ins <- dm.ins %>%
-    mutate(ins.3cat = fct_recode(insurance,
-            "Commercial" = "commercial",
-            "Medicare" = "medicare",
-            "Medicaid or Uninsured" = "medicaid",
-            "Medicaid or Uninsured" = "uninsured"))
+## `class17a` Africa percentage guess by X = 10 or 65
+
+```{r, echo = FALSE}
+ggplot(filter(class17a, !is.na(africa.pct)), 
+       aes(x = factor(x.value), y = africa.pct, fill = x.value)) +
+  geom_boxplot(notch = TRUE) +
+  guides(fill = FALSE) +
+  theme_bw() +
+  coord_flip() +
+  labs(x = "Prompting X value", 
+       y = "% of UN member states in Africa",
+       title = "% of UN in Africa Guess, by Prompting X value",
+       subtitle = "2014 - 2017 guesses, n = 184 with complete data")
 ```
 
-## Drop the subjects with  missing a1c
+## `class17a` Descriptive Statistics
 
-```{r drop patients with missing A1c}
-dm.ins <- dm.ins %>% 
-    filter(!is.na(a1c))
-summary(dm.ins)
+```{r}
+class17a %>%
+  filter(!is.na(africa.pct)) %>%
+  group_by(x.value) %>%
+  summarise(n(), mean(africa.pct), 
+            sd = round(sd(africa.pct),2),
+            median = median(africa.pct))
 ```
 
-## Summarize A1c by Insurance (3 categories)
+## `class17a` comparisons (results: next slide)
 
-```{r ins breakdown of a1c, warning = FALSE}
-by(dm.ins$a1c, dm.ins$ins.3cat, mosaic::favstats)
+```{r, eval=FALSE}
+t.test(africa.pct ~ x.value, 
+       data = class17a) # Welch
+t.test(africa.pct ~ x.value, data = class17a, 
+       var.equal = TRUE) # Pooled t
+wilcox.test(africa.pct ~ x.value, conf.int = TRUE, 
+            data = class17a)
+set.seed(43123)
+bootdif(class17a$africa.pct, class17a$x.value)
 ```
 
+## `class17a` Comparing Two Populations
+
+$$
+\Delta = \mu_{65} - \mu_{10}
+$$
+
+Procedure | Est. $\Delta$ | 95\% CI for $\Delta$ | *p*
+-----------------: | -----: | -------------------- | -----:
+Welch t | 12.0 | (6.7, 17.4) | 1.75e-05
+Pooled t | 12.0 | (6.7, 17.4) | 1.71e-05
+Rank Sum | 12.0 | (8.0, 15.0) | 6.06e-08
+Bootstrap | 12.0 | (6.6, 17.5) | < .05
+
+**Conclusions**?
+
+## In-Class Survey (`class17b` data)
+
+3. Provide a point estimate for Dr. Love’s current weight (in pounds.) 
+
+```{r, echo = FALSE, fig.height = 4}
+ggplot(class17b, aes(x = love.lbs)) +
+  geom_histogram(fill = "navy", col = "white",
+                 bins = 15) +
+  scale_x_continuous(breaks = c(150, 200, 250, 300, 350, 400, 450)) +
+  theme_bw() +
+  labs(x = "Guess of Professor Love's weight (lbs.)",
+       y = "# of Guesses (in 2017)")
+```
+
+- 2017 Weight Guesses: *n* = 44, $\bar{x} = 267.7$ lbs., *s* = 46.5 lbs.
+- Five Number Summary: 182 240 260 293 440
+
+## 50% and 90% "Intervals" from Group Estimates
+
+4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
+
+We have *n* = 44 independent guesses, with $\bar{x} = 267.7$ lbs., *s* = 46.5 lbs. Let's first obtain quantiles, and use the crowd's wisdom.
+
+```{r}
+quantile(class17b$love.lbs, 
+  probs = c(0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95))
+```
+
+- What's a rational 50% interval for estimating my weight? 
+- How about a 90% interval?
+
+## One Possible, Rational, Set of Intervals
+
+Suppose my estimate is 267 pounds.
+
+- Then suppose I assign probability 0.50 to the interval (240, 293)
+- And suppose I assign probability 0.90 to the interval (203, 337)
+
+![](images/intervals.png)
+
+
+## In-Class Survey (`class17b` data)
+
+4a. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) 
+
+```{r, echo = FALSE, fig.height = 5}
+ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
+                     ymin = lovewt.low50, ymax = lovewt.high50)) +
+  geom_pointrange(col = "blue") +
+  labs(y = "Guess of Professor Love's Weight (lbs.)",
+       x = "Paper Number (- 1700)",
+       title = "Estimates and 50% Intervals for Love's Weight")
+```
+
+## In-Class Survey (`class17b` data)
+
+4b. Now do the same, but for a 90% interval...
+
+```{r, echo = FALSE, fig.height = 5}
+ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
+                     ymin = lovewt.low90, ymax = lovewt.high90)) +
+  geom_pointrange() +
+  labs(y = "Guess of Professor Love's Weight (lbs.)",
+       x = "Paper Number (- 1700)",
+       title = "Estimates and 90% Intervals for Love's Weight")
+```
+
+## Some Troubling Selections, 1
+
+![](images/problem1.png)
+
+>- Why does this set of intervals not make sense?
+>- There were **10** students (out of 43) who had a wider 50% interval than 90% interval.
+
+
+## Some Troubling Selections, 2
+
+![](images/problem2.png)
+
+>- It wasn't clear enough that the interval estimate was meant to surround the point estimate.
+>- There were **6** students out of 43 with this problem in their 50% interval, **2** in their 90% interval.
+>- For **15** students, the 90% interval did not contain the 50% interval.
+
+## The facts (with 50% intervals)
+
+On 2017-10-26, Dr. Love actually weighed 350 lbs. or 158.8 kg or 25 stone, dressed but without shoes. 
+
+```{r, echo = FALSE, fig.height = 5}
+ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
+                     ymin = lovewt.low50, ymax = lovewt.high50)) +
+  geom_pointrange(col = "blue") +
+  geom_abline(slope = 0, intercept = 350, col = "red") +
+  geom_text(label = "Actual Weight = 350", col = "red", x = 36, y = 360) +
+  labs(y = "Guess of Professor Love's Weight (lbs.)",
+       x = "Paper Number (- 1700)",
+       title = "Estimates and 50% Intervals for Love's Weight")
+```
+
+- **8** of the 43 50% intervals estimated by students included 350 lbs.
+
+## The facts (with 90% intervals)
+
+On 2017-10-26, Dr. Love actually weighed 350 lbs. 
+
+```{r, echo = FALSE, fig.height = 5}
+ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
+                     ymin = lovewt.low90, ymax = lovewt.high90)) +
+  geom_pointrange() +
+  geom_abline(slope = 0, intercept = 350, col = "red") +
+  geom_text(label = "350", col = "red", x = 14, y = 360) +
+  labs(y = "Guess of Professor Love's Weight (lbs.)",
+       x = "Paper Number (- 1700)",
+       title = "Estimates and 90% Intervals for Love's Weight")
+```
+
+- **16** of the 43 50% intervals estimated by students included 350 lbs.
+
+# Analysis of Variance (Section 28, Course Notes)
 
 ## Analysis of Variance to Compare More Than Two Population Means using Independent Samples
 
@@ -151,14 +277,57 @@ This is analysis of a continuous outcome variable on the basis of a single categ
 
 When there are just two groups, then this boils down to an F test that is equivalent to the Pooled t test.
 
-## One-Way ANOVA for the `dm.ins` Data
+## One-Way ANOVA 
 
 If we have a grouping factor with *k* levels, then we are testing:
 
 - H~0~: $\mu_1 = \mu_2 = ... = \mu_k$ vs.
 - H~A~: At least one of the population means $\mu_1, \mu_2, ..., \mu_k$ is different from the others.
 
-Our outcome is the `a1c` value (measured as a percentage), and the factor is the insurance group (3 categories). 
+### Today's Example
+
+We'll look at the `dm192` data again.
+
+- Outcome is the `a1c` value (measured as a percentage), 
+- Factor is the insurance group (we'll compare 3 categories). 
+
+## The `dm192` data: Comparing Insurance Groups on Hemoglobin A1c
+
+```{r dm192 summary}
+dm.ins <- select(dm192, pt.id, insurance, a1c)
+summary(dm.ins)
+```
+
+- For now, we'll collapse the 6 uninsured in with Medicaid patients, and we'll drop the four cases without an A1c value.
+
+## Collapse medicaid and uninsured, drop missing a1c
+
+```{r create ins3cat}
+dm.ins <- dm.ins %>%
+    mutate(ins.3cat = fct_recode(insurance,
+            "Commercial" = "commercial",
+            "Medicare" = "medicare",
+            "Medicaid/Unins." = "medicaid",
+            "Medicaid/Unins." = "uninsured")) %>%
+  filter(!is.na(a1c))
+```
+
+## Summarize A1c by Insurance (3 categories)
+
+```{r ins breakdown of a1c, warning = FALSE}
+dm.ins %>%
+  group_by(ins.3cat) %>%
+  summarise(n = n(), mean = round(mean(a1c),2), 
+            sd = round(sd(a1c),2), median = median(a1c))
+```
+
+
+## One-Way ANOVA for the `dm.ins` Data
+
+If we have a grouping factor (insurance) with *3* levels, then we are testing:
+
+- H~0~: $\mu_{Comm.} = \mu_{Medicare} = \mu_{Medicaid/Unins.}$ vs.
+- H~A~: At least one of the population means is different from the others.
 
 ```{r anova table 1}
 anova(lm(a1c ~ ins.3cat, data = dm.ins))
@@ -311,11 +480,11 @@ These two indicator variables completely specify the insurance category for any 
 Insurance Category | `var1` | `var2`
 ----------------------: | :-----------------: | :----------------:
 Commercial            | 0 | 0
-Medicaid or Uninsured | 1 | 0
+Medicaid/Unins. | 1 | 0
 Medicare            | 0 | 1 
 
  
-- `var1` is `ins.3catMedicaid or Uninsured`
+- `var1` is `ins.3catMedicaid/Unins.`
 - `var2` is `ins.3catMedicare`
 
 ## The Regression Equation
@@ -324,24 +493,27 @@ What is the regression equation here?
 
 ```
 Call: lm(formula = a1c ~ ins.3cat, data = dm.ins)
-Coefficients:                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                    8.10000    0.36087  22.446   <2e-16 ***
-ins.3catMedicaid or Uninsured  0.02192    0.44699   0.049    0.961    
-ins.3catMedicare              -0.33553    0.44391  -0.756    0.451    ```
+
+Coefficients            Estimate Std. Err.      t  Pr(>|t|)    
+(Intercept)              8.10000  0.36087  22.446   <2e-16 ***
+ins.3catMedicaid/Unins.  0.02192  0.44699   0.049    0.961    
+ins.3catMedicare        -0.33553  0.44391  -0.756    0.451    
 ```
+
 ### Equation specifies the three sample means
 
 - A1c = 8.1 + 0.02 [Medicaid or Uninsured] - 0.34 [Medicare]
 - [group] is 1 if the patient is in that group, and 0 otherwise
 
-## Model predictions = Sample Means
+## The Model predictions are Sample Means
 
 ```
-Coefficients:                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)                    8.10000    0.36087  22.446   <2e-16 ***
-ins.3catMedicaid or Uninsured  0.02192    0.44699   0.049    0.961    
-ins.3catMedicare              -0.33553    0.44391  -0.756    0.451    ```
+Coefficients       Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         8.10000    0.36087  22.446   <2e-16 ***
+Medicaid/Uninsured  0.02192    0.44699   0.049    0.961    
+Medicare           -0.33553    0.44391  -0.756    0.451    
 ```
+
 Model Predictions:
 
 - A1c = 8.1 if in the Commercial group
@@ -431,7 +603,7 @@ pairwise.t.test(dm192$dbp, dm192$insurance,
 
 ## Tukey's Honestly Significant Differences
 
-Most appropriate for **pre-planned** comparisons.
+Most appropriate for **pre-planned** comparisons, with a balanced (or near-balanced) design.
 
 Goal: Simultaneous (less conservative) confidence intervals and *p* values for our six pairwise comparisons:
 
@@ -444,11 +616,13 @@ Goal: Simultaneous (less conservative) confidence intervals and *p* values for o
 
 ## Tukey HSD Confidence Intervals
 
-```{r hsd for dbp by insurance}
+```{r hsd for dbp by insurance, eval = FALSE}
 TukeyHSD(aov(dbp ~ insurance, data = dm192))
 ```
 
-## Plot of Tukey HSD results
+![](images/tukey1.png)
+
+## Plot of Tukey HSD results (default, no relabeling)
 
 ```{r plot hsd for dbp by insurance, echo = FALSE}
 plot(TukeyHSD(aov(dbp ~ insurance, data = dm192)))
@@ -519,18 +693,123 @@ In particular, with 95% confidence across all six pairwise comparisons of practi
 
 For example, comparing C to A, we see a difference of 7.6 mm Hg (with A higher than C), with 95% CI (via Tukey HSD) of (1.9, 13.3) mm Hg.
 
+## One Last Example
 
-## The Signal and The Noise: Chapters 7 and 8
+Here is the data from `class17a` again, Let's consider `africa.pct` by `year`
 
-Predictions can be 
+```{r}
+class17a %>%
+  filter(!is.na(africa.pct)) %>%
+  group_by(year) %>%
+  summarise(n(), mean(africa.pct), sd(africa.pct))
+```
 
-- **self-fulfilling** (e.g. in election primary races) or 
-- **self-canceling** (e.g. when disease outbreaks are predicted, measures can be taken to prevent them, which can nullify the prediction)
+## Plot comparing four groups for `class17a`
 
-When gauging the **strength** of a prediction, it's important to view the *inside* view in the context of the *outside* view.
+```{r, echo = FALSE}
+ggplot(data = filter(class17a, !is.na(africa.pct)),
+       aes(x = factor(year), y = africa.pct, fill = factor(year))) +
+  geom_boxplot(notch = TRUE) + 
+  geom_abline(slope = 0, intercept = 28, col = "red", linetype = "dashed") +
+  guides(fill = FALSE) +
+  labs(x = "Year", y = "Guessed % of UN states in Africa (true value = 28%)") +
+  coord_flip()
+```
 
-- For example, many, if not most medical studies that claim 95% confidence aren't replicable.
-- Should we take then 95% confidence figures at face value?
+## ANOVA Question?
 
-From Jonah Sinick at [this link](http://lesswrong.com/lw/hxx/some_highlights_from_nate_silvers_the_signal_and/)
+The question ANOVA answers is whether the means across the four subpopulations (here, years) are the same or not the same.
+
+- Doesn't address the issue of which year best estimated the true value (28%) at all.
+
+```{r}
+anova(lm(africa.pct ~ factor(year), data = class17a))
+```
+
+## Tukey HSD 90% Comparisons, plotted
+
+```{r, fig.height = 5.5}
+plot(TukeyHSD(aov(africa.pct ~ factor(year-2000), 
+                  data = class17a), conf.level = 0.90))
+```
+
+## ANOVA summary
+
+If you want to compare more than two population means, and are willing to assume Normality, the Analysis of Variance is attractive.
+
+- Equivalent to fitting a linear model with a categorical predictor
+- Compare the means, overall, using an F test
+- Assess individual pairwise comparisons with Bonferroni and Tukey HSD procedures
+- If Normality is a serious issue, consider Kruskal-Wallis test (431) or bootstrap (432) approaches
+
+# On p values and statistical significance
+
+## The Value of a *p*-Valueless Paper
+
+Jason T. Connor (2004) *American J of Gastroenterology* 99(9): 1638-40.
+
+Abstract: As is common in current biomedical research, about 85% of original contributions in *The American Journal of Gastroenterology* in 2004 have reported *p*-values. However, none are reported in this issue's article by Abraham et al. who, instead, rely exclusively on effect size estimates and associated confidence intervals to summarize their findings. **Authors using confidence intervals communicate much more information in a clear and efficient manner than those using** *p*-**values. This strategy also prevents readers from drawing erroneous conclusions caused by common misunderstandings about** *p*-**values**. I outline how standard, two-sided confidence intervals can be used to measure whether two treatments differ or test whether they are clinically equivalent.
+
+DOI: 10.1111/j.1572-0241.2004.40592.x
+
+## Editorial from JAMA Cardiology 2016-10-12
+
+![](images/jamacardeditorial.png)
+
+## Mark, Lee, Harrell JAMA Cardiol 2016-10-12
+
+![](images/jamacardmark.png)
+
+doi:10.1001/jamacardio.2016.3312
+
+## On Experiments
+
+> ... the null hypothesis is never proved or established, but is possibly disapproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
+
+- R. A. Fisher
+
+> Do not be too timid and squeamish about your actions. All life is an experiment. The more experiments, the better.
+
+- Ralph Waldo Emerson
+
+## Why Dividing Data Comparisons into Categories based on Significance Levels is Terrible.
+
+> The common practice of dividing data comparisons into categories based on significance levels is terrible, but it happens all the time.... so it’s worth examining the prevalence of this error.
+
+[Link to Andrew Gelman's blog, 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/)
+
+## Gelman on *p* values, 1
+
+Let me first briefly explain why categorizing based on p-values is such a bad idea. Consider, for example, this division: 
+
+- "really significant" for *p* < .01, 
+- "significant" for *p* < .05, 
+- "marginally significant" for *p* < .1, and 
+- "not at all significant" otherwise. 
+
+Now consider some typical *p*-values in these ranges: say, *p* = .005, *p* = .03, *p* = .08, and *p* = .2. 
+
+Translate these two-sided *p*-values back into z-scores, which we can do in R via `qnorm(c(.005, .03, .08, .2)/2, lower.tail = FALSE)`
+
+## Gelman on *p* values, 2
+
+Description | really sig. | sig. | marginally sig.| not at all sig.
+---------: | ----: | ----: | ----: | ----:
+*p* value | 0.005 | 0.03 | 0.08 | 0.20
+Z score | 2.8 | 2.2 | 1.8 | 1.3
+
+The seemingly yawning gap in p-values comparing the “not at all significant” p-value of .2 to the “really significant” p-value of .005, is only 1.5. 
+
+If you had two independent experiments with z-scores of 2.8 and 1.3 and with equal standard errors and you wanted to compare them, you’d get a difference of 1.5 with a standard error of 1.4, which is completely consistent with noise.
+
+
+## Gelman on *p* values, 3
+
+From a **statistical** point of view, the trouble with using the p-value as a data summary is that the p-value is only interpretable in the context of the null hypothesis of zero effect — and (much of the time), nobody’s interested in the null hypothesis. 
+
+Indeed, once you see comparisons between large, marginal, and small effects, the null hypothesis is irrelevant, as you want to be comparing effect sizes.
+
+From a **psychological** point of view, the trouble with using the p-value as a data summary is that this is a kind of deterministic thinking, an attempt to convert real uncertainty into firm statements that are just not possible (or, as we would say now, just not replicable).
+
+**The key point**: The difference between statistically significant and NOT statistically significant is not, generally, statistically significant.
 
