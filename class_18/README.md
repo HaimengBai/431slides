@@ -13,7 +13,7 @@ When the audio recording for today's class becomes available, we'll post it abov
         - We chose (using a computer) a random number between 0 and 100. Your number is X = 10 (or 65).
             1. Do you think the percentage of countries which are in Africa, among all those in the United Nations, is higher or lower than X?
             2. Give your best estimate of the percentage of countries which are in Africa, among all those in the United Nations. (*There are 193 sovereign states that are members of the UN. The African regional group has 54 member states, so that's 28%*)
-            3. Provide a point estimate for Dr. Love’s current weight (in pounds.) (*On 2017-10-26, Dr. Love actually weighed 350 lbs. or 158.8 kg or 25 stone, dressed but without shoes.*)
+            3. Provide a point estimate for Dr. Love’s current weight (in pounds.) 
             4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
     - Analysis of Variance for Comparing More than Two Means [Course Notes](https://thomaselove.github.io/431notes/) Section 28, in particular.
     - Some Thoughts on Statistical Significance and *p* values. References for today include:
