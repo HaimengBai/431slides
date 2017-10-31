@@ -49,4 +49,6 @@ When the audio recording for today's class becomes available, we'll post it abov
     
 ## Announcements after class:
 
-6. Slides have been reposted for Class 18, to include only those things we actually discussed.
+6. [Slides have been reposted for Class 18](https://github.com/THOMASELOVE/431slides/blob/master/class_18/431_2017_class-18-slides.pdf), to include only those things we actually discussed and to correct typos.
+
+7. I've [reposted the Sketch and added the Rubric](https://github.com/THOMASELOVE/431homework/tree/master/HW4) for Assignment 4. The assignment has 145 points available, in total, not 150.
