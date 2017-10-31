@@ -15,12 +15,6 @@ knitr::opts_chunk$set(comment=NA)
 options(width = 55)
 ```
 
-## Gelman on Statistical Significance
-
-"... we use the term statistically significant in the conventional way, to mean that an estimate is **at least two standard errors away** from some "null hypothesis" or prespecified value that would indicate no effect present. An estimate is statistically insignificant if the observed value could reasonably be explained by simple chance variation, much in the way that a sequence of 20 coin tosses might happen to come up 8 heads and 12 tails; we would say that this result is not statistically significantly different from chance. More precisely, the observed proportion of heads is 40 percent but with a standard error of 11 percent - thus, the data are less than two standard errors away from the null hypothesis of 50 percent, and the outcome could clearly have occurred by chance. Standard error is a measure of the variation in an estimate and gets smaller as a sample size gets larger, converging on zero as the sample increases in size."
-
-[Gelman's blog (2017-10-28)](http://andrewgelman.com/2017/10/28/favorite-definition-statistical-significance/)
-
 ## Today's Agenda
 
 - Discussion of the Class 17 In-Class Survey
@@ -28,7 +22,6 @@ options(width = 55)
 - Pairwise Comparisons of Means after a Significant ANOVA
     + Multiple Comparisons
     + Bonferroni and Tukey HSD approaches
-- More on *p* Values and Statistical Significance
 
 ## Today's R Setup
 
@@ -41,7 +34,7 @@ class17a <- read.csv("data/class17a.csv") %>% tbl_df
 class17b <- read.csv("data/class17b.csv") %>% tbl_df
 ```
 
-# Project Task C
+## Project Task C
 
 See README for Class 18, and README for Project Task C, please.
 
@@ -229,7 +222,7 @@ ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
 ![](images/problem1.png)
 
 >- Why does this set of intervals not make sense?
->- There were **10** students (out of 43) who had a wider 50% interval than 90% interval.
+>- There were **10** students (out of 44) who had a wider 50% interval than 90% interval.
 
 
 ## Some Troubling Selections, 2
@@ -237,7 +230,7 @@ ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
 ![](images/problem2.png)
 
 >- It wasn't clear enough that the interval estimate was meant to surround the point estimate.
->- There were **6** students out of 43 with this problem in their 50% interval, **2** in their 90% interval.
+>- There were **6** students out of 44 with this problem in their 50% interval, **2** in their 90% interval.
 >- For **15** students, the 90% interval did not contain the 50% interval.
 
 ## The facts (with 50% intervals)
@@ -255,7 +248,7 @@ ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
        title = "Estimates and 50% Intervals for Love's Weight")
 ```
 
-- **8** of the 43 50% intervals estimated by students included 350 lbs.
+- **8** of the 44 50% intervals estimated by students included 350 lbs.
 
 ## The facts (with 90% intervals)
 
@@ -272,7 +265,7 @@ ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
        title = "Estimates and 90% Intervals for Love's Weight")
 ```
 
-- **16** of the 43 90% intervals estimated by students included 350 lbs.
+- **16** of the 44 90% intervals estimated by students included 350 lbs.
 
 # Analysis of Variance (Section 28, Course Notes)
 
@@ -480,7 +473,7 @@ summary(lm(a1c ~ ins.3cat, data = dm.ins))
 The linear model uses two **indicator variables**, sometimes called **dummy variables**. 
 
 - Each takes on the value 1 when its condition is met, and 0 otherwise. 
-- With three race categories, we need two indicator variables (we always need one fewer indicator than we have levels of the factor). 
+- With three insurance categories, we need two indicator variables (we always need one fewer indicator than we have levels of the factor). 
 - Here, we have a baseline category (which is taken to be `Commercial` in this case) and then indicators for `Medicaid or Uninsured` and for `Medicare`.
 
 ## K-1 indicators specify K categories
@@ -752,74 +745,4 @@ If you want to compare more than two population means, and are willing to assume
 - Assess individual pairwise comparisons with Bonferroni and Tukey HSD procedures
 - If Normality is a serious issue, consider Kruskal-Wallis test (431) or bootstrap (432) approaches
 
-# On p values and statistical significance
-
-## The Value of a *p*-Valueless Paper
-
-Jason T. Connor (2004) *American J of Gastroenterology* 99(9): 1638-40.
-
-Abstract: As is common in current biomedical research, about 85% of original contributions in *The American Journal of Gastroenterology* in 2004 have reported *p*-values. However, none are reported in this issue's article by Abraham et al. who, instead, rely exclusively on effect size estimates and associated confidence intervals to summarize their findings. **Authors using confidence intervals communicate much more information in a clear and efficient manner than those using** *p*-**values. This strategy also prevents readers from drawing erroneous conclusions caused by common misunderstandings about** *p*-**values**. I outline how standard, two-sided confidence intervals can be used to measure whether two treatments differ or test whether they are clinically equivalent.
-
-DOI: 10.1111/j.1572-0241.2004.40592.x
-
-## Editorial from JAMA Cardiology 2016-10-12
-
-![](images/jamacardeditorial.png)
-
-## Mark, Lee, Harrell JAMA Cardiol 2016-10-12
-
-![](images/jamacardmark.png)
-
-doi:10.1001/jamacardio.2016.3312
-
-## On Experiments
-
-> ... the null hypothesis is never proved or established, but is possibly disapproved, in the course of experimentation. Every experiment may be said to exist only to give the facts a chance of disproving the null hypothesis.
-
-- R. A. Fisher
-
-> Do not be too timid and squeamish about your actions. All life is an experiment. The more experiments, the better.
-
-- Ralph Waldo Emerson
-
-## Why Dividing Data Comparisons into Categories based on Significance Levels is Terrible.
-
-> The common practice of dividing data comparisons into categories based on significance levels is terrible, but it happens all the time.... so it’s worth examining the prevalence of this error.
-
-[Link to Andrew Gelman's blog, 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/)
-
-## Gelman on *p* values, 1
-
-Let me first briefly explain why categorizing based on p-values is such a bad idea. Consider, for example, this division: 
-
-- "really significant" for *p* < .01, 
-- "significant" for *p* < .05, 
-- "marginally significant" for *p* < .1, and 
-- "not at all significant" otherwise. 
-
-Now consider some typical *p*-values in these ranges: say, *p* = .005, *p* = .03, *p* = .08, and *p* = .2. 
-
-Translate these two-sided *p*-values back into z-scores, which we can do in R via `qnorm(c(.005, .03, .08, .2)/2, lower.tail = FALSE)`
-
-## Gelman on *p* values, 2
-
-Description | really sig. | sig. | marginally sig.| not at all sig.
----------: | ----: | ----: | ----: | ----:
-*p* value | 0.005 | 0.03 | 0.08 | 0.20
-Z score | 2.8 | 2.2 | 1.8 | 1.3
-
-The seemingly yawning gap in p-values comparing the “not at all significant” p-value of .2 to the “really significant” p-value of .005, is only 1.5. 
-
-If you had two independent experiments with z-scores of 2.8 and 1.3 and with equal standard errors and you wanted to compare them, you’d get a difference of 1.5 with a standard error of 1.4, which is completely consistent with noise.
-
-
-## Gelman on *p* values, 3
-
-From a **statistical** point of view, the trouble with using the p-value as a data summary is that the p-value is only interpretable in the context of the null hypothesis of zero effect — and (much of the time), nobody’s interested in the null hypothesis. 
-
-Indeed, once you see comparisons between large, marginal, and small effects, the null hypothesis is irrelevant, as you want to be comparing effect sizes.
-
-From a **psychological** point of view, the trouble with using the p-value as a data summary is that this is a kind of deterministic thinking, an attempt to convert real uncertainty into firm statements that are just not possible (or, as we would say now, just not replicable).
-
-**The key point**: The difference between statistically significant and NOT statistically significant is not, generally, statistically significant.
 
