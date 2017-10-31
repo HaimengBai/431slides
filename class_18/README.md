@@ -25,9 +25,15 @@ When the audio recording for today's class becomes available, we'll post it abov
     - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
-    - The Project Survey draft is [available for your review](https://github.com/THOMASELOVE/431project/blob/master/TaskB/2017-10-27_draft_for_review_81itemsforclassprojectsurvey.pdf). Someone from your Task B group needs to complete [this Google Form](https://docs.google.com/forms/d/1PMVkdEmgIQ1LQWoJL8lOaDAC8gT4PYIIH3Ga3ldZeI4/edit) to share your group's suggested comments or changes before **noon on Monday 2017-10-30**. Thanks.
-    - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
-        - We hope to make the Class Survey available by 2017-10-30.
+    - Every group has now reviewed the survey, and I've responded via email regarding all requests. Thanks.
+        - Items that I changed (most quite lightly) were 36-37, 39, 44, 47, 68, 69. 
+            - The biggest change was to item 39, which now asks for the % of all of the money you spent in the past month that you spent online, rather than for the total amount spent online.
+            - I clarified the other items above in more detailed descriptions.
+            - Some items originally planned as Likert scales are instead on 0-100 scales, but you can categorize those as you like (even to binary variables, in preparing your analyses and your Task C work.
+     - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
+        - The Class Survey is [now available as a Google Form](https://goo.gl/forms/bB1xJ16NnLihP9Gu1) accepting responses.
+        - You **also need** to submit [this Word template](https://github.com/THOMASELOVE/431project/blob/master/TaskC/2017_task_C_template_for_YOUR_NAME.docx) via Canvas by noon on 2017-11-08. [A PDF version](https://github.com/THOMASELOVE/431project/blob/master/TaskC/2017_What-does-the-Project-Task-C-template-look-like.pdf) is also available so you can see what is required.
+        - Details on the scales used in the survey and how they will be included in the project data [are available, too]((https://github.com/THOMASELOVE/431project/blob/master/TaskC/SCALES.md).
     - **NEW DATE** [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - Many of you could do this task **right now** to get ahead of things a bit. Note that this is a **corrected** date.
 
