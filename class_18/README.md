@@ -16,13 +16,6 @@ When the audio recording for today's class becomes available, we'll post it abov
             3. Provide a point estimate for Dr. Love’s current weight (in pounds.) 
             4. Now estimate one interval, which you believe has a 50% chance of including Dr. Love’s current weight (again, in pounds.) Then do the same for a 90% interval.
     - Analysis of Variance for Comparing More than Two Means [Course Notes](https://thomaselove.github.io/431notes/) Section 28, in particular.
-    - Some Thoughts on Statistical Significance and *p* values. References for today include:
-        - Jason T. Connor (2004) [The Value of a p-valueless paper](https://www.nature.com/ajg/journal/v99/n9/pdf/ajg2004321a.pdf?origin=ppub)
-        - Mark, Lee, and Harrell (2016) [Understanding the Role of P Values and Hypothesis Tests in Clinical Research](https://jamanetwork.com/journals/jamacardiology/article-abstract/2566171)
-        - Thomas and Pencina (2016) [Do Not Over (P) Value Your Research Article](https://jamanetwork.com/journals/jamacardiology/fullarticle/2566166)
-        - Gelman, Andrew [blog post 2016-10-15](http://andrewgelman.com/2016/10/15/marginally-significant-effects-as-evidence-for-hypotheses-changing-attitudes-over-four-decades/) on Marginally Significant Effects
-        - Gelman, Andrew [blog post 2017-10-28](http://andrewgelman.com/2017/10/28/favorite-definition-statistical-significance/) on Defining Statistical Significance
-    - (if time permits) *The Signal and The Noise*, Chapters 7 and 8
     
 2. The Projects
     - Every group has now reviewed the survey, and I've responded via email regarding all requests. Thanks.
@@ -55,3 +48,5 @@ When the audio recording for today's class becomes available, we'll post it abov
     - **Jenny Bryan is a name you want to know.** Incidentally, a good pro tip (from [Michael Lopez on Twitter](https://twitter.com/StatsbyLopez/status/916348419547062272/photo/1)) is that when you're searching for help on using R, add Jenny Bryan at the end. In a crowded universe of advice on programming well, her materials are always outstanding. 
     
 ## Announcements after class:
+
+6. Slides have been reposted for Class 18, to include only those things we actually discussed.
