@@ -41,6 +41,16 @@ class17a <- read.csv("data/class17a.csv") %>% tbl_df
 class17b <- read.csv("data/class17b.csv") %>% tbl_df
 ```
 
+# Project Task C
+
+See README for Class 18, and README for Project Task C, please.
+
+The Google Form for the survey is at https://goo.gl/forms/bB1xJ16NnLihP9Gu1
+
+Everyone must fill out the survey, regardless of whether you are working in a group.
+
+It's due at noon on Wednesday 2017-11-08, as is the Task C Word template.
+
 # In-Class Survey from Class 17
 
 ## In-Class Survey (`class17a` data)
@@ -262,7 +272,7 @@ ggplot(class17b, aes(x = factor(paper - 1700), y = love.lbs,
        title = "Estimates and 90% Intervals for Love's Weight")
 ```
 
-- **16** of the 43 50% intervals estimated by students included 350 lbs.
+- **16** of the 43 90% intervals estimated by students included 350 lbs.
 
 # Analysis of Variance (Section 28, Course Notes)
 
