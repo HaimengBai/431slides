@@ -24,6 +24,7 @@ When the audio recording for today's class becomes available, we'll post it abov
             3. Your various selected analyses in the Task C template need not be related to one another or to the work your Task B group did, at all. You can address wildly different issues from one analysis to the next of the class survey, if you prefer.
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - Many of you could do this task **right now** to get ahead of things a bit. Note that this is a **corrected** date.
+        - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
 
 3. Upcoming non-project Deliverables
     - [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is now due at noon on Thursday **2017-11-09**. You should be able to do questions 1 and 5-10 already, and today's class should prepare you for questions 2-4.
