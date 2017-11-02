@@ -17,7 +17,7 @@ When the audio recording for today's class becomes available, we'll post it abov
      - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
         - The Class Survey is [now available as a Google Form](https://goo.gl/forms/bB1xJ16NnLihP9Gu1) accepting responses.
         - You **also need** to submit [this Word template](https://github.com/THOMASELOVE/431project/blob/master/TaskC/2017_task_C_template_for_YOUR_NAME.docx) via Canvas by noon on 2017-11-08. [A PDF version](https://github.com/THOMASELOVE/431project/blob/master/TaskC/2017_What-does-the-Project-Task-C-template-look-like.pdf) is also available so you can see what is required.
-        - Details on the scales used in the survey and how they will be included in the project data [are available, too]((https://github.com/THOMASELOVE/431project/blob/master/TaskC/SCALES.md).
+        - Details on the scales used in the survey and how they will be included in the project data [are available, too](https://github.com/THOMASELOVE/431project/blob/master/TaskC/SCALES.md).
         - **BEFORE YOU SUBMIT**: Three points of clarification based on questions that came in this week.
             1. Your Project Task B group existed only to work on Task B. For Tasks C-F, you're working either alone or with your one partner, as previously specified.
             2. In Task C, you need to specify either a paired sample or independent sample analysis, so the other one will be blank on your template.
