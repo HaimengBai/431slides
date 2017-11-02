@@ -10,7 +10,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 1. Today's Agenda
     - Comparing Proportions/Rates [Course Notes](https://thomaselove.github.io/431notes/) Sections 29-31, in particular.
-    - Very brief Discussion of [Assignment 4](https://github.com/THOMASELOVE/431homework/tree/master/HW4) for which a sketch, rubric and grades are now posted.
+    - Short Discussion of [Assignment 4](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-4.md) for which a [sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW4), [rubric](https://github.com/THOMASELOVE/431homework/blob/master/HW4/431-rubric4-2017.pdf) and [grades](https://github.com/THOMASELOVE/431homework/blob/master/HW4/431-grades4-pw-2017.pdf) are now posted.
    
 2. The Projects
      - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon on Wednesday, **2017-11-08**. 
