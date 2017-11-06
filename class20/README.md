@@ -10,7 +10,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 1. Today's Agenda
    - Chi-square testing for 2-way and k-way tables ([Course Notes](https://thomaselove.github.io/431notes/), sections 32-33)
-   - Review of material on inference for rates and proportions (Sections 29-31)
+   - Review of material on inference for rates and proportions ([Notes](https://thomaselove.github.io/431notes/), sections 29-31)
    
 2. The Projects
      - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon tomorrow, **2017-11-08**. 
