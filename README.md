@@ -5,6 +5,7 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
+20 | 2017-11-07 | [README 20](https://github.com/THOMASELOVE/431slides/blob/master/class_20/README.md) | Contingency Tables, [Course Notes](https://thomaselove.github.io/431notes/) Sections 32-33
 19 | 2017-11-02 | [README 19](https://github.com/THOMASELOVE/431slides/blob/master/class_19/README.md) | Comparing Rates/Proportions, [Course Notes](https://thomaselove.github.io/431notes/) Sections 29-31
 18 | 2017-10-31 | [README 18](https://github.com/THOMASELOVE/431slides/blob/master/class_18/README.md) | Analysis of Variance, [Course Notes](https://thomaselove.github.io/431notes/) Section 28
 17 | 2017-10-26 | [README 17](https://github.com/THOMASELOVE/431slides/blob/master/class_17/README.md) | Setting Up Project Class Survey, Comparing Means, Silver 7-8
