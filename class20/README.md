@@ -30,7 +30,7 @@ When the audio recording for today's class becomes available, we'll post it abov
         - To help you prepare for Quiz 2, 
             - we built a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. [Answer Sketch here](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf).
             - You can review many key Part B materials for Quiz 2 in Sections 27 and 36 of the [Course Notes](https://thomaselove.github.io/431notes/index.html) which also contain answer sketches. 
-            
+   - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
 
 4. The play I am appearing in is "**It's a Wonderful Life**" and it is based on the holiday film directed by Frank Capra, starring Jimmy Stewart and Donna Reed. I play the role of Uncle Billy, at [Independence Community Theatre](http://www.independencetheatre.org/). If you would like to attend or want more information, tickets are available for $12 by calling 216-447-0443. The theater is located at the Old Independence Town Hall, 6652 Brecksville Rd, Independence OH. 
     - Remaining performances are:
