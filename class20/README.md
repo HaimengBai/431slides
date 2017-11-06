@@ -35,10 +35,10 @@ When the audio recording for today's class becomes available, we'll post it abov
 4. Points of Clarification and Information (reacting to student feedback)
     - If you use `read.csv` to read in a file, then if you want to create a tibble, you need to pipe the result into the `tbl_df` function. If you instead use `read_csv` to read in a file, then it creates a tibble automatically. So why not use `read_csv` all the time? Because it doesn't create factors out of string variables, and, at least in 431-432, that's usually what we want it to do.
     - Working with dates can be tricky. The tidyverse approach uses [the lubridate package](http://lubridate.tidyverse.org/). Take a look, especially if your project data contain dates.
-    - Dealing with geographic regions in your project?
-        - Want to identify regions of the United States? The Census Bureau has 9 official divisions, [which you can see at Wikipedia](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Official_regions_of_the_United_States).
-        - Want to sort countries of the world into regions? The UN specifies 5 regions, [which you can also review at Wikipedia](https://en.wikipedia.org/wiki/United_Nations_Regional_Groups).
-        - Want to divide Ohio's 88 counties into regions? I suggest [the approach shown in this image](http://ohiostockphotography.com/root/OhioStockPhotography/editorAssets/lrg/New%20Ohio%20Regions%20Map%20350dpi%20copy.jpg), although there are a variety of other alternatives, which are also reasonable.
+    - Dealing with geographic regions in your project? It's helpful to work with official divisions.
+        - Want to identify regions of the United States? The Census Bureau has identified [9 official divisions](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Official_regions_of_the_United_States).
+        - Want to sort countries of the world into regions? The UN [categorizes its member states into 5 regions](https://en.wikipedia.org/wiki/United_Nations_Regional_Groups).
+        - Want to divide Ohio's 88 counties into regions? I suggest [the approach in this image](http://ohiostockphotography.com/root/OhioStockPhotography/editorAssets/lrg/New%20Ohio%20Regions%20Map%20350dpi%20copy.jpg), although there are many reasonable alternatives.
     - Here's a note on the distinction between [extraversion and extroversion from Scientific American](
 https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extraversion-and-extroversion/
 ). This comes up because the TIPI (Question 52 on our projecy survey) spells this (appropriately, as it turns out) as "extraversion".
