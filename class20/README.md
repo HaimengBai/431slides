@@ -35,11 +35,16 @@ When the audio recording for today's class becomes available, we'll post it abov
         - and at 8 PM on Friday Nov 17 and Saturday Nov 18.
     - **PLEASE feel absolutely ZERO obligation to attend**. I mention this so you have the details if you are interested. I would be happy to see you there, but you won't get any extra credit for coming, *nor will I think any less of you should you not attend*.
 
-5. Points of Clarification (reacting to student questions)
+5. Points of Clarification and Information (reacting to student feedback)
     - If you use `read.csv` to read in a file, then if you want to create a tibble, you need to pipe the result into the `tbl_df` function. If you instead use `read_csv` to read in a file, then it creates a tibble automatically. So why not use `read_csv` all the time? Because it doesn't create factors out of string variables, and, at least in 431-432, that's usually what we want it to do.
-    - Some typos have been (or are about to be) corrected in the Course Notes.
+    - Working with dates can be tricky. The tidyverse approach uses [the lubridate package](http://lubridate.tidyverse.org/). Take a look, especially if your project data contain dates.
+    - Want to identify regions of the United States? The Census Bureau has 9 official divisions, [which you can review on Wikipedia](https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Official_regions_of_the_United_States).
+    - Want to sort countries of the world into regions? The UN specifies 5 regions, [which you can review on Wikipedia](https://en.wikipedia.org/wiki/United_Nations_Regional_Groups)
+    - Want to divide Ohio's counties into five regions? I suggest [the approach shown in this image](http://ohiostockphotography.com/root/OhioStockPhotography/editorAssets/lrg/New%20Ohio%20Regions%20Map%20350dpi%20copy.jpg), although there are a variety of other alternatives.
     - Here's a note on the distinction between [extraversion and extroversion from Scientific American](
 https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extraversion-and-extroversion/
 ). This comes up because the TIPI spells this (appropriately, as it turns out) as "extraversion".
-
+   - You may find the [data.world](https://data.world/) project interesting. I know nothing about it, personally.
+   - Some typos have been (or are about to be) corrected in the Course Notes.
+    
 ## Announcements after class:
