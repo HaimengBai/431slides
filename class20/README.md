@@ -22,7 +22,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 3. Upcoming non-project Deliverables
     - [Assignment 5](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-5.md) is due at noon on Thursday **2017-11-09**. 
     - (**Note: change in deadline**) Quiz 2 will be released on Thursday 2017-11-09 by 5 PM and will be due on Tuesday **2017-11-14 at 8 AM**. Note that this is change from the original plan (2017-11-13 at noon).
-        - The Quiz has 41 questions, and makes use of several **data sets**, which are now available to you on [our data page](https://github.com/thomaselove/431data).
+        - The Quiz has 41 questions, and makes use of several **data sets**, which are now available on [our data page](https://github.com/thomaselove/431data).
         - In addition to the Google Form (which is where you must take the Quiz) I will also provide access to a password-protected PDF of the Form, so you can look that over offline as you like. But you still need to take the Quiz on the Google Form.
         - Four questions (including Question 1) will likely take you longer than the other 37. Those four questions are clearly marked, and are worth 5 points each. All other items are worth 2, 2.5 or 3 points each, and the Quiz is graded on a scale of 0-120.
         - To help you prepare for Quiz 2, 
