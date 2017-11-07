@@ -51,6 +51,6 @@ https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extr
         - at 8 PM on Friday Nov 10, Saturday Nov 11, and 2 PM on Sunday Nov 12.
         - and at 8 PM on Friday Nov 17 and Saturday Nov 18.
  
-6. I'm giving a 1-hour [intramural RCR+4 seminar](http://casemed.case.edu/gradprog/RCR%20Plus%204.cfm) on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in this room. I believe you're welcome to attend, but I wouldn't recommend that, because you're going to hear a more complete and better organized version of the same talk on Thursday in class, and because the material is *not* on Quiz 2. I haven't even settled on a final title for that talk yet, but it's about how "traditional statistics" is failing us. A current version of (too many) of the slides is found in the Class 21 materials online.
+6. I'm giving a 1-hour [intramural RCR+4 seminar](http://casemed.case.edu/gradprog/RCR%20Plus%204.cfm) on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in E321/323. You're welcome to attend, although you've heard most of it before, and the rest of it is coming soon to this class. The slides and links are at https://github.com/THOMASELOVE/RCR2017
  
 ## Announcements after class:
