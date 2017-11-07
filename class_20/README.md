@@ -50,6 +50,6 @@ https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extr
         - at 8 PM on Friday Nov 10, Saturday Nov 11, and 2 PM on Sunday Nov 12.
         - and at 8 PM on Friday Nov 17 and Saturday Nov 18.
  
-6. I'm giving a 45-minute intramural RCR+4 seminar on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in this room. I believe you're welcome to attend, but I wouldn't recommend that, because you're going to hear a more complete and better organized version of the same talk on Thursday in class, and because the material is *not* on Quiz 2.
+6. I'm giving a 1-hour intramural RCR+4 seminar on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in this room. I believe you're welcome to attend, but I wouldn't recommend that, because you're going to hear a more complete and better organized version of the same talk on Thursday in class, and because the material is *not* on Quiz 2.
  
 ## Announcements after class:
