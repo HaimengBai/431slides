@@ -42,7 +42,7 @@ When the audio recording for today's class becomes available, we'll post it abov
         - Want to divide Ohio's 88 counties into regions? I suggest [the approach in this image](http://ohiostockphotography.com/root/OhioStockPhotography/editorAssets/lrg/New%20Ohio%20Regions%20Map%20350dpi%20copy.jpg), although there are many reasonable alternatives.
     - Here's a note on the distinction between [extraversion and extroversion from Scientific American](
 https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extraversion-and-extroversion/
-). This comes up because the TIPI (Question 52 on our projecy survey) spells this (appropriately, as it turns out) as "extraversion".
+). This comes up because the TIPI (Question 52 on our project survey) spells this (appropriately, as it turns out) as "extraversion".
    - You may find the [data.world](https://data.world/) project interesting. I know nothing about it, personally.
    - Some issues (typos, plus some graphs not displaying properly) have been corrected in the [Course Notes](https://thomaselove.github.io/431notes/), sections 26 and 27.
 
