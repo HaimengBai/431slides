@@ -11,6 +11,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
    - Chi-square testing for 2-way and 3-way tables ([Course Notes](https://thomaselove.github.io/431notes/), sections 32-33)
    - Review of material on inference for rates and proportions ([Notes](https://thomaselove.github.io/431notes/), sections 29-31)
+   - Posing Some Exercises using some Airplane Etiquette Survey Results reported at [FiveThirtyEight.com](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/) (Exercise Answers in Class 21).
    
 2. The Projects
      - [Task C](https://github.com/THOMASELOVE/431project/tree/master/TaskC) will be due at noon tomorrow, **2017-11-08**. 
@@ -50,6 +51,6 @@ https://blogs.scientificamerican.com/beautiful-minds/the-difference-between-extr
         - at 8 PM on Friday Nov 10, Saturday Nov 11, and 2 PM on Sunday Nov 12.
         - and at 8 PM on Friday Nov 17 and Saturday Nov 18.
  
-6. I'm giving a 1-hour intramural RCR+4 seminar on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in this room. I believe you're welcome to attend, but I wouldn't recommend that, because you're going to hear a more complete and better organized version of the same talk on Thursday in class, and because the material is *not* on Quiz 2.
+6. I'm giving a 1-hour [intramural RCR+4 seminar](http://casemed.case.edu/gradprog/RCR%20Plus%204.cfm) on rigor and reproducibility (sort of) at noon on Wednesday (tomorrow) in this room. I believe you're welcome to attend, but I wouldn't recommend that, because you're going to hear a more complete and better organized version of the same talk on Thursday in class, and because the material is *not* on Quiz 2. I haven't even settled on a final title for that talk yet, but it's about how "traditional statistics" is failing us. A current version of (too many) of the slides is found in the Class 21 materials online.
  
 ## Announcements after class:
