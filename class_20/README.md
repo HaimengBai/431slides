@@ -27,7 +27,7 @@ When the audio recording for today's class becomes available, we'll post it abov
         - The Quiz has 41 questions, and makes use of several **data sets**, which are now available on [our data page](https://github.com/thomaselove/431data).
         - In addition to the Google Form (which is where you **must** take the Quiz) I will also provide access to a password-protected PDF of the Form, to facilitate offline work.
         - Four questions (including Question 1) will likely take you longer than the other 37. Those four questions are clearly marked, and are worth 5 points each. All other items are worth 2, 2.5 or 3 points each, and the Quiz is graded on a scale of 0-120.
-        - Essentially everything on the Quiz has been discussed in classes 1-21 or is discussed in Sections 1-33 of the Course Notes.
+        - Essentially everything on the Quiz has been discussed in classes 1-20 or is discussed in Sections 1-33 of the Course Notes.
         - To help you prepare for Quiz 2, 
             - we built a brief [additional example on key Part A material](https://github.com/THOMASELOVE/431homework/tree/master/Extra_A) is available. [Answer Sketch here](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf).
             - You can review many key Part B materials for Quiz 2 in Sections 27 and 36 of the [Course Notes](https://thomaselove.github.io/431notes/index.html) which also contain answer sketches. 
