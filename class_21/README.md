@@ -8,6 +8,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
+0. **VERY IMPORTANT** Tuesday 11:30 - 12:30 Office Hours are CANCELLED on Tuesday 2017-11-14 only. Other office hours that day are unaffected. Thank you.
+
 1. Today's Agenda
     - Answering the Airplane Etiquette Exercises posed in Class 20  
             - The original [FiveThirtyEight article](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/) by Walt Hickey.
