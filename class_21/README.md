@@ -13,13 +13,18 @@ When the audio recording for today's class becomes available, we'll post it abov
 1. Today's Agenda
     - Answering the Airplane Etiquette Exercises posed in Class 20
         - The original [FiveThirtyEight article](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/) by Walt Hickey.
+    - Two "New" Studies worth a little extra look
+        - A Double-blind RCT of Stents in Stable Angina
+            - [New York Times 2017-11-02](https://www.nytimes.com/2017/11/02/health/heart-disease-stents.html?smprod=nytcore-ipad&smid=nytcore-ipad-share&_r=0) "Unbelievable": Heart Stents Fail to Ease Chest Pain, by Gina Kolata
+            - Al-Lamee R et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial [The Lancet 2017-11-02](http://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)32714-9/fulltext?elsca1=tlxpr) 
+        - Advil + Tylenol vs. Opiods + Tylenol for acute pain in the emergency room
+            - [New York Times 2017-11-08](https://nyti.ms/2hUIj4O) "Alternatives to Opioids for Pain Relief" by Nicholas Bakalar
+            - Chang AK et al. Effect of a Single Dose of Oral Opioid and Nonopioid Analgesics on Acute Extremity Pain in the Emergency Department: A Randomized Clinical Trial [JAMA 2017-11-07](https://jamanetwork.com/journals/jama/article-abstract/2661581)
     - Some thoughts on p values and statistical significance, introducing the concepts of researcher degrees of freedom and the garden of forking paths.
         - The key references are linked in today's slides, also described in detail [here](https://github.com/THOMASELOVE/RCR2017).
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
+        - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
         - I'll postpone our planned discussion of retrospective design, power, and Type S and Type M errors for a while, in part because an ASA Symposium entitled [Scientific Method for the 21st Century: A World Beyond p < 0.05](https://ww2.amstat.org/meetings/ssi/2017/onlineprogram/Program.cfm) was held last month, and touched on a lot of these issues. I need to find more time to read up on what people were saying there, so I can distill it effectively.
-    - Two "New" Studies worth a little extra look
-        - Stents
-        - Advil + Tylenol in the ED
 
 2. Quiz 2
     - A link will appear here after today's class to the Google Form for Quiz 2.
