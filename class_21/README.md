@@ -34,7 +34,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. The Projects
      - By now, you've completed Tasks A-C.
-            - Actually, as things stand, everyone's completed A, B and the Survey, but one person hasn't finished the Task C Word document. I am still reviewing those materials. We have *n* = 50 respondents to the Survey.
+        - Actually, as things stand, everyone's completed A, B and the Survey, but one person hasn't finished the Task C Word document. I am still reviewing those materials. We have *n* = 50 respondents to the Survey.
      - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
 
