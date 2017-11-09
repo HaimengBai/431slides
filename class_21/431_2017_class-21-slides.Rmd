@@ -275,7 +275,7 @@ power.t.test(n = 100, delta = 30, sd = 75, sig.level = 0.05)
 ## ORBITA primary result?
 
 - n = 105 randomized to PCI and 95 randomized to placebo (ITT).
-- Observed difference between the groups was 16.6 (95% CI 8.9 - 42.0)
+- Observed difference between the groups was 16.6 (95% CI -8.9 - 42.0)
 
 ![](images/stent_lancet_3.png)
 
