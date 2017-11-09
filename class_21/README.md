@@ -27,7 +27,7 @@ When the audio recording for today's class becomes available, we'll post it abov
         - I'll postpone our planned discussion of retrospective design, power, and Type S and Type M errors for a while, in part because an ASA Symposium entitled [Scientific Method for the 21st Century: A World Beyond p < 0.05](https://ww2.amstat.org/meetings/ssi/2017/onlineprogram/Program.cfm) was held last month, and touched on a lot of these issues. I need to find more time to read up on what people were saying there, so I can distill it effectively.
 
 2. Quiz 2
-    - A link will appear here after today's class to the Google Form for Quiz 2.
+    - [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take Quiz 2. Good luck!
     - A link is coming for a password-protected version of the questions on the Google Form, to facilitate offline work.
     - The data sets you'll need for the Quiz are posted at [our data site](https://github.com/thomaselove/431data).
         - Included are data sets for Q01 (oscar_1 and oscar_2) as well as Q11 (data11), Q19 (data19), Q22 (data22) and Q35 (data35).
@@ -55,4 +55,4 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-- Good luck on Quiz 2!
+8. Good luck on Quiz 2! [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take it. See #2. above for more details.
