@@ -8,15 +8,18 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements before class:
 
-0. **VERY IMPORTANT** Tuesday 11:30 - 12:30 Office Hours are CANCELLED on Tuesday 2017-11-14 only. Other office hours that day are unaffected. Thank you.
+0. **VERY IMPORTANT** Tuesday 2017-11-14 11:30 AM - 12:30 PM Office Hours are CANCELLED. Other office hours that day are unaffected. Thank you.
 
 1. Today's Agenda
-    - Answering the Airplane Etiquette Exercises posed in Class 20  
-            - The original [FiveThirtyEight article](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/) by Walt Hickey.
-    - Some Half-Baked Thoughts on How To React to Published Research (this material will eventually be pounded into Section 35 of the Course Notes, but not necessarily before 2018.)
+    - Answering the Airplane Etiquette Exercises posed in Class 20
+        - The original [FiveThirtyEight article](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/) by Walt Hickey.
+    - Some thoughts on p values and statistical significance, introducing the concepts of researcher degrees of freedom and the garden of forking paths.
+        - The key references are linked in today's slides, also described in detail [here](https://github.com/THOMASELOVE/RCR2017).
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
-        - See especially [this article by Gelman and Carlin](http://www.stat.columbia.edu/~gelman/research/published/retropower_final.pdf) on Type M and Type S errors.
-        - I'll have some more to say about the *p* value "controversy" later this semester.
+        - I'll postpone our planned discussion of retrospective design, power, and Type S and Type M errors for a while, in part because an ASA Symposium entitled [Scientific Method for the 21st Century: A World Beyond p < 0.05](https://ww2.amstat.org/meetings/ssi/2017/onlineprogram/Program.cfm) was held last month, and touched on a lot of these issues. I need to find more time to read up on what people were saying there, so I can distill it effectively.
+    - Two "New" Studies worth a little extra look
+        - Stents
+        - Advil + Tylenol in the ED
 
 2. Quiz 2
     - A link will appear here after today's class to the Google Form for Quiz 2.
@@ -26,9 +29,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 3. The Projects
      - By now, you've completed Tasks A-C.
-            - Actually, as things stand, everyone's completed A, B and the Survey, but one person hasn't finished the Task C Word document, and I am still reviewing the rest of them.
+            - Actually, as things stand, everyone's completed A, B and the Survey, but one person hasn't finished the Task C Word document. I am still reviewing those materials. We have *n* = 50 respondents to the Survey.
      - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
-        - Many of you could do this task **right now** to get ahead of things a bit. 
         - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
 
 4. Upcoming non-project Deliverables
@@ -39,7 +41,9 @@ When the audio recording for today's class becomes available, we'll post it abov
     - Remaining performances are:
         - at 8 PM on Friday Nov 10, Saturday Nov 11, and 2 PM on Sunday Nov 12.
         - and at 8 PM on Friday Nov 17 and Saturday Nov 18.
-   
+
+6. Course Notes - edited Section 16 to use Love-boost.R not its precursor.
+
 ## Announcements after class:
 
 - Good luck on Quiz 2!
