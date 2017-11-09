@@ -49,6 +49,8 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 6. Course Notes - edited Section 16 to use Love-boost.R not its precursor.
 
+7. Just for fun, you might want to look at this Tidyverse Case Study by Nick Tierney [Exploring the Billboard Charts](http://www.njtierney.com/post/2017/11/07/tidyverse-billboard/) - although I notice a few of the ggplots aren't showing up yet.
+
 ## Announcements after class:
 
 - Good luck on Quiz 2!
