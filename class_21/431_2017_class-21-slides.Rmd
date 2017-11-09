@@ -18,14 +18,14 @@ options(width = 55)
 ## Today's Agenda
 
 - Answer Sketches for the Airline Etiquette Exercises
-- A little more on the problems with p values
+- Two "Exciting" New Results worth a closer look
+    + Stents 
+    + Advil + Tylenol in the ED for acute pain
+- A little more on the problems with *p* values
     + Statistical Significance doesn't have to be about *p* values
     + Confidence intervals as a partial solution journals like
     + Researcher Degrees of Freedom
     + The Garden of Forking Paths
-- Two "Exciting" New Results worth a closer look
-    + Stents 
-    + Advil + Tylenol in the ED for acute pain
 
 ## Today's R Setup
 
@@ -236,31 +236,102 @@ power.prop.test(p1 = 0.70, p2 = 0.73,
                 sig.level = 0.10, power = 0.80)
 ```
 
-# Two "New" Clinical Results Worth a Closer Look
+# What's in the news?
 
-## A Double-blind RCT of Cardiac Stents (The Lancet 2017-11-02)
+## Al-Lamee R et al. ORBITA: A Double-blind RCT of Cardiac Stents (*The Lancet* 2017-11-02)
+
+![](images/stent_00.png)
+
+## Al-Lamee R et al *Lancet* 2017-11-02
 
 ![](images/stent1.png)
 
 ## *New York Times* (2017-11-02) by Gina Kolata
 
-![](images/stent0.png)
-
-## *New York Times* (2017-11-02) by Gina Kolata
-
 ![](images/stent2.png)
 
+## Al-Lamee R et al *Lancet* 2017-11-02
+
+![](images/stent_lancet_2.png)
+
+## Al-Lamee R et al *Lancet* 2017-11-02
+
+**Primary (pre-specified) endpoint**: difference between PCI and placebo groups in the change in treadmill exercise time.
+
+**Design parameters**: anticipated an effect size of 30 seconds (less than what you'd get from a single antianginal medication), and assumed a between-patient standard deviation of change in exercise time of 75 seconds. 
+
+What is the **power** of a sample of, say, 100 patients per group to detect such a difference between the PCI and placebo groups at the 5% significance level, with a two-sided test? 
+
+## ORBITA trial power?
+
+```{r}
+power.t.test(n = 100, delta = 30, sd = 75, sig.level = 0.05)
+```
+
+## Al-Lamee R et al *Lancet* 2017-11-02
+
+![](images/stent_lancet_1.png)
+
+## ORBITA primary result?
+
+- n = 105 randomized to PCI and 95 randomized to placebo (ITT).
+- Observed difference between the groups was 16.6 (95% CI 8.9 - 42.0)
+
+![](images/stent_lancet_3.png)
+
+## A Secondary Outcome (CCS angina grade)
+
+![](images/stent_lancet_4.png)
+
+## $\chi^2$ for Pre-randomization vs. follow-up
+
+```{r}
+ccs <- matrix(c(51, 27, 27, 50, 22, 19), 
+              byrow=TRUE, nrow = 2, ncol = 3)
+rownames(ccs) <- c("PCI", "Placebo")
+colnames(ccs) <- c("No change", "Improved 1 class", 
+                   "Improved 2+")
+```
+
+```
+> ccs
+
+        No change Improved 1 class Improved 2+
+PCI            51               27          27
+Placebo        50               22          19
+
+> chisq.test(ccs)
+
+Pearson's Chi-squared test data:  ccs
+X-squared = 0.91608, df = 2, p-value = 0.6325
+```
 ## *New York Times* (2017-11-02) by Gina Kolata
 
 ![](images/stent3.png)
 
-## *New York Times* (2017-11-02) by Gina Kolata
+## Chang AK et al. Opioids vs. Non-Opioids for Acute Extremity Pain in the ED (JAMA 2017-11-07)
 
-![](images/stent4.png)
+![](images/opioid_00.png)
 
-## Advil + Tylenol in the ED for acute pain (JAMA 2017-11-07)
+## Advil vs. Opioids for acute pain in ED (JAMA 2017-11-07)
 
 ![](images/opioid1.png)
+
+## Chang et al. Abstract
+
+![](images/opi02.png)
+
+## Chang et al. Sample Size
+
+![](images/opi_n.png)
+
+## Chang et al. Results
+
+![](images/opi_results.png)
+
+## Chang et al. Abstract
+
+![](images/opi03.png)
 
 ## *New York Times* (2017-11-08) by Nicholas Bakalar
 
@@ -277,7 +348,8 @@ Two hours later, they questioned them using an 11-point pain scale (higher score
 
 In other words, there was no significant difference, either statistically or clinically, among any of the four regimens. 
 
-# p values
+
+# On p values
 
 ## George Cobb's Questions (with Answers)
 
