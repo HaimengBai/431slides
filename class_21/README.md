@@ -28,7 +28,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 2. Quiz 2
     - [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take Quiz 2. Good luck!
-    - A link is coming for a password-protected version of the questions on the Google Form, to facilitate offline work.
+    - A PDF version of the Quiz 2 Google Form [is posted here](https://github.com/THOMASELOVE/431slides/blob/master/class_21/431-quiz2-printed-from-google-form-pw-2017.pdf), to facilitate offline work. Download the file (it's password protected) to your machine to open it.
     - The data sets you'll need for the Quiz are posted at [our data site](https://github.com/thomaselove/431data).
         - Included are data sets for Q01 (oscar_1 and oscar_2) as well as Q11 (data11), Q19 (data19), Q22 (data22) and Q35 (data35).
         - My answer sketch loads only the forcats and tidyverse packages, but also sources in Love-boost.R, and you'll definitely need Love-boost.R, for the `twobytwo` function, if nothing else.
