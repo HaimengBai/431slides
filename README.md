@@ -5,7 +5,8 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
-21 | 2017-11-09 | [README 21](https://github.com/THOMASELOVE/431slides/blob/master/class_21/README.md) | What's in the News? P values, P-Hacking, Researcher Degrees of Freedom
+22 | 2017-11-14 | [README 22](https://github.com/THOMASELOVE/431slides/blob/master/class_22/README.md) | P hacking, Researcher DF, Garden of Forking Paths, Models I
+21 | 2017-11-09 | [README 21](https://github.com/THOMASELOVE/431slides/blob/master/class_21/README.md) | What's in the News? The Trouble with P values
 20 | 2017-11-07 | [README 20](https://github.com/THOMASELOVE/431slides/blob/master/class_20/README.md) | Contingency Tables, [Course Notes](https://thomaselove.github.io/431notes/) Sections 32-33
 19 | 2017-11-02 | [README 19](https://github.com/THOMASELOVE/431slides/blob/master/class_19/README.md) | Comparing Rates/Proportions, [Course Notes](https://thomaselove.github.io/431notes/) Sections 29-31
 18 | 2017-10-31 | [README 18](https://github.com/THOMASELOVE/431slides/blob/master/class_18/README.md) | Analysis of Variance, [Course Notes](https://thomaselove.github.io/431notes/) Section 28
