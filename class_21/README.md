@@ -56,3 +56,5 @@ When the audio recording for today's class becomes available, we'll post it abov
 ## Announcements after class:
 
 8. Good luck on Quiz 2! [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take it. See #2. above for more details.
+
+9. Reposted the [answer sketch to the Extra A Assignment](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf), with a complete answer for Question 3.
