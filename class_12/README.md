@@ -4,7 +4,7 @@
 
 Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_12/431_2017_class-12-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_12/431_2017_class-12-slides.Rmd) formats. 
 
-When the audio recording for today's class becomes available, we'll post it above.
+The audio recording(s) for this class are posted above.
 
 ## Announcements before class:
 
