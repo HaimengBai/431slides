@@ -30,6 +30,7 @@ The audio recording(s) for this class are posted above.
     - [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take Quiz 2. Good luck!
         - Q02 was revised at 9 PM on 2017-11-09 to refer to Q01, not Q27. This is now correct on the Form and on the PDF.
         - Q24 was revised at 7 AM on 2017-11-10 so that Alex is consistently sampling 400 people. Now correct on form and PDF.
+        - Q22 includes a data set and a little mosaic::favstats output. The favstats was incorrect, now fixed on form and PDF.
     - A PDF version of the Quiz 2 Google Form [is posted here](https://github.com/THOMASELOVE/431slides/blob/master/class_21/431-quiz2-printed-from-google-form-pw-2017.pdf), to facilitate offline work. Download the file (it's password protected) to your machine to open it.
     - The data sets you'll need for the Quiz are posted at [our data site](https://github.com/thomaselove/431data).
         - Included are data sets for Q01 (oscar_1 and oscar_2) as well as Q11 (data11), Q19 (data19), Q22 (data22) and Q35 (data35).
