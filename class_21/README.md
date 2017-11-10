@@ -28,6 +28,7 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 2. Quiz 2
     - [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take Quiz 2. Good luck!
+        - Q02 was revised at 9 PM on 2017-11-09 to refer to Q01, not Q27. This is now correct on the Form and on the PDF.
     - A PDF version of the Quiz 2 Google Form [is posted here](https://github.com/THOMASELOVE/431slides/blob/master/class_21/431-quiz2-printed-from-google-form-pw-2017.pdf), to facilitate offline work. Download the file (it's password protected) to your machine to open it.
     - The data sets you'll need for the Quiz are posted at [our data site](https://github.com/thomaselove/431data).
         - Included are data sets for Q01 (oscar_1 and oscar_2) as well as Q11 (data11), Q19 (data19), Q22 (data22) and Q35 (data35).
@@ -55,6 +56,6 @@ When the audio recording for today's class becomes available, we'll post it abov
 
 ## Announcements after class:
 
-8. Good luck on Quiz 2! [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take it. See #2. above for more details.
+8. Good luck on Quiz 2! [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take it. See #2. above for more details, especially the fix on Q02.
 
 9. Reposted the [answer sketch to the Extra A Assignment](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf), with a complete answer for Question 3.
