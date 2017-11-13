@@ -12,7 +12,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
-        - Some additional references are found [in my talk last week and its related links](https://github.com/THOMASELOVE/RCR2017).
+        - Some additional references are found [in a talk I gave and its links](https://github.com/THOMASELOVE/RCR2017).
     - [Course Project Survey Data](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017), including
         - How To Get It and Clean It Up in R
         - What To Do Next, and 
