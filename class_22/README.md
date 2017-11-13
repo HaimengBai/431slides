@@ -33,8 +33,7 @@ The audio recording(s) for this class will be posted above when they become avai
 4. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
 
-5. A stage version of "**It's a Wonderful Life**" closes this weekend. I play Uncle Billy. It's at [Independence Community Theatre](http://www.independencetheatre.org/). If you would like to attend, tickets are available for $12 by calling 216-447-0443. The theater is located at the Old Independence Town Hall, 6652 Brecksville Rd, Independence OH. 
+5. A stage version of "**It's a Wonderful Life**" has two remaining performances, at 8 PM on Friday Nov 17 and at 8 PM on Saturday Nov 18. I play Uncle Billy. It's at [Independence Community Theatre](http://www.independencetheatre.org/) and tickets are available for $12 by calling 216-447-0443. Location: Old Independence Town Hall, 6652 Brecksville Rd, Independence OH. 
     - **PLEASE feel absolutely ZERO obligation to attend**. I mention this so you have the details if you are interested. I would be happy to see you there, but you won't get any extra credit for coming, *nor will I think any less of you should you not attend*.
-    - Remaining performances are at 8 PM on Friday Nov 17 and Saturday Nov 18.
 
 ## Announcements after class:
