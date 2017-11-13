@@ -21,7 +21,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - due at 8 AM Tuesday 2017-11-14.
     - Assignment 5
         - [Answer Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available. Rubric and grades will come soon.
-    - Modeling in the Tidyverse (Part C of the Course) begins
+    - Modeling in the Tidyverse (Part C of the Course) begins today, as time permits.
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-.
     
 3. The Projects
