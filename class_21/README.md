@@ -63,4 +63,4 @@ The audio recording(s) for this class are posted above.
 
 9. Reposted the [answer sketch to the Extra A Assignment](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf), with a complete answer for Question 3.
 
-10. I edited section 30.19 of the Course Notes to correct a typo and provide a more detailed answer to the final three questions posed there. I also corrected a typo in section 32.7.
+10. I edited section 30.19 of the Course Notes to correct a typo and provide a more detailed answer to the final three questions posed there. I also corrected a typo in section 32.7, and showed the actual results that the `dig` option should influence in `saifs.ci` as part of section 29.8.
