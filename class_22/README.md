@@ -13,15 +13,22 @@ The audio recording(s) for this class will be posted above when they become avai
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
         - Some additional references are found [in my talk last week and its related links](https://github.com/THOMASELOVE/RCR2017).
-    - Your Course Project: The Survey Data: How To Get It and What To Do Next, and my reactions to Task C
+    - [Course Project Survey Data](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017), including
+        - How To Get It and Clean It Up in R
+        - What To Do Next, and 
+        - My reactions to Your Task C work
     - Quiz 2
+        - due at 8 AM Tuesday 2017-11-14.
     - Assignment 5
+        - [Answer Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available. Rubric and grades will come soon.
     - Modeling in the Tidyverse (Part C of the Course) begins
+        - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-.
     
 3. The Projects
-     - By now, you've completed Tasks A-C.
      - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
+        - A tidy data set is just a .csv file in almost all cases, rather than multiple .csv files. One .csv file, with one row per subject and one column per variable.
+        - Your R project should begin by importing your tidy data set file and then manipulating it as needed before you can move into the analysis phase. But it needs to be tidy at the start.
 
 4. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
