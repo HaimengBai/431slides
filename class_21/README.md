@@ -62,3 +62,5 @@ The audio recording(s) for this class are posted above.
 8. Good luck on Quiz 2! [Here is the Google Form](https://goo.gl/forms/b9kGFNcLoAlMEbgg1) for you to use to take it. See #2. above for more details, especially the fixes on several questions.
 
 9. Reposted the [answer sketch to the Extra A Assignment](https://github.com/THOMASELOVE/431homework/blob/master/Extra_A/extra_A.pdf), with a complete answer for Question 3.
+
+10. I edited section 30.19 of the Course Notes to correct a typo and provide a more detailed answer to the final three questions posed there.
