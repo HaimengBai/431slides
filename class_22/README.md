@@ -14,9 +14,11 @@ The audio recording(s) for this class will be posted above when they become avai
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
         - Some additional references are found [in a talk I gave and its links](https://github.com/THOMASELOVE/RCR2017).
     - [Course Project Survey Data](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017), including
-        - How To Get It and Clean It Up in R
-        - What To Do Next, and 
-        - My reactions to Your Task C work
+        - How To Get It and Clean It Up in R (get the data [here](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017))
+        - What To Do Next: see Project Task E for [detailed demonstrations with old data](https://github.com/THOMASELOVE/431project/tree/master/TaskE)
+    - [My reactions to Your Task C work](https://github.com/THOMASELOVE/431project/blob/master/SURVEY2017/TASKC-RESULTS.md)
+        - Don't forget to look closely at Canvas for my responses to your work.
+        - There's no need to resubmit Task C - just fix your errors and report the new plan as part of Tasks E and F.
     - Quiz 2
         - due at 8 AM Tuesday 2017-11-14.
     - Assignment 5
