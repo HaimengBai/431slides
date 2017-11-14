@@ -9,10 +9,14 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements before class:
 
 1. Today's Agenda
+    - Quiz 2
+        - due at 8 AM Tuesday 2017-11-14.
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
         - Some additional references are found [in a talk I gave and its links](https://github.com/THOMASELOVE/RCR2017).
+    - What to do about a study after it's published?
+        - The retrodesign function, Type S and Type M errors
         - The Gelman and Carlin paper on retrodesign is [here](http://www.stat.columbia.edu/~gelman/research/published/retropower_final.pdf) and two good blog posts on it are [here](http://andrewgelman.com/2016/10/25/how-not-to-analyze-noisy-data-a-case-study/) and also [here](http://andrewgelman.com/2016/11/13/more-on-my-paper-with-john-carlin-on-type-m-and-type-s-errors/)
         - Eric Ravenscraft's piece at Lifehacker on "[How to Lie to Yourself and Others with Statistics](http://lifehacker.com/how-to-lie-to-yourself-and-others-with-statistics-1788184031)" is a fun read.
     - [Course Project Survey Data](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017), including
@@ -21,11 +25,10 @@ The audio recording(s) for this class will be posted above when they become avai
     - [My reactions to Your Task C work](https://github.com/THOMASELOVE/431project/blob/master/SURVEY2017/TASKC-RESULTS.md)
         - Don't forget to look closely at Canvas for my responses to your work.
         - There's no need to resubmit Task C - just fix your errors and report the new plan as part of Tasks E and F.
-    - Quiz 2
-        - due at 8 AM Tuesday 2017-11-14.
-    - Assignment 5
-        - [Answer Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available. Rubric and grades will come soon.
-    - Modeling in the Tidyverse (Part C of the Course) begins today, as time permits.
+
+2. Coming Soon
+    - Assignment 5's [Answer Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available. Rubric and grades will come soon.
+    - Modeling in the Tidyverse (Part C of the Course) begins next time, in Class 23.
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-.
     
 3. The Projects
