@@ -10,7 +10,7 @@ The audio recording(s) for this class will be posted above when they become avai
 
 1. Today's Agenda
     - Quiz 2
-        - didn't go well. Grades are coming before midnight.
+        - Grades will be available before Thursday's class. You should have received an email from me about your grade.
         - We'll talk about some specific issues in class today.
         - Anticipate a short activity coming your way via email **tonight**, due at noon Thursday. Shouldn't take more than 15 minutes to do.
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
@@ -38,7 +38,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
         - A tidy data set is just a .csv file in almost all cases, rather than multiple .csv files. One .csv file, with one row per subject and one column per variable.
         - Your submitted project (Tasks E/F) files should begin by importing your tidy data set (from Task D) and then manipulating the data as needed before you move into the analysis phase. But the data need to be tidy at the start. This applies for Study 1 and for Study 2.
-        - To date, Project Task D is complete for Chaim Domb, Kedar Mahajan, and Roberto Martinez.
+        - To date, Project Task D is complete for Chaim Domb, Gwendolyn Donley, Kedar Mahajan, and Roberto Martinez. Thanks!
 
 4. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
