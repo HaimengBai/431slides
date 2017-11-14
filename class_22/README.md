@@ -10,7 +10,9 @@ The audio recording(s) for this class will be posted above when they become avai
 
 1. Today's Agenda
     - Quiz 2
-        - due at 8 AM Tuesday 2017-11-14.
+        - didn't go well. Grades are coming before midnight.
+        - We'll talk about some specific issues in class today.
+        - Anticipate a short activity coming your way via email **tonight**, due at noon Thursday. Shouldn't take more than 15 minutes to do.
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
@@ -45,3 +47,5 @@ The audio recording(s) for this class will be posted above when they become avai
     - **PLEASE feel absolutely ZERO obligation to attend**. I mention this so you have the details if you are interested. I would be happy to see you there, but you won't get any extra credit for coming, *nor will I think any less of you should you not attend*.
 
 ## Announcements after class:
+
+6. Anticipate a short activity coming your way via email **tonight**, due at noon Thursday. Shouldn't take more than 15 minutes to do.
