@@ -42,6 +42,43 @@ source("Love-boost.R")
 
 # Quiz 2
 
+## Quiz 2 looks like it didn't go so well.
+
+I don't have grades for you yet. I hope that will be done before midnight.
+
+Let's address a couple of issues now.
+
+## Group Exercise 1.
+
+Every year, the Academy Awards (also called the Oscars) are presented for artistic and technical merit in the American film industry. The data files provided each contain the names and ages of 50 of the winners of the Best Actor in a Leading Role and the Best Actress in a Leading Role awards since 1967. 
+
+The question we're interested in is (at the 5% significance level) which group (men - actors or women - actresses) tends to have older Oscar winners, and by how many years on average?
+
+### Your Task for Now
+
+In a small group, discuss the question of whether the study design uses *paired* or *independent* samples. Defend your response.
+
+## Group Exercise 2.
+
+On the next slide are a few questions from the Course Survey.
+
+a. How many studies using these questions can you describe that use *independent* samples to compare two populations on a quantitative outcome?
+
+b. How many studies using these questions can you describe that use a *paired* samples design to compare two populations on a quantitative outcome?
+
+## Course Survey Questions
+
+- `pulse_rate_Q006`	Q006. What is your pulse rate, in beats per minute?
+- `sleep_hours_Q007`	Q007. Last_night, how many hours of sleep did you get?
+- `exercise_Q008`	Q008. Last week, on how many days did you exercise?
+- `veggies_Q018` Q018. In the past week, how many servings of vegetables did you consume?
+- `fruit_Q019` Q019. In the past week, how many servings of fruit did you consume?
+- `closefriends_Q034`	Q034. How many close friendships do you have?
+- `facebook_Q035`	Q035. How many friends do you have on Facebook?
+- `morning_Q066` Q066. I am a morning person (0 = SA, 0 = SD)
+- `aerobic_Q068`	Q068. Do you engage in aerobic exercise regularly? (Yes/No)
+- `strength_Q069`	Q069. Do you engage in strength-training exercise regularly? (Yes/No)
+
 # p Hacking and "Researcher Degrees of Freedom"
 
 ## Hack Your Way To Scientific Glory
