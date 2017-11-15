@@ -2,7 +2,7 @@
 
 ## Today's Slides
 
-Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_21/431_2017_class-21-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_21/431_2017_class-21-slides.Rmd) formats. 
+Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_22/431_2017_class-22-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_22/431_2017_class-22-slides.Rmd) formats. 
 
 The audio recording(s) for this class will be posted above when they become available.
 
@@ -11,7 +11,6 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Today's Agenda
     - Quiz 2
         - Grades will be available before Thursday's class. You should have received an email from me about your grade.
-        - We'll talk about some specific issues in class today.
         - Please do [this short activity](https://goo.gl/forms/GEXC4gxQV4aTJb8D3), due at noon Thursday. Shouldn't take more than 15 minutes to do. It requires you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
