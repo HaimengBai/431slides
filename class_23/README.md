@@ -10,7 +10,7 @@ The audio recording(s) for this class will be posted above when they become avai
 
 1. Today's Agenda
     - Quiz 2
-        - Grades will be available before class. You should have received an email from me about your grade.
+        - Grades and the answer sketch will be available before class. You should have received an email from me about your grade.
     - Discussion of the After Class 22 Activity ([Google Form here](https://goo.gl/forms/GEXC4gxQV4aTJb8D3))
         - The activity required you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
     - Update for the `tidyverse` - [details here](https://www.tidyverse.org/articles/2017/11/tidyverse_1.2.0/) - get version 1.2.1 by updating the tidyverse package in R Studio.
