@@ -12,7 +12,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - Quiz 2
         - Grades will be available before Thursday's class. You should have received an email from me about your grade.
         - We'll talk about some specific issues in class today.
-        - Anticipate a short activity coming your way via email **tonight**, due at noon Thursday. Shouldn't take more than 15 minutes to do.
+        - Please do [this short activity](https://goo.gl/forms/GEXC4gxQV4aTJb8D3), due at noon Thursday. Shouldn't take more than 15 minutes to do. It requires you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
     - *p* Hacking, Researcher Degrees of Freedom and The Garden of Forking Paths
         - [Andrew Gelman's blog](http://andrewgelman.com/) is how I first heard about much of this material.
         - The **p-hacking** example I'll show is part of [Science isn't broken](https://fivethirtyeight.com/features/science-isnt-broken/#part1) by Christie Aschwanden with graphic by Ritchie King at FiveThirtyEight.com
@@ -48,4 +48,4 @@ The audio recording(s) for this class will be posted above when they become avai
 
 ## Announcements after class:
 
-6. Anticipate a short activity coming your way via email **tonight**, due at noon Thursday. Shouldn't take more than 15 minutes to do.
+6. Please do [this short activity](https://goo.gl/forms/GEXC4gxQV4aTJb8D3), due at noon Thursday. Shouldn't take more than 15 minutes to do. It requires you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
