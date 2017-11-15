@@ -25,7 +25,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Task D](https://github.com/THOMASELOVE/431project/tree/master/TaskD) is due via email to Dr. Love noon Monday, **2017-11-20**.
         - If you're working with NHANES data, I want to know what tables you used, and I want your cleaned tidied data set, but I don't need the raw pulls.
         - A tidy data set is just a .csv file in almost all cases, rather than multiple .csv files. One .csv file, with one row per subject and one column per variable.
-        - Your submitted project (Tasks E/F) files should begin by importing your tidy data set (from Task D) and then manipulating the data as needed before you move into the analysis phase. But the data need to be tidy at the start. This applies for Study 1 and for Study 2.
+        - Your submitted project (Tasks E/F) files should begin by importing your tidy data set (from Task D) and then manipulating the data as needed before you move into the analysis phase. But the data need to be tidy at the start. This applies for Study 1 and for Study 2, and I expect you to use two different Markdown files (one for Study 1 and one for Study 2.)
         - To date, Project Task D is complete for Chaim Domb, Gwendolyn Donley, Kedar Mahajan, and Roberto Martinez. Thanks!
 
 3. Upcoming non-project Deliverables
