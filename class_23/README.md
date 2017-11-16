@@ -15,6 +15,8 @@ The audio recording(s) for this class will be posted above when they become avai
         - The activity required you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
         - Andrew Gelman: [What should this student do? His bosses want him to p-hack and they don’t even know it!](http://andrewgelman.com/2017/11/11/student-bosses-want-p-hack-dont-even-know/)
     - Update for the `tidyverse` - [details here](https://www.tidyverse.org/articles/2017/11/tidyverse_1.2.0/) - get version 1.2.1 by updating the tidyverse package in R Studio.
+    - Take a look at this Shiny app: [How will the House Tax Bill Impact Graduate Students?](https://benjaminackerman.shinyapps.io/GOPtax2017/) by Benjamin Ackerman. 
+        - Want to learn more about Shiny? I hope we'll discuss it in 432, but in the meantime, [take a look at this tutorial](https://shiny.rstudio.com/tutorial/)
     - Modeling in the Tidyverse (Part C of the Course) begins.
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-.
 
