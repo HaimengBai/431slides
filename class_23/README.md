@@ -11,11 +11,16 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Today's Agenda
     - Quiz 2
         - [The detailed answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-quiz2-sketch-pw-2017.pdf) are available. 
-            - You should have received an email from me about your grade. If not, let me know by emailing me NOW.
-            - There's an [extra task available](https://goo.gl/forms/1f27voQF33hqYOys1), for those who scored B- or lower. If you did better than a B-, you have the option to do the task (before 2017-11-29 at noon) for a little class participation credit.
-    - [Class Participation Update through 2017-11-15](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-class-part-pw-2017-11-15.pdf): Essentially, you start at 75 and can only go up (remember that a B in 431 usually ranges from 70 - 85, and an A is usually 90 - 100, with 86-89 in the B+/A- range.) A few people are already at 100 (the max). Some are still at 75.
-        - If you're below 85 and worried about it, you probably want to re-introduce yourself to me at some point, both in person and by asking questions or making contributions at 431-help. But I wouldn't worry about it too much, no matter what your score is to date. Also, if you've been visiting TA office hours regularly, that's **not** accounted for yet in this document but will be at the end of the semester.
-        - This won't be updated again until mid-December.
+            - You should have received an email from me about your grade. If not, let me know by emailing me **NOW**.
+            - There's an [extra task available](https://goo.gl/forms/1f27voQF33hqYOys1), for those who scored B- or lower. If you did better than a B-, you have the *option* to do the task (before 2017-11-29 at noon) for a little class participation credit.
+    - [Class Participation Update through 2017-11-15](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-class-part-pw-2017-11-15.pdf) 
+        - Essentially, you start at 75 and can only go up (remember that a B in 431 usually ranges from 70 - 85, and an A is usually 90 - 100, with 86-89 in the B+/A- range.) 
+        - A few people are already at 100 (the maximum). Some are still at 75.
+        - If you're below 85 and worried about it, you probably want to re-introduce yourself to me at some point, both in person and by asking questions or making contributions at 431-help. 
+        - Arguing about the score is a waste of your time. Making certain I know who you are is not. I don't know all of your names yet, which is appalling, but true.
+        - Also, if you've been visiting TA office hours regularly, that's **not** accounted for yet in this document but will be at the end of the semester.
+        - No matter what your score is, I wouldn't worry about it much. Effort on your project will be repaid far more extravagantly than effort towards this measure. 
+        - This is the last update on this issue that you'll see. I won't revisit these details again until mid-December.
     - Assignment 5
         - Answer sketch and grades are now available.
     - Discussion of the After Class 22 Activity ([Google Form here](https://goo.gl/forms/GEXC4gxQV4aTJb8D3))
