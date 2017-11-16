@@ -24,11 +24,12 @@ The audio recording(s) for this class will be posted above when they become avai
         - No matter what your score is, I wouldn't worry about it much. Effort on your project will be repaid far more extravagantly than effort towards this measure. 
         - This is the last update on this issue that you'll see. I won't revisit these details again until mid-December.
     - Assignment 5
-        - [Answer sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available. [Grades and rubric](https://github.com/THOMASELOVE/431homework/tree/master/HW5) are coming soon. There were a lot of problems with attention to detail in the assignment.
+        - [Answer sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW5) is available in both PDF and R Markdown. 
+        - [Grades and the rubric](https://github.com/THOMASELOVE/431homework/tree/master/HW5) are also now available. 
+        - There were a lot of problems with attention to detail in the assignment. See the TA comments in the grades sheet.
     - Discussion of the After Class 22 Activity ([Google Form here](https://goo.gl/forms/GEXC4gxQV4aTJb8D3))
         - The activity required you to read [this short primer on p hacking](https://www.methodspace.com/primer-p-hacking/).
         - Andrew Gelman: [What should this student do? His bosses want him to p-hack and they don’t even know it!](http://andrewgelman.com/2017/11/11/student-bosses-want-p-hack-dont-even-know/)
-        - I'll write up a report on the activity as soon as I can.
     - Update for the `tidyverse` - [details here](https://www.tidyverse.org/articles/2017/11/tidyverse_1.2.0/) - get version 1.2.1 by updating the tidyverse package in R Studio.
     - Take a look at this Shiny app: [How will the House Tax Bill Impact Graduate Students?](https://benjaminackerman.shinyapps.io/GOPtax2017/) by Benjamin Ackerman. 
         - Want to learn more about Shiny? I hope we'll discuss it in 432, but in the meantime, [take a look at this tutorial](https://shiny.rstudio.com/tutorial/)
