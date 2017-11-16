@@ -10,7 +10,7 @@ The audio recording(s) for this class will be posted above when they become avai
 
 1. Today's Agenda
     - Quiz 2
-        - [The detailed answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-quiz2-sketch-pw-2017.pdf) are available. 
+        - [The detailed answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-quiz2-sketch-pw-2017.pdf) is available. 
             - You should have received an email from me about your grade. If not, let me know by emailing me **NOW**.
             - There's an [extra task available](https://goo.gl/forms/1f27voQF33hqYOys1), for those who scored B- or lower. If you did better than a B-, you have the *option* to do the task (before 2017-11-29 at noon) for a little class participation credit.
     - [Class Participation Update through 2017-11-15](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-class-part-pw-2017-11-15.pdf) 
