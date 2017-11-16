@@ -1,0 +1,589 @@
+---
+title: "431 Class 23"
+author: "Thomas E. Love"
+date: "2017-11-16"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+- Discussing Past Activities
+    + Quiz 2
+    + Assignment 5
+    + "After Class 22" Google Form
+- Changes in the Tidyverse
+- Regression Modeling in the Tidyverse
+    + The National Youth Fitness Survey
+    
+## Today's R Setup and Data Set
+
+```{r setup}
+library(magrittr); library(broom); library(tidyverse)
+
+nyfs1 <- read.csv("data/nyfs1.csv") %>% tbl_df
+
+source("Love-boost.R")
+```
+
+
+# Regression, or "You've Got To Draw The Line Somewhere"
+
+## The National Youth Fitness Survey, 2012
+
+See https://thomaselove.github.io/431notes/NYFS-Study.html for details.
+
+```{r}
+summary(select(nyfs1, bmi, waist.circ, sex))
+```
+
+## Summarizing Associations Graphically (Code)
+
+```{r, eval = FALSE}
+cor_lab <- nyfs1 %$% 
+  cor(waist.circ, bmi) %>% 
+  round(.,2)
+
+ggplot(nyfs1, aes(x = waist.circ, y = bmi)) +
+  geom_point(pch = 1) +
+  geom_smooth(method = "lm", col = "red") + 
+  geom_smooth(method = "loess", col = "blue") + 
+  labs(x = "Waist Circumference (cm)", 
+       y = "Body Mass Index") +
+  annotate("text", x = 110, y = 10, size = 5,
+           label = paste("r =", 
+                         cor_lab))
+```
+
+Plot on next slide...
+
+## Summarizing Associations Graphically
+
+```{r, echo = FALSE}
+cor_lab <- nyfs1 %$% 
+  cor(waist.circ, bmi) %>% 
+  round(.,2)
+
+ggplot(nyfs1, aes(x = waist.circ, y = bmi)) +
+  geom_point(pch = 1) +
+  geom_smooth(method = "lm", col = "red") + 
+  geom_smooth(method = "loess", col = "blue") + 
+  labs(x = "Waist Circumference (cm)", 
+       y = "Body Mass Index") +
+  annotate("text", x = 110, y = 10, size = 5,
+           label = paste("r =", 
+                         cor_lab))
+```
+
+## Summarizing Associations Numerically
+
+```{r}
+nyfs1 %$% cor(waist.circ, bmi)
+```
+
+### The **Pearson** Correlation, *r*
+
+- Unitless (scale-free) measure of bivariate linear association
+- $r_{XY}$ = (slope of Y~X regression line) times SD~X~ / SD~Y~
+- -1 $\leq$ *r* $\leq$ +1
+    - -1 indicates straight line relationship with negative slope
+    - +1 indicates straight line relationship with positive slope
+    - 0 indicates no linear association
+- r^2^ = key regression summary - % of variation in Y explained by X
+
+## Scatterplot Matrix for some NYFS1 variables (Code)
+
+```{r, eval = FALSE, message = FALSE}
+GGally::ggpairs(select(nyfs1, 
+                       age.exam, triceps.skinfold, 
+                       sex, waist.circ, bmi), 
+        title = "Scatterplot Matrix for nyfs1 data")
+```
+
+Note that I usually run this with `message = FALSE` in the chunk label. Otherwise, you get some irritating messages in your output.
+
+## Scatterplot Matrix for some NYFS1 variables
+
+```{r, echo = FALSE, message = FALSE}
+GGally::ggpairs(select(nyfs1, 
+                       age.exam, sex, waist.circ, bmi), 
+        title = "Scatterplot Matrix for nyfs1 data")
+```
+
+# Model 1: Predicting `bmi` using `waist.circ` alone
+
+## Summarizing the `bmi`-`waist.circ` association
+
+```{r, echo = FALSE}
+cor_lab <- nyfs1 %$% 
+  cor(waist.circ, bmi) %>% 
+  round(.,2)
+
+ggplot(nyfs1, aes(x = waist.circ, y = bmi)) +
+  geom_point(pch = 1) +
+  geom_smooth(method = "lm", col = "red") + 
+  geom_smooth(method = "loess", col = "blue") + 
+  labs(x = "Waist Circumference (cm)", 
+       y = "Body Mass Index") +
+  annotate("text", x = 110, y = 10, size = 5,
+           label = paste("r =", 
+                         cor_lab))
+```
+
+## Linear Model 1: `bmi` ~ f(`waist.circ`)
+
+```{r}
+m1 <- nyfs1 %$% lm(bmi ~ waist.circ)
+
+m1
+```
+
+```{r, eval = FALSE}
+summary(m1) ## see next slide
+```
+
+## Summary for Linear Model (rearranged, a bit)
+
+```
+Call: lm(formula = bmi ~ waist.circ)
+
+Coefficients: Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   -0.06646    0.23292  -0.285    0.775    
+waist.circ     0.28893    0.00350  82.548   <2e-16 ***
+---
+Sig. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Multiple R-squared:  0.8282
+F-statistic:  6814 on 1 and 1414 DF,  p-value: < 2.2e-16
+
+Residuals:     Min      1Q  Median      3Q     Max 
+           -4.2343 -1.0941 -0.0744  0.9254 19.0664 
+Residual standard error: 1.692 on 1414 degrees of freedom
+Adjusted R-squared:  0.828 
+```
+
+## 95% Confidence Intervals for `m1` Coefficients
+
+```{r}
+m1
+confint(m1, level = 0.95)
+```
+
+## Tidying the Coefficients (with `broom::tidy`)
+
+Places the coefficient summary into a tibble.
+
+```{r}
+tidy(m1) ## from broom package
+```
+
+
+## Model Summaries, at a glance (with `broom::glance`)
+
+Places detailed model summaries into a one-row tibble.
+
+```{r}
+glance(m1) ## also from broom
+```
+
+## What if we tried log(BMI)?
+
+```{r, echo = FALSE}
+cor_lab2 <- nyfs1 %$% 
+  cor(waist.circ, log(bmi)) %>% 
+  round(.,4)
+
+ggplot(nyfs1, aes(x = waist.circ, y = log(bmi))) +
+  geom_point(pch = 1) +
+  geom_smooth(method = "lm", col = "red") + 
+  geom_smooth(method = "loess", col = "blue") + 
+  labs(x = "Waist Circumference (cm)", 
+       y = "log of Body Mass Index") +
+  annotate("text", x = 100, y = 2.75, size = 5,
+           label = paste("Now, r =", cor_lab2))
+
+```
+
+
+## log(BMI) vs. BMI: The effect of the log
+
+```{r, echo = FALSE}
+ggplot(nyfs1, aes(x = bmi, y = log(bmi))) + 
+  geom_point(pch = 1) +
+  labs(x = "Body-Mass Index", y = "Natural log of BMI")
+```
+
+## But what if we tried modeling the log of BMI?
+
+```{r}
+m1.log <- nyfs1 %$% lm(log(bmi) ~ waist.circ)
+
+m1.log
+```
+
+## `m1.log` vs. `m1` (Coefficients)
+
+```{r}
+tidy(m1)
+tidy(m1.log)
+```
+
+## `m1.log` vs. `m1` (Summaries)
+
+```{r}
+glance(m1)
+glance(m1.log)
+```
+
+
+## Augmenting the Data with Model `m1` Results (`broom::augment`) run with `warning = FALSE`
+
+```{r, warning = FALSE}
+newdata <- augment(m1) ## yet again from broom
+
+head(newdata,3)
+```
+
+## Assumption Checking: The Role of Residuals
+
+1. ("Linearity") The residuals from the linear model should show no particular curved relationship when plotted against the fitted values, or when plotted against individual predictors.
+2. ("Independence") Particularly if the data describe a series in time or space, we want to see no clear cycles in the residuals when plotted against time/space.
+3. ("Homoscedasticity" / "Constant Variance") The residuals from the linear model should display a similar amount of spread across levels of the fitted values. Sometimes we plot the square root of the residuals against the fitted values to assess this.
+4. ("Approximately Normal") The residuals from the linear model should follow an approximately Normal distribution. Often, we'll plot the residuals in a normal Q-Q plot to assess this. We'd like to avoid [a] fitting points poorly (exceptionally large positive or negative residuals), [b] points that show enormous influence over the model (removing them causes the coefficients to change substantially)
+
+## Plotting the Model Residuals (squeezed too much)
+
+```{r, fig.height = 4}
+par(mfrow = c(2,2))
+plot(m1)
+par(mfrow = c(1,1))
+```
+
+## `plot(m1, which = 1)`    Residuals vs Fitted Values 
+
+```{r, echo = FALSE}
+plot(m1, which = 1)
+```
+
+## `plot(m1, which = 3)`   Scale-Location Plot
+
+```{r, echo = FALSE}
+plot(m1, which = 3)
+```
+
+## Subjects labeled 583, 762 and 1156
+
+```{r}
+nyfs1 %>% slice(c(583, 762, 1156)) %>%
+  select(subject.id, bmi, waist.circ)
+```
+
+What about our augmented data?
+
+## Subjects labeled 583, 762 and 1156
+
+```{r, warning = FALSE}
+augment(m1) %>%
+  slice(c(583, 762, 1156)) %>%
+  select(bmi, waist.circ, .fitted, .resid, 
+         .std.resid, .cooksd) %>%
+  round(., 2)
+```
+
+## Which point has the largest residual in the data?
+
+```{r, echo = FALSE}
+ggplot(nyfs1, aes(x = waist.circ, y = bmi)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", col = "red") + 
+  labs(x = "Waist Circumference (cm)", 
+       y = "Body Mass Index",
+       title = "Which point has the largest residual?") 
+```
+
+## Row 1156 (ID 73202) has the largest residual
+
+```{r, echo = FALSE}
+temp <- nyfs1
+temp$highlight <- ifelse(temp$subject.id == 73202, "1156 (id 73202)", "all others")
+
+ggplot(temp, aes(x = waist.circ, y = bmi, col = highlight)) +
+  geom_point(size = 3) +
+  guides(col = FALSE) +
+  geom_smooth(method = "lm", col = "red") +
+  theme_bw() +
+  labs(x = "Waist Circumference",
+       y = "BMI", 
+       title = "In red, subject 73202 (row 1156) - largest residual")
+```
+
+
+## `plot(m1, which = 2)`
+
+```{r, echo = FALSE}
+plot(m1, which = 2)
+```
+
+## Standardized Residuals just rescale Raw Residuals
+
+```{r, echo = FALSE}
+par(mfrow = c(2,1))
+boxplot(newdata$.resid, xlab = ".resid = Model m1 Raw Residuals", main = "Boxplot of m1 .resid", horizontal = TRUE)
+boxplot(newdata$.std.resid, xlab = ".std.resid = Model m1 Standardized Residuals", main = "Boxplot of m1 .std.resid", horizontal = TRUE)
+par(mfrow=c(1,1))
+```
+
+## `.std.resid` from Model `m1` (Notes, Section 39.2)
+
+```{r, echo = FALSE, message = FALSE}
+p1 <- ggplot(newdata, aes(x = .std.resid)) +
+    geom_histogram(aes(y = ..density..),
+                   bins = fd_bins(newdata$.std.resid), 
+                   fill = '#440154', col = '#FDE725') +
+    stat_function(fun = dnorm,
+                  args = list(mean = mean(newdata$.std.resid), 
+                              sd = sd(newdata$.std.resid)), 
+                  lwd = 1.5, col = '#1FA187') +
+    labs(title = "Histogram", x = "Standardized Residual", y = "") +
+    theme_bw() 
+
+p2 <- ggplot(newdata, aes(x = 1, y = .std.resid)) + 
+    geom_boxplot(fill = '#FDE725', notch = TRUE, 
+                 col = '#440154', outlier.color = '#440154') +
+    labs(title = "Boxplot", x = "", y = "") +
+    theme_bw() +
+    theme(axis.text.x = element_blank(),
+          axis.ticks.x = element_blank())  
+
+p3 <- ggplot(newdata, aes(sample = .std.resid)) + 
+    geom_qq(geom = "point", col = '#440154', size = 2) + 
+    geom_abline(slope = qq_slope(newdata$.std.resid),
+                intercept = qq_int(newdata$.std.resid),
+                col = '#1FA187', size = 1.25) +
+    labs(title = "Normal QQ", x = "", y = "") +
+    theme_bw()
+
+p <- cowplot::plot_grid(p1, p2, p3, align = "h", nrow = 1,
+                   rel_widths = c(3, 1, 2))
+
+title <- cowplot::ggdraw() + 
+    cowplot::draw_label("Standardized Residuals from Model m1", 
+               fontface = "bold")
+
+cowplot::plot_grid(title, p, ncol = 1, rel_heights=c(0.1, 1))
+```
+
+
+## Outliers, Leverage, Influence
+
+We will also examine the **leverage** of individual points (`.hat` in the augment output) where large values indicate unusual combinations of predictors, especially when we have more than one predictor.
+
+```{r, warning = FALSE}
+augment(m1) %>%
+  slice(c(583, 762, 1156)) %>%
+  select(bmi, waist.circ, .hat, 
+         .std.resid, .cooksd) 
+```
+
+## `plot(m1, which = 5)`   Residuals vs. Leverage Plot
+
+```{r, echo = FALSE}
+plot(m1, which = 5)
+```
+
+## `plot(m1, which = 4)`   Cook's Distance Plot
+
+```{r, echo = FALSE}
+plot(m1, which = 4)
+```
+
+## Why does 583 have the largest Cook's distance?
+
+```{r}
+summary(select(nyfs1, waist.circ, bmi))
+```
+
+## Why does 583 have the largest Cook's distance?
+
+```{r}
+nyfs1 %>% slice(583) %>% 
+  select(subject.id, waist.circ, bmi)
+```
+
+## Why does 583 have the largest Cook's distance?
+
+```{r, echo = FALSE}
+temp <- nyfs1
+temp$highlight <- ifelse(temp$subject.id == 72560, "583 (id 72560)", "all others")
+
+ggplot(temp, aes(x = waist.circ, y = bmi, col = highlight)) +
+  geom_point(size = 3) +
+  guides(col = FALSE) +
+  geom_smooth(method = "lm", col = "red") +
+  theme_bw() +
+  labs(x = "Waist Circumference",
+       y = "BMI", 
+       title = "In red, subject 72560 (row 583) - highest influence (Cook's d)")
+```
+
+## Model `m1`, without point 583
+
+```{r}
+m1.no583 <- lm(bmi ~ waist.circ, data = slice(nyfs1, -583))
+
+m1.no583
+```
+
+## `m1` with and without 583, coefficients
+
+```{r}
+tidy(m1) 
+tidy(m1.no583) 
+```
+
+
+## `m1` with and without 583, summaries
+
+```{r}
+glance(m1)
+glance(m1.no583)
+```
+
+# Model 2: Predicting `bmi` using `waist.circ` as well as `age.exam` and `sex`
+
+## Scatterplot Matrix for some NYFS1 variables
+
+```{r, echo = FALSE, message = FALSE}
+GGally::ggpairs(select(nyfs1, 
+                       age.exam, sex, waist.circ, bmi), 
+        title = "Scatterplot Matrix for nyfs1 data")
+```
+
+## Building Model 2
+
+```{r}
+m2 <- nyfs1 %$%
+  lm(bmi ~ waist.circ + age.exam + sex)
+
+m2
+```
+
+## Summary of Model `m2` (rearranged a little)
+
+```
+Call: lm(formula = bmi ~ waist.circ + age.exam + sex)
+
+Multiple R-squared:  0.8635,	Adjusted R-squared:  0.8633 
+F-statistic:  2979 on 3 and 1412 DF,  p-value: < 2.2e-16
+
+Coefficients: Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -1.445179   0.222018  -6.509 1.05e-10 ***
+waist.circ    0.348370   0.004421  78.801  < 2e-16 ***
+age.exam     -0.293247   0.015440 -18.992  < 2e-16 ***
+sexMale       0.188094   0.080208   2.345   0.0192 *  
+---
+Sig. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residuals:     Min      1Q  Median      3Q     Max 
+           -4.0232 -0.8879 -0.0802  0.7836 20.3659 
+Residual standard error: 1.509 on 1412 degrees of freedom
+```
+
+## Summary of `m1` (for reference, rearranged)
+
+```
+Call: lm(formula = bmi ~ waist.circ)
+
+Multiple R-squared:  0.8282,	Adjusted R-squared:  0.828 
+F-statistic:  6814 on 1 and 1414 DF,  p-value: < 2.2e-16
+
+Coefficients: Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   -0.06646    0.23292  -0.285    0.775    
+waist.circ     0.28893    0.00350  82.548   <2e-16 ***
+---
+Sig. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residuals:     Min      1Q  Median      3Q     Max 
+           -4.2343 -1.0941 -0.0744  0.9254 19.0664 
+Residual standard error: 1.692 on 1414 degrees of freedom
+```
+
+## 95% Confidence Intervals for `m2` Coefficients
+
+```{r}
+confint(m2, level = 0.95)
+```
+
+## Tidying the Coefficients (with `broom::tidy`)
+
+Places the coefficient summary into a tibble.
+
+```{r}
+tidy(m2) ## from broom package
+```
+
+
+## Model Summaries, at a glance (with `broom::glance`)
+
+```{r}
+glance(m2) ## also from broom
+glance(m1) ## for comparison
+```
+
+## Augmenting the Data with Model Results (`broom::augment`) run with `warning = FALSE`
+
+```{r, warning = FALSE}
+newdat2 <- augment(m2) ## again from broom
+head(newdat2,3)
+```
+
+## Residuals vs. Fitted Values `plot(m2, which = 1)`
+
+```{r, echo = FALSE}
+plot(m2, which = 1)
+```
+
+## Scale-Location Plot `plot(m2, which = 3)`
+
+```{r, echo = FALSE}
+plot(m2, which = 3)
+```
+
+## Standardized Residuals `plot(m2, which = 2)`
+
+```{r, echo = FALSE}
+plot(m2, which = 2)
+```
+
+## Residuals, Leverage, Influence `plot(m2, which = 5)`
+
+```{r, echo = FALSE}
+plot(m2, which = 5)
+```
+
+## Cook's Distance Index Plot `plot(m2, which = 4)`
+
+```{r, echo = FALSE}
+plot(m2, which = 4)
+```
+
+## Coming Soon (and see Notes, Sections 37-end)
+
+- What happens when a linear model doesn't fit so well?
+    + Should we be modeling a transformed outcome?
+    + Box-Cox approach to transformation decisions
+- Incorporating multi-categorical predictors
+- Model Validation: Making predictions in new data
+    + Simplest Smart Approach: Split data into Training, Test samples
+- Variable Selection: Stepwise and better approaches
+- Standardizing Regression Coefficients
+- Dealing with Missingness Sensibly
