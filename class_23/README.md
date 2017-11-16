@@ -11,7 +11,9 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Today's Agenda
     - Quiz 2
         - [The detailed answer sketch](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-quiz2-sketch-pw-2017.pdf) is available. 
-            - You should have received an email from me about your grade. If not, let me know by emailing me **NOW**.
+            - You should have received an email from me including your letter grade on Tuesday. If not, let me know by emailing me **NOW**.
+            - Complete grades, item-by-item, for most students [can be found here](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-2017-quiz2-pw-results-for-most-students.pdf). Be sure to check all 8 pages of the document for your HWID number.
+                - If your grade is not on this document, then you received an email from me with your detailed item-by-item grade. It also means you were an outlier - on either the high or the low end of the distribution.
             - There's an [extra task available](https://goo.gl/forms/1f27voQF33hqYOys1), for those who scored B- or lower. If you did better than a B-, you have the *option* to do the task (before 2017-11-29 at noon) for a little class participation credit.
     - [Class Participation Update through 2017-11-15](https://github.com/THOMASELOVE/431slides/blob/master/class_23/431-class-part-pw-2017-11-15.pdf) 
         - Essentially, you start at 75 and can only go up (remember that a B in 431 usually ranges from 70 - 85, and an A is usually 90 - 100, with 86-89 in the B+/A- range.) 
