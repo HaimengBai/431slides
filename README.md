@@ -5,6 +5,7 @@ The main page for the course is https://github.com/THOMASELOVE/431
 
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
+24 | 2017-11-28 | [README 24](https://github.com/THOMASELOVE/431slides/blob/master/class_24/README.md) | Regression Models in the Tidyverse
 23 | 2017-11-16 | [README 23](https://github.com/THOMASELOVE/431slides/blob/master/class_23/README.md) | Regression Models in the Tidyverse: Introduction
 22 | 2017-11-14 | [README 22](https://github.com/THOMASELOVE/431slides/blob/master/class_22/README.md) | P hacking, Researcher DF, Retrodesign, Quiz 2, Project Survey
 21 | 2017-11-09 | [README 21](https://github.com/THOMASELOVE/431slides/blob/master/class_21/README.md) | What's in the News? The Trouble with P values
