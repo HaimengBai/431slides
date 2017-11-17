@@ -61,4 +61,6 @@ The audio recording(s) for this class will be posted above when they become avai
     - If you have already done work on Question 1 or 6, please feel free to include it and we'll award a little extra credit on the assignment, but if you haven't started on those two questions, then just do questions 2-5. 
     - Any extra time you'd put in to Question 1 or 6 should instead be put towards Quiz 3 and (especially) your project.
 
-6. Remember that our next class is on **Tuesday 2017-11-28**. There will be no TA office hours nor class for my section Thanksgiving Week, but Dr. Love will be available via 431-help on Monday and Tuesday 2017-11-20 and 2017-11-21.
+6. Be sure to get Project Task D in. It's due at noon Monday 2017-11-20, but Dr. Love will sit down to look at them Tuesday 2017-11-21 at 9 AM, so that is the real drop-dead date. 
+
+7. Remember that our next class is on **Tuesday 2017-11-28**. There will be no TA office hours nor class for my section Thanksgiving Week, but Dr. Love will be available via 431-help on Monday and Tuesday 2017-11-20 and 2017-11-21.
