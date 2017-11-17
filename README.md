@@ -7,7 +7,7 @@ Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
 27 | 2017-12-07 | README 27 to come | Final Class: Quiz 3 made available
 26 | 2017-12-05 | README 26 to come | Regression Models in the Tidyverse
-25 | 2017-11-30 | README 25 to come | Regression Models in the Tidyverse
+25 | 2017-11-30 | [README 25](https://github.com/THOMASELOVE/431slides/blob/master/class_25/README.md) | Regression Models in the Tidyverse
 24 | 2017-11-28 | [README 24](https://github.com/THOMASELOVE/431slides/blob/master/class_24/README.md) | Regression Models in the Tidyverse
 23 | 2017-11-16 | [README 23](https://github.com/THOMASELOVE/431slides/blob/master/class_23/README.md) | Regression Models in the Tidyverse: Introduction
 22 | 2017-11-14 | [README 22](https://github.com/THOMASELOVE/431slides/blob/master/class_22/README.md) | P hacking, Researcher DF, Retrodesign, Quiz 2, Project Survey
