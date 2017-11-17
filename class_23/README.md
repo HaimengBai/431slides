@@ -60,3 +60,5 @@ The audio recording(s) for this class will be posted above when they become avai
 5. There is an important change in [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md). In an attempt to ease the burden of the remainder of the course, and to keep the focus where it needs to be (on the project), you will see that **Questions 1 and 6 are no longer part of the assignment**. Instead, you are to do **Questions 2-5**, only.
     - If you have already done work on Question 1 or 6, please feel free to include it and we'll award a little extra credit on the assignment, but if you haven't started on those two questions, then just do questions 2-5. 
     - Any extra time you'd put in to Question 1 or 6 should instead be put towards Quiz 3 and (especially) your project.
+
+6. Remember that our next class is on **Tuesday 2017-11-28**. There will be no TA office hours nor class for my section Thanksgiving Week, but Dr. Love will be available via 431-help on Monday and Tuesday 2017-11-20 and 2017-11-21.
