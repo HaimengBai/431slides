@@ -19,6 +19,7 @@ The audio recording(s) for this class will be posted above when they become avai
 2. Reminders
     - Those of you planning (or needing) to complete the [Quiz 2 Extra Task](https://goo.gl/forms/1f27voQF33hqYOys1), do so by noon on Wednesday 2017-11-29.
     - If you haven't done so in a while, you really should consider upgrading R to version 3.4.2 (or later) and R Studio (I use version 1.1.383) - that will let you upgrade all of your packages, especially to version 1.2.1 (or later) of the tidyverse. Details, if you've forgotten what to do, are in [the software installation instructions](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md).
+    - Some people may be looking for extra help outside of normal office hours between now and the end of their project. Some TAs are willing to meet with you by appointment as the semester comes to a close. If you're interested, email 431-help. As a reminder, regular TA office hours are posted in [the Course Syllabus](https://thomaselove.github.io/431syllabus/teaching-assistants.html#office-hours-for-tas).
 
 3. Today's Agenda
     - Modeling in the Tidyverse (Part C of the Course)
