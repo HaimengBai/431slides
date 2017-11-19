@@ -47,7 +47,7 @@ The audio recording for this class is now posted above.
         - Your submitted project (Tasks E/F) files should begin by importing a tidy data set and then manipulating the data as needed before you move into the analysis phase. But the data need to be tidy (rows = observations, columns = variables) at the start. 
             - You will build one tidy data file for Study 1 (the class survey data - using the [R Markdown and Excel files I have supplied](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017)) and another one for Study 2, which is what you are preparing and submitting for Task D.
             - I expect you to use two different Markdown files (one for Study 1 and one for Study 2) to complete Tasks E and F.
-        - To date, Project Task D is complete for Chaim Domb, Gwendolyn Donley, Kedar Mahajan, and Roberto Martinez. Thanks!
+        - To see if you've successfully completed Task D, check [the Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
 
 3. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**. Note the big change described in #5 below.
@@ -61,6 +61,6 @@ The audio recording for this class is now posted above.
     - If you have already done work on Question 1 or 6, please feel free to include it and we'll award a little extra credit on the assignment, but if you haven't started on those two questions, then just do questions 2-5. 
     - Any extra time you'd put in to Question 1 or 6 should instead be put towards Quiz 3 and (especially) your project.
 
-6. Be sure to get Project Task D in. It's due at noon Monday 2017-11-20, but Dr. Love will sit down to look at them Tuesday 2017-11-21 at 9 AM, so that is the real drop-dead date. 
+6. Be sure to get Project Task D in. It's due at noon Monday 2017-11-20, but Dr. Love will sit down to look at them Tuesday 2017-11-21 at 9 AM, so that is the real drop-dead date. The [Schedule now shows the Tasks I've received and reviewed through Task D](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
 
 7. Remember that our next class is on **Tuesday 2017-11-28**. There will be no TA office hours nor class for my section Thanksgiving Week, but Dr. Love will be available via 431-help on Monday and Tuesday 2017-11-20 and 2017-11-21.
