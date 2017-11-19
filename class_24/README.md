@@ -29,9 +29,9 @@ The audio recording(s) for this class will be posted above when they become avai
         - [Survey data and R Markdown file for cleaning](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017)
         - [Study 1 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE)
     - For "your data" (Study 2), I refer you to:
-        - Your Project Task D
+        - Your Project Task D - note that the [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) indicates whether I've received and approved your work on Task D.
         - [Study 2 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE)
-    - Please [recheck the Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) to ensure you won't have a problem coming to my office at the planned time.
+    - Please [recheck the Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) to ensure you won't have a problem coming to my office at the planned time, and to ensure that all Tasks to date (should be A-D) are complete.
 
 5. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
