@@ -38,7 +38,10 @@ The audio recording(s) for this class will be posted above when they become avai
 5. Upcoming non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
         - In an attempt to ease the burden of the remainder of the course, and to keep the focus where it needs to be (on the project), you will see that **Questions 1 and 6 are no longer part of the assignment**. Instead, you are to do **Questions 2-5**, only.
-        - If you have already done work on Question 1 or 6, please feel free to include it and we'll award a little extra credit on the assignment, but if you haven't started on those two questions, then just do questions 2-5. 
+        - To help you with Assignment 6, I encourage you to take advantage of three resources:
+            - I have posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for in your responses.
+            - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. (2-6 actually, but we're not doing 6.) There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file to help you.
+            - Everything you need is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
     - Quiz 3 is scheduled to be available to you on 2017-12-07 and is due at noon on 2017-12-11. 
 
 ## Announcements after class:
