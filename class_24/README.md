@@ -41,7 +41,10 @@ The audio recording(s) for this class will be posted above when they become avai
             - I have posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for in your responses.
             - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. (2-6 actually, but we're not doing 6.) There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file to help you.
             - Everything you need is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
-    - **Appealing HW Grades**: Once all six assignments are complete and you know your grades on each, you may find an error in grading that you would like Dr. Love to review. Request this by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2). The deadline is noon on 2017-12-13, and remember that Dr. Love will only consult this if your grade might plausibly be affected by the changes you request. See the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus for more details.
+    - **Appealing HW Grades**: Once all six assignments are complete and you know your grades on each, you may find an error in grading that you would like Dr. Love to review. Request this by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2). 
+        - The deadline is noon on 2017-12-13.
+        - Dr. Love will only consult this form if your course grade might plausibly be affected by the changes you request. 
+        - See the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus for more details.
     - **Quiz 3** will be made available to you on 2017-12-07 by 5 PM and is due at noon on Monday 2017-12-11.
 
 ## Announcements after class:
