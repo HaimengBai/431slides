@@ -12,8 +12,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - Build a short report on class achivement for the Activity After Class 22, regarding p hacking and paired/independent samples.
     - Build a short document with some additional examples on distinguishing paired / matched samples from independent samples, and indicating what you can do inferentially with paired samples in categorical data analyses, and with matched groups larger than pairs (liked matched trios) in analyzing quantitative outcomes.
     - Build an Activity to be done after Class 24 online.
-    - Build the document you will use to request that I revisit your grading on Assignments 1-6. This document is to be submitted in December, after you receive your grade on Assignment 6.
-    - Grade and react to Project Task D, which is due on Monday 2017-11-20, at noon. (I plan to grade these Tuesday morning.)
+    - Grade and react to Project Task D, which is due on Monday 2017-11-20, at noon. (I plan to finish looking at these on Tuesday morning.) The [Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) now indicates whether I've received and approved Task D for your group.
     - Prepare at least tentative slides for classes 24-27.
 
 2. Reminders
@@ -42,6 +41,7 @@ The audio recording(s) for this class will be posted above when they become avai
             - I have posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for in your responses.
             - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. (2-6 actually, but we're not doing 6.) There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file to help you.
             - Everything you need is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
+    - Once all six assignments are complete and you know your grades on each, you may find an error in grading that you would like Dr. Love to review. Request this by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2). The deadline is noon on 2017-12-13, and remember that Dr. Love will only consult this if your grade might plausibly be affected by the changes you request. See the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus for more details.
     - Quiz 3 is scheduled to be available to you on 2017-12-07 and is due at noon on 2017-12-11. 
 
 ## Announcements after class:
