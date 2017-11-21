@@ -8,12 +8,12 @@ The audio recording(s) for this class will be posted above when they become avai
 
 ## Announcements before class:
 
-1. What Dr. Love Intends To Do Over the Break
-    - Build a short report on class achivement for the Activity After Class 22, regarding p hacking and paired/independent samples.
-    - Build a short document with some additional examples on distinguishing paired / matched samples from independent samples, and indicating what you can do inferentially with paired samples in categorical data analyses, and with matched groups larger than pairs (liked matched trios) in analyzing quantitative outcomes.
+1. Dr. Love's remaining punch list for work he is hoping to do over the break
+    - Grade and react to Project Task D, which you'll still get full credit for if you get it in by noon on Tuesday 2017-11-21. 
+        - The [Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) now indicates whether I've received and approved Task D for your group.
+    - Prepare at least tentative slides for Classes 24-27.
     - Build an Activity to be done after Class 24 online.
-    - Grade and react to Project Task D, which is due on Monday 2017-11-20, at noon. (I plan to finish looking at these on Tuesday morning.) The [Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) now indicates whether I've received and approved Task D for your group.
-    - Prepare at least tentative slides for classes 24-27.
+    - Build Quiz 3.
 
 2. Today's Agenda
     - Modeling in the Tidyverse (Part C of the Course)
@@ -45,7 +45,9 @@ The audio recording(s) for this class will be posted above when they become avai
 5. Reminders
     - **Upgrade R and R Studio** If you haven't done so in a while, you really should consider upgrading R to version 3.4.2 (or later) and R Studio (I use version 1.1.383) - that will let you upgrade all of your packages, especially to version 1.2.1 (or later) of the tidyverse. Details, if you've forgotten what to do, are in [the software installation instructions](https://github.com/THOMASELOVE/431/blob/master/software-installation-431.md).
     - **Need Extra Help?** Some people may be looking for extra help outside of normal office hours between now and the end of their project. Some TAs are willing to meet with you by appointment as the semester comes to a close. If you're interested, email 431-help. As a reminder, regular TA office hours are posted in [the Course Syllabus](https://thomaselove.github.io/431syllabus/teaching-assistants.html#office-hours-for-tas).
-    - **Course Notes revisions** I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
+    - [Course Notes](https://thomaselove.github.io/431notes/) **revisions** 
+        - I added a **new section** (25.10) on dependent (paired) vs. independent samples approaches to comparing quantitative outcomes, which includes the questions and answers from the After Class 22 activity.
+        - In addition, I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
 
 ## Announcements after class:
  
