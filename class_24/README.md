@@ -13,8 +13,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - The [Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) now indicates whether I've received and approved Task D for your group.
     - Add coments on the following R functions:
         - `md.pattern` interprets variables (like `id`) which are left as character, rather than factor, as missing, it appears.
-        - t testing for independent samples with t.test(data$variable ~ data$group) doesn't seem to work well with tibbles, so you will probably need to do t.test(variable ~ group, data = data) instead.
-        - There may be a problem with `eda-2sam` in the `Love-boost.R` script, but I'm not sure yet.
+        - There may be a problem with `eda.2sam` in the `Love-boost.R` script, but I'm not sure yet. I cannot duplicate the problem with the iris data, but there is definitely a problem with the boxplots and histograms not matching up when you are comparing more than two categories, and (it appears) when the factor labels are determined by R rather than specified by you.
     - Prepare at least tentative slides for Classes 25-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
