@@ -11,12 +11,25 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Dr. Love's remaining punch list for work he is hoping to do over the break
     - Grade and react to Project Task D, which you'll still get full credit for if you get it in by noon on Tuesday 2017-11-21. 
         - The [Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) now indicates whether I've received and approved Task D for your group.
-    - Prepare at least tentative slides for Classes 24-27.
+    - Add coments on the following R functions:
+        - `md.pattern` interprets variables (like `id`) which are left as character, rather than factor, as missing, it appears.
+        - t testing for independent samples with t.test(data$variable ~ data$group) doesn't seem to work well with tibbles, so you will probably need to do t.test(variable ~ group, data = data) instead.
+        - There may be a problem with `eda-2sam` in the `Love-boost.R` script, but I'm not sure yet.
+    - Prepare at least tentative slides for Classes 25-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
 
 2. Today's Agenda
     - Modeling in the Tidyverse (Part C of the Course)
+        - Box-Cox procedure for identifying potential outcome transformations
+        - Adjusted R-squared in multiple regression as an indicator of overfitting
+        - The assessment of collinearity (correlated predictors) with the VIF (variance inflation factor)
+        - Pruning / Testing "Kitchen Sink" models
+            + based on t tests for individual predictors (as "last predictor in")
+            + based on ANOVA F tests for groups of predictors
+            + based on stepwise AIC comparisons
+        - Checking Model Assumptions with Residual Plots
+        - Summarizing a Model in Words
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-. 
 
 3. The Projects
