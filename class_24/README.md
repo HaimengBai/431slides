@@ -11,7 +11,7 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Dr. Love's remaining punch list for work he is hoping to do over the break
     - Add comments on the following R functions:
         - `md.pattern` interprets variables (like `id`) which are left as character, rather than factor, as missing, it appears.
-        - There is a new problem with `eda.2sam` in the `Love-boost.R` script. Something changed in the tidyverse, and now the tool doesn't work as well as it used to. In particular, there is a problem where the boxplots and histograms do not match up when you are comparing more than two categories, and (perhaps most commonly) when the factor labels are determined by R rather than specified by you.
+        - There is a strange issue with `eda.2sam` in the `Love-boost.R` script. I think as a result of a change in the `tidyverse`, the  `eda.2sam` tool doesn't work as well as it used to. In particular, there is a problem where the boxplots and histograms do not match up, but it doesn't always happen. I've created a new function called `eda.ksam` that solves this problem (but may create others) and am in the process of switching to this in the Course Notes and in the Slides starting with Class 24. I'll add it to a new `Love-boost-new.R` tool.      
     - Prepare at least tentative slides for Classes 25-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
@@ -28,6 +28,8 @@ The audio recording(s) for this class will be posted above when they become avai
         - Checking Model Assumptions with Residual Plots
         - Summarizing a Model in Words
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-. 
+    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function now in `Love-boost.R`, too.
+        - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. The versions of `Love-boost.R` on this web site now include this new function.
 
 3. The Projects
     - You should be able to do all of your Project related to the Class Survey (Study 1) now. Things you'll need:
