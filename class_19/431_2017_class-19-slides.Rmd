@@ -77,7 +77,7 @@ Course Notes: Sections **27** (2 examples comparing means) and **36** (more gene
 Last year, Mustafa Ascha and I wrote two functions to build plots of quantitative data. They need some improvement, but they do some useful things.
 
 - `eda.1sam` runs exploratory data analyses for a single sample (or paired differences)
-- `eda.2sam` runs exploratory data analyses for two or more independent samples
+- `eda.ksam` runs exploratory data analyses for two or more independent samples
 
 which are part of the `Love-boost.R` script.
 
@@ -109,31 +109,31 @@ eda.1sam(dataframe = dm192, variable = dm192$sbp,
          ov.title = "Demonstration of eda.1sam using dm192 data")
 ```
 
-## `eda.2sam` function demonstration
+## `eda.ksam` function demonstration
 
 Suppose we want to look at two or more independent samples, here, we'll compare the `sbp` data from the `dm192` data frame across the levels of the four `practice`s (A, B, C, and D).
 
-- Inputs: `outcome`, `group`, `y.title`, `ov.title`
+- Inputs: `outcome`, `group`, various titles as desired
 - Output: comparison boxplot and faceted histograms
-- Required packages: `tidyverse`, `gridExtra`, `mosaic`
-- We suggest you run it with `message = FALSE`
+- Required packages: `tidyverse`, `gridExtra`
+- Can drop notches with `notch = FALSE`
 
-The function is called `eda.2sam`, and the command would be:
+The function is called `eda.ksam`, and the command would be:
 
-```{r eda.2sam demo code only, eval = FALSE}
-eda.2sam(outcome = dm192$sbp, group = dm192$practice, 
-         y.title = "Systolic Blood Pressure (mm Hg)", 
-         ov.title = "Demonstration of eda.2sam")
+```{r eda.ksam demo code only, eval = FALSE}
+eda.ksam(outcome = dm192$sbp, group = dm192$practice, 
+         axis.title = "Systolic Blood Pressure (mm Hg)", 
+         main.title = "Demonstration of eda.ksam")
 ```
 
 - Results on the next slide.
 
 --- 
 
-```{r eda.2sam demo, echo = FALSE, message = FALSE}
-eda.2sam(outcome = dm192$sbp, group = dm192$practice, 
-         y.title = "Systolic Blood Pressure (mm Hg)", 
-         ov.title = "Demonstration of eda.2sam")
+```{r eda.ksam demo, echo = FALSE, message = FALSE}
+eda.ksam(outcome = dm192$sbp, group = dm192$practice, 
+         axis.title = "Systolic Blood Pressure (mm Hg)", 
+         main.title = "Demonstration of eda.ksam")
 ```
 
 # Moving on from Means to Proportions / Rates
