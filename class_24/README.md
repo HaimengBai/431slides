@@ -17,6 +17,8 @@ The audio recording(s) for this class will be posted above when they become avai
     - Build Quiz 3.
 
 2. Today's Agenda
+    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function now in `Love-boost.R`, too.
+        - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. The versions of `Love-boost.R` on this web site now include this new function.
     - Modeling in the Tidyverse (Part C of the Course)
         - Box-Cox procedure for identifying potential outcome transformations
         - Adjusted R-squared in multiple regression as an indicator of overfitting
@@ -28,13 +30,11 @@ The audio recording(s) for this class will be posted above when they become avai
         - Checking Model Assumptions with Residual Plots
         - Summarizing a Model in Words
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-. 
-    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function now in `Love-boost.R`, too.
-        - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. The versions of `Love-boost.R` on this web site now include this new function.
 
 3. The Projects
     - You should be able to do all of your Project related to the Class Survey (Study 1) now. Things you'll need:
         - [Survey data and R Markdown file for cleaning](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017) - note that on 2017-11-26, we made a small correction to more correctly spell `surv_tidy$Q078d_Other_caffeinated`.
-        - [Study 1 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) - and we corrected at least two typos in this material on 2017-11-26.
+        - [Study 1 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) - and Dr. Love edited this on 2017-11-26 to use `eda.ksam` instead of `eda.2sam` and also to correct a few typos.
     - For "your data" (Study 2), I refer you to:
         - Your Project Task D - note that the [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) indicates whether I've received and approved your work on Task D.
         - [Study 2 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE)
