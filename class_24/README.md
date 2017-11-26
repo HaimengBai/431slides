@@ -17,7 +17,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - Build Quiz 3.
 
 2. Today's Agenda
-    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function now in `Love-boost.R`, too.
+    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function that is now also in `Love-boost.R`
         - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. The versions of `Love-boost.R` on this web site now include this new function.
     - Modeling in the Tidyverse (Part C of the Course)
         - Box-Cox procedure for identifying potential outcome transformations
