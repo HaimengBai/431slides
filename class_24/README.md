@@ -11,7 +11,7 @@ The audio recording(s) for this class will be posted above when they become avai
 1. Dr. Love's remaining punch list for work he is hoping to do over the break
     - Add comments on the following R functions:
         - `md.pattern` interprets variables (like `id`) which are left as character, rather than factor, as missing, it appears.
-        - Now that I've added `eda.ksam` to `Love-boost.R`, make sure it's in place for Project Task E demonstrations, and in the Course Notes.   
+        - Now that I've added `eda.ksam` to `Love-boost.R`, consider going back through the old slides to make the change.
     - Prepare at least tentative slides for Classes 25-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
