@@ -66,8 +66,5 @@ The audio recording(s) for this class will be posted above when they become avai
         - Instead of using `mice::md.pattern` or `Hmisc::describe` you might consider `any(is.na(dataframe))` if all you need is a TRUE (meaning there are missing values in the data frame) or a FALSE (meaning there are no missing values in the data frame.)
         - The `md.pattern` approach from `mice` seems to run into trouble on occasion dealing with variables of the class `character`. If you have character class variables (list your tibble to check or use `str()` to find out) then the md.pattern approach will treat those as NA values.
 
-
-
-
 ## Announcements after class:
  
