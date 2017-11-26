@@ -34,7 +34,7 @@ The audio recording(s) for this class will be posted above when they become avai
 3. The Projects
     - You should be able to do all of your Project related to the Class Survey (Study 1) now. Things you'll need:
         - [Survey data and R Markdown file for cleaning](https://github.com/THOMASELOVE/431project/tree/master/SURVEY2017) - note that on 2017-11-26, we made a small correction to more correctly spell `surv_tidy$Q078d_Other_caffeinated`.
-        - [Study 1 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) - and we corrected at least one typo in this material as well on 2017-11-26.
+        - [Study 1 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) - and we corrected at least two typos in this material on 2017-11-26.
     - For "your data" (Study 2), I refer you to:
         - Your Project Task D - note that the [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) indicates whether I've received and approved your work on Task D.
         - [Study 2 demonstration in Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE)
