@@ -13,10 +13,6 @@ The audio recording(s) for this class will be posted above when they become avai
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
 
-1. Tip of the Day
-    - Just want to check a tibble (data frame) to see if there are any missing values? 
-        - Instead of using `mice::md.pattern` or `Hmisc::describe` you might try `any(is.na(dataframe)` if all you need is a TRUE (meaning there are missing values) or a FALSE (meaning there are no missing values.)
-
 2. Today's Agenda
     - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function that is now also in `Love-boost.R`
         - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. 
@@ -66,6 +62,12 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Course Notes](https://thomaselove.github.io/431notes/) **revisions** 
         - I added a **new section** (25.10) on dependent (paired) vs. independent samples approaches to comparing quantitative outcomes, which includes the questions and answers from the After Class 22 activity.
         - In addition, I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
+    - **R Tip**: Want to check a tibble (data frame) to see if there are any missing values? 
+        - Instead of using `mice::md.pattern` or `Hmisc::describe` you might consider `any(is.na(dataframe))` if all you need is a TRUE (meaning there are missing values in the data frame) or a FALSE (meaning there are no missing values in the data frame.)
+        - The `md.pattern` approach from `mice` seems to run into trouble on occasion dealing with variables of the class `character`. If you have character class variables (list your tibble to check or use `str()` to find out) then the md.pattern approach will treat those as NA values.
+
+
+
 
 ## Announcements after class:
  
