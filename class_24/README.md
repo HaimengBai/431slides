@@ -18,7 +18,9 @@ The audio recording(s) for this class will be posted above when they become avai
 
 2. Today's Agenda
     - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function that is now also in `Love-boost.R`
-        - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. The versions of `Love-boost.R` on this web site now include this new function.
+        - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. 
+            - The versions of `Love-boost.R` on this web site now include this new function. 
+            - At the moment, I think that all of the material on this site except the Course Slides has this change in place. The Course Notes do not use either function, but I expect I did use `eda.2sam` in the Slides. I'll look into that, and make changes as needed.
     - Modeling in the Tidyverse (Part C of the Course)
         - Box-Cox procedure for identifying potential outcome transformations
         - Adjusted R-squared in multiple regression as an indicator of overfitting
