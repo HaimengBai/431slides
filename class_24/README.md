@@ -8,19 +8,21 @@ The audio recording(s) for this class will be posted above when they become avai
 
 ## Announcements before class:
 
-1. Dr. Love's remaining punch list for work he is hoping to do over the break
-    - Add comments on the following R functions:
-        - `md.pattern` interprets variables (like `id`) which are left as character, rather than factor, as missing, it appears.
-        - Now that I've added `eda.ksam` to `Love-boost.R`, consider going back through the old slides to make the change.
-    - Prepare at least tentative slides for Classes 25-27.
+0. Dr. Love's remaining punch list from the Thanksgiving break...
+    - Prepare tentative slides for Classes 25-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
+
+1. Tip of the Day
+    - Just want to check a tibble (data frame) to see if there are any missing values? 
+        - Instead of using `mice::md.pattern` or `Hmisc::describe` you might try `any(is.na(dataframe)` if all you need is a TRUE (meaning there are missing values) or a FALSE (meaning there are no missing values.)
 
 2. Today's Agenda
     - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function that is now also in `Love-boost.R`
         - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. 
             - The versions of `Love-boost.R` on this web site now include this new function. 
-            - At the moment, I think that all of the material on this site except the Course Slides has this change in place. The Course Notes do not use either function, but I expect I did use `eda.2sam` in the Slides. I'll look into that, and make changes as needed.
+            - I think that all of the material on this site has this change in place but you'll tell me if I am wrong
+                - This includes revised [Class 19 Slides](https://github.com/THOMASELOVE/431slides/tree/master/class_19), and a revised [Assignment 4 Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW4).
     - Modeling in the Tidyverse (Part C of the Course)
         - Box-Cox procedure for identifying potential outcome transformations
         - Adjusted R-squared in multiple regression as an indicator of overfitting
