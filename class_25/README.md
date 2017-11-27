@@ -26,7 +26,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF) is the final presentation. Please [recheck the Project Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) to ensure you won't have a problem coming to my office at the planned time, and to ensure that all Tasks to date (should be A-D) are complete.
 
 3. Non-project Deliverables
-    - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**. Remember to stick to Questions 2-5.
+    - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon Monday **2017-12-04**. Remember to stick to Questions 2-5.
         - I posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for.
         - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file.
             - Everything is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
