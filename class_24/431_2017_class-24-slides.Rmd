@@ -450,6 +450,7 @@ bmi = - 4.00 + 0.97 calf.circ - 0.62 age.exam
 
 ## What Did We Discuss Today?
 
+- Use `eda.ksam` instead of `eda.2sam`
 - Box-Cox to identify potential outcome transformations
 - Adjusted R^2^ and when that indicates severe overfitting
 - Testing/Pruning a Kitchen Sink Model
