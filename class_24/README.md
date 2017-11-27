@@ -70,6 +70,7 @@ The audio recording(s) for this class will be posted above when they become avai
             - `demodata$age.4groups <- Hmisc::cut2(demodata$age, g=4)`
         - Or we could pre-specify that we want groups of: Up to age 35, then 35 up to 50, and then 50 through 64 and then 65 and older with the following.
            - `demodata$age.groups4 <- Hmisc::cut2(demodata$age, cuts=c(35,50,65))`
+    - Gelman blog: [Think of graphics software like a hammer.](http://andrewgelman.com/2017/11/18/graphics-software-not-tool-makes-graphs-graphics-software-tool-allows-make-graphs/) "A hammer won’t drive in a nail for you. But if you have a nail and you know where to put it, you can use the hammer to drive in the nail yourself. ... graphics takes thought. You can’t just plug your results into a graphics program and hope to have readable, useful graphs."
 
 ## Announcements after class:
  
