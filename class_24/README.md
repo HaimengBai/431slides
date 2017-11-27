@@ -59,9 +59,17 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Course Notes](https://thomaselove.github.io/431notes/) **revisions** 
         - I added a **new section** (25.10) on dependent (paired) vs. independent samples approaches to comparing quantitative outcomes, which includes the questions and answers from the After Class 22 activity.
         - In addition, I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
-    - **R Tip**: Want to check a tibble (data frame) to see if there are any missing values? 
+    - **R Tip 1**: Want to check a tibble (data frame) to see if there are any missing values? 
         - Instead of using `mice::md.pattern` or `Hmisc::describe` you might consider `any(is.na(dataframe))` if all you need is a TRUE (meaning there are missing values in the data frame) or a FALSE (meaning there are no missing values in the data frame.)
         - The `md.pattern` approach from `mice` seems to run into trouble on occasion dealing with variables of the class `character`. If you have character class variables (list your tibble to check or use `str()` to find out) then the md.pattern approach will treat those as NA values.
+    - **R Tip 2**: Want to turn a quantitative variable into a factor?
+        - Suppose you had an `age` variable located in a `demodata` data set. If your goal is to create a binary variable from a quantitative (continuous) one, then I might use as.numeric to create a 1/0 variable, and then factor to create and label the factor, as in the following.
+            - `demodata$age.50plus <- as.numeric(demodata$age >= 50)`
+            - `demodata$age.50plus <- factor(demodata$age.50plus, levels=c(1,0), labels=c("50 plus", "Less than 50"))`
+        - If your goal is to create a four category variable from a quantitative one, then I might use the `cut2` function from the `Hmisc` package to select four groups of roughly equal size (these would be quartiles.)
+            - `demodata$age.4groups <- Hmisc::cut2(demodata$age, g=4)`
+        - Or we could pre-specify that we want groups of: Up to age 35, then 35 up to 50, and then 50 through 64 and then 65 and older with the following.
+           - `demodata$age.groups4 <- Hmisc::cut2(demodata$age, cuts=c(35,50,65))`
 
 ## Announcements after class:
  
