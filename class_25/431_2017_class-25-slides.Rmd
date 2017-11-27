@@ -1,0 +1,565 @@
+---
+title: "431 Class 25"
+author: "Thomas E. Love"
+date: "2017-11-30"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+- Ginzberg's Depression Data from the `car` package
+    - Should we be modeling a transformed outcome?
+    - Comparing Models with R^2^, adjusted R^2^, AIC, BIC
+    - Comparing Model Predictions Out of Sample
+        + Partitioning the Data Set
+        + Building the Model in a Training Sample
+        + Using a Test Sample, MAPE and MSPE for Validation
+- Getting Better Calibrated on Residual Plots
+
+## Today's R Setup and Data Set
+
+```{r setup, message = FALSE}
+library(car); library(magrittr) 
+library(broom); library(tidyverse)
+
+ginz0 <- tbl_df(car::Ginzberg)
+ginz0$id <- 1:82
+ginz <- select(ginz0, id, fatalism, simplicity, depression)
+
+source("Love-boost.R")
+```
+
+## Ginzberg's Depression Data
+
+The `Ginzberg` data are part of the `car` package. The data describe psychiatric patients hospitalized for depression. We'll look at three variables, each of which is scaled to have mean 1 and standard deviation 0.5 in this sample...
+
+- our outcome, `fatalism`, which measures the subject's fatalism (the belief that all events are inevitable)
+- `simplicity`, which measures the need to see the world in black and white
+- `depression`, which is the Beck self-report depression scale
+
+Subjects with values exceeding 1 on these measures are reporting greater than average fatalism, simplicity or depression, respectively.
+
+## Standardized key variables in the `ginz` tibble
+
+Remember that the values for each variable have been standardized to mean 1 and standard deviation 0.5
+
+```{r}
+summary(select(ginz, -id))
+```
+
+- What does a value of zero mean on these scales?
+- A change of one unit on these scales is how large?
+
+## Partitioning into Training and Test Samples
+
+We'll build a training sample (`ginz.train`) for building models with 70 patients, and hold back a test sample (`ginz.test`) of the remaining 12 patients for evaluating the model after it's been built.
+
+```{r}
+set.seed(43111)
+ginz.train <- sample_n(ginz, 70, replace = FALSE)
+ginz.test <- anti_join(ginz, ginz.train, by = "id")
+```
+
+## Showing the Partition
+
+```{r, fig.height = 3}
+ginz$split <- ifelse(ginz$id %in% ginz.train$id, 
+                     "TRAINING", "TEST")
+
+ggplot(ginz, aes(x = id, y = split, col = split)) + 
+  geom_point(cex = 2) + guides(col = FALSE)
+```
+
+## Scatterplot Matrix for Ginzberg's Depression Data
+
+```{r scatterplot_ginz_1, echo = FALSE}
+GGally::ggpairs(select(ginz.train, 
+                       simplicity, depression, fatalism), 
+        title = "Ginzberg Depression: Training Sample")
+```
+
+## Alternate Scatterplot Matrix for Ginzberg's data
+
+```{r scatterplot matrix for depression data, echo = FALSE}
+pairs (~ fatalism + simplicity + depression, data=ginz,
+       main="ginz Scatterplot and Correlation Matrix", 
+       upper.panel = panel.smooth,
+       diag.panel = panel.hist,
+       lower.panel = panel.cor)
+```
+
+## Does Box-Cox suggest a transformation?
+
+```{r, eval = FALSE}
+m1 <- lm(fatalism ~ simplicity + depression, 
+         data = ginz.train)
+boxCox(m1)
+```
+
+This throws an error message:
+
+```
+Error in bc1(out, lambda) : 
+  First argument must be strictly positive.
+```
+
+## Oops, we have some non-positive values of our outcome
+
+```{r}
+summary(ginz.train$fatalism)
+```
+
+Could just add 1 to every value for Box-Cox check...
+
+```{r}
+ginz.train$fat <- ginz.train$fatalism + 1
+
+m1a <- lm(fat ~ simplicity + depression, data = ginz.train)
+```
+
+```{r, eval = FALSE}
+boxCox(m1a)
+```
+
+## Here's the new plot (on 1 + fatalism)
+
+```{r, echo = FALSE}
+boxCox(m1a)
+```
+
+## And, if we need backup for our eyes...
+
+```{r}
+powerTransform(m1a)
+```
+
+Take advantage of the `roundlam` object contained within `powerTransform`.
+
+```{r}
+powerTransform(m1a)$roundlam
+```
+
+## Regression Model with Simplicity and Depression
+
+```{r linear model for fatalism}
+m1 <- lm(fatalism ~ simplicity + depression, 
+         data = ginz.train)
+
+arm::display(m1)
+```
+
+```{r, eval = FALSE}
+summary(m1) # edited output on next page
+```
+
+## Complete `m1` output, edited lightly
+
+```
+lm(fatalism ~ simplicity + depression, data = ginz.train)
+
+Multiple R-squared: 0.593, Adjusted R-squared: 0.580 
+F-statistic: 48.71 on 2 and 67 DF,  p-value: 8.699e-14
+
+Coefficients: Estimate     SE     t         p
+(Intercept)      0.140  0.099  1.42     0.161    
+simplicity       0.400  0.100  3.98     0.0002 ***
+depression       0.477  0.103  4.64   1.64e-05 ***
+
+Residuals:  Min    Q1    Med    Q3   Max     SE
+          -0.76 -0.17 -0.005  0.20  0.73   0.33
+```
+
+## Is collinearity a big issue here?
+
+```{r}
+vif(m1)
+```
+
+## Residuals vs. Fitted Values
+
+```{r, echo = FALSE}
+plot(m1, which = 1, cex = 2)
+```
+
+## Residuals in a Normal Q-Q Plot
+
+```{r model B plot 2, echo = FALSE}
+plot(m1, which = 2, cex = 2)
+```
+
+## Scale-Location Plot
+
+```{r model B plot 3, echo = FALSE}
+plot(m1, which = 3, cex = 2)
+```
+
+## Plot 5: Residuals, Leverage, Influence?
+
+```{r model B plot 5, echo = FALSE}
+plot(m1, which = 5, cex = 2)
+```
+
+## Plot 4: Index plot of Cook's distance
+
+```{r model B plot 4, echo = FALSE}
+plot(m1, which = 4, cex = 2)
+```
+
+## Consider a second model
+
+- Model `m1` included both depression *and* simplicity.
+- Let's fit Model `m2` which only includes depression.
+
+```{r}
+m2 <- lm(fatalism ~ depression, data = ginz.train)
+
+arm::display(m2)
+```
+
+## Model `m2` summary
+
+```
+Call:
+lm(formula = fatalism ~ depression, data = ginz.train)
+
+Multiple R-squared:  0.496,	Adjusted R-squared:  0.489 
+F-statistic: 66.92 on 1 and 68 DF,  p-value: 1.031e-11
+
+Coefficients: Estimate    SE    t         p    
+(Intercept)      0.289 0.101 2.86     0.006 ** 
+depression       0.730 0.089 8.18  1.03e-11 ***
+
+Residuals:  Min    Q1   Med    Q3   Max     SE
+          -0.80 -0.19 -0.06  0.20  0.90   0.37 
+```
+
+## Hypothesis Test comparing `m1` to `m2`
+
+```{r}
+anova(m1, m2)
+```
+
+Does the order in which we list the models matter?
+
+## Hypothesis Test comparing `m2` to `m1`
+
+```{r}
+anova(m2, m1)
+```
+
+**How** does order matter here?
+
+## Which Model Looks Best in the training sample?
+
+```{r}
+round(glance(m1),3) # depression and simplicity
+round(glance(m2),3) # depression alone
+```
+
+## Making Predictions in the Test Sample with `m1`
+
+Let's use model `m1` to predict fatalism scores for our test sample group.
+
+```
+fatalism = 0.14 + 0.40 simplicity + 0.48 depression
+```
+
+```{r}
+head(ginz.test,1)
+```
+
+So, predicted fatalism for subject 1 here is...
+
+```
+fatalism = 0.14 + 0.40 (0.92983) + 0.48 (0.5987), or 0.80
+```
+
+Observed error is `0.36 - 0.80 = -0.44`
+
+## There must be an easier way
+
+And there is...
+
+```{r}
+predict(m1, newdata = ginz.test) 
+```
+
+## Making Predictions in the Test Sample with `m1`
+
+Let's use our model `m1` to predict fatalism scores for the test sample group of 12 patients on the basis of their simplicity and depression scores.
+
+```{r }
+m1.preds <- predict(m1, newdata = ginz.test) 
+# make predictions
+
+m1.error <- ginz.test$fatalism - m1.preds 
+# calculate errors
+
+m1.abserror <- abs(m1.error) 
+# absolute value of errors
+
+m1.sqerror <- m1.error^2 
+# squared errors
+```
+
+## Back to the first member of our Test Sample
+
+```{r}
+head(ginz.test, 1)
+
+m1.preds[1] # predicted fatalism from m1
+
+m1.error[1] # error (observed - predicted)
+
+m1.abserror[1] # absolute value of error
+
+m1.sqerror[1] # squared error
+```
+
+## Making Predictions in the Test Sample with `m2`
+
+Using model `m2`, we have:
+
+```{r }
+m2.preds <- predict(m2, newdata = ginz.test) # predictions
+m2.error <- ginz.test$fatalism - m2.preds # errors
+m2.abserror <- abs(m2.error) # absolute value of errors
+m2.sqerror <- m2.error^2 # squared errors
+```
+
+## Mean Absolute Prediction Error (MAPE) across the Models
+
+```{r get MAPE and MSPE}
+summary(m1.abserror)
+summary(m2.abserror)
+```
+
+## Mean Squared Prediction Error (MSPE) across the Model
+
+```{r get MSPE}
+summary(m1.sqerror)
+summary(m2.sqerror)
+```
+
+## Which Model Looks Best in the test sample?
+
+Model | MAPE | MSPE | Max Abs Err
+-------------------------: | -----: | -------: | -----:
+`m1` (depression + simplicity) | 0.396 | 0.227 | 1.18
+`m2` (depression only)         | 0.381 | 0.202 | 0.99
+
+What we see here in the 12(**!**) people in our test group doesn't entirely match what we saw in the training sample of 70 people. 
+
+- But should it?
+- In 432, we'll learn some better ways to validate our models.
+
+# Calibrating Yourself on Residual Plots
+
+## Multivariate Regression: Checking Assumptions
+
+Assumptions (see Course Notes, Section 42)
+
+- Linearity
+- Normality
+- Homoscedasticity
+- Independence
+
+Available Residual Plots 
+
+`plot(model, which = c(1:3,5))`
+
+1. Residuals vs. Fitted Values
+2. Normal Q-Q Plot of Standardized Residuals
+3. Scale-Location Plot
+4. Index Plot of Cook's Distance
+5. Residuals, Leverage and Influence
+
+## An Idealized Model (by Simulation)
+
+```{r sim0}
+set.seed(431122)
+
+x1 <- rnorm(200, 20, 5)
+x2 <- rnorm(200, 20, 12)
+x3 <- rnorm(200, 20, 10)
+
+er <- rnorm(200, 0, 1)
+
+y <- .3*x1 - .2*x2 + .4*x3 + er
+
+sim0 <- data.frame(y, x1, x2, x3) %>% tbl_df
+
+mod0 <- lm(y ~ x1 + x2 + x3, data = sim0)
+
+summary(mod0) # appears on next slide
+```
+
+## An Idealized Model (by Simulation)
+
+```
+Call: lm(formula = y ~ x1 + x2 + x3, data = sim0)
+
+Residuals:     Min       1Q   Median       3Q      Max 
+          -3.14553 -0.68079  0.08096  0.69216  2.65265 
+
+Coefficients: Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   0.122852   0.348584   0.352    0.725    
+x1            0.285539   0.014211  20.093   <2e-16 ***
+x2           -0.204908   0.005828 -35.159   <2e-16 ***
+x3            0.413308   0.007172  57.631   <2e-16 ***
+---
+Signif codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.007 on 196 degrees of freedom
+Multiple R-squared:  0.9589,	Adjusted R-squared:  0.9583 
+F-statistic:  1524 on 3 and 196 DF,  p-value: < 2.2e-16
+```
+
+## Building Residual Plots for Idealized Model
+
+```{r sim0 residuals code, eval = FALSE}
+par(mfrow=c(2,2))
+plot(mod0)
+par(mfrow=c(1,1))
+```
+
+## Residual Analysis (Idealized Model: n = 200)
+
+```{r sim0 residuals, echo = FALSE}
+par(mfrow=c(2,2))
+plot(mod0)
+par(mfrow=c(1,1))
+```
+
+## What's the Goal Here?
+
+Develop an effective model. (?) (!)
+
+- Models can do many different things. What you're using the model for matters, a lot.
+- Don't fall into the trap of making binary decisions (this model isn't perfect, no matter what you do, and so your assessment of residuals will also have shades of gray).
+- The tools we have provided (scatterplots, mostly) are well designed for rather modest sample sizes. When you have truly large samples, they don't scale very well.
+- Just because R chooses four plots for you to study doesn't mean they provide the only relevant information.
+- Embrace the uncertainty. Look at it as an opportunity to study your data more effectively.
+
+## Simulation 1 (n = 200 subjects)
+
+```{r sim1, echo=FALSE}
+set.seed(431)
+x1 <- runif(200, 50, 100)
+x2 <- runif(200, 25, 125)
+x3 <- rnorm(200, 50, 15)
+er <- rt(200, 3)
+y <- 45 + .3*x1 + .2*x2 - 3*x3 + er
+sim1 <- data.frame(y, x1, x2, x3) %>% tbl_df
+mod1 <- lm(y ~ x1 + x2 + x3, data = sim1)
+par(mfrow=c(2,2))
+plot(mod1)
+par(mfrow=c(1,1))
+```
+
+## Simulation 2 (n = 150)
+
+```{r sim2, echo=FALSE}
+set.seed(439)
+x1 <- runif(150, 50, 100)
+x2 <- runif(150, 25, 125)
+x3 <- rnorm(150, 50, 15)
+er <- rnorm(150, 0, 1)
+y0 <- 15 + sqrt(x1) + .6*x1 - sqrt(x2) + er
+y <- y0^3/10000
+sim2 <- data.frame(y, x1, x2, x3) %>% tbl_df
+mod2 <- lm(y ~ x1 + x2, data = sim2)
+par(mfrow=c(2,2))
+plot(mod2)
+par(mfrow=c(1,1))
+```
+
+## Simulation 3 (n = 150)
+
+```{r sim3, echo=FALSE}
+set.seed(437)
+x1 <- runif(150, 50, 100)
+x2 <- runif(150, 25, 125)
+x3 <- rnorm(150, 50, 15)
+er <- rnorm(150, 0, 1)
+y <- 45 + .3*x1 + .2*x2 - 3*x3 + er
+sim3 <- data.frame(y, x1, x2, x3) %>% tbl_df
+mod3 <- lm(y ~ x1 + x2 + x3, data = sim3)
+par(mfrow=c(2,2))
+plot(mod3)
+par(mfrow=c(1,1))
+```
+
+## Simulation 4 (n = 1000)
+
+```{r sim4, echo=FALSE}
+set.seed(4323)
+x1 <- runif(1000, 50, 100)
+x2 <- runif(1000, 25, 125)
+x3 <- rnorm(1000, 50, 15)
+er <- rt(1000, 2)
+y <- 45 + .3*x1 + .3*x2 - 4*x3 + er
+sim4 <- data.frame(y, x1, x2, x3) %>% tbl_df
+mod4 <- lm(y ~ x1 + x2 + x3, data = sim4)
+par(mfrow=c(2,2))
+plot(mod4)
+par(mfrow=c(1,1))
+```
+
+
+## Simulation 5 (n = 100)
+
+```{r sim5, echo=FALSE}
+set.seed(4191)
+x1 <- runif(100, 50, 100)
+x2 <- runif(100, 25, 125)
+x3 <- rnorm(100, 50, 15)
+e0 <- ifelse(x3 > 50, 0.125, 2.2)
+e1 <- rnorm(100,0,1)
+er <- e0*e1
+y <- 45 + .3*x1 + - 4*x3 + er
+sim5 <- data.frame(y, x1, x2, x3) %>% tbl_df
+mod5 <- lm(y ~ x1 + x2 + x3, data = sim5)
+par(mfrow=c(2,2))
+plot(mod5)
+par(mfrow=c(1,1))
+```
+
+## Simulation 6 (n = 1000)
+
+```{r sim6, echo=FALSE}
+set.seed(4317)
+x1 <- runif(1000, 50, 100)
+x2 <- runif(1000, 25, 125)
+x3 <- rnorm(1000, 50, 15)
+er <- rnorm(1000, 0, 1)
+y <- 45 + .3*x1 + .2*x2 - 3*x3 + er
+sim6 <- data.frame(y, x1, x2, x3) %>% tbl_df
+sim6[496,"x3"] <- -24
+sim6[496,"y"] <- 148
+mod6 <- lm(y ~ x1 + x2 + x3, data = sim6)
+par(mfrow=c(2,2))
+plot(mod6)
+par(mfrow=c(1,1))
+```
+
+## Some Reactions to the Six Simulations
+
+For those of you playing along at home...
+
+1. Observation 1 has an impossibly large standardized residual, and some influence.
+2. Curve in residuals vs. fitted values plot suggests potential non-linearity.
+3. No substantial problems, although there's a little bit of heteroscedasticity.
+4. Normality issues - outlier-prone even with 1000 observations.
+5. Serious heteroscedasticity - residuals much more varied for larger fitted values.
+6. No serious violations - point 496 has very substantial leverage, though.
