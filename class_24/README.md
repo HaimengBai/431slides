@@ -9,12 +9,12 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements before class:
 
 1. Today's Agenda
-    - Changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function that is now also in `Love-boost.R`
+    - **eda.2sam is no more**: We're changing the `eda.2sam` function from `Love-boost.R` to the `eda.ksam` function now in `Love-boost.R`
         - See [this PDF](https://github.com/THOMASELOVE/431data/blob/master/Updating_Love-boost.pdf) for details and a demonstration of how to use the new `eda.ksam` function. 
             - The versions of `Love-boost.R` on this web site now include this new function. 
             - I think that all of the material on this site has this change in place but you'll tell me if I am wrong
                 - This includes revised [Class 19 Slides](https://github.com/THOMASELOVE/431slides/tree/master/class_19), and a revised [Assignment 4 Sketch](https://github.com/THOMASELOVE/431homework/tree/master/HW4).
-    - Modeling in the Tidyverse (Part C of the Course)
+    - **Regression Models**: Modeling in the Tidyverse (Part C of the Course)
         - Box-Cox procedure for identifying potential outcome transformations
         - Adjusted R-squared in multiple regression as an indicator of overfitting
         - The assessment of collinearity (correlated predictors) with the VIF (variance inflation factor)
@@ -25,7 +25,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - Checking Model Assumptions with Residual Plots
         - Summarizing a Model in Words
         - See [Course Notes](https://thomaselove.github.io/431notes/), sections 37-. 
-    - **Activity After Class 24** There is a short activity you'll be doing, whether or not you attended today's class. It won't take long, and the only preparation is to settle on a final title (with your partner, as needed) for Study 2 (the "your data" part) of your Project. 
+    - **Activity After Class 24**: There is a short activity you'll be doing, whether or not you attended today's class. It won't take long, and the only preparation is to settle on a final title (with your partner, as needed) for Study 2 (the "your data" part) of your Project. 
         - The [Google Form is here](https://goo.gl/forms/lkOXvOUQtvh7BY7y1). Please complete this by 9 AM Thursday 2017-11-30.
 
 2. The Projects
