@@ -50,14 +50,14 @@ The audio recording for this class is now posted above.
         - To see if you've successfully completed Task D, check [the Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
 
 3. Upcoming non-project Deliverables
-    - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**. Note the big change described in #5 below.
+    - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is now due at noon **2017-12-04**. Note the big change described in #5 below.
 
 4. The stage version of "**It's a Wonderful Life**" that I play Uncle Billy in has two remaining performances, at 8 PM on Friday Nov 17 and at 8 PM on Saturday Nov 18. It's at [Independence Community Theatre](http://www.independencetheatre.org/) and tickets are available for $12 by calling 216-447-0443. Location: Old Independence Town Hall, 6652 Brecksville Rd, Independence OH. 
     - **PLEASE feel absolutely ZERO obligation to attend**. I mention this so you have the details if you are interested. I would be happy to see you there, but you won't get any extra credit for coming, *nor will I think any less of you should you not attend*.
 
 ## Announcements after class:
 
-5. There is an important change in [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md). In an attempt to ease the burden of the remainder of the course, and to keep the focus where it needs to be (on the project), you will see that **Questions 1 and 6 are no longer part of the assignment**. Instead, you are to do **Questions 2-5**, only.
+5. There are two important changes to [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md). In an attempt to ease the burden of the remainder of the course, and to keep the focus where it needs to be (on the project), you will see that **Questions 1 and 6 are no longer part of the assignment**. Instead, you are to do **Questions 2-5**, only. And, the deadline has been extended to **Monday, 2017-12-04 at noon**.
     - If you have already done work on Question 1 or 6, please feel free to include it and we'll award a little extra credit on the assignment, but if you haven't started on those two questions, then just do questions 2-5. 
     - Any extra time you'd put in to Question 1 or 6 should instead be put towards Quiz 3 and (especially) your project.
 
