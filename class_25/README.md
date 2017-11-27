@@ -28,9 +28,8 @@ The audio recording(s) for this class will be posted above when they become avai
 3. Non-project Deliverables
     - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon Monday **2017-12-04**. Remember to stick to Questions 2-5.
         - I posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for.
-        - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file.
-            - Everything is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
-    - **Quiz 3** will be made available to you on 2017-12-07 by 5 PM and is due at noon on Monday 2017-12-11.
+        - The 431 Project Study 2 demonstration material in Task E is directly relevant to Questions 2-5. There's a [PDF](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) and a [R Markdown](https://github.com/THOMASELOVE/431project/blob/master/TaskE/431-project-study2-demonstration.Rmd) file. Everything is also in Part C of the [Course Notes](https://thomaselove.github.io/431notes/introduction-for-part-c.html).
+    - **Quiz 3** will be made available on 2017-12-07 by 5 PM and is due at noon on Monday 2017-12-11.
     - **Appealing HW Grades**: Once all six assignments are complete and you know your grades on each, you may find an error in grading that you would like Dr. Love to review. Request this by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2). 
         - The deadline is noon on 2017-12-13. See the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus for more details.
 
