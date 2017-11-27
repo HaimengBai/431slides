@@ -33,5 +33,10 @@ The audio recording(s) for this class will be posted above when they become avai
     - **Appealing HW Grades**: Once all six assignments are complete and you know your grades on each, you may find an error in grading that you would like Dr. Love to review. Request this by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2). 
         - The deadline is noon on 2017-12-13. See the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus for more details.
 
+4. Miscellany
+    - Amelia McNamara has a [great post on statistics graduate school advice](http://www.science.smith.edu/~amcnamara/blog/teaching/2016/10/19/GradSchool.html), which may have some relevant features for you, even if statistics isn't your primary field.
+    - Gelman blog: [Dear Professor Gelman, I thought you would be interested in these awful graphs I found in the paper today](http://andrewgelman.com/2017/11/26/dear-professor-gelman-thought-interested-awful-graphs-found-paper-today/). The [original article](https://www.memphisflyer.com/NewsBlog/archives/2016/08/26/report-alcohol-crashes-down-distracted-driving-accidents-up) from the *Memphis Flyer* includes several other "infographics." Yikes.
+    
+
 ## Announcements after class:
  
