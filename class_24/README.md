@@ -9,7 +9,7 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements before class:
 
 0. Dr. Love's remaining punch list from the Thanksgiving break...
-    - Prepare tentative slides for Classes 25-27.
+    - Prepare tentative slides for Classes 26-27.
     - Build an Activity to be done after Class 24 online.
     - Build Quiz 3.
 
