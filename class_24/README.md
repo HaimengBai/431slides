@@ -41,7 +41,7 @@ The audio recording(s) for this class will be posted above when they become avai
 
 3. Non-project Deliverables
     - **Quiz 2 Extra Task** Those of you planning (or needing) to complete the [Quiz 2 Extra Task](https://goo.gl/forms/1f27voQF33hqYOys1), do so by noon on Wednesday **2017-11-29**. Remember that a score of 18 or better is required, but if you don't do that well the first time, you can edit your responses until you do.
-    - [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is due at noon **2017-12-01**.
+    - **Change in Assignment 6 Deadline** [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md) is now due at noon on Monday **2017-12-04**.
         - In an attempt to ease the burden of the remainder of the course, and to keep the focus where it needs to be (on the project), you will see that **Questions 1 and 6 are no longer part of the assignment**. Instead, you are to do **Questions 2-5**, only.
         - To help you with Assignment 6, I encourage you to take advantage of three resources:
             - I have posted our [grading rubric for Questions 2-5](https://github.com/THOMASELOVE/431homework/blob/master/HW6/README.md) to help you gauge exactly what we're looking for in your responses.
