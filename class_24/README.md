@@ -77,7 +77,9 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Course Notes](https://thomaselove.github.io/431notes/) **revisions** 
         - I added a **new section** (25.10) on dependent (paired) vs. independent samples approaches to comparing quantitative outcomes, which includes the questions and answers from the After Class 22 activity.
         - In addition, I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
+    - You may be interested in [YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/) by Nathaniel Phillips. This book is meant to introduce you to the basic analytical tools in R, from basic coding and analyses, to data wrangling, plotting, and statistical inference. 
+        - "This book clearly has both massive historical and pedagogical significance. Most importantly, it turns out that pirates were programming in R well before the earliest known advent of computers. Of slightly less significance is that the book has turned out to be a surprisingly up-to-date and approachable introductory text to R." 
 
 ## Announcements after class:
  
-5. Please complete the [Activity after Class 24 Google Form](https://goo.gl/forms/lkOXvOUQtvh7BY7y1) by 9 AM Thursday 2017-11-30. Thank you.
+6. Please complete the [Activity after Class 24 Google Form](https://goo.gl/forms/lkOXvOUQtvh7BY7y1) by 9 AM Thursday 2017-11-30. Thank you.
