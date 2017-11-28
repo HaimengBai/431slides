@@ -79,6 +79,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - In addition, I posted some minor revisions to the [Course Notes](https://thomaselove.github.io/431notes/), in Sections 28, 37, 38, 42 and 49. I am very grateful to readers for pointing out issues, big or small.
     - You may be interested in [YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/) by Nathaniel Phillips. This book is meant to introduce you to the basic analytical tools in R, from basic coding and analyses, to data wrangling, plotting, and statistical inference. 
         - "This book clearly has both massive historical and pedagogical significance. Most importantly, it turns out that pirates were programming in R well before the earliest known advent of computers. Of slightly less significance is that the book has turned out to be a surprisingly up-to-date and approachable introductory text to R." 
+    - If you're a current MS student in PQHS, remember the internship meeting on Thursday at 4:15 in WG-73. Contact Dr. Singer if you need more information.
 
 ## Announcements after class:
  
