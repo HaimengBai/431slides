@@ -43,7 +43,7 @@ The audio recording(s) for this class will be posted above when they become avai
     - **Checking for missingness** Want to check a tibble (data frame) to see if there are any missing values? 
         - Instead of using `mice::md.pattern` or `Hmisc::describe` you might consider `any(is.na(dataframe))` if all you need is a TRUE (meaning there are missing values in the data frame) or a FALSE (meaning there are no missing values in the data frame.)
         - The `md.pattern` approach from `mice` seems to run into trouble on occasion dealing with variables of the class `character`. If you have character class variables (list your tibble to check or use `str()` to find out) then the md.pattern approach will treat those as NA values.
-    - **For the project, drop all NA Values unless this will drop you below 250 observations** For those of you with at least 250 rows of complete data, I strongly suggest you drop all rows with missing data from your tibble for your project, rather than imputing, especially if you're having any trouble with imputing.
+    - **For the project, drop all rows with NA values, especially if you will still have at least 250 observations** I strongly suggest you drop all rows with missing data from your tibble for your project, rather than imputing, especially if you're having any trouble with imputing.
         - `newdata <- na.omit(olddata)` will usually do it. 
         - You are welcome to *try* imputing, certainly, and we'll feature this in 432, but time is too short for this semester.
     - **Factors from Quantities** Want to turn a quantitative variable into a factor?
