@@ -40,22 +40,22 @@ The audio recording(s) for this class will be posted above when they become avai
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF) is the final presentation. 
 
 3. **R Tips** related to your project, especially
-    - 1. Want to check a tibble (data frame) to see if there are any missing values? 
+    - **Checking for missingness** Want to check a tibble (data frame) to see if there are any missing values? 
         - Instead of using `mice::md.pattern` or `Hmisc::describe` you might consider `any(is.na(dataframe))` if all you need is a TRUE (meaning there are missing values in the data frame) or a FALSE (meaning there are no missing values in the data frame.)
         - The `md.pattern` approach from `mice` seems to run into trouble on occasion dealing with variables of the class `character`. If you have character class variables (list your tibble to check or use `str()` to find out) then the md.pattern approach will treat those as NA values.
-    - 2. **For the project, drop All NA Values unless this will drop you below 250 observations** For those of you with at least 250 rows where you have complete data, I strongly suggest you drop all rows with missing data from your tibble for your project, rather than imputing, especially if you're having any trouble getting the imputation working.
+    - **For the project, drop all NA Values unless this will drop you below 250 observations** For those of you with at least 250 rows of complete data, I strongly suggest you drop all rows with missing data from your tibble for your project, rather than imputing, especially if you're having any trouble with imputing.
         - `newdata <- na.omit(olddata)` will usually do it. 
-        - You are welcome to *try* imputing, certainly, and we'll feature this heavily in 432, but time is too short for this semester.
-    - 3. Want to turn a quantitative variable into a factor?
-        - Suppose you had an `age` variable located in a `demodata` data set. If your goal is to create a binary variable from a quantitative (continuous) one, then I might use as.numeric to create a 1/0 variable, and then factor to create and label the factor, as in the following.
+        - You are welcome to *try* imputing, certainly, and we'll feature this in 432, but time is too short for this semester.
+    - **Factors from Quantities** Want to turn a quantitative variable into a factor?
+        - Suppose you had an `age` variable located in a `demodata` data set. If your goal is to create a binary variable from a quantitative (continuous) one, then I might use as.numeric to create a 1/0 variable, and then factor to create and label the factor.
             - `demodata$age.50plus <- as.numeric(demodata$age >= 50)`
             - `demodata$age.50plus <- factor(demodata$age.50plus, levels=c(1,0), labels=c("50 plus", "Less than 50"))`
         - If your goal is to create a four category variable from a quantitative one, then I might use the `cut2` function from the `Hmisc` package to select four groups of roughly equal size (these would be quartiles.)
             - `demodata$age.4groups <- Hmisc::cut2(demodata$age, g=4)`
         - Or we could pre-specify that we want groups of: Up to age 35, then 35 up to 50, and then 50 through 64 and then 65 and older with the following.
            - `demodata$age.groups4 <- Hmisc::cut2(demodata$age, cuts=c(35,50,65))`
-    - 4. **Scatterplot Matrix?** I suggest that you use `GGally::ggpairs` to draw a scatterplot matrix, rather than `pairs`.
-    - 5. **Anticipate that the graphs will take rework.** Gelman blog: [Think of graphics software like a hammer.](http://andrewgelman.com/2017/11/18/graphics-software-not-tool-makes-graphs-graphics-software-tool-allows-make-graphs/) "A hammer won’t drive in a nail for you. But if you have a nail and you know where to put it, you can use the hammer to drive in the nail yourself. ... graphics takes thought. You can’t just plug your results into a graphics program and hope to have readable, useful graphs."
+    - **Scatterplot Matrix?** I suggest that you use `GGally::ggpairs` to draw a scatterplot matrix, rather than `pairs`.
+    - **Anticipate that the graphs will take rework.** Gelman blog: [Think of graphics software like a hammer.](http://andrewgelman.com/2017/11/18/graphics-software-not-tool-makes-graphs-graphics-software-tool-allows-make-graphs/) "A hammer won’t drive in a nail for you. But if you have a nail and you know where to put it, you can use the hammer to drive in the nail yourself. ... graphics takes thought. You can’t just plug your results into a graphics program and hope to have readable, useful graphs."
 
 4. Non-project Deliverables
     - **Quiz 2 Extra Task** Those of you planning (or needing) to complete the [Quiz 2 Extra Task](https://goo.gl/forms/1f27voQF33hqYOys1), do so by noon on Wednesday **2017-11-29**. Remember that a score of 18 or better is required, but if you don't do that well the first time, you can edit your responses until you do.
