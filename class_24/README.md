@@ -84,3 +84,7 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements after class:
  
 6. Please complete the [Activity after Class 24 Google Form](https://goo.gl/forms/lkOXvOUQtvh7BY7y1) by 9 AM Thursday 2017-11-30. Thank you.
+
+7. There were some confusing statements about the ANOVA comparison in Section 43.4 of the Course Notes, having to do with a change in the seed used to create the wcgs.dev sample. A new version of that material should be up before 6 PM Tuesday, that should make more sense.
+
+8. We got through slide 36 today - I will move the remaining slides from Class 24 to Class 25.
