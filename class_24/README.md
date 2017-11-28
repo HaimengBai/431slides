@@ -2,7 +2,7 @@
 
 ## Today's Slides
 
-Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_24/431_2017_class-24-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_24/431_2017_class-24-slides.Rmd) formats. 
+Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_24/431_2017_class-24-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_24/431_2017_class-24-slides.Rmd) formats. I **reposted** them after class to include only the slides we actually covered. The rest will appear in Class 25.
 
 The audio recording(s) for this class will be posted above when they become available.
 
@@ -87,4 +87,4 @@ The audio recording(s) for this class will be posted above when they become avai
 
 7. There were some confusing statements about the ANOVA comparison in Section 43.4 of the Course Notes, having to do with a change in the seed used to create the wcgs.dev sample. A new version of that material should be up before 6 PM Tuesday, that should make more sense.
 
-8. We got through slide 36 today - I will move the remaining slides from Class 24 to Class 25.
+8. We got through slide 36 today - I have moved the remaining slides from Class 24 to Class 25.
