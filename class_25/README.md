@@ -27,6 +27,7 @@ The audio recording(s) for this class will be posted above when they become avai
 
 2. The Projects
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
+        - We updated the [Study 2 demonstration](https://github.com/THOMASELOVE/431project/tree/master/TaskE) to fix the coefficient of tobaccoquit on the bottom of page 16.
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF): the final presentation. [Project Schedule is here](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
 
 3. Non-project Deliverables
