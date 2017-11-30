@@ -1,0 +1,73 @@
+---
+title: "Confidence About The Project"
+author: "Thomas E. Love"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+```
+
+```{r, message = FALSE}
+library(tidyverse)
+```
+
+- n = 44 of the 50 students in the class, of whom 40 attended in person, 4 did not.
+
+## Data as Collected
+
+```{r}
+after24 <- read.csv("data/afterclass24.csv") %>% tbl_df
+
+head(after24,3)
+```
+
+## Reshape Data using `tidyr::gather`
+
+```{r}
+new24 <- after24 %>% gather(study, confidence, -student)
+
+head(new24,3)
+tail(new24,3)
+```
+
+\newpage
+
+## Plot the Data in a Scatterplot
+
+```
+"How confident are you that your presentation and work 
+will reflect high-quality graduate-level achievement?"
+```
+
+Asked separately about the Course Survey inference project (study 1) and the Your Data regression project (study 2)
+
+```{r}
+ggplot(after24, aes(x = survey, y = yourdata)) +
+  geom_jitter() +
+  geom_abline(intercept = 0, slope = 1, col = "black") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  labs(title = "Confidence Level for 44 students in 431",
+    subtitle = "(1 = not confident at all, 10 = extremely confident)",
+    x = "Confidence on Class Survey Inference Project",
+    y = "Confidence on Your Data Regression Project")
+```
+
+\newpage
+
+## Plot separate boxplots
+
+```
+"How confident are you that your presentation and work 
+will reflect high-quality graduate-level achievement?"
+```
+
+```{r}
+ggplot(new24, aes(x = study, y = confidence, col = study)) +
+  geom_boxplot() + 
+  geom_jitter(width = 0.2) +
+  guides(color = FALSE) +
+  labs(title = "Confidence Level for 44 students in 431",
+    subtitle = "(1 = not confident at all, 10 = extremely confident)")
+```
