@@ -2,7 +2,22 @@
 
 44 people completed the activity in a timely fashion, of whom 40 actually attended the class.
 
-## The Top Ten "Most important things learned in Class 24" (an edited list)
+## Project Titles
+
+Some people have weak titles. Titles on graphs and subtitles within an analysis are amazingly important.
+
+I saw three types of common problems. 
+- **Filler**. You've included words that add nothing like "A Study of" or "The Impact of" "Effect of" or "The association of", etc.
+- **Grammar/Syntax**. A title, though an abbreviated statement and rarely a sentence, still should conform to standard English as much as possible. Spell things correctly - use proper tenses, etc. If English isn't your first language (and even if it is), cultivate a reader who can look at a title or an abstract for you and make useful edits.
+- **Too much detective work required** Your title, ideally, will address Who was studied, How and Why they were studied and What the results were, all in 15 words or less. The best strategy is often to answer most (if not all) of these questions in a declarative sentence, then prune out anything that isn't vital.
+    
+Two titles I happened to like follow. 
+- Can wealth help save Sudanese daughters from female genital mutilation? 
+- Unpacking the Relationship between Insurance Coverage and Alcohol Consumption
+
+There were others I could have chosen, and a title's never perfect, but they illustrate some good things.
+
+## The Top Ten "Most important things learned in Class 24" 
 
 1. **Graphs** are a vital part of my Project presentation (Task F) as well as my paper (Task E).
 2. Interpreting the regression equation in **words** is the hard part.
