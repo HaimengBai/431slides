@@ -9,7 +9,7 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements before class:
 
 1. Today's Agenda
-    - Discussion of Activity After Class 24 - see the [Most Important/Muddiest Results and some Comments on Project Titles](https://github.com/THOMASELOVE/431slides/blob/master/class_25/after24.md).
+    - Activity After Class 24 - see the [Most Important/Muddiest Results and some Comments on Project Titles](https://github.com/THOMASELOVE/431slides/blob/master/class_25/after24.md).
         - [Here's a quick pdf](https://github.com/THOMASELOVE/431slides/blob/master/class_25/project_confidence.pdf) regarding your self-reported confidence in your project. There's an R Markdown file, too.
     - Stepwise Regression (via Backward Elimination) in the `nyfs2` data
         - Comparing the "Kitchen Sink" model to a Reduced Model
