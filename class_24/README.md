@@ -6,6 +6,8 @@ Today's Slides are available for download in both [PDF](https://github.com/THOMA
 
 The audio recording for this class is now posted above.
 
+Activity After Class 24 - see the [Most Important/Muddiest Results here](https://github.com/THOMASELOVE/431slides/blob/master/class_25/after24.md).
+
 ## Announcements before class:
 
 1. Today's Agenda
@@ -83,7 +85,7 @@ The audio recording for this class is now posted above.
 
 ## Announcements after class:
  
-6. Please complete the [Activity after Class 24 Google Form](https://goo.gl/forms/lkOXvOUQtvh7BY7y1) by 9 AM Thursday 2017-11-30. Thank you.
+6. Activity After Class 24 - see the [Most Important/Muddiest Results here](https://github.com/THOMASELOVE/431slides/blob/master/class_25/after24.md).
 
 7. There were some confusing statements about the ANOVA comparison in Section 43.4 of the Course Notes, having to do with a change in the seed used to create the wcgs.dev sample. A new version of that material should be up before 6 PM Tuesday, that should make more sense.
 
