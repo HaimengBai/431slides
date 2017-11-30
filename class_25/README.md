@@ -9,7 +9,7 @@ The audio recording(s) for this class will be posted above when they become avai
 ## Announcements before class:
 
 1. Today's Agenda
-    - Discussion of Activity After Class 24
+    - Discussion of Activity After Class 24 - see the [Most Important/Muddiest Results here](https://github.com/THOMASELOVE/431slides/blob/master/class_25/after24.md).
     - Stepwise Regression (via Backward Elimination) in the `nyfs2` data
         - Comparing the "Kitchen Sink" model to a Reduced Model
         - Assessing collinearity with the generalized Variance Inflation Factor
