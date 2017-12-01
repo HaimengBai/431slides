@@ -190,7 +190,7 @@ bmi = - 1.45
 
 ## Transforming / Re-expressing our Outcome?
 
-We can use the Box-Cox family of transformations to isolate specific choices of the power transformation parameter $\lambda$ for re-expressing our quantitative outcome which might lead to a more effective (yet still interpretible) model. 
+We can use the Box-Cox family of transformations to isolate specific choices of the power transformation parameter $\lambda$ for re-expressing our quantitative outcome which might lead to a more effective (yet still interpretable) model. 
 
 This approach is appropriate for strictly **positive** outcomes. If our minimum value is -14, we might add 15 to each observation before using Box-Cox.
 
