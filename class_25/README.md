@@ -46,4 +46,9 @@ The audio recording(s) for this class will be posted above when they become avai
  
 5. Course Notes updated again to fix a typo in Section 22.6.1 (removed the word not)
 
-6. Good luck on Assignment 6 (due Mon 2017-12-04), and have a nice weekend.
+6. Good luck on Assignment 6 (due Mon 2017-12-04), and have a nice weekend. Here's a little help:
+
+*Dear 431 staff: In the HW6 "plasma" dataset, the variables "sex" "smoking" and "vitamin" are coded numerically, despite the fact that they are categorical variables. I have gone through both the course slides and the course notes, but I can't find a way to convert these numeric variables to categorical ones.*
+
+Perhaps you might want to try something like: `plasma$sex <- fct_recode(factor(plasma$sex), "Female" = "2", "Male" = "1")`
+
