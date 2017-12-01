@@ -21,7 +21,7 @@ The audio recording(s) for this class will be posted above when they become avai
         - Partitioning into Test and Training Samples
         - Comparing Models In-Sample with R-squared, AIC, BIC
         - Comparing Model Predictions Out of Sample with MAPE and MSPE for Validation
-    - Getting Better Calibrated on Residual Plots
+    - Getting Better Calibrated on Residual Plots (MOVED to Class 26)
         - Assumption Checking: Linearity, Homoscedasticity, Normality
         - Residuals, Leverage and Influence
         - Six Simulated Situations to Mull Over
