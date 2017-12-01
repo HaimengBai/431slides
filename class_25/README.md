@@ -44,3 +44,6 @@ The audio recording(s) for this class will be posted above when they become avai
 
 ## Announcements after class:
  
+5. Course Notes updated again to fix a typo in Section 22.6.1 (removed the word not)
+
+6. Good luck on Assignment 6 (due Mon 2017-12-04), and have a nice weekend.
