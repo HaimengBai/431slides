@@ -54,3 +54,10 @@ The audio recording(s) for this class will be posted above when they become avai
 
 Perhaps you might want to try something like: `plasma$sex <- fct_recode(factor(plasma$sex), "Female" = "2", "Male" = "1")`
 
+7. A frequently asked question: 
+
+*When comparing models, would the ANOVA and AIC ever disagree? If so, then what?*
+
+- They will certainly disagree, on occasion.
+- They aren't the only options for in-sample comparison - we have adjusted R-square, BIC, for instance. But it's also the case that we'll often compare models out of sample with tools like MAPE, MSPE and the maximum absolute error.
+
