@@ -4,7 +4,7 @@
 
 Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_25/431_2017_class-25-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_25/431_2017_class-25-slides.Rmd) formats. 
 
-The audio recording(s) for this class will be posted above when they become available.
+The audio recording for this class ia now posted above.
 
 ## Announcements before class:
 
@@ -46,6 +46,7 @@ The audio recording(s) for this class will be posted above when they become avai
  
 5. Course Notes updated again 
     - to fix a typo in Section 22.6.1 (removed the word not) 
+    - to fix a typo in Section 40.3.2 (0.06 rather than 0.6)
     - to fix an error in the description of the middle half of the residuals in Section 41.2.2. (I had low for high and high for low.)
 
 6. Good luck on Assignment 6 (due Mon 2017-12-04), and have a nice weekend. Here's a little help:
