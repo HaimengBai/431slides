@@ -10,7 +10,8 @@ The audio recording for this class will be posted above as soon as it is availab
 
 1. Today's Agenda
     - Debrief on [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md)
-    - 
+    - Calibrating Yourself on Residual Plots
+    - Modeling the `dm192` data
 
 2. Remaining Course Deliverables
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
