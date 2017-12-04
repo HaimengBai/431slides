@@ -48,7 +48,9 @@ The audio recording for this class will be posted above as soon as it is availab
         - I suggest you try the `include_graphics` function which is part of the `knitr` package.
         - Typing the following into its own (echo = F) R code chunk may solve your problem: `knitr::include_graphics("HW6pic.png")`
     - *Should I upgrade to R 3.4.3 now that it's becoming available?*
-        - You are welcome to do so, but I would probably wait until either (a) I got a message that suggested I needed to do so in R, like a needed package wouldn't load under an earlier version of R, or (b) your project and Quiz 3 are complete.
+        - You are welcome to do so, but I would probably wait until either (a) a needed package wouldn't load under an earlier version of R, or (b) your project and Quiz 3 are complete.
+    - *How do I get a GitHub user name? What should I choose as my name?*
+        - Jenny Bryan has some sage advice about GitHub usernames and the process at [Happy Git With R](http://happygitwithr.com/github-acct.html)
 
 5. Cool Things 
     - [datapasta](https://github.com/MilesMcBain/datapasta) may be the most useful thing I've seen in weeks. 
