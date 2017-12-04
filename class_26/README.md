@@ -10,6 +10,7 @@ The audio recording for this class will be posted above as soon as it is availab
 
 1. Today's Agenda
     - Debrief on [Assignment 6](https://github.com/THOMASELOVE/431homework/blob/master/431-2017_assignment-6.md)
+    - Roger Peng's comments on Reasoning About Data [blog post 1](https://simplystatistics.org/2017/11/16/reasoning-about-data/) and [blog post 2](https://simplystatistics.org/2017/11/20/follow-up-on-reasoning-about-data/)
     - Calibrating Yourself on Residual Plots
     - Modeling the `dm192` data
 
@@ -57,6 +58,7 @@ The audio recording for this class will be posted above as soon as it is availab
 
 5. Cool Things 
     - [datapasta](https://github.com/MilesMcBain/datapasta) may be the most useful thing I've seen in weeks. 
+    - Jeff Leek shares [A few things that would reduce stress around reproducibility/replicability in science](https://simplystatistics.org/2017/11/21/rr-sress/)
 
 ## Announcements after class:
  
