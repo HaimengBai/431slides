@@ -6,7 +6,7 @@ The main page for the course is https://github.com/THOMASELOVE/431
 Class | Date | Slides | Comments
 -----:| -----------------: | ------------------- | ------------------------
 27 | 2017-12-07 | README 27  | Final Class: Quiz 3 made available
-26 | 2017-12-05 | README 26  | Regression Models IV
+26 | 2017-12-05 | [README 26](https://github.com/THOMASELOVE/431slides/blob/master/class_26/README.md)  | Regression Models IV
 25 | 2017-11-30 | [README 25](https://github.com/THOMASELOVE/431slides/blob/master/class_25/README.md) | Regression Models III
 24 | 2017-11-28 | [README 24](https://github.com/THOMASELOVE/431slides/blob/master/class_24/README.md) | Regression Models II, Using `eda.ksam` instead of `eda.2sam`
 23 | 2017-11-16 | [README 23](https://github.com/THOMASELOVE/431slides/blob/master/class_23/README.md) | Regression Models in the Tidyverse: Introduction
