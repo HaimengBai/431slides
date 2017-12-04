@@ -26,6 +26,20 @@ The audio recording for this class will be posted above as soon as it is availab
     - **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request such a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**.
 
 4. FAQ
+    - *Should I name my data set* `data`? *Should I name my model* `model`?
+        - Never. Never ever ever do this.
+        - Always grant a specific name to any object worth storing. 
+        - If you have a kitchen sink model for Question 3, at least name it `model_ks_3`.
+    - *The code runs step-by-step, but doesn't work when I try to knit the whole file*
+        - Have you checked your YAML code at the beginning of the document to be sure it says what it should and no more? 
+        - Every detail matters.
+    - *Which packages should I load, and in what order should I load them?*
+        - I expect most people will need to load `car`, `broom` and `tidyverse`, in that order, for regression modeling.
+        - You may need to load other packages, but DON'T load anything you don't actually need to load. 
+            - If the only thing you'll use mosaic for is `favstats`, for instance, don't load it, just type `mosaic::favstats` when you want to call that function. 
+            - The only good thing loading a package does is eliminate the need to type `nameofpackage::nameoffunction` when you want to run a function from that package.
+            - The bad things loading a package can do may be substantial.
+            - It is **important** to put the tidyverse last, and then (after loading all packages) source in `Love-boost.R`
     - *How do I convert numerically coded variables so that R treats them as factors?*
         - Consider `plasma$sex <- fct_recode(factor(plasma$sex), "Female" = "2", "Male" = "1")`.
     - *When comparing models, would the ANOVA and AIC ever disagree? If so, then what?*
