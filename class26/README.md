@@ -22,7 +22,7 @@ The audio recording for this class will be posted above as soon as it is availab
     - **Quiz 3** will be made available on 2017-12-07 by 5 PM and is due at noon on Tuesday **2017-12-12** (*note change*). 
         - The Quiz covers the entire 431 course, emphasizing Part C.
         - Be sure you have completed reading both *The Signal and the Noise* and *The Elements of Data Analytic Style*.
-        - Another tip for your Project and the Quiz is to familiarize yourself with the following functions from the `forcats` package: `fct_recode`, `fct_collapse`, `fct_relevel`, `fct_reorder`, `fct_count` and `fct_unique`. They're all useful.
+        - Another tip for your Project and the Quiz is to familiarize yourself with the following functions from the `forcats` package: `fct_recode`, `fct_collapse`, `fct_relevel`, `fct_reorder`, `fct_count` and `fct_unique`. They're all useful. The easiest ways to learn about them are to play around with them and see what they do, and read the Factors chapter of [R for Data Science](http://r4ds.had.co.nz/factors.html)
     - **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request such a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**.
 
 4. FAQ
