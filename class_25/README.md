@@ -62,3 +62,5 @@ Perhaps you might want to try something like: `plasma$sex <- fct_recode(factor(p
 - They will certainly disagree, on occasion.
 - They aren't the only options for in-sample comparison - we have adjusted R-square, BIC, for instance. But it's also the case that we'll often compare models out of sample with tools like MAPE, MSPE and the maximum absolute error.
 
+8. Not for now, but for 432: [This](https://github.com/MilesMcBain/datapasta) may be the most useful thing I've seen in some time.
+
