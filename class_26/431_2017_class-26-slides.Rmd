@@ -1,0 +1,713 @@
+---
+title: "431 Class 26"
+author: "Thomas E. Love"
+date: "2017-12-05"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## Today's Agenda
+
+- Discussion of Assignment 6
+- Reasoning About Data
+    + A data analysis allow you to understand how the *data*, as opposed to other aspects of an analysis like assumptions or models, played a role in producing the outputs. (Roger Peng)
+- Anscombe's Data: A Quartet of Simple Regressions
+- Calibrating Yourself on Residual Plots
+- The `dm192` data
+    + Approach 1. We have 7 regression inputs. How well can we predict today's systolic BP?
+    + Approach 2. A new input (statin) is of special interest. What is its relationship with today's systolic BP, after we control for other inputs?
+
+# Assignment 6 Discussion
+
+## Reasoning About Data (Roger Peng)
+
+"...I think it's tempting to think of the goal of methods development as removing the need to think about data and assumptions. The "ultimate" method is one where you don't have to worry about distributions or nonlinearities or interactions or anything like that. But I don't see that as the goal. Good methods, and good analyses, help us think about all those things much more efficiently. So what I might say is that...
+
+When doing large-scale data analyses, the data analyst always has to think about the data and assumptions, and as such, some approaches can actually make that harder to do than others. The goal of the good data analysis is to make it easier to reason about how the data are related to the result, relative to the assumptions you make about the data and the models."
+
+Roger Peng: https://simplystatistics.org/2017/11/20/follow-up-on-reasoning-about-data/
+
+## R Setup for Today
+
+```{r packages in use, message=FALSE}
+library(car); library(broom); library(magrittr)
+library(tidyverse)
+
+dm192 <- read_csv("data/dm192.csv")
+```
+
+
+# Anscombe's Data: A Famous Example
+
+## A Quartet of Simple Linear Regressions
+
+```{r}
+anscombe
+```
+
+## Anscombe Model 1
+
+```{r}
+arm::display(lm(y1 ~ x1, data = anscombe))
+```
+
+## Plot of `y1` vs. `x1`
+
+```{r, echo = FALSE}
+ggplot(anscombe, aes(x = x1, y = y1)) +
+  geom_point(size = 3, col = "#0D0887FF") + 
+  geom_smooth(method = "lm", se = FALSE, col = "royalblue") + 
+  theme_bw()
+```
+
+## Residual Plots for Anscombe Model 1
+
+```{r, echo = FALSE}
+par(mfrow = c(2,2))
+plot(lm(y1 ~ x1, data = anscombe))
+par(mfrow = c(1,1))
+```
+
+## Anscombe Model 2
+
+```{r}
+arm::display(lm(y2 ~ x2, data = anscombe))
+```
+
+## Anscombe Model 3
+
+```{r}
+arm::display(lm(y3 ~ x3, data = anscombe))
+```
+
+## Anscombe Model 4
+
+```{r}
+arm::display(lm(y4 ~ x4, data = anscombe))
+```
+
+# Models 1-4 all look about the same, but what happens if we plot the data?
+
+## Plot the Data (and the regression lines)
+
+```{r, echo = FALSE}
+p1 <- ggplot(anscombe, aes(x = x1, y = y1)) +
+  geom_point(size = 3, col = "#0D0887FF") + 
+  geom_smooth(method = "lm", se = FALSE, col = "royalblue") + 
+  theme_bw()
+
+p2 <- ggplot(anscombe, aes(x = x2, y = y2)) +
+  geom_point(size = 3, col = "#7701A8FF") + 
+  geom_smooth(method = "lm", se = FALSE, col = "royalblue") + 
+  theme_bw()
+
+p3 <- ggplot(anscombe, aes(x = x3, y = y3)) +
+  geom_point(size = 3, col = "#C33D80FF") + 
+  geom_smooth(method = "lm", se = FALSE, col = "royalblue") + 
+  theme_bw()
+
+p4 <- ggplot(anscombe, aes(x = x4, y = y4)) +
+  geom_point(size = 3, col = "blue") + 
+  geom_smooth(method = "lm", se = FALSE, col = "royalblue") + 
+  theme_bw()
+
+gridExtra::grid.arrange(p1, p2, p3, p4, nrow=2)
+```
+
+## Do Residuals vs. Fitted Plots reveal the problems?
+
+```{r, echo = FALSE}
+par(mfrow=c(2,2))
+plot(lm(y1 ~ x1, data = anscombe), which = 1, caption = "Residuals vs. Fitted: Y1 by X1")
+plot(lm(y2 ~ x2, data = anscombe), which = 1, caption = "Residuals vs. Fitted: Y2 by X2")
+plot(lm(y3 ~ x3, data = anscombe), which = 1, caption = "Residuals vs. Fitted: Y3 by X3")
+plot(lm(y4 ~ x4, data = anscombe), which = 1, caption = "Residuals vs. Fitted: Y4 by X4")
+par(mfrow=c(1,1))
+```
+
+# Calibrating Yourself on Residual Plots: Five New Examples
+
+## Your Response Options are
+
+1. Assumptions of regression look reasonable.
+2. Biggest problem is Linearity.
+3. Biggest problem is non-constant variance.
+4. Biggest problem is Normality
+5. Some other problem is the biggest issue.
+
+All of these models describe cross-sectional data, and so there's no issue with independence possible.
+
+## Example A
+
+```{r, echo = FALSE}
+set.seed(12321)
+x1 <- rnorm(150,100,10) + 1:150
+x2 <- rnorm(150,100,10)
+x3 <- c(rep(1,60), rep(2,45), rep(5,45))
+errA <- rnorm(150,3,10)
+y <- 4 + 0.9*x1 - 0.7*x2 + errA*x3
+
+datA <- data.frame(y, x1, x2)
+
+mA <- lm(y ~ x1 + x2, data = datA)
+
+par(mfrow = c(2,2))
+plot(mA)
+par(mfrow = c(1,1))
+```
+
+## Example B
+
+```{r, echo = FALSE}
+set.seed(12321)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,10) 
+x3 <- rt(150, 5)
+x3[25] <- 3.9
+errB <- rchisq(150, 1, 5)
+y <- sqrt(0.4*x1 + 2*x2 + 0.6*x3) + errB
+y[25] <- 43.4
+
+datB <- data.frame(y, x1, x2, x3)
+
+mB <- lm(y ~ x1 + x2 + x3, data = datB)
+
+par(mfrow = c(2,2))
+plot(mB)
+par(mfrow = c(1,1))
+```
+
+## Example C
+
+```{r, echo = FALSE}
+set.seed(12021)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,5) 
+y <- 3*x1 + 2*x2
+
+datC <- data.frame(y, x1, x2)
+
+mC <- lm(y ~ x1 + x2, data = datC)
+
+par(mfrow = c(2,2))
+plot(mC)
+par(mfrow = c(1,1))
+```
+
+## Example D
+
+```{r, echo = FALSE}
+set.seed(12021)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,5) 
+y <- (3*x1 - 2*x2 + rnorm(150,0,3))^2 + rgamma(150, 4, 0.25)
+
+datD <- data.frame(y, x1, x2)
+
+mD <- lm(y ~ x1 + x2, data = datD)
+
+par(mfrow = c(2,2))
+plot(mD)
+par(mfrow = c(1,1))
+```
+
+## Example E
+
+```{r, echo = FALSE}
+set.seed(12345)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,10) + x1/8
+x3 <- rbeta(150, 5, 2)
+errE <- rnorm(150, 0, 3)
+y <- sqrt(0.4*x1 + 2*x2 + 0.6*x3) + errE
+
+datE <- data.frame(y, x1, x2, x3)
+
+mE <- lm(y ~ x1 + x2 + x3, data = datE)
+
+par(mfrow = c(2,2))
+plot(mE)
+par(mfrow = c(1,1))
+```
+
+## OK, back to Example A
+
+```{r, echo = FALSE}
+set.seed(12321)
+x1 <- rnorm(150,100,10) + 1:150
+x2 <- rnorm(150,100,10)
+x3 <- c(rep(1,60), rep(2,45), rep(5,45))
+errA <- rnorm(150,3,10)
+y <- 4 + 0.9*x1 - 0.7*x2 + errA*x3
+
+datA <- data.frame(y, x1, x2)
+
+mA <- lm(y ~ x1 + x2, data = datA)
+
+par(mfrow = c(2,2))
+plot(mA)
+par(mfrow = c(1,1))
+```
+
+## Box Cox for Model A
+
+```{r, echo = FALSE}
+boxCox(mA)
+```
+
+## Model A, but with square root of Y
+
+```{r, echo = FALSE}
+mA2 <- lm(sqrt(y) ~ x1 + x2, data = datA)
+
+par(mfrow = c(2,2))
+plot(mA2)
+par(mfrow = c(1,1))
+```
+
+## New Example B
+
+```{r, echo = FALSE}
+set.seed(12321)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,10) 
+x3 <- rt(150, 5)
+x3[25] <- 3.9
+errB <- rchisq(150, 1, 5)
+y <- sqrt(0.4*x1 + 2*x2 + 0.6*x3) + errB
+y[25] <- 43.4
+
+datB <- data.frame(y, x1, x2, x3)
+
+mB <- lm(y ~ x1 + x2 + x3, data = datB)
+
+par(mfrow = c(2,2))
+plot(mB)
+par(mfrow = c(1,1))
+```
+
+## Example B without point 25
+
+```{r, echo = FALSE}
+mB2 <- lm(y ~ x1 + x2 + x3, data = slice(datB, -25))
+
+par(mfrow = c(2,2))
+plot(mB2)
+par(mfrow = c(1,1))
+```
+
+## Box-Cox for new Model B (-25)
+
+```{r, echo = FALSE}
+boxCox(mB2)
+```
+
+## log(Y) model B (-25)
+
+```{r, echo = FALSE}
+mB3 <- lm(log(y) ~ x1 + x2 + x3, data = slice(datB, -25))
+
+par(mfrow = c(2,2))
+plot(mB3)
+par(mfrow = c(1,1))
+```
+
+## New Example C
+
+```{r, echo = FALSE}
+set.seed(12021)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,5) 
+y <- 3*x1 + 2*x2
+
+datC <- data.frame(y, x1, x2)
+
+mC <- lm(y ~ x1 + x2, data = datC)
+
+par(mfrow = c(2,2))
+plot(mC)
+par(mfrow = c(1,1))
+```
+
+## summary(mC)
+
+```
+Warning message:
+In summary.lm(mC) : essentially perfect fit: 
+summary may be unreliable
+
+Coefficients:
+             Estimate Std. Error   t value Pr(>|t|)    
+(Intercept) 7.426e-14  2.275e-14 3.264e+00  0.00137 ** 
+x1          3.000e+00  2.020e-16 1.485e+16  < 2e-16 ***
+x2          2.000e+00  4.526e-16 4.419e+15  < 2e-16 ***
+
+Residual standard error: 2.745e-14 on 147 df
+Multiple R-squared:      1,	Adjusted R-squared:      1 
+F-stat: 1.176e+32 on 2 and 147 DF,  p-value: < 2.2e-16
+```
+
+## New Example D
+
+```{r, echo = FALSE}
+set.seed(12021)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,5) 
+y <- (3*x1 - 2*x2 + rnorm(150,0,3))^2 + rgamma(150, 4, 0.25)
+
+datD <- data.frame(y, x1, x2)
+
+mD <- lm(y ~ x1 + x2, data = datD)
+
+par(mfrow = c(2,2))
+plot(mD)
+par(mfrow = c(1,1))
+```
+
+## Box-Cox for Model D
+
+```{r, echo = FALSE}
+boxCox(mD)
+```
+
+## New Example D (sqrt of Y)
+
+```{r, echo = FALSE}
+mD2 <- lm(sqrt(y) ~ x1 + x2, data = datD)
+
+par(mfrow = c(2,2))
+plot(mD2)
+par(mfrow = c(1,1))
+```
+
+## New Example E
+
+```{r, echo = FALSE}
+set.seed(12345)
+x1 <- rnorm(150,100,10)
+x2 <- rnorm(150,20,10) + x1/8
+x3 <- rbeta(150, 5, 2)
+errE <- rnorm(150, 0, 3)
+y <- sqrt(0.4*x1 + 2*x2 + 0.6*x3) + errE
+
+datE <- data.frame(y, x1, x2, x3)
+
+mE <- lm(y ~ x1 + x2 + x3, data = datE)
+
+par(mfrow = c(2,2))
+plot(mE)
+par(mfrow = c(1,1))
+```
+
+# Regression and the `dm192` data
+
+## Our Research Question
+
+Can we predict a patient's `sbp` level today, if the seven features we can use to predict that are:
+
+- their `sbp` level one year ago
+- their `a1c` level now
+- their `age`, `race`, `sex` and `insurance` type
+- and the `practice` where they are seen 
+
+We want to use some or all of these seven regression inputs to do the best possible job of predicting today's `sbp`, regardless of which predictors fall in or out of the model.
+
+## The `dm192` data
+
+```{r}
+head(dm192, 4)
+```
+
+- We may want to change some of those `chr` variables to factors.
+- We probably want to address the missingness, too.
+
+## `visdat` to get a first look?
+
+```{r, eval = FALSE, warnings = FALSE}
+## assumes visdat package is installed from CRAN
+library(visdat)
+vis_dat(dm192, sort_type = FALSE)
+```
+
+## `vis_dat(dm192, sort_type = FALSE)`
+
+```{r, echo = FALSE, message = FALSE, warnings = FALSE}
+## assumes visdat package is installed from CRAN
+library(visdat)
+vis_dat(dm192, sort_type = FALSE)
+```
+
+## `vis_miss(dm192)`
+
+```{r, echo = FALSE}
+vis_miss(dm192)
+```
+
+## For 431, we're working with complete cases only
+
+```{r}
+dm192_work <- dm192 %>%
+  select(pt.id, sbp, sbp_old, a1c, age, race, 
+         sex, insurance, practice) %>%
+  filter(complete.cases(.))
+
+head(dm192_work,3)
+```
+
+## Change several character variables to factors
+
+```{r}
+cols_temp <- c("race", "sex", "insurance", "practice")
+
+dm192_work[cols_temp] <- lapply(dm192_work[cols_temp], factor)
+
+head(dm192_work,3)
+```
+
+## Are the factor levels sensible and sensibly ordered? (1)
+
+```{r}
+dm192_work %>% count(race)
+```
+
+## Auto-collapse to most common 2 levels, plus "Others"
+
+```{r}
+dm192_work$race <- dm192_work$race %>%
+  fct_lump(n = 2, other_level = "Others") 
+
+table(dm192_work$race)
+```
+
+## Are the factor levels sensible and sensibly ordered? (2)
+
+```{r}
+dm192_work %>% count(sex)
+```
+
+## Are the factor levels sensible and sensibly ordered? (3)
+
+```{r}
+dm192_work %>% count(insurance)
+```
+
+## Collapse Medicaid and Uninsured together
+
+```{r}
+dm192_work$insurance <- 
+  fct_collapse(dm192_work$insurance, 
+               Medicare = "medicare",
+               Commercial = "commercial",
+               Medicaid_Unins = c("medicaid", "uninsured"))
+
+table(dm192_work$insurance)
+```
+
+## Reorder Factor Levels by Hand
+
+```{r}
+dm192_work$insurance <- 
+  fct_relevel(dm192_work$insurance, 
+              "Medicare", "Commercial")
+
+table(dm192_work$insurance)
+```
+
+## Are the factor levels sensible and sensibly ordered? (4)
+
+```{r}
+dm192_work %>% count(practice)
+```
+
+
+# Predict `sbp` as well as you can, in new data
+
+## Stage 1. Partition the Data
+
+```{r}
+set.seed(43123)
+dm192_train <- 
+  sample_frac(dm192_work, 0.8, replace = FALSE)
+dm192_test <-
+  anti_join(dm192_work, dm192_train)
+
+dim(dm192_train); dim(dm192_test)
+```
+
+## Stage 2. DTDP (everything in training set)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, sbp_old, a1c, 
+                       age, race, sex, insurance, 
+                       practice, sbp))
+```
+
+## Stage 2. DTDP (quantitative predictors)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, sbp_old, a1c, 
+                       age, sbp))
+```
+
+## Stage 2. DTDP (categorical predictors)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, race, sex, 
+                       insurance, practice, sbp))
+```
+
+
+## Stage 3. Exploratory Data Analysis
+
+```{r}
+mosaic::favstats(dm192_train$sbp)
+```
+
+```{r}
+mosaic::favstats(dm192_train$sbp ~ dm192_train$sex)
+```
+
+## Stage 4. Fit Kitchen Sink Model in Training Sample
+
+```{r}
+mod_ks1 <- lm(sbp ~ sbp_old + a1c + age + race + 
+                sex + insurance + practice, 
+              data = dm192_train)
+
+round(glance(mod_ks1),3)
+```
+
+## `arm::display(mod_ks1)` (n = 150, r-sq = 0.90)
+
+```{r, echo = FALSE}
+arm::display(mod_ks1)
+```
+
+## Stage 5. Consider collinearity, residual plots, potential transformations of the outcome
+
+```{r}
+vif(mod_ks1)
+```
+
+## `boxCox(mod_ks1)` ($\lambda$ = 0.6, round to 1)
+
+```{r, echo = FALSE}
+boxCox(mod_ks1)
+```
+
+## `plot(mod_ks1)`
+
+```{r, echo = FALSE}
+par(mfrow=c(2,2))
+plot(mod_ks1)
+par(mfrow=c(1,1))
+```
+
+## Stage 6. Consider stepwise regression to prune the model
+
+```{r}
+step(mod_ks1)
+```
+
+## Suggested model from `step` is 
+
+```
+Step:  AIC=524.98
+sbp ~ sbp_old
+
+          Df Sum of Sq   RSS    AIC
+<none>                  4836 524.98
+- sbp_old  1     40722 45559 859.42
+
+Call:
+lm(formula = sbp ~ sbp_old, data = dm192_train)
+
+Coefficients:
+(Intercept)      sbp_old  
+     9.8485       0.9183  
+```
+
+## So that's just ...
+
+```{r, echo = FALSE}
+ggplot(dm192_train, aes(x = sbp_old, y = sbp)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", col = "red")
+```
+
+## Stage 7. Compare potential models in-sample
+
+```{r}
+mod_simple <- lm(sbp ~ sbp_old, data = dm192_train)
+glance(mod_simple) %>% select(r.squared, adj.r.squared, AIC, BIC)
+glance(mod_ks1) %>% select(r.squared, adj.r.squared, AIC, BIC)
+```
+
+## Residual Plots for Simple One-Predictor Model
+
+```{r, echo=FALSE}
+par(mfrow=c(2,2))
+plot(mod_simple)
+par(mfrow=c(1,1))
+```
+
+## Stage 8. Compare potential models on test data
+
+```{r}
+pred_ks <- predict(mod_ks1, newdata = dm192_test)
+err_ks <- dm192_test$sbp - pred_ks
+summary(abs(err_ks))
+summary(err_ks^2)
+cor(pred_ks, dm192_test$sbp)^2
+```
+
+## Simple Model
+
+```{r}
+pred_simple <- predict(mod_simple, newdata = dm192_test)
+err_simple <- dm192_test$sbp - pred_simple
+summary(abs(err_simple))
+summary(err_simple^2)
+cor(pred_simple, dm192_test$sbp)^2
+```
+
+## MAPE and MSPE results
+
+Model | MAPE | MSPE | Max Abs. Error | Out of Sample R^2^
+--------: | ------: | -----: | -----: | ----:
+Kitchen Sink | `r round(mean(abs(err_ks)),2)` | `r round(mean(err_ks^2),1)` | `r round(max(abs(err_ks)),2)` | `r round(cor(pred_ks, dm192_test$sbp)^2,3)`
+Simple       | `r round(mean(abs(err_simple)),2)` | `r round(mean(err_simple^2),1)` | `r round(max(abs(err_simple)),2)` | `r round(cor(pred_simple, dm192_test$sbp)^2,3)`
+
+Remember that the training sample here has only `r nrow(dm192_test)` observations.
+
+## Stage 9. Re-combine sample and fit final model
+
+```{r}
+model_all <- lm(sbp ~ sbp_old, data = dm192_work)
+
+glance(model_all)
+```
+
+## Tidied `model_all` Coefficients
+
+```{r}
+tidy(model_all)
+```
+
+## Residual Plot for `model_all`
+
+```{r, echo = FALSE}
+par(mfrow = c(2,2))
+plot(model_all)
+par(mfrow = c(1,1))
+```
+
