@@ -30,6 +30,9 @@ The audio recording for this class will be posted above as soon as it is availab
         - Consider `plasma$sex <- fct_recode(factor(plasma$sex), "Female" = "2", "Male" = "1")`.
     - *When comparing models, would the ANOVA and AIC ever disagree? If so, then what?*
         - They will certainly disagree, on occasion. They aren't the only options for in-sample comparison - we have adjusted R-square and BIC, for example. Also, we'll often compare models out of sample with tools like MAPE, MSPE and the maximum absolute error.
+    - *I'm having trouble inserting the image HW6pic.png into my R Markdown file.*
+        - I suggest you try the `include_graphics` function which is part of the `knitr` package.
+        - Typing the following into its own (echo = F) R code chunk may solve your problem: `knitr::include_graphics("HW6pic.png")`
 
 5. Cool Things 
     - [datapasta](https://github.com/MilesMcBain/datapasta) may be the most useful thing I've seen in weeks. 
