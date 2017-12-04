@@ -47,6 +47,8 @@ The audio recording for this class will be posted above as soon as it is availab
     - *I'm having trouble inserting the image HW6pic.png into my R Markdown file.*
         - I suggest you try the `include_graphics` function which is part of the `knitr` package.
         - Typing the following into its own (echo = F) R code chunk may solve your problem: `knitr::include_graphics("HW6pic.png")`
+    - *Should I upgrade to R 3.4.3 now that it's becoming available?*
+        - You are welcome to do so, but I would probably wait until either (a) I got a message that suggested I needed to do so in R, like a needed package wouldn't load under an earlier version of R, or (b) your project and Quiz 3 are complete.
 
 5. Cool Things 
     - [datapasta](https://github.com/MilesMcBain/datapasta) may be the most useful thing I've seen in weeks. 
