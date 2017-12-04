@@ -28,6 +28,12 @@ options(width = 55)
 
 # Assignment 6 Discussion
 
+## `https://xkcd.com/1349/`
+
+![](images/shouldnt_be_hard.png)
+
+Every detail matters. Computers aren't smart enough to guess our intent.
+
 ## Reasoning About Data (Roger Peng)
 
 "...I think it's tempting to think of the goal of methods development as removing the need to think about data and assumptions. The "ultimate" method is one where you don't have to worry about distributions or nonlinearities or interactions or anything like that. But I don't see that as the goal. Good methods, and good analyses, help us think about all those things much more efficiently. So what I might say is that...
@@ -35,6 +41,12 @@ options(width = 55)
 When doing large-scale data analyses, the data analyst always has to think about the data and assumptions, and as such, some approaches can actually make that harder to do than others. The goal of the good data analysis is to make it easier to reason about how the data are related to the result, relative to the assumptions you make about the data and the models."
 
 Roger Peng: https://simplystatistics.org/2017/11/20/follow-up-on-reasoning-about-data/
+
+## The tidyverse can do just about everything.
+
+![](images/overlords.png)
+
+Except think.
 
 ## R Setup for Today
 
