@@ -16,7 +16,7 @@ The audio recording for this class will be posted above as soon as it is availab
     - Modeling the `dm192` data
 
 2. Remaining Course Deliverables
-    - There is very short **Task after Class 26** coming your way as a Google Form.
+    - There is a short [Task after Class 26](https://goo.gl/forms/0YAdfGQIufanWSnG2) online now. I would really appreciate it if you would complete this before 9 AM on Thursday 2017-12-07.
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF): the final presentation. The [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is still here.
         - A piece of project presentation advice, in the form of a [Tweet by Roger Peng](https://twitter.com/rdpeng/status/937460535540383744) which I hope will convince you to spend time on drawing effective graphs that **show your data**...
@@ -78,4 +78,5 @@ The audio recording for this class will be posted above as soon as it is availab
     - Jeff Leek shares [A few things that would reduce stress around reproducibility/replicability in science](https://simplystatistics.org/2017/11/21/rr-sress/)
 
 ## Announcements after class:
- 
+
+6. A reminder that there is a short [Task after Class 26](https://goo.gl/forms/0YAdfGQIufanWSnG2) Google Form online. I would really appreciate it if you would complete this before **9 AM on Thursday 2017-12-07**. Thanks in advance.
