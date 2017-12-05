@@ -32,8 +32,7 @@ dm192 <- read_csv("data/dm192.csv")
 - Anscombe's Data: A Quartet of Simple Regressions
 - Calibrating Yourself on Residual Plots
 - The `dm192` data
-    + Approach 1. We have 7 regression inputs. How well can we predict today's systolic BP?
-    + Approach 2. A new input (statin) is of special interest. What is its relationship with today's systolic BP, after we control for other inputs?
+    + We have 7 regression inputs. How well can we predict today's systolic BP?
 
 ## Assignment 6 Discussion
 
