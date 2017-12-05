@@ -16,6 +16,7 @@ The audio recording for this class will be posted above as soon as it is availab
     - Modeling the `dm192` data
 
 2. Remaining Course Deliverables
+    - There is very short Task After Class 26 coming your way as a Google Form.
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF): the final presentation. The [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is still here.
         - A piece of project presentation advice, in the form of a [Tweet by Roger Peng](https://twitter.com/rdpeng/status/937460535540383744) which I hope will convince you to spend time on drawing effective graphs that **show your data**...
@@ -29,6 +30,7 @@ The audio recording for this class will be posted above as soon as it is availab
             - Consider looking at Jenny Bryan's [Stat545 notes on factors](http://stat545.com/block029_factors.html)
             - You might also consider reading the Factors chapter of [R for Data Science](http://r4ds.had.co.nz/factors.html).
     - **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request such a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**.
+    - **Course Evaluations** You will get at least two evaluations for this course. The official one from the University should be in your email already. Please complete it. It's important. I will also ask you to fill out one for me about specific details of the class, soon. 
 
 4. FAQ
     - *Should I name my data set* `data`? *Should I name my model* `model`?
