@@ -15,6 +15,15 @@ knitr::opts_chunk$set(comment=NA)
 options(width = 55)
 ```
 
+## R Setup for Today
+
+```{r packages in use, message=FALSE}
+library(car); library(broom); library(magrittr)
+library(tidyverse)
+
+dm192 <- read_csv("data/dm192.csv")
+```
+
 ## Today's Agenda
 
 - Discussion of Assignment 6
@@ -26,7 +35,36 @@ options(width = 55)
     + Approach 1. We have 7 regression inputs. How well can we predict today's systolic BP?
     + Approach 2. A new input (statin) is of special interest. What is its relationship with today's systolic BP, after we control for other inputs?
 
-# Assignment 6 Discussion
+## Assignment 6 Discussion
+
+What was the hardest part of the assignment?
+
+- Question 2 
+    + [a] finding the visualization [b] describing it [c] improving it
+- Question 3 
+    + [a] transformation check [b] predictor selection [c] assess collinearity
+- Question 4 
+    + [a] detailed description of model in English [b] model utility (R^2^, sig tests) [c] check assumptions
+- Question 5 
+    + turn the model into a single sentence
+
+## The history of Rome in 10 words
+
+A small city grew gradually to become a vast empire.
+
+## The history of Rome in 25 words
+
+Under kings and emperors and as a republic, Rome grew constantly for almost a thousand years, and became the greatest power of the ancient world.
+
+## The history of Rome in 50 words.
+
+Founded 753 BC, Rome was ruled by kings until 509 BC, and was a republic then until Julius Caesar took power in 46 BC. After Caesar Rome became an empire, with an emperor. Rome's growth from a small city to a great empire was sustained by their success in wars.
+
+## The history of Rome in 100 words.
+
+Founded about 753 BC, Rome was a belligerent little town that consistently prevailed in conflicts with rivals, and thus grew gradually in size and influence. Ruled by kings until 509 BC, Rome transitioned into a disciplined, well-organized republic which sustained excellence in military preparation and capacity, and thus continued to grow for hundreds of years. Ruled by an emperor from about 27 BC, Rome reached the zenith of its power in the years 100 to 180 AD, under the rulers known as the Five Good Emperors. A series of corrupt and incompetent rulers allowed Rome to slip gradually into history.
+
+- Bill James *Fools Rush Inn: More Detours on the Way to Conventional Wisdom*
 
 ## `https://xkcd.com/1349/`
 
@@ -42,21 +80,13 @@ When doing large-scale data analyses, the data analyst always has to think about
 
 Roger Peng: https://simplystatistics.org/2017/11/20/follow-up-on-reasoning-about-data/
 
-## The tidyverse can do just about everything.
+## Just show me the data.
 
-![](images/overlords.png)
+![](images/bigsmall.png)
 
-Except think.
+## The history of Rome in 1000 words
 
-## R Setup for Today
-
-```{r packages in use, message=FALSE}
-library(car); library(broom); library(magrittr)
-library(tidyverse)
-
-dm192 <- read_csv("data/dm192.csv")
-```
-
+![](images/trevi.png)
 
 # Anscombe's Data: A Famous Example
 
@@ -146,6 +176,10 @@ plot(lm(y4 ~ x4, data = anscombe), which = 1, caption = "Residuals vs. Fitted: Y
 par(mfrow=c(1,1))
 ```
 
+## https://xkcd.com/1725/
+
+![](images/linear_regression.png)
+
 # Calibrating Yourself on Residual Plots: Five New Examples
 
 ## Your Response Options are
@@ -156,7 +190,7 @@ par(mfrow=c(1,1))
 4. Biggest problem is Normality
 5. Some other problem is the biggest issue.
 
-All of these models describe cross-sectional data, and so there's no issue with independence possible.
+All of these models describe cross-sectional data, and so you can assume there's no possible issue regarding independence of residuals.
 
 ## Example A
 
@@ -286,7 +320,11 @@ plot(mA2)
 par(mfrow = c(1,1))
 ```
 
-## New Example B
+## Why I limit transformations in 431 a bit
+
+![](images/elephant.png)
+
+## Example B
 
 ```{r, echo = FALSE}
 set.seed(12321)
@@ -333,7 +371,7 @@ plot(mB3)
 par(mfrow = c(1,1))
 ```
 
-## New Example C
+## Example C
 
 ```{r, echo = FALSE}
 set.seed(12021)
@@ -368,7 +406,7 @@ Multiple R-squared:      1,	Adjusted R-squared:      1
 F-stat: 1.176e+32 on 2 and 147 DF,  p-value: < 2.2e-16
 ```
 
-## New Example D
+## Example D
 
 ```{r, echo = FALSE}
 set.seed(12021)
@@ -401,7 +439,7 @@ plot(mD2)
 par(mfrow = c(1,1))
 ```
 
-## New Example E
+## Example E
 
 ```{r, echo = FALSE}
 set.seed(12345)
@@ -463,6 +501,10 @@ vis_dat(dm192, sort_type = FALSE)
 ```{r, echo = FALSE}
 vis_miss(dm192)
 ```
+
+## Forget the algorithms, start cleaning your data!
+
+![](images/startcleaning.png)
 
 ## For 431, we're working with complete cases only
 
@@ -540,6 +582,11 @@ table(dm192_work$insurance)
 dm192_work %>% count(practice)
 ```
 
+## The tidyverse can do just about everything.
+
+![](images/overlords.png)
+
+Except think.
 
 # Predict `sbp` as well as you can, in new data
 
@@ -577,7 +624,6 @@ GGally::ggpairs(select(dm192_train, race, sex,
                        insurance, practice, sbp))
 ```
 
-
 ## Stage 3. Exploratory Data Analysis
 
 ```{r}
@@ -587,6 +633,14 @@ mosaic::favstats(dm192_train$sbp)
 ```{r}
 mosaic::favstats(dm192_train$sbp ~ dm192_train$sex)
 ```
+
+## Usually, I stop myself from doing this.
+
+![](images/brace.PNG)
+
+## Time to fit a Kitchen Sink Model
+
+![](images/sinkmodel.png)
 
 ## Stage 4. Fit Kitchen Sink Model in Training Sample
 
@@ -677,9 +731,9 @@ par(mfrow=c(1,1))
 ```{r}
 pred_ks <- predict(mod_ks1, newdata = dm192_test)
 err_ks <- dm192_test$sbp - pred_ks
-summary(abs(err_ks))
-summary(err_ks^2)
-cor(pred_ks, dm192_test$sbp)^2
+round(summary(abs(err_ks)),3)
+round(summary(err_ks^2),3)
+round(cor(pred_ks, dm192_test$sbp)^2,4)
 ```
 
 ## Simple Model
@@ -687,17 +741,17 @@ cor(pred_ks, dm192_test$sbp)^2
 ```{r}
 pred_simple <- predict(mod_simple, newdata = dm192_test)
 err_simple <- dm192_test$sbp - pred_simple
-summary(abs(err_simple))
-summary(err_simple^2)
-cor(pred_simple, dm192_test$sbp)^2
+round(summary(abs(err_simple)),3)
+round(summary(err_simple^2),3)
+round(cor(pred_simple, dm192_test$sbp)^2,4)
 ```
 
 ## MAPE and MSPE results
 
 Model | MAPE | MSPE | Max Abs. Error | Out of Sample R^2^
 --------: | ------: | -----: | -----: | ----:
-Kitchen Sink | `r round(mean(abs(err_ks)),2)` | `r round(mean(err_ks^2),1)` | `r round(max(abs(err_ks)),2)` | `r round(cor(pred_ks, dm192_test$sbp)^2,3)`
-Simple       | `r round(mean(abs(err_simple)),2)` | `r round(mean(err_simple^2),1)` | `r round(max(abs(err_simple)),2)` | `r round(cor(pred_simple, dm192_test$sbp)^2,3)`
+Kitchen Sink | `r round(mean(abs(err_ks)),2)` | `r round(mean(err_ks^2),1)` | `r round(max(abs(err_ks)),2)` | `r round(cor(pred_ks, dm192_test$sbp)^2,4)`
+Simple       | `r round(mean(abs(err_simple)),2)` | `r round(mean(err_simple^2),1)` | `r round(max(abs(err_simple)),2)` | `r round(cor(pred_simple, dm192_test$sbp)^2,4)`
 
 Remember that the training sample here has only `r nrow(dm192_test)` observations.
 
@@ -723,3 +777,8 @@ plot(model_all)
 par(mfrow = c(1,1))
 ```
 
+## That's all, folks!
+
+Please complete the Task after Class 26 form.
+
+![](images/allfolks.png)
