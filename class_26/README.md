@@ -25,7 +25,7 @@ The audio recording for this class will be posted above as soon as it is availab
     - **Quiz 3** will be made available on 2017-12-07 by 5 PM and is due at noon on Tuesday **2017-12-12** (*note change*). 
         - The Quiz covers the entire 431 course, emphasizing Part C.
         - Be sure you have completed reading both *The Signal and the Noise* and *The Elements of Data Analytic Style*.
-        - Another tip for your Project and the Quiz is to familiarize yourself with some of the functions from the `forcats` package: fct_relevel`, `fct_collapse`, `fct_relevel`, `fct_lump`, and `fct_reorder` for instance.
+        - Another tip for your Project and the Quiz is to familiarize yourself with some of the functions from the `forcats` package: fct_recode`, `fct_collapse`, `fct_relevel`, `fct_lump`, and `fct_reorder` for instance.
             - Confronted with a situation where you need to adjust a factor, these are all useful.
             - Consider looking at Jenny Bryan's [Stat545 notes on factors](http://stat545.com/block029_factors.html)
             - You might also consider reading the Factors chapter of [R for Data Science](http://r4ds.had.co.nz/factors.html).
