@@ -81,6 +81,6 @@ The audio recordings for this class are posted above.
 
 6. A reminder that there is a short [Task after Class 26](https://goo.gl/forms/0YAdfGQIufanWSnG2) Google Form online. I would really appreciate it if you would complete this before **9 AM on Thursday 2017-12-07**. Thanks in advance.
 
-7. I've changed the Project Task E to ask you to submit your work via Canvas, rather than email, and to reflect the reality that you don't need to merge the survey files into a new .csv in Study 1, so that no data set needs to be submitted.
+7. I've changed the Project Task E instructions to ask you to submit your work via Canvas, rather than email, and to reflect the reality that you don't need to merge the survey files into a new .csv in Study 1, so that no Study 1 data set needs to be submitted.
 
 
