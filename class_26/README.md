@@ -4,7 +4,7 @@
 
 Today's Slides are available for download in both [PDF](https://github.com/THOMASELOVE/431slides/blob/master/class_26/431_2017_class-26-slides.pdf) and [R Markdown](https://github.com/THOMASELOVE/431slides/blob/master/class_26/431_2017_class-26-slides.Rmd) formats. 
 
-The audio recording for this class will be posted above as soon as it is available.
+The audio recordings for this class are posted above.
 
 ## Announcements before class:
 
@@ -81,6 +81,6 @@ The audio recording for this class will be posted above as soon as it is availab
 
 6. A reminder that there is a short [Task after Class 26](https://goo.gl/forms/0YAdfGQIufanWSnG2) Google Form online. I would really appreciate it if you would complete this before **9 AM on Thursday 2017-12-07**. Thanks in advance.
 
-7. I've changed the Project Task E to ask you to submit your work via Canvas, rather than email.
+7. I've changed the Project Task E to ask you to submit your work via Canvas, rather than email, and to reflect the reality that you don't need to merge the survey files into a new .csv in Study 1, so that no data set needs to be submitted.
 
 
