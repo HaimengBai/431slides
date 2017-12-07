@@ -7,7 +7,7 @@
 3. Besides the most obvious predictors, what is the best way to select predictors for regression models? How do you know if using the "step" function to decrease the number of variables in a model gives you an appropriate vs inappropriate answer?
 4. How does all that we have learned about checking assumptions translate into the kind of information we should be including in our publications?
 5. What, in your opinion, is the most effective strategy for trying to devise a data visualization to compliment a regression model?
-6. Could linear regression model and its transformation could be a model to fit most statistics problems?
+6. Could linear regression be used in most statistical problems?
 7. How is choosing one method of analysis over another not like fishing for the result you want?  It does not seem possible to pre-specify the specific tests that I will use before I have the data to work with, but doesn't intellectual rigor and honesty require that?
 8. Can we get a PDF version of the class notes?
 9. What do you think is the most important concept we learned from 431 that will pertain to a future career as a biostatistician?
