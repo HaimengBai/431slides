@@ -42,6 +42,8 @@ The audio recording for this class will be posted above as soon as it is availab
 
 5. Cool Stuff
     - Christie Aschwanden has a new piece "[There's No Such Thing as 'Sound Science'](https://fivethirtyeight.com/features/the-easiest-way-to-dismiss-good-science-demand-sound-science/?ex_cid=story-twitter)" at 538 which discusses some issues I worry about a lot.
+    - Justin Wolfers suggests [in this tweet](https://twitter.com/JustinWolfers/status/938518021060087808/photo/1) that rising political polarization in the US isn't about social media, because, as he puts it, the olds don't use it, and they're the most polarized. Blame TV.
+        - He's referring to [this piece in the New York Times](https://www.nytimes.com/2017/12/06/opinion/is-media-driving-americans-apart.html?_r=0) about [this article by Boxell, Gentzow and Shapiro in PNAS](http://www.pnas.org/content/114/40/10612.abstract)
 
 ## Announcements after today's class will be posted on [the WRAPUP page](https://github.com/THOMASELOVE/431slides/tree/master/wrapup).
 
