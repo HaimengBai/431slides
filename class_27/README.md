@@ -23,7 +23,7 @@ The audio recording for this class will be posted above as soon as it is availab
             - Incidentally, after cleaning the Study 1 data, you'll have 168 columns. That was correct in one place, but wrong in another before 2017-12-06. But it's 168.
         - You are welcome to restrict yourself to complete data (outcomes and predictors) in Study 1 and Study 2. We'll impute in 432.
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF): the final presentation. The [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is still here.
-    - **Quiz 3** will be made available today by 5 PM and is due at noon on Tuesday **2017-12-12** (*note change*). 
+    - **Quiz 3** will be made available today by 5 PM and is due at noon on Tuesday **2017-12-12** (*note change*). Visit the [wrapup page](https://github.com/THOMASELOVE/431slides/tree/master/wrapup) for all of the details.
     - **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**. Grades on Assignment 6 will be made available to you as soon as possible.
     - **Course Evaluations** You will get at least two evaluations for this course. The official one from the University should be in your email already. Please complete it. It's important. I will also ask you to fill out one for me about specific details of the class, soon. 
 
