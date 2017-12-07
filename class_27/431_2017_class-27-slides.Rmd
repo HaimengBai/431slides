@@ -1,0 +1,342 @@
+---
+title: "431 Class 27"
+author: "Thomas E. Love"
+date: "2017-12-07"
+output:
+  beamer_presentation:
+    theme: "Madrid"
+    fonttheme: "structurebold"
+    colortheme: "whale"
+    fig_caption: false
+---
+
+```{r set-options, echo=FALSE, cache=FALSE, message=FALSE}
+knitr::opts_chunk$set(comment=NA)
+options(width = 55)
+```
+
+## R Setup for Today
+
+```{r packages in use, message=FALSE}
+library(car); library(broom); library(magrittr)
+library(tidyverse)
+
+dm192 <- read_csv("data/dm192.csv")
+```
+
+## Today's Agenda
+
+- The `dm192` data
+    + We have 7 regression inputs. How well can we predict today's systolic BP?
+- Setting up Quiz 3
+- So what have we learned?
+
+# Regression and the `dm192` data
+
+## Our Research Question
+
+Can we predict a patient's `sbp` level today, if the seven features we can use to predict that are:
+
+- their `sbp` level one year ago
+- their `a1c` level now
+- their `age`, `race`, `sex` and `insurance` type
+- and the `practice` where they are seen 
+
+We want to use some or all of these seven regression inputs to do the best possible job of predicting today's `sbp`, regardless of which predictors fall in or out of the model.
+
+## For 431, we're working with complete cases only
+
+```{r}
+dm192_work <- dm192 %>%
+  select(pt.id, sbp, sbp_old, a1c, age, race, 
+         sex, insurance, practice) %>%
+  filter(complete.cases(.))
+
+head(dm192_work,3)
+```
+
+## Change several character variables to factors
+
+```{r}
+cols_temp <- c("race", "sex", "insurance", "practice")
+
+dm192_work[cols_temp] <- lapply(dm192_work[cols_temp], factor)
+
+head(dm192_work,3)
+```
+
+## Are the factor levels sensible and sensibly ordered? (1)
+
+```{r}
+dm192_work %>% count(race)
+```
+
+## Auto-collapse to most common 2 levels, plus "Others"
+
+```{r}
+dm192_work$race <- dm192_work$race %>%
+  fct_lump(n = 2, other_level = "Others") 
+
+table(dm192_work$race)
+```
+
+## Are the factor levels sensible and sensibly ordered? (2)
+
+```{r}
+dm192_work %>% count(sex)
+```
+
+## Are the factor levels sensible and sensibly ordered? (3)
+
+```{r}
+dm192_work %>% count(insurance)
+```
+
+## Collapse Medicaid and Uninsured together
+
+```{r}
+dm192_work$insurance <- 
+  fct_collapse(dm192_work$insurance, 
+               Medicare = "medicare",
+               Commercial = "commercial",
+               Medicaid_Unins = c("medicaid", "uninsured"))
+
+table(dm192_work$insurance)
+```
+
+## Reorder Factor Levels by Hand
+
+```{r}
+dm192_work$insurance <- 
+  fct_relevel(dm192_work$insurance, 
+              "Medicare", "Commercial")
+
+table(dm192_work$insurance)
+```
+
+## Are the factor levels sensible and sensibly ordered? (4)
+
+```{r}
+dm192_work %>% count(practice)
+```
+
+## The tidyverse can do just about everything.
+
+![](images/overlords.png)
+
+Except think.
+
+# Predict `sbp` as well as you can, in new data
+
+## Stage 1. Partition the Data
+
+```{r}
+set.seed(43123)
+dm192_train <- 
+  sample_frac(dm192_work, 0.8, replace = FALSE)
+dm192_test <-
+  anti_join(dm192_work, dm192_train)
+
+dim(dm192_train); dim(dm192_test)
+```
+
+## Stage 2. DTDP (everything in training set)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, sbp_old, a1c, 
+                       age, race, sex, insurance, 
+                       practice, sbp))
+```
+
+## Stage 2. DTDP (quantitative predictors)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, sbp_old, a1c, 
+                       age, sbp))
+```
+
+## Stage 2. DTDP (categorical predictors)
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+GGally::ggpairs(select(dm192_train, race, sex, 
+                       insurance, practice, sbp))
+```
+
+## Stage 3. Exploratory Data Analysis
+
+```{r}
+mosaic::favstats(dm192_train$sbp)
+```
+
+```{r}
+mosaic::favstats(dm192_train$sbp ~ dm192_train$sex)
+```
+
+## Usually, I stop myself from doing this.
+
+![](images/brace.png)
+
+## Time to fit a Kitchen Sink Model
+
+![](images/sinkmodel.png)
+
+## Stage 4. Fit Kitchen Sink Model in Training Sample
+
+```{r}
+mod_ks1 <- lm(sbp ~ sbp_old + a1c + age + race + 
+                sex + insurance + practice, 
+              data = dm192_train)
+
+round(glance(mod_ks1),3)
+```
+
+## `arm::display(mod_ks1)` (n = 150, r-sq = 0.90)
+
+```{r, echo = FALSE}
+arm::display(mod_ks1)
+```
+
+## Stage 5. Consider collinearity, residual plots, potential transformations of the outcome
+
+```{r}
+vif(mod_ks1)
+```
+
+## `boxCox(mod_ks1)` ($\lambda$ = 0.6, round to 1)
+
+```{r, echo = FALSE}
+boxCox(mod_ks1)
+```
+
+## `plot(mod_ks1)`
+
+```{r, echo = FALSE}
+par(mfrow=c(2,2))
+plot(mod_ks1)
+par(mfrow=c(1,1))
+```
+
+## Stage 6. Consider stepwise regression to prune the model
+
+```{r}
+step(mod_ks1)
+```
+
+## Suggested model from `step` is 
+
+```
+Step:  AIC=524.98
+sbp ~ sbp_old
+
+          Df Sum of Sq   RSS    AIC
+<none>                  4836 524.98
+- sbp_old  1     40722 45559 859.42
+
+Call:
+lm(formula = sbp ~ sbp_old, data = dm192_train)
+
+Coefficients:
+(Intercept)      sbp_old  
+     9.8485       0.9183  
+```
+
+## So that's just ...
+
+```{r, echo = FALSE}
+ggplot(dm192_train, aes(x = sbp_old, y = sbp)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", col = "red")
+```
+
+## Stage 7. Compare potential models in-sample
+
+```{r}
+mod_simple <- lm(sbp ~ sbp_old, data = dm192_train)
+glance(mod_simple) %>% select(r.squared, adj.r.squared, AIC, BIC)
+glance(mod_ks1) %>% select(r.squared, adj.r.squared, AIC, BIC)
+```
+
+## Residual Plots for Simple One-Predictor Model
+
+```{r, echo=FALSE}
+par(mfrow=c(2,2))
+plot(mod_simple)
+par(mfrow=c(1,1))
+```
+
+## Stage 8. Compare potential models on test data
+
+```{r}
+pred_ks <- predict(mod_ks1, newdata = dm192_test)
+err_ks <- dm192_test$sbp - pred_ks
+round(summary(abs(err_ks)),3)
+round(summary(err_ks^2),3)
+round(cor(pred_ks, dm192_test$sbp)^2,4)
+```
+
+## Simple Model
+
+```{r}
+pred_simple <- predict(mod_simple, newdata = dm192_test)
+err_simple <- dm192_test$sbp - pred_simple
+round(summary(abs(err_simple)),3)
+round(summary(err_simple^2),3)
+round(cor(pred_simple, dm192_test$sbp)^2,4)
+```
+
+## MAPE and MSPE results
+
+Model | MAPE | MSPE | Max Abs. Error | Out of Sample R^2^
+--------: | ------: | -----: | -----: | ----:
+Kitchen Sink | `r round(mean(abs(err_ks)),2)` | `r round(mean(err_ks^2),1)` | `r round(max(abs(err_ks)),2)` | `r round(cor(pred_ks, dm192_test$sbp)^2,4)`
+Simple       | `r round(mean(abs(err_simple)),2)` | `r round(mean(err_simple^2),1)` | `r round(max(abs(err_simple)),2)` | `r round(cor(pred_simple, dm192_test$sbp)^2,4)`
+
+Remember that the training sample here has only `r nrow(dm192_test)` observations.
+
+## Stage 9. Re-combine sample and fit final model
+
+```{r}
+model_all <- lm(sbp ~ sbp_old, data = dm192_work)
+
+glance(model_all)
+```
+
+## Tidied `model_all` Coefficients
+
+```{r}
+tidy(model_all)
+```
+
+## Residual Plot for `model_all`
+
+```{r, echo = FALSE}
+par(mfrow = c(2,2))
+plot(model_all)
+par(mfrow = c(1,1))
+```
+
+# So, what have we learned?
+
+## The Signal and The Noise
+
+- Nature's laws do not change very much.
+- There is no reason to conclude that the affairs of men are becoming more predictable. The opposite may well be true.
+
+Thinking Probabilistically, and using the Bayesian way of thinking about prediction
+
+- Don't fall into the comforting trap of binary thinking. Expressions of uncertainty are not admissions of weakness.
+- Know Where You're Coming From - state explicitly how likely we believe an event is to occur *before* we begin to weigh the evidence.
+- The volume of information is increasing exponentially. But the signal-to-noise ratio may be waning. We need better ways of distinguishing the two.
+
+Our bias is to think that we are better at prediction than we really are.
+
+## The Course So Far
+
+1. Statistics is too important to be left to statisticians.
+2. Models and visualization are the big takeaways.
+3. Reproducible research is the current wave. 
+4. Things are changing quickly. We live in interesting times.
+
+## That's all, folks!
+
+![](images/allfolks.png)
