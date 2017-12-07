@@ -17,6 +17,7 @@ The audio recording for this class will be posted above as soon as it is availab
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
         - I've changed the Project Task E instructions to ask you to submit your work via **Canvas**, rather than email.
         - You don't need to merge the survey files into a new .csv in Study 1, so no Study 1 data set should be submitted.
+            - Incidentally, after cleaning the Study 1 data, you'll have 168 columns. That was correct in one place, but wrong in another before 2017-12-06. But it's 168.
         - You are welcome to restrict yourself to complete data (outcomes and predictors) in Study 1 and Study 2. We'll impute in 432.
     - [Project Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF): the final presentation. The [Schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md) is still here.
     - **Quiz 3** will be made available today by 5 PM and is due at noon on Tuesday **2017-12-12** (*note change*). 
