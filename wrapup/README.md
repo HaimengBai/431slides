@@ -8,7 +8,7 @@ This is the place for all of Dr. Love's communications after our final class.
 - The [Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1) you'll use to submit your answers to Quiz 3 [is now available](https://goo.gl/forms/yj5YuBusGF7hVvnx1). Remember that you must complete the Quiz by 2017-12-12 at 12 NOON.
 - The data and code you'll need for Quiz 3 are posted above, and are also posted on [our data page](https://github.com/thomaselove/431data). There are three files, in particular, and they are `hospsim.csv`, `surveyday1_2017.csv` and `wc_code.R`.
 - Good luck! 
-    - *Note*: After the deadline passes, a detailed answer sketch will be posted here, and you'll receive an email with your grade at your CWRU account when I've reviewed your work, which will let you see how you did on each question and overall.
+    - *Note*: After the deadline passes, a detailed answer sketch will be posted here, and you'll receive an email with your grade at your CWRU account when I've reviewed your work, and this will let you see how you did on each question and overall.
 
 ## Announcements
 
