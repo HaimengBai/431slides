@@ -10,6 +10,10 @@ This is the place for all of Dr. Love's communications after our final class.
 - Good luck! 
     - *Note*: After the deadline passes, a detailed answer sketch will be posted here, and you'll receive an email with your grade at your CWRU account when I've reviewed your work, and this will let you see how you did on each question and overall.
 
+## Project Hints / Suggestions
+
+1. **Don't fit impossible kitchen sink models.** When fitting a kitchen sink model, count the number of observations in your training data set. Call that N. Then count the number of coefficients (slopes + intercept) you are planning to fit. Call that COEFFS. If N / COEFFS < 15, then you should be reducing the number of coefficients you are trying to fit in your kitchen sink model. If N / COEFFS < 10 or so, then this becomes absolutely imperative. Ideally, N / COEFFS should be 20 or more for a straightforward kitchen sink model.
+
 ## Announcements
 
 1. Good luck on the Quiz and your Project!
