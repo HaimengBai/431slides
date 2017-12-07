@@ -16,12 +16,12 @@
 
 # Potential 432 Topics So Far
 
-My goal, honestly, is to write 12 case studies, and discuss them through the course. We'll see what happens.
+My goal, honestly, is to write the course in terms of a series of case studies, and discuss them through the semester. So far, I have three years of past notes and slides, and no desire to use any of them as they are. We'll see what happens between December 15 and January 15.
 
 Topic | Covered in 432?
 -----------------------------------------------------------------------: | ----------------
-Two Projects, Shorter Quizzes, Minute Papers | Yes
-Better Distribution of Work Throughout the Term | Yes
+Two Projects, Shorter Quizzes, Minute Papers | I think so, yes.
+Better Distribution of Work Throughout the Term | Definitely a big goal.
 Logistic Regression | Yes
 Imputation and analysis with missing values | Yes
 When confronted with new data, deciding on the best way to model it | Yes
