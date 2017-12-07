@@ -16,8 +16,14 @@
 
 # Potential 432 Topics So Far
 
+My goal, honestly, is to write 12 case studies, and discuss them through the course. We'll see what happens.
+
 Topic | Coverage in 432
 -----------------------------------------------------------------------: | ----------------
+Two Projects | Guaranteed
+Shorter Quizzes | Guaranteed
+Shorter, More Frequent Work, especially early in the term | Guaranteed
+Minute Papers | Guaranteed
 Logistic Regression | Guaranteed
 Imputation and analysis with missing values | Guaranteed
 When confronted with new data, deciding on the best way to model it | Guaranteed
@@ -37,15 +43,16 @@ Kaplan-Meier estimator, Cox proportional hazards models | Guaranteed
 Building a Web-Based Presentation of Your Work | High Hopes
 P values, Garden of Forking Paths, Registering Your Analyses | High Hopes
 Building a Decent Table 1 without going nuts | High Hopes
+Log-Linear Models for Contingency Tables | High Hopes
 Mixed Effect Models | High Hopes
 Repeated Measures ANOVA | I hope so
 Hierarchical Linear Models | I hope so
 Longitudinal Analysis other than that | Not much
 Other Survival Analysis topics | Nope (we have a course in this subject)
-Cluster Analysis, Principal Components Analysis | A bit
-Machine learning methods like the lasso and elastic net | A bit
-Scraping data from the web | A bit
-Sensitivity, Specificity, ROC analysis | A bit
+Cluster Analysis, Principal Components Analysis | A bit, maybe
+Machine learning methods like the lasso and elastic net | A bit, maybe
+Scraping data from the web | A bit, maybe
+Sensitivity, Specificity, ROC analysis | A bit, maybe
 Special Methods for Clinical Trials | Not much outside of experiments
 Propensity Scores, Observational Studies, Causal Effects | Just enough to encourage you to take 500
 The problem of multiple comparisons and when to worry about it | I don't know
