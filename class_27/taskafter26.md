@@ -20,8 +20,8 @@ My goal, honestly, is to write the course in terms of a series of case studies, 
 
 Topic | Covered in 432?
 -----------------------------------------------------------------------: | ----------------
-Two Projects, Shorter Quizzes, Minute Papers, Live R demos | I think so, yes.
-Better Distribution of Work Throughout the Term | Definitely a big goal.
+Two Projects, Short(er) Quizzes, [Minute Papers](http://oncourseworkshop.com/self-awareness/one-minute-paper/), Statistics in Action, Live R demos, Working in Pairs, 431-help, Teaching Assistants, Love-boost as an R package | Definitely the plan.
+Better Distribution of Work Throughout the Term | A major goal.
 Logistic Regression | Yes
 Imputation and analysis with missing values | Yes (sorry this didn't make 431)
 Weighted Linear Regression and Robust Linear Regression | Yes
@@ -36,11 +36,12 @@ Jeff Leek's "[How To Be a Modern Scientist](https://leanpub.com/modernscientist)
 Regression models for count data (Poisson, Negative Binomial) | Yes
 Regression models for multi-categorical outcomes | Yes
 Data Management: Wrangling/Rectangling using the Tidyverse and [R for Data Science](http://r4ds.had.co.nz/) | Yes
+Merging Data Sets, and the notion of Split-Apply-Combine | Yes
 Communicating the Results of Statistical Models Well | Yes
 Multi-factor ANOVA, designing experiments | Yes
 Kaplan-Meier estimator, Cox proportional hazards models | Yes
-Gelman's retrodesign function to assess an inference after the fact | Yes (sorry this didn't make 431)
-Reading and Critiquing the Code of Other People | I really hope so.
+[Beyond Power Calculations](http://www.stat.columbia.edu/~gelman/research/published/retropower_final.pdf): Gelman's retrodesign function to assess an inference after the fact | Yes (sorry this didn't make 431)
+Reading and Critiquing the Code of Other People, Reproducible Examples | I really hope so.
 Using GitHub and [Happy Git with R](http://happygitwithr.com/) for more than we did this term | I really hope so.
 Building a Web-Based Presentation of Your Work | I really hope so.
 Learning [a little Shiny](https://shiny.rstudio.com/) | I really hope so.
