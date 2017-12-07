@@ -24,7 +24,11 @@ This is the place for all of Dr. Love's communications after our final class.
 
 3. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
 
-4. **432** 
+4. **Course Evaluations** In addition to the University evaluation, I would be extremely grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
+
+5. **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**. Grades on Assignment 6 will be made available to you as soon as possible.
+
+6. **432** 
     - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
     - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
     - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
