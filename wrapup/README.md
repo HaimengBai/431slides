@@ -29,3 +29,4 @@ This is the place for all of Dr. Love's communications after our final class.
     - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
     - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
     - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
+    - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
