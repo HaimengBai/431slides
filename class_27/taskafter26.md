@@ -32,6 +32,7 @@ Data Management: Wrangling Data using the Main Verbs of the Tidyverse | Guarante
 Communicating the Results of Statistical Models Well | Guaranteed
 Live R Demos | Guaranteed
 Critiquing the Code of Other People | Guaranteed
+Multi-factor ANOVA, designing experiments | Guaranteed
 Building a Web-Based Presentation of Your Work | High Hopes
 P values, Garden of Forking Paths, Registering Your Analyses | High Hopes
 Building a Decent Table 1 without going nuts | High Hopes
@@ -45,6 +46,7 @@ Cluster Analysis, Principal Components Analysis | A bit
 Machine learning methods like the lasso and elastic net | A bit
 Scraping data from the web | A bit
 Sensitivity, Specificity, ROC analysis | A bit
-Special Methods for Clinical Trials | A bit
-Propensity Scores | Just enough to encourage you to take 500
+Special Methods for Clinical Trials | Not much outside of experiments
+Propensity Scores, Observational Studies, Causal Effects | Just enough to encourage you to take 500
+The problem of multiple comparisons and when to worry about it | I don't know
 Markov Chains | None
