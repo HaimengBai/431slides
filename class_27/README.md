@@ -14,7 +14,9 @@ The audio recording for this class will be posted above as soon as it is availab
         - I compiled [questions about 431 and suggested 432 topics](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md).
         - In general, people were a little more confident about the project than Quiz 3 and more confident about Quiz 3 than HW 6.
     - Regression Material
-    - Setup for Quiz 3
+    - The Signal and The Noise
+    - What are you **prepared** to do?
+    - Quiz 3: The [wrapup page](https://github.com/THOMASELOVE/431slides/tree/master/wrapup) will be the place for all of the details.
      
 2. Remaining Course Deliverables
     - [Project Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE): the final report, due noon Wednesday 2017-12-13.
