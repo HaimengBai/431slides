@@ -28,7 +28,7 @@ Do you feel confident about your ability to do work you'll be proud of in your *
 My goal, honestly, is to write the course in terms of a series of case studies, and discuss them through the semester. So far, I have three years of past notes and slides, and no desire to use any of them as they are. We'll see what happens between December 15 and January 15.
 
 Topic | Covered in 432?
------------------------------------------------------------------------: | ----------------
+-----------------------------------------------------------------------: | :---------------:
 Two Projects, Short(er) Quizzes, [Minute Papers](http://oncourseworkshop.com/self-awareness/one-minute-paper/), Statistics in Action, Live R demos, Working in Pairs, 431-help, Teaching Assistants, Love-boost as an R package | Definitely the plan.
 Better Distribution of Work Throughout the Term | A major goal.
 Logistic Regression | Yes
