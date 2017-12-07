@@ -9,7 +9,10 @@ The audio recording for this class will be posted above as soon as it is availab
 ## Announcements before class:
 
 1. Today's Agenda
-    - Discussion of [Task after Class 26](https://goo.gl/forms/0YAdfGQIufanWSnG2)
+    - Discussion of Task after Class 26. 
+        - Here is the [Google Form](https://goo.gl/forms/0YAdfGQIufanWSnG2) 
+        - I compiled [questions about 431 and suggested 432 topics](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md).
+        - In general, people were a little more confident about the project than Quiz 3 and more confident about Quiz 3 than HW 6.
     - Regression Material
     - Setup for Quiz 3
      
