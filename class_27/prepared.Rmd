@@ -1,0 +1,658 @@
+---
+title: "Demonstration Project"
+author: "TEL & Rujia Liu"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    toc: TRUE
+    toc_float: TRUE
+    number_sections: TRUE
+    df_print: paged
+---
+
+```{r packages, message=FALSE, warning=FALSE}
+library(knitr); library(lme4); library(broom)
+library(magrittr); library(tidyverse)
+
+## Global options
+opts_chunk$set(comment=NA)
+opts_knit$set(width=80)
+```
+
+```{r setup, include=FALSE}
+decim <- function(x, k) format(round(x, k), nsmall=k)
+thou <- function(x) format(round(x, 0), big.mark = ",")
+```
+
+# Data Setup
+
+The `hbpdat` file contains the most recent master data.
+
+```{r data_ingest, warning=FALSE}
+hbpraw <- read.csv("master htn 2017-12-05.csv") %>% tbl_df
+
+hbpdat <- hbpraw %>%
+  filter(CATVAR %in% c("Overall", "INSUR", "RACE", "GENDER",
+                       "INCOMECAT", "HSGRADCAT", "LANG", "LOCATION"))
+
+hbpdat$time <- 2006.5 + (hbpdat$REPORT/2)
+hbpdat$years <- hbpdat$time - 2012.5 # years since 2012-13 report
+hbpdat$incomeK <- hbpdat$INC_MEAN/1000
+
+hbpdat$category <- fct_recode(hbpdat$CATVAR,
+                              "Insurance" = "INSUR",
+                             "Place of Residence" = "LOCATION",
+                             "Education" = "HSGRADCAT",
+                             "Sex" = "GENDER",
+                             "Race-Ethnicity" = "RACE",
+                             "Language" = "LANG",
+                             "Income" = "INCOMECAT")
+
+hbpdat$subgroup <- fct_recode(hbpdat$CATTXT,
+     "African-Am." = "african-aO",
+     "Cleveland" = "CLEVE",
+     "Commercial" = "COMMERCIAL",
+     "Cuyahoga Suburbs" = "CUYA NOT CLEVE",
+     "Prefer English" = "ENGLISH",
+     "Female" = "FEMALE",
+     "High Education" = "HIGH EDUC",
+     "High Income" = "HIGH INCOME",
+     "Hispanic/Latino" = "hispanicO",
+     "Low Education" = "LOW EDUC",
+     "Low Income" = "LOW INCOME",
+     "Male" = "MALE",
+     "Medicaid" = "MEDICAID",
+     "Medicare" = "MEDICARE",
+     "Middle Education" = "MIDDLE EDUC",
+     "Middle Income" = "MIDDLE INCOME",
+     "Outside Cuyahoga" = "OUTSIDE CUYA",
+     "ALL PATIENTS" = "OVERALL",
+     "Prefer Spanish" = "SPANISH",
+     "Uninsured" = "UNINSURED",
+     "White" = "whiteO")
+```
+
+## Analytic Decisions Implemented in this Document
+
+These issues will need to be discussed on 2017-12-13.
+
+1. Include data from 2012-13 through 2016-17.
+2. Include data from all practices at all systems.
+3. Include data from a practice if it has at least 50 HBP subjects.
+4. Include data from a practice in subgroup analyses only if it has at least 50 HBP subjects in that subgroup.
+5. Covariate adjustment is time-varying, rather than baseline only.
+6. Clustering by practice, but no adjustment for practice's baseline level of BP < 140/90.
+7. Time is measured in calendar time, so this is not a "Time 0" analysis.
+8. Fit linear, rather than piecewise linear or quadratic or spline models.
+
+# Mixed Effects Models for BP Control (Analysis 1)
+
+The goal here is to describe overall change in BP < 140/90 from 2012-13 through 2016-17 across the region, first in an unadjusted analysis, then in a covariate-adjusted analysis. We could present separate estimates overall and within insurance groups.
+
+## Across All Patients (Overall subgroup)
+
+### Select out the overall practice data from 2012-13 and forward, only those practices with at least 50 patients.
+
+```{r}
+hbp_overall <- hbpdat %>%
+  filter(PRACTICE != "System") %>%
+  filter(PRACTICE != "Region") %>%
+  filter(SYSTEM != "SNET") %>%
+  filter(time >= 2012.5) %>%
+  filter(HBPPTS > 49) %>%
+  filter(ORDER == 100) %>%
+  select(REPORT, time, years, SYSTEM, PRACTICE, PRACCODE, ORDER, category, subgroup,
+         HBPPTS, BPLT14090, BMILT30, AGE_MEAN, FEMALE, incomeK, ED_MEAN, WHITE, 
+         MEDICARE, COMMERCIAL, MEDICAID, UNINSURED, ENGLISH, SPANISH, 
+         CLEVE, CUYNOTCLE, NOTCUYA ) %>% 
+  droplevels()
+```
+
+### Descriptive Summaries (counting only practices with at least 50 HBP patients)
+
+```{r}
+hbp_overall <- hbp_overall %>%
+  mutate(n_BPLT14090 = round(HBPPTS * BPLT14090 / 100, 0))
+
+tab_d_overall <- hbp_overall %>% group_by(time, years) %>%
+  summarize(Practices = n(), Patients = sum(HBPPTS), 
+            Pct_below_14090 = 100*sum(n_BPLT14090)/sum(HBPPTS))
+
+kable(tab_d_overall)
+```
+
+### Figure 1. Achievement of BP < 140/90, Region-wide, All Patients
+
+```{r}
+ggplot(data = hbp_overall, aes(x = time, y = BPLT14090, size = HBPPTS)) +
+  geom_point(pch = 1) +
+  guides(size = FALSE) +
+  geom_line(data = tab_d_overall, aes(x = time, y = Pct_below_14090), 
+            col = "blue", size = 1) +
+  geom_label(data = tab_d_overall, aes(x = time, y = Pct_below_14090, 
+                                  label = decim(Pct_below_14090,1)), 
+             col = "blue", size = 3) +
+  theme_bw() + 
+  labs(x = "Better Health Partnership Reporting Period",
+       y = "% of Patients with Blood Pressure below 140/90",
+       title = "Blood Pressure below < 140/90: July 2012 - June 2017, All Patients",
+       subtitle = "Regional (blue) and Practice Achievement",
+       caption = "Practice size proportional to circle size, region in blue, minimum 50 patients per practice")
+
+```
+
+### Model 1. No covariates model, assuming linear time effect
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients. It's a weighted linear mixed model.
+
+```{r}
+mod1_overall <- hbp_overall %$%
+  lmer(BPLT14090 ~ years + (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod1_overall)
+# confint(mod1_overall, method = "Wald")
+```
+
+### Model 2. Time-varying covariate adjusted model, linear time
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients, and using as covariates the following values that vary over time:
+
+- % of patients with BMI < 30
+- mean age of patients in the practice
+- % of patients in the practice who are female
+- neighborhood median income estimate (in $1000s)
+- neighborhood high school graduation rate estimate
+- % of patients who are white
+- % of patients who have commercial insurance
+- % of patients who have Medicaid insurance
+- % of patients who are uninsured
+- % of patients who prefer English
+- % of patients who live in the Cuyahoga County suburbs
+- % of patients who live outside of Cuyahoga County
+
+It, too is a weighted linear mixed model.
+
+```{r}
+mod2_overall <- hbp_overall %$%
+  lmer(BPLT14090 ~ years + BMILT30 + AGE_MEAN + 
+         FEMALE + incomeK + ED_MEAN + WHITE + 
+         COMMERCIAL + MEDICAID + UNINSURED + 
+         ENGLISH + CUYNOTCLE + NOTCUYA + 
+         (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod2_overall)
+# confint(mod2_overall, method = "Wald")
+```
+
+## Models 1 and 2 restricted to Medicare patients
+
+### Select out the Medicare practice data from 2012-13 and forward, only those practices with at least 50 Medicare patients.
+
+```{r}
+hbp_medicare <- hbpdat %>%
+  filter(PRACTICE != "System") %>%
+  filter(PRACTICE != "Region") %>%
+  filter(SYSTEM != "SNET") %>%
+  filter(time >= 2012.5) %>%
+  filter(HBPPTS > 49) %>%
+  filter(ORDER == 101) %>%
+  select(REPORT, time, years, SYSTEM, PRACTICE, PRACCODE, ORDER, category, subgroup,
+         HBPPTS, BPLT14090, BMILT30, AGE_MEAN, FEMALE, incomeK, ED_MEAN, WHITE, 
+         MEDICARE, COMMERCIAL, MEDICAID, UNINSURED, ENGLISH, SPANISH, 
+         CLEVE, CUYNOTCLE, NOTCUYA ) %>% 
+  droplevels()
+```
+
+### Descriptive Summaries (counting only practices with at least 50 Medicare HBP patients)
+
+```{r}
+hbp_medicare <- hbp_medicare %>%
+  mutate(n_BPLT14090 = round(HBPPTS * BPLT14090 / 100, 0))
+
+tab_d_medicare <- hbp_medicare %>% group_by(time, years) %>%
+  summarize(Practices = n(), Patients = sum(HBPPTS), 
+            Pct_below_14090 = 100*sum(n_BPLT14090)/sum(HBPPTS))
+
+kable(tab_d_medicare)
+```
+
+### Figure 2. Achievement of BP < 140/90, Region-wide, Medicare Patients
+
+```{r}
+ggplot(data = hbp_medicare, aes(x = time, y = BPLT14090, size = HBPPTS)) +
+  geom_point(pch = 1) +
+  guides(size = FALSE) +
+  geom_line(data = tab_d_medicare, aes(x = time, y = Pct_below_14090), 
+            col = "blue", size = 1) +
+  geom_label(data = tab_d_medicare, aes(x = time, y = Pct_below_14090, 
+                                  label = decim(Pct_below_14090,1)), 
+             col = "blue", size = 3) +
+  theme_bw() + 
+  labs(x = "Better Health Partnership Reporting Period",
+       y = "% of Patients with Blood Pressure below 140/90",
+       title = "Blood Pressure below < 140/90: July 2012 - June 2017, Medicare Patients",
+       subtitle = "Regional (blue) and Practice Achievement",
+       caption = "Practice size proportional to circle size, region in blue, minimum 50 Medicare patients per practice")
+
+```
+
+### Model 1. No covariates model, assuming linear time effect
+
+```{r}
+mod1_medicare <- hbp_medicare %$%
+  lmer(BPLT14090 ~ years + (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod1_medicare)
+# confint(mod1_medicare, method = "Wald")
+```
+
+### Model 2. Time-varying covariate adjusted model, linear time
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients, and using as covariates the following values that vary over time:
+
+- % of patients with BMI < 30
+- mean age of patients in the practice
+- % of patients in the practice who are female
+- neighborhood median income estimate (in $1000s)
+- neighborhood high school graduation rate estimate
+- % of patients who are white
+- % of patients who prefer English
+- % of patients who live in the Cuyahoga County suburbs
+- % of patients who live outside of Cuyahoga County
+
+BUT EXCLUDING the insurance information.
+
+It, too is a weighted linear mixed model.
+
+```{r}
+mod2_medicare <- hbp_medicare %$%
+  lmer(BPLT14090 ~ years + BMILT30 + AGE_MEAN + 
+         FEMALE + incomeK + ED_MEAN + WHITE + 
+         ENGLISH + CUYNOTCLE + NOTCUYA + 
+         (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod2_medicare)
+# confint(mod2_medicare, method = "Wald")
+```
+
+## Models 1 and 2 restricted to Commercial patients
+
+### Select out the Commercial practice data from 2012-13 and forward, only those practices with at least 50 Commercial patients.
+
+```{r}
+hbp_commercial <- hbpdat %>%
+  filter(PRACTICE != "System") %>%
+  filter(PRACTICE != "Region") %>%
+  filter(SYSTEM != "SNET") %>%
+  filter(time >= 2012.5) %>%
+  filter(HBPPTS > 49) %>%
+  filter(ORDER == 102) %>%
+  select(REPORT, time, years, SYSTEM, PRACTICE, PRACCODE, ORDER, category, subgroup,
+         HBPPTS, BPLT14090, BMILT30, AGE_MEAN, FEMALE, incomeK, ED_MEAN, WHITE, 
+         MEDICARE, COMMERCIAL, MEDICAID, UNINSURED, ENGLISH, SPANISH, 
+         CLEVE, CUYNOTCLE, NOTCUYA ) %>% 
+  droplevels()
+```
+
+### Descriptive Summaries (counting only practices with at least 50 Commercial HBP patients)
+
+```{r}
+hbp_commercial <- hbp_commercial %>%
+  mutate(n_BPLT14090 = round(HBPPTS * BPLT14090 / 100, 0))
+
+tab_d_commercial <- hbp_commercial %>% group_by(time, years) %>%
+  summarize(Practices = n(), Patients = sum(HBPPTS), 
+            Pct_below_14090 = 100*sum(n_BPLT14090)/sum(HBPPTS))
+
+kable(tab_d_commercial)
+```
+
+### Figure 3. Achievement of BP < 140/90, Region-wide, Commercial Patients
+
+```{r}
+ggplot(data = hbp_commercial, aes(x = time, y = BPLT14090, size = HBPPTS)) +
+  geom_point(pch = 1) +
+  guides(size = FALSE) +
+  geom_line(data = tab_d_commercial, aes(x = time, y = Pct_below_14090), 
+            col = "blue", size = 1) +
+  geom_label(data = tab_d_commercial, aes(x = time, y = Pct_below_14090, 
+                                  label = decim(Pct_below_14090,1)), 
+             col = "blue", size = 3) +
+  theme_bw() + 
+  labs(x = "Better Health Partnership Reporting Period",
+       y = "% of Patients with Blood Pressure below 140/90",
+       title = "Blood Pressure below < 140/90: July 2012 - June 2017, Commercial Patients",
+       subtitle = "Regional (blue) and Practice Achievement",
+       caption = "Practice size proportional to circle size, region in blue, minimum 50 Commercial patients per practice")
+
+```
+
+### Model 1. No covariates model, assuming linear time effect
+
+```{r}
+mod1_commercial <- hbp_commercial %$%
+  lmer(BPLT14090 ~ years + (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod1_commercial)
+# confint(mod1_commercial, method = "Wald")
+```
+
+### Model 2. Time-varying covariate adjusted model, linear time
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients, and using as covariates the following values that vary over time:
+
+- % of patients with BMI < 30
+- mean age of patients in the practice
+- % of patients in the practice who are female
+- neighborhood median income estimate (in $1000s)
+- neighborhood high school graduation rate estimate
+- % of patients who are white
+- % of patients who prefer English
+- % of patients who live in the Cuyahoga County suburbs
+- % of patients who live outside of Cuyahoga County
+
+BUT EXCLUDING the insurance information.
+
+It, too is a weighted linear mixed model.
+
+```{r}
+mod2_commercial <- hbp_commercial %$%
+  lmer(BPLT14090 ~ years + BMILT30 + AGE_MEAN + 
+         FEMALE + incomeK + ED_MEAN + WHITE + 
+         ENGLISH + CUYNOTCLE + NOTCUYA + 
+         (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod2_commercial)
+# confint(mod2_commercial, method = "Wald")
+```
+
+## Models 1 and 2 restricted to Medicaid patients
+
+### Select out the Medicaid practice data from 2012-13 and forward, only those practices with at least 50 Medicaid patients.
+
+```{r}
+hbp_medicaid <- hbpdat %>%
+  filter(PRACTICE != "System") %>%
+  filter(PRACTICE != "Region") %>%
+  filter(SYSTEM != "SNET") %>%
+  filter(time >= 2012.5) %>%
+  filter(HBPPTS > 49) %>%
+  filter(ORDER == 103) %>%
+  select(REPORT, time, years, SYSTEM, PRACTICE, PRACCODE, ORDER, category, subgroup,
+         HBPPTS, BPLT14090, BMILT30, AGE_MEAN, FEMALE, incomeK, ED_MEAN, WHITE, 
+         MEDICARE, COMMERCIAL, MEDICAID, UNINSURED, ENGLISH, SPANISH, 
+         CLEVE, CUYNOTCLE, NOTCUYA ) %>% 
+  droplevels()
+```
+
+### Descriptive Summaries (counting only practices with at least 50 Medicaid HBP patients)
+
+```{r}
+hbp_medicaid <- hbp_medicaid %>%
+  mutate(n_BPLT14090 = round(HBPPTS * BPLT14090 / 100, 0))
+
+tab_d_medicaid <- hbp_medicaid %>% group_by(time, years) %>%
+  summarize(Practices = n(), Patients = sum(HBPPTS), 
+            Pct_below_14090 = 100*sum(n_BPLT14090)/sum(HBPPTS))
+
+kable(tab_d_medicaid)
+```
+
+### Figure 4. Achievement of BP < 140/90, Region-wide, Medicaid Patients
+
+```{r}
+ggplot(data = hbp_medicaid, aes(x = time, y = BPLT14090, size = HBPPTS)) +
+  geom_point(pch = 1) +
+  guides(size = FALSE) +
+  geom_line(data = tab_d_medicaid, aes(x = time, y = Pct_below_14090), 
+            col = "blue", size = 1) +
+  geom_label(data = tab_d_medicaid, aes(x = time, y = Pct_below_14090, 
+                                  label = decim(Pct_below_14090,1)), 
+             col = "blue", size = 3) +
+  theme_bw() + 
+  labs(x = "Better Health Partnership Reporting Period",
+       y = "% of Patients with Blood Pressure below 140/90",
+       title = "Blood Pressure below < 140/90: July 2012 - June 2017, Medicaid Patients",
+       subtitle = "Regional (blue) and Practice Achievement",
+       caption = "Practice size proportional to circle size, region in blue, minimum 50 Medicaid patients per practice")
+
+```
+
+### Model 1. No covariates model, assuming linear time effect
+
+```{r}
+mod1_medicaid <- hbp_medicaid %$%
+  lmer(BPLT14090 ~ years + (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod1_medicaid)
+# confint(mod1_medicaid, method = "Wald")
+```
+
+### Model 2. Time-varying covariate adjusted model, linear time
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients, and using as covariates the following values that vary over time:
+
+- % of patients with BMI < 30
+- mean age of patients in the practice
+- % of patients in the practice who are female
+- neighborhood median income estimate (in $1000s)
+- neighborhood high school graduation rate estimate
+- % of patients who are white
+- % of patients who prefer English
+- % of patients who live in the Cuyahoga County suburbs
+- % of patients who live outside of Cuyahoga County
+
+BUT EXCLUDING the insurance information.
+
+It, too is a weighted linear mixed model.
+
+```{r}
+mod2_medicaid <- hbp_medicaid %$%
+  lmer(BPLT14090 ~ years + BMILT30 + AGE_MEAN + 
+         FEMALE + incomeK + ED_MEAN + WHITE + 
+         ENGLISH + CUYNOTCLE + NOTCUYA + 
+         (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod2_medicaid)
+# confint(mod2_medicaid, method = "Wald")
+```
+
+
+## Models 1 and 2 restricted to Uninsured patients
+
+### Select out the Uninsured practice data from 2012-13 and forward, only those practices with at least 50 Uninsured patients.
+
+```{r}
+hbp_uninsured <- hbpdat %>%
+  filter(PRACTICE != "System") %>%
+  filter(PRACTICE != "Region") %>%
+  filter(SYSTEM != "SNET") %>%
+  filter(time >= 2012.5) %>%
+  filter(HBPPTS > 49) %>%
+  filter(ORDER == 104) %>%
+  select(REPORT, time, years, SYSTEM, PRACTICE, PRACCODE, ORDER, category, subgroup,
+         HBPPTS, BPLT14090, BMILT30, AGE_MEAN, FEMALE, incomeK, ED_MEAN, WHITE, 
+         MEDICARE, COMMERCIAL, MEDICAID, UNINSURED, ENGLISH, SPANISH, 
+         CLEVE, CUYNOTCLE, NOTCUYA ) %>% 
+  droplevels()
+```
+
+### Descriptive Summaries (counting only practices with at least 50 Uninsured HBP patients)
+
+```{r}
+hbp_uninsured <- hbp_uninsured %>%
+  mutate(n_BPLT14090 = round(HBPPTS * BPLT14090 / 100, 0))
+
+tab_d_uninsured <- hbp_uninsured %>% group_by(time, years) %>%
+  summarize(Practices = n(), Patients = sum(HBPPTS), 
+            Pct_below_14090 = 100*sum(n_BPLT14090)/sum(HBPPTS))
+
+kable(tab_d_uninsured)
+```
+
+### Figure 4. Achievement of BP < 140/90, Region-wide, Uninsured Patients
+
+```{r}
+ggplot(data = hbp_uninsured, aes(x = time, y = BPLT14090, size = HBPPTS)) +
+  geom_point(pch = 1) +
+  guides(size = FALSE) +
+  geom_line(data = tab_d_uninsured, aes(x = time, y = Pct_below_14090), 
+            col = "blue", size = 1) +
+  geom_label(data = tab_d_uninsured, aes(x = time, y = Pct_below_14090, 
+                                  label = decim(Pct_below_14090,1)), 
+             col = "blue", size = 3) +
+  theme_bw() + 
+  labs(x = "Better Health Partnership Reporting Period",
+       y = "% of Patients with Blood Pressure below 140/90",
+       title = "Blood Pressure below < 140/90: July 2012 - June 2017, Uninsured Patients",
+       subtitle = "Regional (blue) and Practice Achievement",
+       caption = "Practice size proportional to circle size, region in blue, minimum 50 Uninsured patients per practice")
+
+```
+
+### Model 1. No covariates model, assuming linear time effect
+
+```{r}
+mod1_uninsured <- hbp_uninsured %$%
+  lmer(BPLT14090 ~ years + (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod1_uninsured)
+# confint(mod1_uninsured, method = "Wald")
+```
+
+### Model 2. Time-varying covariate adjusted model, linear time
+
+This model predicts the percentage of patients with BP < 140/90 at a particular moment in time, using time (in years) since 2012-13, accounting for clustering by practice, and weighting by the number of patients, and using as covariates the following values that vary over time:
+
+- % of patients with BMI < 30
+- mean age of patients in the practice
+- % of patients in the practice who are female
+- neighborhood median income estimate (in $1000s)
+- neighborhood high school graduation rate estimate
+- % of patients who are white
+- % of patients who prefer English
+- % of patients who live in the Cuyahoga County suburbs
+- % of patients who live outside of Cuyahoga County
+
+BUT EXCLUDING the insurance information.
+
+It, too is a weighted linear mixed model.
+
+```{r}
+mod2_uninsured <- hbp_uninsured %$%
+  lmer(BPLT14090 ~ years + BMILT30 + AGE_MEAN + 
+         FEMALE + incomeK + ED_MEAN + WHITE + 
+         ENGLISH + CUYNOTCLE + NOTCUYA + 
+         (1 | PRACCODE), weights = HBPPTS)
+
+# summary(mod2_uninsured)
+# confint(mod2_uninsured, method = "Wald")
+```
+
+
+## Results for Models 1 and 2
+
+### Build the data set of results
+
+```{r}
+res12 <- data.frame(
+  model = rep(c(1, 2)),
+  subgroup = c(rep("All Patients", 2), rep("Medicare", 2), rep("Commercial", 2),
+               rep("Medicaid",2), rep("Uninsured",2)),
+  estimate = c(filter(tidy(mod1_overall), term == "years")$estimate,
+               filter(tidy(mod2_overall), term == "years")$estimate,
+               filter(tidy(mod1_medicare), term == "years")$estimate,
+               filter(tidy(mod2_medicare), term == "years")$estimate,
+               filter(tidy(mod1_commercial), term == "years")$estimate,
+               filter(tidy(mod2_commercial), term == "years")$estimate,
+               filter(tidy(mod1_medicaid), term == "years")$estimate,
+               filter(tidy(mod2_medicaid), term == "years")$estimate,
+               filter(tidy(mod1_uninsured), term == "years")$estimate,
+               filter(tidy(mod2_uninsured), term == "years")$estimate),
+  std.err = c(filter(tidy(mod1_overall), term == "years")$std.err,
+              filter(tidy(mod2_overall), term == "years")$std.err,
+              filter(tidy(mod1_medicare), term == "years")$std.err,
+              filter(tidy(mod2_medicare), term == "years")$std.err,
+              filter(tidy(mod1_commercial), term == "years")$std.err,
+              filter(tidy(mod2_commercial), term == "years")$std.err,
+              filter(tidy(mod1_medicaid), term == "years")$std.err,
+              filter(tidy(mod2_medicaid), term == "years")$std.err,
+              filter(tidy(mod1_uninsured), term == "years")$std.err,
+              filter(tidy(mod2_uninsured), term == "years")$std.err),
+  low.95ci = c(confint(mod1_overall, method = "Wald")["years",1],
+               confint(mod2_overall, method = "Wald")["years",1],
+               confint(mod1_medicare, method = "Wald")["years",1],
+               confint(mod2_medicare, method = "Wald")["years",1],
+               confint(mod1_commercial, method = "Wald")["years",1],
+               confint(mod2_commercial, method = "Wald")["years",1],
+               confint(mod1_medicaid, method = "Wald")["years",1],
+               confint(mod2_medicaid, method = "Wald")["years",1],
+               confint(mod1_uninsured, method = "Wald")["years",1],
+               confint(mod2_uninsured, method = "Wald")["years",1]),
+    hi.95ci = c(confint(mod1_overall, method = "Wald")["years",2],
+              confint(mod2_overall, method = "Wald")["years",2],
+              confint(mod1_medicare, method = "Wald")["years",2],
+              confint(mod2_medicare, method = "Wald")["years",2],
+              confint(mod1_commercial, method = "Wald")["years",2],
+              confint(mod2_commercial, method = "Wald")["years",2],
+              confint(mod1_medicaid, method = "Wald")["years",2],
+              confint(mod2_medicaid, method = "Wald")["years",2],
+              confint(mod1_uninsured, method = "Wald")["years",2],
+              confint(mod2_uninsured, method = "Wald")["years",2])
+  )
+```
+
+## Table of Results So Far
+
+```{r}
+res12
+```
+
+## Figure 6. Graph of Results So Far (Model 1: No Covariates)
+
+```{r}
+fig_model1 <- res12 %>% filter(model == 1)
+
+fig_model1$subgroup <- fct_reorder(fig_model1$subgroup, fig_model1$estimate)
+
+ggplot(fig_model1, aes(x = estimate, y = subgroup, label = decim(estimate, 2))) +
+  geom_vline(xintercept = 0, lty = "dashed", col = "red") +
+  geom_errorbarh(aes(xmax = hi.95ci, xmin = low.95ci, height = 0.4)) +
+  geom_label() + 
+  theme_bw() +
+  labs(x = "Estimated Effect on BP < 140/90 (in percentage points)",
+       y = "Group",
+       title = "No Covariates Model Estimates of Effect Per Year on BP < 140/90",
+       subtitle = "in percentage points with 95% confidence intervals",
+       caption = "Includes BHP data from practices with 50+ patients, 2012-13 to 2016-17")
+```
+
+## Figure 7. Graph of Results So Far (Model 2: Time-Varying Covariates)
+
+```{r}
+fig_model2 <- res12 %>% filter(model == 2)
+
+fig_model2$subgroup <- fct_reorder(fig_model2$subgroup, fig_model2$estimate)
+
+ggplot(fig_model2, aes(x = estimate, y = subgroup, label = decim(estimate, 2))) +
+  geom_vline(xintercept = 0, lty = "dashed", col = "red") +
+  geom_errorbarh(aes(xmax = hi.95ci, xmin = low.95ci, height = 0.4)) +
+  geom_label() + 
+  theme_bw() +
+  labs(x = "Estimated Effect on BP < 140/90 (in percentage points)",
+       y = "Group",
+       title = "Time-Varying Covs. Model Estimates of Effect Per Year on BP < 140/90",
+       subtitle = "in percentage points with 95% confidence intervals",
+       caption = "Includes BHP data from practices with 50+ patients, 2012-13 to 2016-17")
+```
+
+# Next Steps
+
+Not shown here.
+
+# Session Info
+
+```{r}
+devtools::session_info()
+```
