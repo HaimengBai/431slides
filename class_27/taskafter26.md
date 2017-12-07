@@ -23,22 +23,23 @@ Topic | Covered in 432?
 Two Projects, Shorter Quizzes, Minute Papers, Live R demos | I think so, yes.
 Better Distribution of Work Throughout the Term | Definitely a big goal.
 Logistic Regression | Yes
-Imputation and analysis with missing values | Yes
+Imputation and analysis with missing values | Yes (sorry this didn't make 431)
 Weighted Linear Regression and Robust Linear Regression | Yes
 Non-linear regression models | Yes
 Polynomial regression | Yes
 Restricted cubic splines | Yes
 Approaches other than stepwise AIC and hypothesis tests for variable selection | Yes
 C_p and Best Subsets Regression | Yes
-How many observations do I need to fit a model reasonably? | Yes
-Cross Validation | Yes
-Jeff Leek's Book "How To Be a Modern Scientist" | Yes, we'll read it all
+How many observations do I need to fit [a linear](https://www.sciencedirect.com/science/article/pii/S0895435615000141) or [a logistic model](https://twitter.com/f2harrell/status/936230071219707913) reasonably? | Yes
+[Cross Validation](https://www.youtube.com/watch?v=OwPQHmiJURI) to avoid [Overfitting](https://www.youtube.com/watch?v=CmEqvD_ov2o) | Yes
+Jeff Leek's "[How To Be a Modern Scientist](https://leanpub.com/modernscientist)" | Yes, we'll read it all
 Regression models for count data (Poisson, Negative Binomial) | Yes
 Regression models for multi-categorical outcomes | Yes
-Data Management: Wrangling Data using the Main Verbs of the Tidyverse and [R for Data Science](http://r4ds.had.co.nz/) | Yes
+Data Management: Wrangling/Rectangling using the Tidyverse and [R for Data Science](http://r4ds.had.co.nz/) | Yes
 Communicating the Results of Statistical Models Well | Yes
 Multi-factor ANOVA, designing experiments | Yes
 Kaplan-Meier estimator, Cox proportional hazards models | Yes
+Gelman's retrodesign function to assess an inference after the fact | Yes (sorry this didn't make 431)
 Reading and Critiquing the Code of Other People | I really hope so.
 Using GitHub and [Happy Git with R](http://happygitwithr.com/) for more than we did this term | I really hope so.
 Building a Web-Based Presentation of Your Work | I really hope so.
@@ -58,6 +59,8 @@ Sensitivity, Specificity, ROC analysis | A bit, maybe
 Special Methods for Clinical Trials | Not much outside of experiments
 Propensity Scores, Observational Studies, Causal Effects | Just enough to encourage you to take 500
 The problem of multiple comparisons and when to worry about it | I don't know.
+Sophisticated strategies for simulating in power calculations | I doubt it.
+ASA Statement on P values | Probably.
 The mathematics behind all of this stuff | As little as possible.
 Markov Chains | Nope
 Other Things That I've Forgotten Here | Probably
