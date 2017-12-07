@@ -1,5 +1,13 @@
 # Some Results from the Task After Class 26
 
+# Confidence Regarding Deliverables (n = 44)
+
+Question (0 = not satisfied/confident at all, 10 = extremely satisfied/confident) | Mean | SD | % 7 or higher
+:-----------------------------------------------------------------------------------: | -----: | -----: | :----:
+Do you feel satisfied with your performance on **Assignment 6**? | 6.18 | 1.96 | 47.7
+Do you feel confident about your ability to do well on **Quiz 3**? | 7.02 | 1.34 | 70.5
+Do you feel confident about your ability to do work you'll be proud of in your **Project**? | 7.25 | 1.12 | 75.0
+
 # Questions About 431 (some of which I can answer)
 
 1. When fitting a model, if I have female (= 1 or 0) as a variable, do I need to treat it as a factor?
@@ -10,9 +18,10 @@
 6. Could linear regression be used in most statistical problems?
 7. How is choosing one method of analysis over another not like fishing for the result you want?  It does not seem possible to pre-specify the specific tests that I will use before I have the data to work with, but doesn't intellectual rigor and honesty require that?
 8. Can we get a PDF version of the class notes?
-9. What do you think is the most important concept we learned from 431 that will pertain to a future career as a biostatistician?
-10. How qualified am I after 431 to perform data analysis in the real world without continuing on to 432?
-11. Following the 431 class, what is your best recommendation to stay up to date with using the knowledge and skills we have gained (specific websites, textbooks etc) to continue to learn about statistical models, R etc?
+9. Will we still have access to the class notes after December 14? After June 2018?
+10. What do you think is the most important concept we learned from 431 that will pertain to a future career as a biostatistician?
+11. How qualified am I after 431 to perform data analysis in the real world without continuing on to 432?
+12. Following the 431 class, what is your best recommendation to stay up to date with using the knowledge and skills we have gained (specific websites, textbooks etc) to continue to learn about statistical models, R etc?
 
 # Potential 432 Topics So Far
 
@@ -25,9 +34,7 @@ Better Distribution of Work Throughout the Term | A major goal.
 Logistic Regression | Yes
 Imputation and analysis with missing values | Yes (sorry this didn't make 431)
 Weighted Linear Regression and Robust Linear Regression | Yes
-Non-linear regression models | Yes
-Polynomial regression | Yes
-Restricted cubic splines | Yes
+Transforming predictors, polynomial regression, restricted cubic splines | Yes
 Approaches other than stepwise AIC and hypothesis tests for variable selection | Yes
 C_p and Best Subsets Regression | Yes
 How many observations do I need to fit [a linear](https://www.sciencedirect.com/science/article/pii/S0895435615000141) or [a logistic model](https://twitter.com/f2harrell/status/936230071219707913) reasonably? | Yes
@@ -41,6 +48,7 @@ Communicating the Results of Statistical Models Well | Yes
 Multi-factor ANOVA, designing experiments | Yes
 Kaplan-Meier estimator, Cox proportional hazards models | Yes
 [Beyond Power Calculations](http://www.stat.columbia.edu/~gelman/research/published/retropower_final.pdf): Gelman's retrodesign function to assess an inference after the fact | Yes (sorry this didn't make 431)
+Non-linear regression models | I expect so.
 Reading and Critiquing the Code of Other People, Reproducible Examples | I really hope so.
 Using GitHub and [Happy Git with R](http://happygitwithr.com/) for more than we did this term | I really hope so.
 Building a Web-Based Presentation of Your Work | I really hope so.
@@ -63,5 +71,8 @@ The problem of multiple comparisons and when to worry about it | I don't know.
 Sophisticated strategies for simulating in power calculations | I doubt it.
 ASA Statement on P values | Probably.
 The mathematics behind all of this stuff | As little as possible.
-Markov Chains | Nope
+Bayesian statistics | Not a lot, outside of some hierarchical modeling.
+Model Matrices, Markov Chains | Nope
+Audio-recording of lectures | I hope so. It may be a money issue.
+Little "lecture" videos about key concepts | From others - sure. From me - tech problems.
 Other Things That I've Forgotten Here | Probably
