@@ -35,13 +35,14 @@ Cross Validation | Yes
 Jeff Leek's Book "How To Be a Modern Scientist" | Yes, we'll read it all
 Regression models for count data (Poisson, Negative Binomial) | Yes
 Regression models for multi-categorical outcomes | Yes
-Data Management: Wrangling Data using the Main Verbs of the Tidyverse | Yes
+Data Management: Wrangling Data using the Main Verbs of the Tidyverse and [R for Data Science](http://r4ds.had.co.nz/) | Yes
 Communicating the Results of Statistical Models Well | Yes
 Multi-factor ANOVA, designing experiments | Yes
 Kaplan-Meier estimator, Cox proportional hazards models | Yes
 Reading and Critiquing the Code of Other People | I really hope so.
+Using GitHub and [Happy Git with R](http://happygitwithr.com/) for more than we did this term | I really hope so.
 Building a Web-Based Presentation of Your Work | I really hope so.
-Learning a little Shiny | I really hope so.
+Learning [a little Shiny](https://shiny.rstudio.com/) | I really hope so.
 P values, Garden of Forking Paths, Registering Your Analyses | I really hope so.
 Building a Decent Table 1 without going nuts | I really hope so.
 Log-Linear Models for Contingency Tables | I really hope so.
