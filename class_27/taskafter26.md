@@ -18,42 +18,48 @@
 
 My goal, honestly, is to write 12 case studies, and discuss them through the course. We'll see what happens.
 
-Topic | Coverage in 432
+Topic | Covered in 432?
 -----------------------------------------------------------------------: | ----------------
-Two Projects | Guaranteed
-Shorter Quizzes | Guaranteed
-Shorter, More Frequent Work, especially early in the term | Guaranteed
-Minute Papers | Guaranteed
-Logistic Regression | Guaranteed
-Imputation and analysis with missing values | Guaranteed
-When confronted with new data, deciding on the best way to model it | Guaranteed
-Potential Transformation Methods | Guaranteed
-Non-linear regression models | Guaranteed
-Polynomial regression | Guaranteed
-Restricted cubic splines | Guaranteed
-Approaches other than stepwise AIC and hypothesis tests for variable selection | Guaranteed
-Jeff Leek's Book "How To Be a Modern Scientist" | Guaranteed
-Regression models for count data (Poisson, Negative Binomial) | Guaranteed
-Data Management: Wrangling Data using the Main Verbs of the Tidyverse | Guaranteed
-Communicating the Results of Statistical Models Well | Guaranteed
-Live R Demos | Guaranteed
-Critiquing the Code of Other People | Guaranteed
-Multi-factor ANOVA, designing experiments | Guaranteed
-Kaplan-Meier estimator, Cox proportional hazards models | Guaranteed
-Building a Web-Based Presentation of Your Work | High Hopes
-P values, Garden of Forking Paths, Registering Your Analyses | High Hopes
-Building a Decent Table 1 without going nuts | High Hopes
-Log-Linear Models for Contingency Tables | High Hopes
-Mixed Effect Models | High Hopes
-Repeated Measures ANOVA | I hope so
-Hierarchical Linear Models | I hope so
-Longitudinal Analysis other than that | Not much
+Two Projects, Shorter Quizzes, Minute Papers | Yes
+Better Distribution of Work Throughout the Term | Yes
+Logistic Regression | Yes
+Imputation and analysis with missing values | Yes
+When confronted with new data, deciding on the best way to model it | Yes
+Potential Transformation Methods | Yes
+Weighted Linear Regression and Robust Linear Regression | Yes
+Non-linear regression models | Yes
+Polynomial regression | Yes
+Restricted cubic splines | Yes
+Approaches other than stepwise AIC and hypothesis tests for variable selection | Yes
+C_p and Best Subsets Regression | Yes
+How many observations do I need to fit a model reasonably? | Yes
+Cross Validation | Yes
+Jeff Leek's Book "How To Be a Modern Scientist" | Yes, we'll read it all
+Regression models for count data (Poisson, Negative Binomial) | Yes
+Regression models for multi-categorical outcomes | Yes
+Data Management: Wrangling Data using the Main Verbs of the Tidyverse | Yes
+Communicating the Results of Statistical Models Well | Yes
+Live R Demos | Yes
+Critiquing the Code of Other People | Yes
+Multi-factor ANOVA, designing experiments | Yes
+Kaplan-Meier estimator, Cox proportional hazards models | Yes
+Building a Web-Based Presentation of Your Work | I really hope so.
+Learning a little Shiny | I really hope so.
+P values, Garden of Forking Paths, Registering Your Analyses | I really hope so.
+Building a Decent Table 1 without going nuts | I really hope so.
+Log-Linear Models for Contingency Tables | I really hope so.
+Mixed Effect Models | I really hope so, but we'll see.
+Repeated Measures ANOVA | I hope so, but we'll see.
+Hierarchical Linear Models | I hope so, but we'll see.
+Longitudinal Analysis other than that | Not really, no.
 Other Survival Analysis topics | Nope (we have a course in this subject)
-Cluster Analysis, Principal Components Analysis | A bit, maybe
-Machine learning methods like the lasso and elastic net | A bit, maybe
-Scraping data from the web | A bit, maybe
+Cluster Analysis, Principal Components Analysis | I hope so, but we'll see.
+Machine learning methods like the lasso and elastic net | A bit, maybe.
+Scraping data from the web | At least one example.
 Sensitivity, Specificity, ROC analysis | A bit, maybe
 Special Methods for Clinical Trials | Not much outside of experiments
 Propensity Scores, Observational Studies, Causal Effects | Just enough to encourage you to take 500
-The problem of multiple comparisons and when to worry about it | I don't know
-Markov Chains | None
+The problem of multiple comparisons and when to worry about it | I don't know.
+The mathematics behind all of this stuff | As little as possible.
+Markov Chains | Nope
+Other Things | Probably
