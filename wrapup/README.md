@@ -2,6 +2,15 @@
 
 This is the place for all of Dr. Love's communications after our final class.
 
+## Quiz 3
+
+- The [Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1) you'll use to submit your answers to Quiz 3 [is now available](https://goo.gl/forms/yj5YuBusGF7hVvnx1).
+- A PDF document containing the questions and response options for Quiz 3 will appear above by 5 PM on 2017-12-07.
+- The data and code you'll need for Quiz 3 are posted above, and are also posted on [our data page](https://github.com/thomaselove/431data). There are three files, in particular, and they are:
+    - hospsim.csv
+    - surveyday1_2017.csv
+    - wc_code.R
+
 ## Announcements
 
 1. Good luck on the Quiz and your Project!
