@@ -33,6 +33,7 @@ Communicating the Results of Statistical Models Well | Guaranteed
 Live R Demos | Guaranteed
 Critiquing the Code of Other People | Guaranteed
 Multi-factor ANOVA, designing experiments | Guaranteed
+Kaplan-Meier estimator, Cox proportional hazards models | Guaranteed
 Building a Web-Based Presentation of Your Work | High Hopes
 P values, Garden of Forking Paths, Registering Your Analyses | High Hopes
 Building a Decent Table 1 without going nuts | High Hopes
@@ -40,7 +41,6 @@ Mixed Effect Models | High Hopes
 Repeated Measures ANOVA | I hope so
 Hierarchical Linear Models | I hope so
 Longitudinal Analysis other than that | Not much
-Kaplan-Meier estimator, Coxs proportional hazards models | Guaranteed
 Other Survival Analysis topics | Nope (we have a course in this subject)
 Cluster Analysis, Principal Components Analysis | A bit
 Machine learning methods like the lasso and elastic net | A bit
