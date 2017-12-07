@@ -73,6 +73,6 @@ ASA Statement on P values | Probably.
 The mathematics behind all of this stuff | As little as possible.
 Bayesian statistics | Not a lot, outside of some hierarchical modeling.
 Model Matrices, Markov Chains | Nope
-Audio-recording of lectures | I hope so. It may be a money issue.
-Little "lecture" videos about key concepts | From others - sure. From me - tech problems.
+Audio-recording of lectures | I hope so. Tech?
+Little "lecture" videos about key concepts | From others - sure. From me - tech + time issues.
 Other Things That I've Forgotten Here | Probably
