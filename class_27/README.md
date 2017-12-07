@@ -35,5 +35,8 @@ The audio recording for this class will be posted above as soon as it is availab
 
 4. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
 
+5. Cool Stuff
+    - Christie Aschwanden has a new piece "[There's No Such Thing as 'Sound Science'](https://fivethirtyeight.com/features/the-easiest-way-to-dismiss-good-science-demand-sound-science/?ex_cid=story-twitter)" at 538 which discusses some issues I worry about a lot.
+
 ## Announcements after today's class will be posted on [the WRAPUP page](https://github.com/THOMASELOVE/431slides/tree/master/wrapup).
 
