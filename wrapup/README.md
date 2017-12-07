@@ -18,6 +18,6 @@ This is the place for all of Dr. Love's communications after our final class.
 
 4. **432** 
     - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
-    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science]() and work on some of the trickier materials there.
-    - I'll also encourage you to look at Jenny Bryan's Happy Git with R, and be sure to email me your GitHub account name.
-    - As soon as I know more about what I'm going to do in 432, I'll post links here.
+    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
+    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
+    - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
