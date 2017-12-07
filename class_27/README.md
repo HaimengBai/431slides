@@ -41,7 +41,7 @@ The audio recording for this class will be posted above as soon as it is availab
 4. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
 
 5. Cool Stuff
-    - Christie Aschwanden has a new piece "[There's No Such Thing as 'Sound Science'](https://fivethirtyeight.com/features/the-easiest-way-to-dismiss-good-science-demand-sound-science/?ex_cid=story-twitter)" at 538 which discusses some issues I worry about a lot.
+    - Christie Aschwanden has a new piece "[There's No Such Thing as 'Sound Science'](https://fivethirtyeight.com/features/the-easiest-way-to-dismiss-good-science-demand-sound-science/?ex_cid=story-twitter)" at 538 which discusses some issues I worry about a lot. "Science’s virtues are being wielded against it."
     - Justin Wolfers suggests [in this tweet](https://twitter.com/JustinWolfers/status/938518021060087808/photo/1) that rising political polarization in the US isn't about social media, because, as he puts it, the olds don't use it, and they're the most polarized. Blame TV.
         - He's referring to [this piece in the New York Times](https://www.nytimes.com/2017/12/06/opinion/is-media-driving-americans-apart.html?_r=0) about [this article by Boxell, Gentzow and Shapiro in PNAS](http://www.pnas.org/content/114/40/10612.abstract)
 
