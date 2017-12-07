@@ -20,12 +20,10 @@ My goal, honestly, is to write the course in terms of a series of case studies, 
 
 Topic | Covered in 432?
 -----------------------------------------------------------------------: | ----------------
-Two Projects, Shorter Quizzes, Minute Papers | I think so, yes.
+Two Projects, Shorter Quizzes, Minute Papers, Live R demos | I think so, yes.
 Better Distribution of Work Throughout the Term | Definitely a big goal.
 Logistic Regression | Yes
 Imputation and analysis with missing values | Yes
-When confronted with new data, deciding on the best way to model it | Yes
-Potential Transformation Methods | Yes
 Weighted Linear Regression and Robust Linear Regression | Yes
 Non-linear regression models | Yes
 Polynomial regression | Yes
@@ -39,10 +37,9 @@ Regression models for count data (Poisson, Negative Binomial) | Yes
 Regression models for multi-categorical outcomes | Yes
 Data Management: Wrangling Data using the Main Verbs of the Tidyverse | Yes
 Communicating the Results of Statistical Models Well | Yes
-Live R Demos | Yes
-Critiquing the Code of Other People | Yes
 Multi-factor ANOVA, designing experiments | Yes
 Kaplan-Meier estimator, Cox proportional hazards models | Yes
+Reading and Critiquing the Code of Other People | I really hope so.
 Building a Web-Based Presentation of Your Work | I really hope so.
 Learning a little Shiny | I really hope so.
 P values, Garden of Forking Paths, Registering Your Analyses | I really hope so.
@@ -62,4 +59,4 @@ Propensity Scores, Observational Studies, Causal Effects | Just enough to encour
 The problem of multiple comparisons and when to worry about it | I don't know.
 The mathematics behind all of this stuff | As little as possible.
 Markov Chains | Nope
-Other Things | Probably
+Other Things That I've Forgotten Here | Probably
