@@ -18,7 +18,11 @@ This is the place for all of Dr. Love's communications after our final class.
 1. **Don't fit impossible kitchen sink models.** When fitting a kitchen sink model, count the number of observations in your training data set. Call that N. Then count the number of coefficients (slopes + intercept) you are planning to fit. Call that COEFFS. If N / COEFFS < 15, then you should be reducing the number of coefficients you are trying to fit in your kitchen sink model. If N / COEFFS < 10 or so, then this becomes absolutely imperative. Ideally, N / COEFFS should be 20 or more for a straightforward kitchen sink model.
 2. **If you can, include a meaningful name as a variable in your data.** For example, if your rows describe countries, have a variable called "Country" - even though you will not use this as a predictor, it's very helpful for identifying outliers, etc.
 3. **Pretty Code** Put a blank line before and after each code chunk. Put a blank line before and after each heading (and use lots of headings and subheadings to help you find things when you present your results.
-4. **Check your list of packages** Make sure `library(tidyverse)` is your last loaded library, and that you don't include any packages you don't actually need to include. If you have `library(tidyverse)` in your code, that means you have loaded eight packages now: `ggplot2`, `dplyr`, `tibble`, `readr`, `purrr`, `tidyr`, `stringr` and `forcats`. So you don't need to load any of those eight beforehand.
+4. **Check your list of packages** Make sure `library(tidyverse)` is your last loaded library, and that you don't include any packages you don't actually need to include. 
+    - In particular, if you have `library(tidyverse)` in your code, that means you have loaded eight packages now: `ggplot2`, `dplyr`, `tibble`, `readr`, `purrr`, `tidyr`, `stringr` and `forcats`. So you don't need to load any of those eight beforehand.
+    - Also, if you are going to write `mosaic::favstats` every time you want to use `favstats` and you're not using any other functions from the `mosaic` package, then don't include `library(mosaic)`.
+    - Similarly, don't include `library(Hmisc)` if the only function you will use from `Hmisc` is `describe`, and every time you plan to call it, you'll use `Hmisc::describe`.
+5. **Don't use pander with the results of a by function**: It won't work, even though I did it in one of the demonstrations. Just drop the `pander` piece.
 
 ## Announcements
 
