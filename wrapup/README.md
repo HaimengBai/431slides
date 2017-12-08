@@ -7,6 +7,7 @@ This is the place for all of Dr. Love's communications after our final class.
 - The [PDF of the questions and response options for Quiz 3 is here](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/431-quiz3-2017.pdf).
     - Correction 1 made 2017-12-07 at 9 PM: In Q32, there are four models, not five.
     - Correction 2 made 2017-12-07 at 9:30 PM: In Q11, the outcome is the log of a measure of predatory behavior, not of diastolic BP.
+    - Correction 3 made 2017-12-08 at noon: In the setup for Q34-40, I had left out `a1c` as one of the variables. It was always in the data set, and in the actual questions, but was inadvertently left out of the setup materials.
 - The [Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1) you'll use to submit your answers to Quiz 3 [is now available](https://goo.gl/forms/yj5YuBusGF7hVvnx1). Remember that you must complete the Quiz by 2017-12-12 at 12 NOON.
 - The data and code you'll need for Quiz 3 are posted above, and on [our data page](https://github.com/thomaselove/431data). There are three files, in particular, and they are `hospsim.csv`, `surveyday1_2017.csv` and `wc_code.R`.
 - Good luck! 
