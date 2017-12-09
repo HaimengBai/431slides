@@ -47,6 +47,7 @@ This is the place for all of Dr. Love's communications after our final class.
 
 6. **Corrections to the Course Notes**
     - On 2017-12-08 I corrected a small error in Section 30.6, where I had in one place written "relative risk" in the section defining risk difference.
+    - On 2017-12-09 I fixed typos in Sections 11 and 30.
 
 6. **432** 
     - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
