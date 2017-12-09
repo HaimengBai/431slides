@@ -23,6 +23,9 @@ This is the place for all of Dr. Love's communications after our final class.
     - Also, if you are going to write `mosaic::favstats` every time you want to use `favstats` and you're not using any other functions from the `mosaic` package, then don't include `library(mosaic)`.
     - Similarly, don't include `library(Hmisc)` if the only function you will use from `Hmisc` is `describe`, and every time you plan to call it, you'll use `Hmisc::describe`.
 5. **Don't use pander with the results of a by function**: It won't work, even though I did it in one of the demonstrations. Just drop the `pander` piece.
+6. **What do I do with this association plot in Study 1?** At the bottom of page 44 of the study 1 demonstration pdf, I describe the plot that is produced on that page. I suggest you follow that model to analyze your plot. The plot shows the size of the residuals for the model of independence. Large boxes indicate bigger deviations from independence than smaller boxes. Boxes above the horizontal line indicate positive residuals, boxes below the horizontal line indicate negative residuals. The width of each boxes indicates how many observations fall in that combination of categories on the contingency table, and the height indicates the size of the residual for that combination of categories on the contingency table.
+7. **Can I use Powerpoint to present in Task F, or should I just use the HTML files I generated for Task E?** It's entirely up to you.
+
 
 ## Announcements
 
