@@ -26,7 +26,7 @@ This is the place for all of Dr. Love's communications after our final class.
 6. **What do I do with this association plot in Study 1?** At the bottom of page 44 of the study 1 demonstration pdf, I describe the plot that is produced on that page. I suggest you follow that model to analyze your plot. The plot shows the size of the residuals for the model of independence. Large boxes indicate bigger deviations from independence than smaller boxes. Boxes above the horizontal line indicate positive residuals, boxes below the horizontal line indicate negative residuals. The width of each boxes indicates how many observations fall in that combination of categories on the contingency table, and the height indicates the size of the residual for that combination of categories on the contingency table.
 7. **Can I use Powerpoint to present in Task F, or should I just use the HTML files I generated for Task E?** It's entirely up to you.
 8. **If you've given multiple ways (say, (a) and (b)), to accomplish the same thing, should I use method (a) or method (b)?** Your choice.
-9. **Should everybody be using exactly the same Excel data sets and setup code to set up the data Study 1 (the class survey)?** Yes.
+9. **Should everyone be using exactly the same Excel data sets and setup code Dr. Love provided to set up the Study 1 (class survey) data?** Yes.
 
 
 ## Announcements
