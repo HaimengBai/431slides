@@ -15,6 +15,8 @@ This is the place for all of Dr. Love's communications after our final class.
 
 ## Project Hints / Suggestions
 
+I have placed a PDF copy of the [form I will use to evaluate Fall 2017 Project Presentations here](https://github.com/THOMASELOVE/431project/blob/master/TaskF/TaskF_evaluationformforTELtouse_(Mondayversion).pdf) for you to review, if you are interested. This is a form for me, not you, but it may help you to see what is on the form.
+
 1. **Don't fit impossible kitchen sink models.** When fitting a kitchen sink model, count the number of observations in your training data set. Call that N. Then count the number of coefficients (slopes + intercept) you are planning to fit. Call that COEFFS. If N / COEFFS < 15, then you should be reducing the number of coefficients you are trying to fit in your kitchen sink model. If N / COEFFS < 10 or so, then this becomes absolutely imperative. Ideally, N / COEFFS should be 20 or more for a straightforward kitchen sink model.
 2. **If you can, include a meaningful name as a variable in your data.** For example, if your rows describe countries, have a variable called "Country" - even though you will not use this as a predictor, it's very helpful for identifying outliers, etc.
 3. **Pretty Code** Put a blank line before and after each code chunk. Put a blank line before and after each heading (and use lots of headings and subheadings) to help you find things when you present your results.
