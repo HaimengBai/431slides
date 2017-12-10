@@ -2,6 +2,27 @@
 
 This is the place for all of Dr. Love's communications after our final class.
 
+## Reminders, Announcements and Tips for the Final Week 
+
+A. This week, you need to:
+
+1. Submit **Quiz 3** by Tuesday at noon using [this Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1).
+2. Submit Project [Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) by Wednesday at noon via Canvas
+3. Submit any **homework grading revision requests** by Wednesday at noon using [the Google Form provided](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) (we hope to get you Assignment 6 grades on Monday)
+4. Give your **presentation** ([Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF)) on Monday, Tuesday or Thursday according to [the schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
+5. Submit a **course evaluation** (probably after your presentation is best) using [the Google Form I provided](https://goo.gl/forms/DD2hL8g6GOHxCzwc2).
+    
+B. I built a form ([here is the PDF version for Monday](https://github.com/THOMASELOVE/431project/blob/master/TaskF/TaskF_evaluationformforTELtouse_(Mondayversion).pdf)) that I will use to evaluate your project presentations. If you want to see it, you are welcome to take a look. Remember that this is a form for me to fill out, not you. 
+
+C. There is also a set of 10 or so last minute Project Tips/Hints on the [Wrapup README page](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/README.md) which I hope you will read.
+
+D. 431-help will close on Thursday 2017-12-14 after the final project presentation, but I am sure I will be reviewing questions at the following times (and NOT at most other times). 431-help reopens on 2018-01-16.
+
+- Sunday sometime between 7 and 9 PM
+- Monday morning before 7:30 AM and then during the day, occasionally, but not after about 4 PM
+- Tuesday morning before 8 AM, and then during the day, occasionally, but not after about 5 PM
+- Wednesday morning before 9 AM, and again in the evening
+
 ## Quiz 3: Deadline is Tuesday 2017-12-12 at 12 NOON
 
 - The [PDF of the questions and response options for Quiz 3 is here](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/431-quiz3-2017.pdf).
