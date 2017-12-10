@@ -27,6 +27,7 @@ This is the place for all of Dr. Love's communications after our final class.
 7. **Can I use Powerpoint to present in Task F, or should I just use the HTML files I generated for Task E?** It's entirely up to you.
 8. **If you've given multiple ways (say, (a) and (b)), to accomplish the same thing, should I use method (a) or method (b)?** Your choice.
 9. **Should everyone be using exactly the same Excel data sets and setup code Dr. Love provided to set up the Study 1 (class survey) data?** Yes.
+10. **What about back-transformation if I fit a model with, say, the log of my original outcome?** In Study 2, you may wind up transforming your outcome. If you use, for example, a log transformation, then everything in your training sample should be done on the log scale. But when you predict into your **test** sample, make the predictions of the log(outcome) and then exponentiate them to get them back on the original outcome scale before you calculate prediction errors and then form MSPE and MAPE and Mean Absolute Error.
 
 
 ## Announcements
