@@ -53,6 +53,7 @@ I have placed a PDF copy of the [form I will use to evaluate Fall 2017 Project P
 9. **Should everyone be using exactly the same Excel data sets and setup code Dr. Love provided to set up the Study 1 (class survey) data?** Yes.
 10. **What about back-transformation if I fit a model with, say, the log of my original outcome?** In Study 2, you may wind up transforming your outcome. If you use, for example, a log transformation, then everything in your training sample should be done on the log scale. But when you predict into your **test** sample, make the predictions of the log(outcome) and then exponentiate them to get them back on the original outcome scale before you calculate prediction errors and then form MSPE and MAPE and Mean Absolute Error.
 
+Oh, and Jenny Bryan wrote a great article about Projects and Workflow that we'll discuss in 432. [Take a look](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/).
 
 ## Announcements
 
