@@ -8,7 +8,7 @@ A. This week, you need to:
 
 1. Submit **Quiz 3** by Tuesday at noon using [this Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1).
 2. Submit Project [Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) by Wednesday at noon via Canvas
-3. Submit any **homework grading revision requests** by Wednesday at noon using [the Google Form provided](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) (we hope to get you Assignment 6 grades on Monday)
+3. Submit any **homework grading revision requests** by Wednesday at noon using [the Google Form provided](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) (Assignment 6 [grades are available here](https://github.com/THOMASELOVE/431homework/blob/master/HW6/431-grades6-pw-2017.pdf) - remember that the PDF file is just password-protected.)
 4. Give your **presentation** ([Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF)) on Monday, Tuesday or Thursday according to [the schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
 5. Submit a **course evaluation** (probably after your presentation is best) using [the Google Form I provided](https://goo.gl/forms/DD2hL8g6GOHxCzwc2).
     
