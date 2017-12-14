@@ -2,38 +2,29 @@
 
 This is the place for all of Dr. Love's communications after our final class.
 
-## Reminders, Announcements and Tips for the Final Week 
+## Quiz 3 Grades are Complete
 
-A. This week, you need to:
+- **NEW!** The answer sketch is now posted above, and you'll receive an email with your grade at your CWRU account (I sent them at 10 AM on Thursday 2017-12-14) and that email will let you see how you did on each question and overall.
 
-1. Submit **Quiz 3** by Tuesday at noon using [this Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1).
-2. Submit Project [Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) by Wednesday at noon via Canvas
-3. Submit any **homework grading revision requests** by Wednesday at noon using [the Google Form provided](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) (Assignment 6 [grades are available here](https://github.com/THOMASELOVE/431homework/blob/master/HW6/431-grades6-pw-2017.pdf) - remember that the PDF file is just password-protected.)
-4. Give your **presentation** ([Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF)) on Monday, Tuesday or Thursday according to [the schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
-5. Submit a **course evaluation** (probably after your presentation is best) using [the Google Form I provided](https://goo.gl/forms/DD2hL8g6GOHxCzwc2).
-    
-B. I built a form ([here is the PDF version for Monday](https://github.com/THOMASELOVE/431project/blob/master/TaskF/TaskF_evaluationformforTELtouse_(Mondayversion).pdf)) that I will use to evaluate your project presentations. If you want to see it, you are welcome to take a look. Remember that this is a form for me to fill out, not you. 
+## Appealing Homework Grades
 
-C. There is also a set of 10 or so last minute Project Tips/Hints on the [Wrapup README page](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/README.md) which I hope you will read.
+I received Google Form requests to appeal homework grades from the following people.
 
-D. 431-help will close on Thursday 2017-12-14 after the final project presentation, but I am sure I will be reviewing questions at the following times (and NOT at most other times). 431-help reopens on 2018-01-16.
+1. Nik Krieger
+2. Chaim Domb
+3. Sandra Silva
+4. Ryan Honomichl
+5. Preeti Pathak
 
-- Sunday sometime between 7 and 9 PM
-- Monday morning before 7:30 AM and then during the day, occasionally, but not after about 4 PM
-- Tuesday morning before 8 AM, and then during the day, occasionally, but not after about 5 PM
-- Wednesday morning before 9 AM, and again in the evening
+## Course Evaluation for The University
 
-## Quiz 3: Deadline is Tuesday 2017-12-12 at 12 NOON
+You have received emails from the University about their evaluation of the course. Please complete that by the deadline of 2017-12-21.
 
-- The [PDF of the questions and response options for Quiz 3 is here](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/431-quiz3-2017.pdf).
-    - Correction 1 made 2017-12-07 at 9 PM: In Q32, there are four models, not five.
-    - Correction 2 made 2017-12-07 at 9:30 PM: In Q11, the outcome is the log of a measure of predatory behavior, not of diastolic BP.
-    - Correction 3 made 2017-12-08 at 11:50 AM: In the setup for Q34-40, I had left out `a1c` as one of the variables. It was always in the data set, and in the actual questions, but was inadvertently left out of the setup materials.
-    - Correction 4 made 2017-12-11 at 3:20 PM: In Q07, the data displayed are now correctly labeled as Before - After, not After - Before, so that positive values indicate weight loss, and negative indicate weight gain. 
-- The [Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1) you'll use to submit your answers to Quiz 3 [is now available](https://goo.gl/forms/yj5YuBusGF7hVvnx1). Remember that you must complete the Quiz by 2017-12-12 at 12 NOON.
-- The data and code you'll need for Quiz 3 are posted above, and on [our data page](https://github.com/thomaselove/431data). There are three files, in particular, and they are `hospsim.csv`, `surveyday1_2017.csv` and `wc_code.R`.
-- Good luck! 
-    - **NEW!** The answer sketch is now posted above, and you'll receive an email with your grade at your CWRU account when I've reviewed your work, and this will let you see how you did on each question and overall.
+## Course Evaluation for me
+
+In addition to the University evaluation, I would be extremely grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
+
+As of 2017-12-14 at 10 AM, I had received this from 27/50 people. I will pester the rest of you once more today.
 
 ## Project Hints / Suggestions
 
@@ -57,6 +48,55 @@ Oh, and Jenny Bryan wrote a great article about Projects and Workflow that we'll
 
 ## Announcements
 
+1. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
+
+2. **Corrections to the Course Notes**
+    - On 2017-12-08 I corrected a small error in Section 30.6, where I had in one place written "relative risk" in the section defining risk difference.
+    - On 2017-12-09 I fixed typos in Sections 11 and 30.
+
+3. **432** 
+    - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
+    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
+    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
+    - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
+    - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
+
+# Old Stuff that used to be on this page
+
+A. This week, you need to:
+
+1. Submit **Quiz 3** by Tuesday at noon using [this Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1).
+2. Submit Project [Task E](https://github.com/THOMASELOVE/431project/tree/master/TaskE) by Wednesday at noon via Canvas
+3. Submit any **homework grading revision requests** by Wednesday at noon using [the Google Form provided](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) (Assignment 6 [grades are available here](https://github.com/THOMASELOVE/431homework/blob/master/HW6/431-grades6-pw-2017.pdf) - remember that the PDF file is just password-protected.)
+4. Give your **presentation** ([Task F](https://github.com/THOMASELOVE/431project/tree/master/TaskF)) on Monday, Tuesday or Thursday according to [the schedule](https://github.com/THOMASELOVE/431project/blob/master/TaskF/SCHEDULE.md).
+5. Submit a **course evaluation** (probably after your presentation is best) using [the Google Form I provided](https://goo.gl/forms/DD2hL8g6GOHxCzwc2).
+    
+B. I built a form ([here is the PDF version for Monday](https://github.com/THOMASELOVE/431project/blob/master/TaskF/TaskF_evaluationformforTELtouse_(Mondayversion).pdf)) that I will use to evaluate your project presentations. If you want to see it, you are welcome to take a look. Remember that this is a form for me to fill out, not you. 
+
+C. There is also a set of 10 or so last minute Project Tips/Hints on the [Wrapup README page](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/README.md) which I hope you will read.
+
+D. 431-help will close on Thursday 2017-12-14 after the final project presentation, but I am sure I will be reviewing questions at the following times (and NOT at most other times). 431-help reopens on 2018-01-16.
+
+
+E. Quiz 3 stuff
+- The [PDF of the questions and response options for Quiz 3 is here](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/431-quiz3-2017.pdf).
+    - Correction 1 made 2017-12-07 at 9 PM: In Q32, there are four models, not five.
+    - Correction 2 made 2017-12-07 at 9:30 PM: In Q11, the outcome is the log of a measure of predatory behavior, not of diastolic BP.
+    - Correction 3 made 2017-12-08 at 11:50 AM: In the setup for Q34-40, I had left out `a1c` as one of the variables. It was always in the data set, and in the actual questions, but was inadvertently left out of the setup materials.
+    - Correction 4 made 2017-12-11 at 3:20 PM: In Q07, the data displayed are now correctly labeled as Before - After, not After - Before, so that positive values indicate weight loss, and negative indicate weight gain. 
+- The [Google Form](https://goo.gl/forms/yj5YuBusGF7hVvnx1) you'll use to submit your answers to Quiz 3 [is now available](https://goo.gl/forms/yj5YuBusGF7hVvnx1). Remember that you must complete the Quiz by 2017-12-12 at 12 NOON.
+- The data and code you'll need for Quiz 3 are posted above, and on [our data page](https://github.com/thomaselove/431data). There are three files, in particular, and they are `hospsim.csv`, `surveyday1_2017.csv` and `wc_code.R`.
+- Good luck! 
+
+
+- Sunday sometime between 7 and 9 PM
+- Monday morning before 7:30 AM and then during the day, occasionally, but not after about 4 PM
+- Tuesday morning before 8 AM, and then during the day, occasionally, but not after about 5 PM
+- Wednesday morning before 9 AM, and again in the evening
+
+
+5. **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**. Grades on Assignment 6 will be made available to you as soon as possible.
+
 1. Good luck on the Quiz and your Project!
 
 2. Getting Help after Dec 8
@@ -66,20 +106,3 @@ Oh, and Jenny Bryan wrote a great article about Projects and Workflow that we'll
         3. If this is about "your data" **send the data** set(s) that your R Markdown calls. If this is about the class survey data, we have that. But we don't have your data.
         4. Please don't wait until you've been struggling with a problem so long that you feel frustrated or feel the need to tell us how long that's been to garner our sympathy. Struggle for 15 minutes with the demonstration files, then Google or search the course notes for at most another 15 minutes, then email us, is a reasonable workflow. Coding is hard enough with help.
         5. **Don't wait** until the last day. I warn you that I am thoroughly unavailable on Mon 12-11 and Tue 12-12 except for a little bit of time between projects. In particular, I am booked both of those evenings.
-
-3. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
-
-4. **Course Evaluations** In addition to the University evaluation, I would be extremely grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
-
-5. **Appealing HW Grades**: If you want me to regrade an assignment, review the [Grade Appeal Policy](https://thomaselove.github.io/431syllabus/general-course-policies.html#grade-appeal-policy---wait-until-december) in the Syllabus, and then request a regrade by filling out [this Google Form](https://goo.gl/forms/v5zBIuGnrLkbiuXU2) before noon on Wednesday **2017-12-13**. Grades on Assignment 6 will be made available to you as soon as possible.
-
-6. **Corrections to the Course Notes**
-    - On 2017-12-08 I corrected a small error in Section 30.6, where I had in one place written "relative risk" in the section defining risk difference.
-    - On 2017-12-09 I fixed typos in Sections 11 and 30.
-
-6. **432** 
-    - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
-    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
-    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
-    - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
-    - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
