@@ -18,13 +18,13 @@ I received Google Form requests to appeal homework grades from the following peo
 
 ## Course Evaluation for The University
 
-You have received emails from the University about their evaluation of the course. Please complete that by the deadline of 2017-12-21.
+You have received [emails from the University about their evaluation of the course](https://webapps.case.edu/courseevals/). As I understand it, those of you enrolled in PQHS 431 may not have been receiving those emails, but you should now be getting them. At any rate, [visit this link](https://webapps.case.edu/courseevals/) to complete that eveluation by the deadline of 2017-12-21.
 
 ## Course Evaluation for me
 
-In addition to the University evaluation, I would be extremely grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
+In addition to the University evaluation, I would be **extremely** grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
 
-As of 2017-12-14 at 10 AM, I had received this from 27/50 people. I will pester the rest of you once more today.
+As of 2017-12-14 at 2:30 AM, I had received this from 39/50 people. Thanks!
 
 ## Project Hints / Suggestions
 
