@@ -4,6 +4,9 @@ This is the place for all of Dr. Love's communications after our final class.
 
 ## For everyone who's completed the project, a course grade is now available.
 
+[See this link](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/GRADES.md) for more details. 
+
+- You should receive an email from Professor Love before 2017-12-16 outlining your scores.
 
 ## Quiz 3 Grades are Complete
 
@@ -19,9 +22,22 @@ You have received [emails from the University about their evaluation of the cour
 
 ## Course Evaluation for me
 
-In addition to the University evaluation, I would be **extremely** grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. One question refers to the project presentation, but otherwise, you should be able to complete this now. Thank you in advance.
+In addition to the University evaluation, I would be **extremely** grateful if you completed [this evaluation](https://goo.gl/forms/DD2hL8g6GOHxCzwc2) for me as soon as you can. As of 2017-12-14 at 10:35 PM, I had received this from 45/50 people, so thank you very much!
 
-As of 2017-12-14 at 2:30 AM, I had received this from 39/50 people. Thanks!
+## Christmas Wassail Concert
+
+Dr. Love is one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra at Chagrin Valley Little Theater on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). It is my understanding that the concerts will sell out in advance.
+
+## Preparing for 432
+
+Those of you taking 432, thank you for your interest.
+    - The course begins January 16, and I cannot promise to have anything ready for you before that date. If I do, I'll let you know here.
+    - Dr. Love will be at CWRU on 2017-12-21. If you need to talk to him, send an email. He will be away from email Dec 23 - Jan 2 and again from Jan 7 - 14.
+    - 431-help is now closed. We'll reopen on the first day of 432 class: 2018-01-16. We still call it 431-help in 432.
+    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
+    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
+    - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
+    - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
 
 ## Project Hints / Suggestions
 
@@ -42,21 +58,6 @@ I have placed a PDF copy of the [form I will use to evaluate Fall 2017 Project P
 10. **What about back-transformation if I fit a model with, say, the log of my original outcome?** In Study 2, you may wind up transforming your outcome. If you use, for example, a log transformation, then everything in your training sample should be done on the log scale. But when you predict into your **test** sample, make the predictions of the log(outcome) and then exponentiate them to get them back on the original outcome scale before you calculate prediction errors and then form MSPE and MAPE and Mean Absolute Error.
 
 Oh, and Jenny Bryan wrote a great article about Projects and Workflow that we'll discuss in 432. [Take a look](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/).
-
-## Announcements
-
-1. I will be one of five featured singers in the annual Wassail Christmas Concert given by the Chagrin Studio Orchestra on December 22 and 23 starting at 6:15 (wassail and cookies), 7:00 (downbeat) each evening. Wrap yourself up in the music of the season with 40+ of Cleveland's finest musicians for a mere $25 (adults) and $15 (students). If you are interested, visit [CVLT's Tickets page](https://app.arts-people.com/index.php?show=81251). 
-
-2. **Corrections to the Course Notes**
-    - On 2017-12-08 I corrected a small error in Section 30.6, where I had in one place written "relative risk" in the section defining risk difference.
-    - On 2017-12-09 I fixed typos in Sections 11 and 30.
-
-3. **432** 
-    - Want to get a leg up on 432? I cannot promise I'll have anything ready for you before January 18, I'm afraid. 
-    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
-    - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
-    - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
-    - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
 
 # Old Stuff that used to be on this page
 
