@@ -1,4 +1,4 @@
-# Course Grades will be posted by the registrar as soon as possible
+# Course Grades should be posted by the registrar by Tuesday 2017-12-19.
 
 Your grade in the course is determined as follows:
 
@@ -53,3 +53,15 @@ For Participation points, the class mean was 13.7 / 15. (That's 91.3%)
     - Students with Total Points of 85 to 98 received a course grade of A.
     - Students with Total Points of 75 to 83 received a course grade of B. 
         - No one had Total Points between 83.0 and 85.0, and no one was below 75.
+
+## Dr. Love will send you an email by Saturday 2017-12-16 containing:
+
+- a link to this page
+- Your Project Task A-D, Task E, and Task F scores
+- Your Project Points
+- Your Quiz Points
+- Your Homework Points
+- Your Participation Points, and
+- Your Total Points
+
+so you can determine your grade in the course.
