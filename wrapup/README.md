@@ -31,10 +31,11 @@ Dr. Love is one of five featured singers in the annual Wassail Christmas Concert
 ## Preparing for 432
 
 Those of you taking 432, thank you for your interest.
-    - The course begins January 16, and I cannot promise to have anything ready for you before that date. If I do, I'll let you know here.
-    - Dr. Love will be at CWRU on 2017-12-21. If you need to talk to him, send an email. He will be away from email Dec 23 - Jan 2 and again from Jan 7 - 14.
-    - 431-help is now closed. We'll reopen on the first day of 432 class: 2018-01-16. We still call it 431-help in 432.
-    - If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
+
+- The course begins January 16, and I cannot promise to have anything ready for you before that date. If I do, I'll let you know here.
+- Dr. Love will be at CWRU on 2017-12-21. If you need to talk to him, send an email. He will be away from email Dec 23 - Jan 2 and again from Jan 7 - 14.
+- 431-help is now closed. We'll reopen on the first day of 432 class: 2018-01-16. We still call it 431-help in 432.
+- If you want to see a list of potential topics for 432 and some indication of likely emphasis, [click here](https://github.com/THOMASELOVE/431slides/blob/master/class_27/taskafter26.md) and scroll down. I've linked a few things there.
     - I'll encourage you to continue working with R, and a very useful thing to do is read [R for Data Science](http://r4ds.had.co.nz/) and work on some of the trickier materials there.
     - I'll also encourage you to look at Jenny Bryan's [Happy Git with R](http://happygitwithr.com/), and be sure to email me your GitHub account name.
     - It can't hurt to review R Studio's [extensive and growing list of webinars](https://www.rstudio.com/resources/webinars/) designed to help you get more out of your R and R Studio experiences. This is a great place to get started learning about, for example, Shiny.
