@@ -5,9 +5,9 @@ Your grade in the course is determined as follows:
 ## Up to 30 points for the Project
 
 - First we calculate your Project score which is the sum of your 
-    - Tasks A-D (maximum 30 points, and most of the deductions are for late or incomplete work)
-    - Task E (maximum 30 points and most people scored between 18 and 26)
-    - Task F (maximum 40 points and most people scored between 27 and 36)
+    - Tasks A-D score (maximum 30 points, and most of the deductions are for late or incomplete work)
+    - Task E score (maximum 30 points and most people scored between 18 and 26)
+    - Task F score (maximum 40 points and most people scored between 27 and 36)
 - We multiply the Project score by 0.3 to produce your **Project points** (on a scale from 0-30). 
 
 For Project points, the class mean was 26.3 / 30. (That's 87.7%)
@@ -47,7 +47,7 @@ For Homework points, the class mean was 22.4 / 25. (That's 89.4%)
 
 For Participation points, the class mean was 13.7 / 15. (That's 91.3%)
 
-## Calculating Your Total Points
+## Calculating Your Total Points and Determining Your Course Grade
 
 - Add up your Project points, your Quiz points, your Homework points and your Participation Points to get Total Points.
     - Students with Total Points of 85 to 98 received a course grade of A.
@@ -58,7 +58,7 @@ For Participation points, the class mean was 13.7 / 15. (That's 91.3%)
 
 - a link to this page
 - Your Project Task A-D, Task E, and Task F scores
-- Your Project Points
+- Your Project score, and resulting Project Points
 - Your Quiz Points
 - Your Homework Points
 - Your Participation Points, and
