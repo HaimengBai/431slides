@@ -2,19 +2,16 @@
 
 This is the place for all of Dr. Love's communications after our final class.
 
+## For everyone who's completed the project, a course grade is now available.
+
+
 ## Quiz 3 Grades are Complete
 
 - **NEW!** The answer sketch is now posted above, and you'll receive an email with your grade at your CWRU account (I sent them at 10 AM on Thursday 2017-12-14) and that email will let you see how you did on each question and overall.
 
 ## Appealing Homework Grades
 
-I received Google Form requests to appeal homework grades from the following people.
-
-1. Nik Krieger
-2. Chaim Domb
-3. Sandra Silva
-4. Ryan Honomichl
-5. Preeti Pathak
+I received Google Form requests to appeal homework grades from five people, all of whom have heard back from me via email.
 
 ## Course Evaluation for The University
 
