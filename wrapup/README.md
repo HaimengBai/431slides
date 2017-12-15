@@ -2,7 +2,7 @@
 
 This is the place for all of Dr. Love's communications after our final class.
 
-## For everyone who's completed the project, a course grade is now available.
+## For everyone who's completed the project, [a course grade](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/GRADES.md) is now available.
 
 [See this link](https://github.com/THOMASELOVE/431slides/blob/master/wrapup/GRADES.md) for more details. 
 
